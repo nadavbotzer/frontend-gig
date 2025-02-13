@@ -23,8 +23,83 @@
         .about-user-row {
             display: flex;
             flex-direction: row;
-            align-items: flex-start;
+            align-items: center;
             justify-content: flex-start;
+
+            .user-name {
+                color: #404145;
+                font-size: 18px;
+                font-weight: 700;
+
+                &:hover {
+                    text-decoration: underline;
+                    text-decoration-color: #404145;
+                }
+            }
+
+            .top-rated {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                background-color: #ffe0b3;
+                border-radius: 4px;
+                color: #421300;
+                font-size: 14px;
+                font-weight: 600;
+                gap: 4px;
+                line-height: 18px;
+                padding: 0px 6px;
+                margin-left: 5px;
+            }
+
+            .profession {
+                color: #222325;
+                font-weight: 700;
+                line-height: 24px;
+            }
+
+            .reviews {
+                align-items: flex-start;
+                border-radius: 4px;
+                color: #74767e;
+                line-height: 24px;
+                margin: 0px 0px 0px 4px;
+                text-align: center;
+
+                &:hover {
+                    text-decoration: underline;
+                    text-decoration-color: #74767e;
+                }
+            }
+
+            .star-rating {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                margin-right: 5px;
+                margin-left: 5px;
+
+                .stars {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-start;
+
+                    img {
+                        fill: #222325;
+                        width: 20px;
+                    }
+                }
+
+                .number {
+                    color: #222325;
+                    font-weight: 700;
+                    line-height: 24px;
+                    padding: 0px 0px 0px 4px;
+                }
+            }
         }
     }
 }
