@@ -2,16 +2,15 @@
     --min-column-size: 220px;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--min-column-size), 1fr));
+    grid-template-columns: 1fr;
+    row-gap: 40px;
     gap: .5em;
 
     li {
         display: grid;
         grid-template-columns: max-content auto;
         padding: .5em;
-        background-color: $clr2;
 
-        color: $clr6;
 
         .actions {
             justify-self: end;
@@ -20,5 +19,17 @@
                 padding: .3em .5em;
             }
         }
+    }
+
+    @include for-narrow-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include for-normal-layout {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include for-wide-layout {
+        grid-template-columns: repeat(4, 1fr);
     }
 }

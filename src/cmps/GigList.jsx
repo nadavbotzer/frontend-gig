@@ -10,16 +10,15 @@ export function GigList({ gigs, onRemoveGig, onUpdateGig }) {
         if (user.isAdmin) return true
         return gig.owner?._id === user._id
     }
-
     return <section>
         <ul className="list">
             {gigs.map(gig =>
                 <li key={gig._id}>
                     <GigPreview gig={gig} />
-                    {shouldShowActionBtns(gig) && <div className="actions">
+                    {/* {shouldShowActionBtns(gig) && <div className="actions">
                         <button onClick={() => onUpdateGig(gig)}>Edit</button>
                         <button onClick={() => onRemoveGig(gig._id)}>x</button>
-                    </div>}
+                    </div>} */}
                 </li>)
             }
         </ul>

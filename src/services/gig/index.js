@@ -1,17 +1,43 @@
 const { DEV, VITE_LOCAL } = import.meta.env
 
-import { getRandomIntInclusive, makeId } from '../util.service'
+import { getRandomTags, getRandomLocation, getRandomIntInclusive, makeId, getRandomGigTitle, getRandomName, getRandomLevel } from '../util.service'
 
 import { gigService as local } from './gig.service.local'
 import { gigService as remote } from './gig.service.remote'
 
+// function getEmptyGig() {
+//     return {
+//         title: makeId(),
+//         price: getRandomIntInclusive(80, 240),
+//         msgs: [],
+//     }
+// }
+
 function getEmptyGig() {
     return {
-        title: makeId(),
-        price: getRandomIntInclusive(80, 240),
-        msgs: [],
+        title: 'I will ' + getRandomGigTitle(),
+        price: getRandomIntInclusive(10, 300),
+        owner: {
+            _id: makeId(),
+            fullname: getRandomName(),
+            imgUrl: 'https://randomuser.me/api/portraits/men/' + getRandomIntInclusive(1, 99) + '.jpg',
+            level: getRandomLevel(),
+            rate: getRandomIntInclusive(1, 5),
+        },
+        daysToMake: getRandomIntInclusive(1, 10),
+        description: 'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
+        avgResponseTime: getRandomIntInclusive(1, 24),
+        loc: getRandomLocation(),
+        imgUrls: ['/img/img' + getRandomIntInclusive(1, 5) + '.jpg'],
+        tags: getRandomTags(),
+        likedByUsers: [],
+        reviews: [],
     }
 }
+
+// Helpers
+
+
 
 function getDefaultFilter() {
     return {
