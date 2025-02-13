@@ -5,12 +5,12 @@ export function AppFooter() {
 
 	return (
 		<footer className="app-footer full">
-			<p>Coffeerights &copy; 2024</p>
-			<p>Count: {count}</p>
-            
-            {import.meta.env.VITE_LOCAL ? 
-                <span className="local-services">Local Services</span> : 
-                <span className="remote-services">Remote Services</span>}
+			<div className='logo'>TopGig<span>.</span></div>
+			<p> ©Bar Rabinovitz - Nadav Botzer - Tamar Levy 2025</p>
+
+
+
+			{/* <a href='https://www.tiktok.com/@fiverr'>tiktok</a> */}
 		</footer>
 	)
 }

@@ -51,3 +51,39 @@ export function loadFromStorage(key) {
     const data = localStorage.getItem(key)
     return (data) ? JSON.parse(data) : undefined
 }
+
+export function getRandomGigTitle() {
+    const titles = [
+        'design your logo',
+        'create an eye-catching flyer',
+        'build a responsive website',
+        'edit your videos professionally',
+        'write SEO-optimized blog posts',
+    ];
+    return titles[getRandomIntInclusive(0, titles.length - 1)];
+}
+
+export function getRandomName() {
+    const names = ['Alex Doe', 'Jordan Smith', 'Chris Brown', 'Taylor Lee', 'Morgan White'];
+    return names[getRandomIntInclusive(0, names.length - 1)];
+}
+
+export function getRandomLevel() {
+    return Math.random() > 0.5 ? 'basic' : 'premium';
+}
+
+export function getRandomLocation() {
+    const locations = ['USA', 'UK', 'Canada', 'Germany', 'India', 'Ghana', 'France'];
+    return locations[getRandomIntInclusive(0, locations.length - 1)];
+}
+
+export function getRandomTags() {
+    const tags = [
+        'Graphic Design',
+        'Logo Design',
+        'Web Development',
+        'Content Writing',
+        'Video Editing',
+    ];
+    return tags.sort(() => 0.5 - Math.random()).slice(0, 2);
+}

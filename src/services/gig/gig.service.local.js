@@ -1,6 +1,6 @@
 
 import { storageService } from '../async-storage.service'
-import { makeId } from '../util.service'
+import { getRandomTags, getRandomLocation, getRandomIntInclusive, makeId, getRandomGigTitle, getRandomName, getRandomLevel } from '../util.service'
 import { userService } from '../user'
 
 const STORAGE_KEY = 'gig'
@@ -34,8 +34,6 @@ async function query(filterBy = { txt: '', price: 0 }) {
         gigs.sort((gig1, gig2) =>
             (gig1[sortField] - gig2[sortField]) * +sortDir)
     }
-
-    gigs = gigs.map(({ _id, title, price, owner }) => ({ _id, title, price, price, owner }))
     return gigs
 }
 
@@ -49,25 +47,37 @@ async function remove(gigId) {
 }
 
 async function save(gig) {
-    var savedGig
+    let savedGig;
+
     if (gig._id) {
+        // Update existing gig
         const gigToSave = {
+            ...gig, // Keep all properties to avoid data loss
             _id: gig._id,
-            price: gig.price,
-        }
-        savedGig = await storageService.put(STORAGE_KEY, gigToSave)
+        };
+        savedGig = await storageService.put(STORAGE_KEY, gigToSave);
     } else {
+        // Create a new gig
         const gigToSave = {
-            title: gig.title,
-            price: gig.price,
-            // Later, owner is set by the backend
+            _id: makeId(),
+            title: gig.title || 'I will ' + getRandomGigTitle(),
+            price: gig.price || getRandomIntInclusive(10, 300),
             owner: userService.getLoggedinUser(),
-            msgs: []
+            daysToMake: gig.daysToMake || getRandomIntInclusive(1, 10),
+            description: gig.description || 'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
+            avgResponseTime: gig.avgResponseTime || getRandomIntInclusive(1, 24),
+            loc: gig.loc || getRandomLocation(),
+            imgUrls: gig.imgUrls || ['/img/img' + getRandomIntInclusive(1, 5) + '.jpg'],
+            tags: gig.tags || getRandomTags(),
+            likedByUsers: gig.likedByUsers || [],
+            reviews: gig.reviews || [],
         }
-        savedGig = await storageService.post(STORAGE_KEY, gigToSave)
+        savedGig = await storageService.post(STORAGE_KEY, gigToSave);
     }
+
     return savedGig
 }
+
 
 async function addGigMsg(gigId, txt) {
     // Later, this is all done by the backend
