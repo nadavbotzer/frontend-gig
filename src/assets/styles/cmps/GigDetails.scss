@@ -1,0 +1,62 @@
+.gig-page {
+    background-color: #fff;
+
+    .gig-layout {
+        // background-color: red;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        .gig-info-column {
+            // background-color: #222325;
+            width: 60%;
+
+            .gig-images {
+
+                .image-picker {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    width: 100%;
+                    overflow-x: scroll;
+                }
+            }
+        }
+
+        .buying-info-column {
+            // background-color: #c5c6c9;
+            width: 40%;
+        }
+    }
+
+    .navigations-and-actions {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 5rem;
+
+        .navigations {
+            padding: 0.5rem;
+
+            .link {
+                color: #222325;
+                font-size: 14px;
+                margin: 0.5rem;
+
+                .path-symbol {
+                    color: #c5c6c9;
+                    margin: 0.5rem;
+                }
+            }
+        }
+
+        .actions {
+            background-color: aquamarine;
+        }
+    }
+}
