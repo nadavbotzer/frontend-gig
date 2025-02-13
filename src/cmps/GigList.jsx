@@ -24,12 +24,12 @@ export function GigList({ gigs, onRemoveGig, onUpdateGig }) {
         <ul className="list">
             {gigs.map(gig =>
                 <li key={gig._id}>
-                    <GigPreview gig={gig} />
+                    <GigPreview gig={gig} goToDetails={goToDetails} />
                     {/* {shouldShowActionBtns(gig) && <div className="actions">
                         <button onClick={() => onUpdateGig(gig)}>Edit</button>
                         <button onClick={() => onRemoveGig(gig._id)}>x</button>
                     </div>*/}
-                    <input type="button" value="GO TO DETAILS" onClick={() => goToDetails(gig._id)} />
+                    {/* <input type="button" value="GO TO DETAILS" onClick={() => goToDetails(gig._id)} /> */}
                 </li>)
             }
         </ul>

@@ -9,6 +9,7 @@ import { userService } from '../services/user'
 
 import { GigList } from '../cmps/GigList'
 import { GigFilter } from '../cmps/GigFilter'
+import { NavigationsAndActions } from '../cmps/Details/NavigationsAndActions'
 
 export function GigIndex() {
 
