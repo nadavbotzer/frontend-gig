@@ -7,7 +7,7 @@
     justify-content: flex-start;
 
     .gig-layout {
-        width: 80%;
+        width: 90%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -19,19 +19,29 @@
             .header {
                 .gig-title {
                     color: #222325;
-                    font-weight: 650;
+                    font-family: Macan;
                     font-size: 28px;
+                    font-weight: 700;
+                    line-height: 36px;
+                    padding: 0px 0px 16px;
                 }
+            }          
+
+            .carousel.carousel-slider .control-arrow {
+                background-color: #222325;
+                border-radius: 50%;
+                height: 50px;
+                width: 50px;
+                box-shadow: rgba(0, 0, 0, 0.1490196078) 0px 2px 5px 0px;
+                opacity: 1;
+                top: 50%;
             }
 
-            .gig-images {
-                .image-picker {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-evenly;
-                    width: 100%;
-                    overflow-x: scroll;
+            .carousel {
+                background-color: #fff;
+
+                .carouselle-img {
+                    object-fit: contain;
                 }
             }
         }
@@ -49,16 +59,22 @@
             height: 5rem;
 
             .navigations {
-                padding: 0.5rem;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+                color: #62646a;
+                font-family: Macan;
+                line-height: 24px;
+                padding: 4px 0px 4px 6px;
+                gap: 8px;
 
                 .link {
                     color: #222325;
-                    font-size: 16px;
-                    margin: 0.5rem;
-                    font-weight: 500;
+                    display: inline;
+                    font-family: Macan;
+                    font-size: 14px;
+                    line-height: 24px;
+                    text-align: left;
 
                     &:hover {
                         text-decoration: underline;
@@ -69,7 +85,6 @@
                         width: 20px;
                     }
                 }
-
 
                 .path-symbol {
                     color: #c5c6c9;

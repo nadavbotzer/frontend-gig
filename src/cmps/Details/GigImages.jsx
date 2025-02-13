@@ -1,6 +1,8 @@
 import { useState } from "react"
 
-import Carousel from 'better-react-carousel'
+import { Carousel } from 'react-responsive-carousel';
+
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export function GigImages() {
 
@@ -19,24 +21,20 @@ export function GigImages() {
         setImg(img ? null : src)
     }
 
-    return <div className="gig-images">
-        <Carousel cols={1} rows={1} gap={10} loop showDots>
-            {
-                imgUrls.map((src) => {
-                    return <Carousel.Item key={src} onClick={() => pickImage(null)}>
-                        <img width="70%" src={img ? img : src} />
-                    </Carousel.Item>
-                })
-            }
-        </Carousel>
-        <Carousel cols={imgUrls.length} rows={1} gap={5} loop hideArrow>
-            {
-                imgUrls.map((src) => {
-                    return <Carousel.Item key={src} >
-                        <img src={src} onClick={() => pickImage(src)} />
-                    </Carousel.Item>
-                })
-            }
-        </Carousel>
-    </div>
+    return <Carousel dynamicHeight showArrows className="carousel">
+        {/* return <div className="gig-images"> */}
+        {/* <div width={'300px'}> */}
+        <img src={imgUrls[0]} className="carouselle-img" />
+        {/* <p className="legend">Legend 1</p> */}
+        {/* </div> */}
+        {/* <div width={'300px'}> */}
+        <img src={imgUrls[1]} className="carouselle-img" />
+        {/* <p className="legend">Legend 2</p> */}
+        {/* </div> */}
+        {/* <div width={'300px'}> */}
+        <img src={imgUrls[2]} className="carouselle-img" />
+        {/* <p className="legend">Legend 3</p> */}
+        {/* </div> */}
+        {/* </div> */}
+    </Carousel>
 }

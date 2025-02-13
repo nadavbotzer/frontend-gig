@@ -47,7 +47,9 @@ export function MiniUser() {
             </div>
 
             <div className="about-user-row">
+
                 <span className="profession">About the user</span>
+
                 <div className="star-rating">
                     <span className='stars'>
                         <img width={'20px'} src={'/images/star-icon.png'} />
@@ -57,8 +59,8 @@ export function MiniUser() {
                         <img width={'20px'} src={'/images/star-icon.png'} />
                     </span>
                     <span className='number'>{gig.owner.rate}</span>
+                    <span className="reviews">{`(reviews ${gig.reviews.length})`}</span>
                 </div>
-                <span className="reviews">{`(reviews ${gig.reviews.length})`}</span>
             </div>
 
         </section>
