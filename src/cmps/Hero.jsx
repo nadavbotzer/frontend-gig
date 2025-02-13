@@ -13,7 +13,6 @@ export function Hero() {
             <img className='yuli' src='https://tenner-w6u2.onrender.com/assets/brurya-87d0bc25.png' />
             <img className='collin' src='https://tenner-w6u2.onrender.com/assets/collin-ec968bf2.png' />
             <h1>Scale your professional workforce with freelancers</h1>
-            {/* <GigSearch /> */}
             <div className='box'>
                 <div className='hero-search'>
                     <input type="search" placeholder='What service are you looking for today?'></input>
@@ -23,7 +22,7 @@ export function Hero() {
                 </div>
             </div>
             <section className='hero-imgs'>
-                <p>Trusted by:</p>
+                <span className='trusted-by'>Trusted by:</span>
                 <img src='https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/meta.ff37dd3.svg' />
                 <img src='https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/google.e74f4d9.svg' />
                 <img src='https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/netflix.b310314.svg' />

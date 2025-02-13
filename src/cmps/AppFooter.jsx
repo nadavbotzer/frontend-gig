@@ -5,8 +5,10 @@ export function AppFooter() {
 
 	return (
 		<footer className="main-container app-footer full">
-			<div className='logo'>TopGig<span>.</span></div>
-			<p> ©Bar Rabinovitz - Nadav Botzer - Tamar Levy 2025</p>
+			<div className='footer-content'>
+				<div className='logo'>TopGig<span>.</span></div>
+				<p> ©Bar Rabinovitz - Nadav Botzer - Tamar Levy 2025</p>
+			</div>
 
 
 

@@ -1,0 +1,9 @@
+export function HomeVideo() {
+    return (
+        <section className='video'>
+            <video width="100%" controls autoplay muted>
+                <source src="https://fiverr-res.cloudinary.com/video/upload/t_fiverr_hd/v1/video-attachments/generic_asset/asset/e0f330e4c8d6e3bf843a3bd3164fa275-1706087048062/How%20Fiverr%20Works%20EN%20Subs%2016x9" type="video/mp4" />
+            </video>
+        </section>
+    )
+}
