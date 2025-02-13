@@ -6,20 +6,17 @@ import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
 import { ReviewIndex } from './pages/ReviewIndex.jsx'
 import { ChatApp } from './pages/Chat.jsx'
 import { AdminIndex } from './pages/AdminIndex.jsx'
-
 import { UserDetails } from './pages/UserDetails'
+import { LoginSignup } from './pages/LoginSignup.jsx'
+import { Login } from './pages/Login.jsx'
+import { Signup } from './pages/Signup.jsx'
+import { GigDetails } from './pages/GigDetails.jsx'
+import { GigIndex } from './pages/GigIndex.jsx'
 
 import { AppHeader } from './cmps/AppHeader'
 import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
-import { LoginSignup } from './pages/LoginSignup.jsx'
-import { Login } from './pages/Login.jsx'
-import { Signup } from './pages/Signup.jsx'
 
-import { gigService } from './services/gig/index.js'
-import { gigReducer } from './store/reducers/gig.reducer.js'
-import { GigDetails } from './pages/GigDetails.jsx'
-import { GigIndex } from './pages/GigIndex.jsx'
 export function RootCmp() {
     return (
         <div className="main-container">

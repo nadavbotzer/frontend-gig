@@ -6,7 +6,6 @@ import { NavigationsAndActions } from '../cmps/Details/NavigationsAndActions'
 import { GigContentLayout } from '../cmps/Details/GigContentLayout'
 import { GigInfo } from '../cmps/Details/GigInfo'
 import { BuyingInfo } from '../cmps/Details/BuyingInfo'
-
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { loadGig, addGigMsg } from '../store/actions/gig.actions'
 
@@ -14,12 +13,44 @@ import '../assets/styles/cmps/GigDetails.scss'
 
 export function GigDetails() {
 
-  const { gigId } = useParams()
-  const gig = useSelector(storeState => storeState.gigModule.gig)
+  // const { gigId } = useParams()
+  // const gig = useSelector(storeState => storeState.gigModule.gig)
 
-  useEffect(() => {
-    loadGig(gigId)
-  }, [gigId])
+  // useEffect(() => {
+  //   loadGig(gigId)
+  // }, [gigId])
+
+  const gig = {
+    _id: 'g101',
+    title: 'I will design your logo',
+    price: 12.16,
+    owner: {
+      _id: 'u101',
+      fullname: 'Dudu Da',
+      imgUrl: '',
+      level: 'basic/premium',
+      rate: 4,
+    },
+    daysToMake: 3,
+    description: 'Make unique logo...',
+    avgResponseTime: 1,
+    loc: 'Ghana',
+    imgUrls: ['/img/img1.jpg'],
+    tags: ['Arts And Crafts', 'Logo Design'],
+    likedByUsers: ['mini-user'],
+    reviews: [
+      {
+        id: 'madeId',
+        txt: 'Did an amazing work',
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'user2',
+          imgUrl: '/img/img2.jpg',
+        },
+      },
+    ],
+  }
 
   async function onAddGigMsg(gigId) {
     try {
@@ -32,21 +63,11 @@ export function GigDetails() {
 
   return (
     <section className="gig-page">
-      <NavigationsAndActions gigCategory={'Interior design'} />
       <GigContentLayout>
-        <GigInfo />
+        <NavigationsAndActions gigCategory={'Interior design'} />
+        <GigInfo gig={gig} />
         <BuyingInfo />
       </GigContentLayout>
     </section>
   )
 }
-
-{/* <Link to="/gig">Back to list</Link>
-<h1>Gig Details</h1>
-{gig && <div>
-  <h3>{gig.title}</h3>
-  <h4>${gig.price}</h4>
-  <pre> {JSON.stringify(gig, null, 2)} </pre>
-</div>
-}
-<button onClick={() => { onAddGigMsg(gig._id) }}>Add gig msg</button> */}
