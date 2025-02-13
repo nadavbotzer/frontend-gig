@@ -9,6 +9,7 @@
     border-bottom: 1px solid #e4e5e7;
     transition: background-color .5sease;
     transition: border .5sease;
+    z-index: 3;
 
     .search {
         display: flex;
@@ -37,9 +38,12 @@
         text-shadow: none;
         font-size: 1rem;
         background-color: $clr2;
+        color: $clr6;
         margin: 0;
         padding: 8px 16px;
+        padding-top: 10px;
     }
+
 
     nav {
         display: flex;
@@ -89,6 +93,10 @@
             }
 
 
+        }
+
+        .user-img {
+            background-color: $clr6;
         }
 
     }
