@@ -1,0 +1,30 @@
+.mini-user {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 2rem;
+
+    .profile {
+        .profile-img {
+            border-radius: 50%;
+            width: 4rem;
+        }
+    }
+
+    .about-user {
+        padding: 0.3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        .about-user-row {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+    }
+}

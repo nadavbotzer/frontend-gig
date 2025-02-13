@@ -1,0 +1,76 @@
+.gig-page {
+    // background-color: lightpink;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    .gig-layout {
+        // background-color: red;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        .gig-info-column {
+            // background-color: rgb(236, 234, 234);
+            width: 60%;
+
+            .header {
+                .gig-title {
+                    color: #222325;
+                    font-weight: 700;
+                    font-size: 28px;
+                }
+            }
+
+            .gig-images {
+
+                .image-picker {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    width: 100%;
+                    overflow-x: scroll;
+                }
+            }
+        }
+
+        .buying-info-column {
+            // background-color: #c5c6c9;
+            width: 40%;
+        }
+    }
+
+    .navigations-and-actions {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 5rem;
+
+        .navigations {
+            padding: 0.5rem;
+
+            .link {
+                color: #222325;
+                font-size: 14px;
+                margin: 0.5rem;
+
+                .path-symbol {
+                    color: #c5c6c9;
+                    margin: 0.5rem;
+                }
+            }
+        }
+
+        .actions {
+            background-color: aquamarine;
+        }
+    }
+}
