@@ -2,21 +2,58 @@
     display: flex;
     flex-direction: column;
 
-    gap: .25rem;
+    gap: .5rem;
+
+    img {
+        border-radius: 15px;
+    }
 
     .img-wrapper {
         position: relative;
 
+        .ArrowButton__Button-sc-1ikb0hj-1 {
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        &:hover {
+            .ArrowButton__Button-sc-1ikb0hj-1 {
+                opacity: 1;
+            }
+        }
+
+        .Carousel__RailWrapper-sc-hyhecw-1 {
+            margin: 0;
+
+        }
+
+        .gZzsDe {
+            bottom: 0.5rem;
+        }
+
+        .dXdHiN {
+            background: white;
+        }
+
+        .hpZGEX {
+            background: rgba(255, 255, 255, 0.7);
+        }
+
         .gig-img {
             width: 100%;
             cursor: pointer;
+            border-radius: 15px;
         }
 
         .like-btn {
             position: absolute;
             right: 5px;
-            top: 0;
+            top: 5px;
+            margin: 0;
+            background-color: transparent;
+            color: white;
         }
+
     }
 
     .gig-user-preview {
@@ -30,14 +67,30 @@
             width: 1.75rem;
             height: 1.75rem;
         }
+
+        .gig-user-fullname {
+            font-weight: 700;
+            padding-left: 0.25rem;
+        }
     }
 
     .gig-title {
         color: black;
     }
 
+    .gig-rating-preview {
+        display: flex;
+        gap: 0.125rem;
+        font-weight: 700;
+
+        .gig-previews-count {
+            font-weight: 200;
+        }
+    }
+
     .gig-price {
         margin: 0;
+        font-weight: 700;
     }
 
 }
