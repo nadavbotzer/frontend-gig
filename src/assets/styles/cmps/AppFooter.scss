@@ -13,7 +13,7 @@
         font-family: 'Macan';
         font-size: 32px;
         font-weight: 600;
-        color: $clr2;
+        color: $clr5;
 
         span {
             color: $clr1;
@@ -22,6 +22,10 @@
 
     p {
         margin: 0;
+        color: $clr7;
+        font-size: 14px;
+        line-height: 21px;
+        margin: 0px 0px 0px 24px;
     }
 
     span {
