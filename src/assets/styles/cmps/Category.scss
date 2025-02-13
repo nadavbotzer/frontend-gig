@@ -1,0 +1,36 @@
+.category {
+
+    display: flex;
+    margin-top: 22px;
+    gap: 12px;
+
+    article {
+        padding-inline-end: .3em;
+        font-size: .875em;
+        font-weight: 400;
+        cursor: pointer;
+        box-shadow: 0 0 8px #00000029;
+        width: 9.2em;
+        height: 9.2em;
+        border-radius: 1em;
+        padding-inline-start: .95em;
+
+        .cat-content {
+            margin-top: 1.2em;
+            margin-bottom: 2em;
+        }
+
+
+    }
+
+    img {
+        height: 1.5em;
+        width: 1.5em;
+    }
+
+    .cat-img {
+        margin-top: 1.2em;
+        margin-bottom: 2em;
+
+    }
+}

@@ -1,5 +1,4 @@
 .gig-page {
-    // background-color: lightpink;
     background-color: #fff;
     width: 100%;
     display: flex;
@@ -8,7 +7,6 @@
     justify-content: flex-start;
 
     .gig-layout {
-        // background-color: red;
         width: 80%;
         display: flex;
         flex-direction: column;
@@ -16,19 +14,17 @@
         justify-content: center;
 
         .gig-info-column {
-            // background-color: rgb(236, 234, 234);
             width: 60%;
 
             .header {
                 .gig-title {
                     color: #222325;
-                    font-weight: 700;
+                    font-weight: 650;
                     font-size: 28px;
                 }
             }
 
             .gig-images {
-
                 .image-picker {
                     display: flex;
                     flex-direction: row;
@@ -41,36 +37,48 @@
         }
 
         .buying-info-column {
-            // background-color: #c5c6c9;
             width: 40%;
         }
-    }
 
-    .navigations-and-actions {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        height: 5rem;
+        .navigations-and-actions {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 5rem;
 
-        .navigations {
-            padding: 0.5rem;
+            .navigations {
+                padding: 0.5rem;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
 
-            .link {
-                color: #222325;
-                font-size: 14px;
-                margin: 0.5rem;
+                .link {
+                    color: #222325;
+                    font-size: 16px;
+                    margin: 0.5rem;
+                    font-weight: 500;
+
+                    &:hover {
+                        text-decoration: underline;
+                        text-decoration-color: #222325;
+                    }
+
+                    img {
+                        width: 20px;
+                    }
+                }
+
 
                 .path-symbol {
                     color: #c5c6c9;
-                    margin: 0.5rem;
                 }
             }
-        }
 
-        .actions {
-            background-color: aquamarine;
+            .actions {
+                background-color: aquamarine;
+            }
         }
     }
 }
