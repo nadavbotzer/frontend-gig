@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import StarIcon from '@mui/icons-material/Star';
 import Carousel from 'better-react-carousel'
+import { ImgCarousel } from './ImgCarousel';
 
 export function GigPreview({ gig, goToDetails }) {
     return <article className="preview">
         <div className="img-wrapper">
-            <Carousel className="carousel" cols={1} rows={1} gap={10} loop showDots>
+            {/* <Carousel className="carousel" cols={1} rows={1} gap={10} loop showDots>
                 <Carousel.Item className="carousel-item">
                     <Link to={`/gig/${gig._id}`}>
                         <img src={gig.imgUrls[0]} />
@@ -20,7 +21,9 @@ export function GigPreview({ gig, goToDetails }) {
                     <Link to={`/gig/${gig._id}`}>
                         <img src={gig.imgUrls[0]} />
                     </Link>                </Carousel.Item>
-            </Carousel>
+            </Carousel> */}
+            <ImgCarousel imgUrls={gig.imgUrls} />
+
             <button className="like-btn"><FavoriteBorderIcon /></button>
         </div>
         <div className="gig-user-preview">
