@@ -1,16 +1,11 @@
 .list {
     --min-column-size: 220px;
-
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 40px;
     gap: .5em;
 
     li {
-        display: grid;
-        grid-template-columns: max-content auto;
-        padding: .5em;
-
 
         .actions {
             justify-self: end;
