@@ -1,7 +1,15 @@
+import { Hero } from '../cmps/Hero';
+import { HomeVideo } from '../cmps/HomeVideo';
+
+
 export function HomePage() {
     return (
-        <section>
-            <div>Scale your professional workforce with freelancers</div>
+        <section className='home-page'>
+            <Hero />
+            <HomeVideo />
+
+
+
         </section >
     )
 }
