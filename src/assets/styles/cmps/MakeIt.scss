@@ -1,0 +1,36 @@
+.make-it {
+
+    .bigger {
+        font-size: 40px;
+        margin: 0;
+        margin-bottom: 60px;
+        margin-top: 60px;
+    }
+
+    .make-items {
+
+        color: #62646a;
+        display: grid;
+        gap: 32px;
+        grid-template-columns: 310.008px 310.008px 310.008px 310.008px;
+        grid-template-rows: 123.996px;
+        line-height: 24px;
+        margin: 0px 0px 64px;
+
+
+
+        article {
+            align-items: flex-start;
+            color: #62646a;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            line-height: 24px;
+
+            img {
+                width: 64px;
+                height: 64px;
+            }
+        }
+    }
+}

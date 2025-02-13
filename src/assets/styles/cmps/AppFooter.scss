@@ -11,11 +11,13 @@
     .logo {
         display: inline;
         font-size: 32px;
-        font-weight: 600;
+        font-weight: 700;
         color: $clr5;
+        letter-spacing: -3px;
 
         span {
             color: $clr1;
+            margin-left: 5px;
         }
     }
 
