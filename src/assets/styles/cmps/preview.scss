@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
 
-    gap: .25rem;
+    gap: .5rem;
 
     .img-wrapper {
         position: relative;
@@ -10,13 +10,18 @@
         .gig-img {
             width: 100%;
             cursor: pointer;
+            border-radius: 15px;
         }
 
         .like-btn {
             position: absolute;
             right: 5px;
-            top: 0;
+            top: 5px;
+            margin: 0;
+            background-color: transparent;
+            color: white;
         }
+
     }
 
     .gig-user-preview {
@@ -36,8 +41,19 @@
         color: black;
     }
 
+    .gig-rating-preview {
+        display: flex;
+        gap: 0.125rem;
+        font-weight: 700;
+
+        .gig-previews-count {
+            font-weight: 200;
+        }
+    }
+
     .gig-price {
         margin: 0;
+        font-weight: 700;
     }
 
 }

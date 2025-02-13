@@ -1,7 +1,7 @@
 export function HomePage() {
     return (
         <section>
-            <h1>Home sweet Home</h1>
+            <div>Scale your professional workforce with freelancers</div>
         </section >
     )
 }
