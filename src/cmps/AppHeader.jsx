@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
-import SearchIcon from '@mui/icons-material/Search'
+import { GigSearch } from './GigSearch'
 
 export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.user)
@@ -27,12 +27,7 @@ export function AppHeader() {
 						TopGig<span>.</span>
 					</NavLink>
 				</div>
-				<div className='search'>
-					<input type="search" placeholder='What service are you looking for today?'></input>
-					<button className='btn-search'>
-						<SearchIcon />
-					</button>
-				</div>
+				<GigSearch />
 				<div className='nav-links'>
 					{/* 
 					<NavLink to="about">About</NavLink>

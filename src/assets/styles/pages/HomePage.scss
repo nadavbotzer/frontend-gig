@@ -1,0 +1,123 @@
+.home-page {
+    .hero {
+        position: relative;
+        background-color: $clr8;
+        color: $clr6;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        padding: 40px 20px;
+        border-radius: 1em;
+        height: 438px;
+        background-image: none;
+        font-size: .933rem;
+
+        .box {
+            background-color: white;
+            border-radius: .75em;
+
+
+
+            .hero-search {
+                display: grid;
+                grid-template-columns: 528.875px 54px;
+                grid-template-rows: 60px;
+                // display: flex;
+                // width: 70%;
+                height: 3.75em;
+                border-radius: 75em;
+                // background-color: $clr6;
+
+
+                input {
+                    border: none;
+                    border-radius: inherit;
+                    height: inherit;
+
+
+                    &:focus {
+                        border: none;
+                        outline: none;
+                    }
+
+                    &::-webkit-search-cancel-button {
+                        display: none;
+                    }
+
+
+                }
+
+                .btn-search {
+                    border-radius: 8px;
+                    height: 75%;
+                    background-color: $clr8;
+                    color: $clr6;
+
+                }
+            }
+
+        }
+
+        h1 {
+            margin-top: 1.5em;
+        }
+
+        .hero-imgs {
+            display: flex;
+            gap: 1.5em;
+            align-items: flex-start
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        .jordan {
+            position: absolute;
+            right: 0;
+            top: 9.619%;
+            width: 130px;
+
+        }
+
+        .verinica {
+            position: absolute;
+            right: 23.595%;
+            top: 0;
+            width: 100px;
+        }
+
+        .jenny {
+            position: absolute;
+            left: 7.865%;
+            top: 0;
+            width: 145px;
+        }
+
+        .yuli {
+            position: absolute;
+            right: 7.86%;
+            bottom: 0;
+            width: 110px;
+        }
+
+        .collin {
+            position: absolute;
+            left: 0;
+            bottom: 8.416%;
+            width: 115px;
+        }
+
+    }
+
+    // .home-video video {
+    //     position: absolute;
+    //     bottom: 0;
+    //     padding: 0;
+    //     margin-inline-start: -10px;
+    //     width: 100%;
+    // }
+
+
+
+}

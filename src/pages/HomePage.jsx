@@ -1,7 +1,12 @@
+import { GigSearch } from '../cmps/GigSearch';
+import { Hero } from '../cmps/Hero';
+
+
 export function HomePage() {
     return (
-        <section>
-            <h1>Home sweet Home</h1>
+        <section className='home-page'>
+            <Hero />
+
         </section >
     )
 }
