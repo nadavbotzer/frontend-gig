@@ -3,19 +3,23 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import StarIcon from '@mui/icons-material/Star';
 import Carousel from 'better-react-carousel'
 
-export function GigPreview({ gig }) {
+export function GigPreview({ gig, goToDetails }) {
     return <article className="preview">
         <div className="img-wrapper">
             <Carousel className="carousel" cols={1} rows={1} gap={10} loop showDots>
                 <Carousel.Item className="carousel-item">
-                    <img src={gig.imgUrls[0]} />
-                </Carousel.Item>
+                    <Link to={`/gig/${gig._id}`}>
+                        <img src={gig.imgUrls[0]} />
+                    </Link>                </Carousel.Item>
                 <Carousel.Item className="carousel-item">
-                    <img src={gig.imgUrls[0]} />
+                    <Link to={`/gig/${gig._id}`}>
+                        <img src={gig.imgUrls[0]} />
+                    </Link>
                 </Carousel.Item >
                 <Carousel.Item className="carousel-item">
-                    <img src={gig.imgUrls[0]} />
-                </Carousel.Item>
+                    <Link to={`/gig/${gig._id}`}>
+                        <img src={gig.imgUrls[0]} />
+                    </Link>                </Carousel.Item>
             </Carousel>
             <button className="like-btn"><FavoriteBorderIcon /></button>
         </div>
@@ -24,7 +28,7 @@ export function GigPreview({ gig }) {
             <span>Ad by </span>
             <span className="gig-user-fullname"> {gig.owner.fullname}</span>
         </div>
-        <Link className="gig-title" to="/">{gig.title}</Link>
+        <Link className="gig-title" to={`/gig/${gig._id}`}>{gig.title}</Link>
         <div className="gig-rating-preview">
             <span><StarIcon /></span>
             <span >4.9 </span>
