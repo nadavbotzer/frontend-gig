@@ -19,7 +19,6 @@
     "@mui/icons-material": "^6.4.4",
     "@mui/material": "^6.4.4",
     "axios": "^1.5.0",
-    "better-react-carousel": "^1.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.2",
