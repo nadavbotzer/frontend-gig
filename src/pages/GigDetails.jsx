@@ -23,7 +23,7 @@ export function GigDetails() {
   const gig = {
     _id: 'g101',
     title: 'I will design your logo',
-    price: 12.16,
+    price: 249.90,
     owner: {
       _id: 'u101',
       fullname: 'Dudu Da',
@@ -63,10 +63,10 @@ export function GigDetails() {
 
   return (
     <section className="gig-page">
+      <NavigationsAndActions gigCategory={'Interior design'} />
       <GigContentLayout>
-        <NavigationsAndActions gigCategory={'Interior design'} />
         <GigInfo gig={gig} />
-        <BuyingInfo />
+        <BuyingInfo gig={gig} />
       </GigContentLayout>
     </section>
   )
