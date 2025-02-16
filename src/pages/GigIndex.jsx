@@ -7,18 +7,26 @@ import { loadGigs, addGig, updateGig, removeGig, addGigMsg } from '../store/acti
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { gigService } from '../services/gig'
 import { userService } from '../services/user'
-
 import { GigList } from '../cmps/GigList'
 import { NavigationsAndActions } from '../cmps/Details/NavigationsAndActions'
+import { FilterItem } from '../cmps/FilterItem'
 
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export function GigIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
     const tagsParam = searchParams.get('tags')
     const [filterBy, setFilterBy] = useState(null)
-
+    const filters = [
+        {
+            key: 'budget',
+            label: 'Budget'
+        },
+        {
+            key: 'delivery-time',
+            label: 'Delivery time'
+        }
+    ]
     useEffect(() => {
         if (tagsParam) {
             const tags = parseTags(tagsParam)
@@ -90,12 +98,9 @@ export function GigIndex() {
             <main className="gig-index">
                 <h1>{tagsParam && tagsToHeading(tagsParam)}</h1>
                 <div className="filter-wrapper">
-                    <button className="btn">
-                        Budget <KeyboardArrowDownIcon />
-                    </button>
-                    <button className="btn">
-                        Delivery time <KeyboardArrowDownIcon />
-                    </button>
+                    {filters.map(filter => {
+                        return <FilterItem filter={filter} key={filter.key} />
+                    })}
                 </div>
                 <div className="sort-wrapper">
                     <span>{gigs.length} results</span>

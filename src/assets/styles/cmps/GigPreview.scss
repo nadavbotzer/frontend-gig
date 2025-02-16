@@ -70,10 +70,22 @@
         gap: 0.125rem;
         font-weight: 700;
         padding-top: rem(8px);
+        align-items: center;
+        justify-content: flex-start;
 
         .gig-previews-count {
             font-weight: 200;
         }
+
+        svg {
+            font-size: rem(22px);
+            padding: 0;
+        }
+
+        span {
+            display: inline-flex;
+        }
+
     }
 
     .gig-price {
