@@ -1,15 +1,15 @@
 .video {
     width: 100%;
-    margin-top: 164px;
+    margin-top: rem(164px);
 
     .bigger {
-        font-size: 40px;
+        font-size: rem(40px);
         margin: 0;
-        margin-bottom: 16px;
+        margin-bottom: rem(16px);
     }
 
     video {
-        margin-top: 40px;
+        margin-top: rem(40px);
         border-radius: 1rem;
 
     }

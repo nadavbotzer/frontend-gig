@@ -1,8 +1,8 @@
 .category {
 
     display: flex;
-    margin-top: 22px;
-    gap: 12px;
+    margin-top: rem(22px);
+    gap: rem(12px);
 
     article {
         padding-inline-end: .3em;
@@ -14,6 +14,11 @@
         height: 9.2em;
         border-radius: 1em;
         padding-inline-start: .95em;
+
+        &:hover {
+            background: radial-gradient(63.44% 63.44% at 50% 50%, #c2ffe2 0, #fff 100%), #fff;
+
+        }
 
         .cat-content {
             margin-top: 1.2em;

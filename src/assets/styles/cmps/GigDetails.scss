@@ -1,3 +1,5 @@
+@import "../setup/functions";
+
 .gig-page {
     background-color: #fff;
     width: 100%;
@@ -23,7 +25,7 @@
                     font-size: 28px;
                     font-weight: 700;
                     line-height: 36px;
-                    padding: 0px 0px 16px;
+                    padding: rem(0px 0px 16px);
                 }
             }
 
@@ -44,7 +46,12 @@
                     object-fit: contain;
                 }
             }
-        }       
+        }
+
+        .buying-info-column {
+            // background-color: #c5c6c9;
+            width: 40%;
+        }
     }
 
     .navigations-and-actions {
@@ -67,16 +74,8 @@
 
             .link {
                 color: #222325;
-                display: inline;
-                font-family: Macan;
                 font-size: 14px;
-                line-height: 24px;
-                text-align: left;
-
-                &:hover {
-                    text-decoration: underline;
-                    text-decoration-color: #222325;
-                }
+                margin: 0.5rem;
 
                 img {
                     width: 20px;
