@@ -19,7 +19,9 @@ async function query(filterBy = { txt: '', price: 0 }) {
     var gigs = await storageService.query(STORAGE_KEY)
     const { txt, minPrice, maxPrice, sortField, sortDir, tags } = filterBy
     if (tags && tags.length) {
-        gigs = gigs.filter(gig => tags.some(tag => gig.tags.includes(tag)))
+        gigs = gigs.filter(gig =>
+            tags.some(tag => gig.tags.some(gigTag => gigTag.toLowerCase().includes(tag.toLowerCase())))
+        )
     }
     if (txt) {
         const regex = new RegExp(filterBy.txt, 'i')

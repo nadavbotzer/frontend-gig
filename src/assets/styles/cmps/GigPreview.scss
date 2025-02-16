@@ -1,44 +1,24 @@
 .preview {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    font-size: rem(16px);
 
     img {
         border-radius: 15px;
     }
 
+    .img-wrapper,
+    .gig-price {
+        &:hover~.gig-title {
+            text-decoration: underline;
+        }
+    }
+
+
     .img-wrapper {
         position: relative;
         cursor: pointer;
         border-radius: 15px;
-
-        .ArrowButton__Button-sc-1ikb0hj-1 {
-            opacity: 0;
-            transition: 0.3s;
-        }
-
-        &:hover {
-            .ArrowButton__Button-sc-1ikb0hj-1 {
-                opacity: 1;
-            }
-        }
-
-        .Carousel__RailWrapper-sc-hyhecw-1 {
-            margin: 0;
-
-        }
-
-        .gZzsDe {
-            bottom: 0.5rem;
-        }
-
-        .dXdHiN {
-            background: white;
-        }
-
-        .hpZGEX {
-            background: rgba(255, 255, 255, 0.7);
-        }
 
         .gig-img {
             width: 100%;
@@ -60,6 +40,8 @@
     .gig-user-preview {
         display: flex;
         align-items: center;
+        font-size: rem(14px);
+        padding-top: rem(12px);
 
         .gig-user-img {
             border-radius: 50%;
@@ -77,12 +59,17 @@
 
     .gig-title {
         color: black;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     .gig-rating-preview {
         display: flex;
         gap: 0.125rem;
         font-weight: 700;
+        padding-top: rem(8px);
 
         .gig-previews-count {
             font-weight: 200;
@@ -94,4 +81,9 @@
         font-weight: 700;
     }
 
+}
+
+.preview .img-wrapper:hover~.gig-title,
+.preview .gig-price:hover~.gig-title {
+    text-decoration: underline;
 }

@@ -73,7 +73,7 @@
 
     .dots-pagination {
         position: absolute;
-        bottom: 30px;
+        bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
         display: flex;
@@ -86,12 +86,12 @@
             cursor: pointer;
             display: inline-flex;
             border-radius: 55px;
-            width: 6px;
-            height: 6px;
-            background-color: #ffffff7e;
+            width: rem(8px);
+            height: rem(8px);
+            background-color: rgba(255, 255, 255, 0.534);
 
             &.active {
-                background-color: #ffffffe7;
+                background-color: rgb(255, 255, 255);
             }
         }
     }
@@ -106,7 +106,6 @@
     overflow-x: scroll;
     border-radius: 15px;
     transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-    margin-bottom: 1.25rem;
     position: relative;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
