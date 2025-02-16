@@ -12,6 +12,7 @@ import { GigList } from '../cmps/GigList'
 import { NavigationsAndActions } from '../cmps/Details/NavigationsAndActions'
 
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { Category } from '../cmps/Category'
 
 export function GigIndex() {
     const [searchParams, setSearchParams] = useSearchParams()

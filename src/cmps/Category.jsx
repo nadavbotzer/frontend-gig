@@ -1,5 +1,5 @@
 import { Item } from 'better-react-carousel'
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export function Category() {
     const navigate = useNavigate()
@@ -27,9 +27,11 @@ export function Category() {
                 return (
                     <article key={index} onClick={() => goToIndex(category.tags)}>
                         <div className='cat-content'>
+                            {/* {isHomePage && ( */}
                             <div className='cat-img'>
                                 <img src={category.src} alt={category.txt} />
                             </div>
+                            {/* )} */}
                             <p>{category.txt}</p>
                         </div>
                     </article>
