@@ -7,7 +7,7 @@
     justify-items: center;
     padding: 40px 20px;
     border-radius: 1em;
-    height: 438px;
+    height: rem(438px);
     background-image: none;
     font-size: .933rem;
 
@@ -19,13 +19,10 @@
 
         .hero-search {
             display: grid;
-            grid-template-columns: 528.875px 54px;
-            grid-template-rows: 60px;
-            // display: flex;
-            // width: 70%;
+            grid-template-columns: rem(528.875px) rem(54px);
+            grid-template-rows: rem(60px);
             height: 3.75em;
             border-radius: 75em;
-            // background-color: $clr6;
 
 
             input {
@@ -70,7 +67,7 @@
     }
 
     .trusted-by {
-        font-size: 12px;
+        font-size: rem(12px);
         margin: 0;
         flex: 1 0 auto;
     }
@@ -79,7 +76,7 @@
         position: absolute;
         right: 0;
         top: 9.619%;
-        width: 130px;
+        width: rem(130px);
 
     }
 
@@ -87,36 +84,28 @@
         position: absolute;
         right: 23.595%;
         top: 0;
-        width: 100px;
+        width: rem(100px);
     }
 
     .jenny {
         position: absolute;
         left: 7.865%;
         top: 0;
-        width: 145px;
+        width: rem(145px);
     }
 
     .yuli {
         position: absolute;
         right: 7.86%;
         bottom: 0;
-        width: 110px;
+        width: rem(110px);
     }
 
     .collin {
         position: absolute;
         left: 0;
         bottom: 8.416%;
-        width: 115px;
+        width: rem(115px);
     }
 
 }
-
-// .home-video video {
-//     position: absolute;
-//     bottom: 0;
-//     padding: 0;
-//     margin-inline-start: -10px;
-//     width: 100%;
-// }
