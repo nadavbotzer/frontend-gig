@@ -1,13 +1,47 @@
-import { Link, NavLink } from 'react-router-dom'
+import React from 'react'
+import { useEffect, useState, useRef } from 'react'
+
+import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
 import { GigSearch } from './GigSearch'
+import { useScrollContext } from './ScrollProvider'
+
 
 export function AppHeader() {
 	const user = useSelector(storeState => storeState.userModule.user)
 	const navigate = useNavigate()
+	const { isInputInView, isInputVisible, setIsInputVisible } = useScrollContext()
+
+	const [isHeaderScrolled, setIsHeaderScrolled] = useState(false)
+	const inputRef = useRef(null)
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll)
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll)
+		}
+	}, [])
+
+	function handleScroll() {
+		const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+		const inputElement = inputRef.current
+		const inputInView = inputElement && inputElement.getBoundingClientRect().top <= window.innerHeight
+
+		if (scrollTop === 0) {
+			setIsInputVisible(false)
+			setIsHeaderScrolled(false)
+		} else if (inputInView) {
+			setIsInputVisible(true)
+			setIsHeaderScrolled(true)
+		} else {
+			setIsInputVisible(false)
+		}
+	}
+
 
 	async function onLogout() {
 		try {
@@ -27,7 +61,8 @@ export function AppHeader() {
 						TopGig<span>.</span>
 					</NavLink>
 				</div>
-				<GigSearch />
+
+				{!isInputVisible && <GigSearch ref={inputRef} />}
 				<div className='nav-links'>
 					{/* 
 					<NavLink to="about">About</NavLink>
