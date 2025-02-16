@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 
 import { NavLink } from "react-router-dom"
 
+import '../../assets/styles/cmps/NavigationsAndActions.scss'
+
 export function NavigationsAndActions({ gigCategory }) {
 
     const [ripples, setRipples] = useState([])
