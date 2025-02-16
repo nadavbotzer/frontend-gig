@@ -1,7 +1,6 @@
 .preview {
     display: flex;
     flex-direction: column;
-
     gap: .5rem;
 
     img {
@@ -11,6 +10,7 @@
     .img-wrapper {
         position: relative;
         cursor: pointer;
+        border-radius: 15px;
 
         .ArrowButton__Button-sc-1ikb0hj-1 {
             opacity: 0;

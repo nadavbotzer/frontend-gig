@@ -18,7 +18,6 @@ window.cs = gigService
 async function query(filterBy = { txt: '', price: 0 }) {
     var gigs = await storageService.query(STORAGE_KEY)
     const { txt, minPrice, maxPrice, sortField, sortDir, tags } = filterBy
-    console.log(filterBy)
     if (tags && tags.length) {
         gigs = gigs.filter(gig => tags.some(tag => gig.tags.includes(tag)))
     }

@@ -1,5 +1,5 @@
 .list {
-    --min-column-size: 220px;
+    --min-column-size: rem(220px);
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 2.2rem;
