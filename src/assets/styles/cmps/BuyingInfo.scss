@@ -201,6 +201,10 @@
                 line-height: 16px;
                 padding: 12px 24px;
 
+                &:hover {
+                    opacity: 0.7;
+                }
+
                 .txt {
                     text-align: center;
                     width: 100%;
