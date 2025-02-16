@@ -17,8 +17,12 @@ window.cs = gigService
 
 async function query(filterBy = { txt: '', price: 0 }) {
     var gigs = await storageService.query(STORAGE_KEY)
-    const { txt, minPrice, maxPrice, sortField, sortDir } = filterBy
-
+    const { txt, minPrice, maxPrice, sortField, sortDir, tags } = filterBy
+    if (tags && tags.length) {
+        gigs = gigs.filter(gig =>
+            tags.some(tag => gig.tags.some(gigTag => gigTag.toLowerCase().includes(tag.toLowerCase())))
+        )
+    }
     if (txt) {
         const regex = new RegExp(filterBy.txt, 'i')
         gigs = gigs.filter(gig => regex.test(gig.title) || regex.test(gig.description))

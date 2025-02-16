@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'Macan';
-    src: url('./fonts/macan/MacanPanWeb-Light.woff2') format('woff2');
+    src: url('/fonts/macan/MacanPanWeb-Light.woff2') format('woff2');
     font-weight: 300;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Macan';
-    src: url('./fonts/macan/MacanPanWeb-Regular.woff2') format('woff2');
+    src: url('/fonts/macan/MacanPanWeb-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
 }
@@ -15,7 +15,14 @@
 
 @font-face {
     font-family: 'Macan';
-    src: url('./fonts/macan/MacanPanWeb-Bold.woff2') format('woff2');
+    src: url('/fonts/macan/MacanPanWeb-Bold.woff2') format('woff2');
     font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Domaine';
+    src: url('/public/fonts/domaine/TestDomaineDisplay-RegularItalic.otf') format('opentype');
+    font-weight: 400;
     font-style: normal;
 }

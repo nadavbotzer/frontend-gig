@@ -1,7 +1,6 @@
 @import "../setup/functions";
 
 .gig-page {
-    // background-color: lightpink;
     background-color: #fff;
     width: 100%;
     display: flex;
@@ -10,68 +9,43 @@
     justify-content: flex-start;
 
     .gig-layout {
-        // background-color: red;
-        width: 80%;
+        width: 90%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-start;
-        justify-content: center;
+        justify-content: space-between;
 
         .gig-info-column {
-            // background-color: rgb(236, 234, 234);
-            width: 60%;
+            width: 50%;
 
             .header {
                 .gig-title {
                     color: #222325;
+                    font-family: Macan;
+                    font-size: 28px;
                     font-weight: 700;
-                    font-size: rem(28px);
+                    line-height: 36px;
+                    padding: rem(0px) rem(0px) rem(16px);
                 }
             }
 
-            .gig-images {
+            .carousel.carousel-slider .control-arrow {
+                background-color: #222325;
+                border-radius: 50%;
+                height: 50px;
+                width: 50px;
+                box-shadow: rgba(0, 0, 0, 0.1490196078) 0px 2px 5px 0px;
+                opacity: 1;
+                top: 50%;
+            }
 
-                .image-picker {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-evenly;
-                    width: 100%;
-                    overflow-x: scroll;
+            .carousel {
+                background-color: #fff;
+
+                .carouselle-img {
+                    object-fit: contain;
                 }
             }
-        }
-
-        .buying-info-column {
-            width: 40%;
-        }
-    }
-
-    .navigations-and-actions {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        height: 5rem;
-
-        .navigations {
-            padding: 0.5rem;
-
-            .link {
-                color: #222325;
-                font-size: rem(14px);
-                margin: 0.5rem;
-
-                .path-symbol {
-                    color: #c5c6c9;
-                    margin: 0.5rem;
-                }
-            }
-        }
-
-        .actions {
-            background-color: aquamarine;
         }
     }
 }

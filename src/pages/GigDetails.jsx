@@ -23,7 +23,7 @@ export function GigDetails() {
   const gig = {
     _id: 'g101',
     title: 'I will design your logo',
-    price: 12.16,
+    price: 249.90,
     owner: {
       _id: 'u101',
       fullname: 'Dudu Da',
@@ -32,7 +32,13 @@ export function GigDetails() {
       rate: 4,
     },
     daysToMake: 3,
-    description: 'Make unique logo...',
+    description: [
+      "If you're on the lookout for stunningly realistic renderings that truly capture the essence of a space, you've landed in the perfect spot!",
+      "Partnering with me means having a creative force that can transform an ordinary looking space into a masterpiece. Be it your bathroom, living area, kitchen or bedroom, I can create interior design that truly depict your taste and personality.",
+      "Or if you're trying to stage a house for a potential sale or want to impress an investor and make your interior design pitch hit that sweet spot, I'm your guy!",
+      "I'll create stunning photorealistic interior renders for you that will not only highlight the beauty of your space but will also serve as a great starting point for your project!",
+      "Shoot me a message and let's discuss your project today!"
+    ],
     avgResponseTime: 1,
     loc: 'Ghana',
     imgUrls: ['/img/img1.jpg'],
@@ -63,10 +69,10 @@ export function GigDetails() {
 
   return (
     <section className="gig-page">
+      <NavigationsAndActions gigCategory={'Interior design'} />
       <GigContentLayout>
-        <NavigationsAndActions gigCategory={'Interior design'} />
         <GigInfo gig={gig} />
-        <BuyingInfo />
+        <BuyingInfo gig={gig} />
       </GigContentLayout>
     </section>
   )

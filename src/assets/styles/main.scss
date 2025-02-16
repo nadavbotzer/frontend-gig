@@ -24,9 +24,8 @@
 @import "pages/LoginSignup";
 
 // Components
-@import "cmps/list";
-@import "cmps/preview";
-
+@import "cmps/GigList";
+@import "cmps/GigPreview";
 @import "cmps/AppHeader";
 @import "cmps/AppFooter";
 @import "cmps/UserMsg";
@@ -34,6 +33,7 @@
 @import "cmps/HomeVideo";
 @import "cmps/Category";
 @import "cmps/MakeIt";
+@import "cmps/ImgCarousel";
 
 
 

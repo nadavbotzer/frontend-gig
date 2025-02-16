@@ -78,12 +78,24 @@ export function getRandomLocation() {
 }
 
 export function getRandomTags() {
-    const tags = [
-        'Graphic Design',
-        'Logo Design',
-        'Web Development',
-        'Content Writing',
-        'Video Editing',
-    ];
+    const tags = ['logo-design',
+        'wordpress',
+        'voice-over',
+        'artisitic',
+        'proffesional',
+        'accessible',
+        'programming', 'tech',
+        'graphics', 'design',
+        'digital-marketing',
+        'writing',
+        'translation',
+        'video',
+        'animation',
+        'ai-services',
+        'music',
+        'audio',
+        'business',
+        'consultin'
+    ]
     return tags.sort(() => 0.5 - Math.random()).slice(0, 2);
 }
