@@ -84,7 +84,7 @@ export function GigIndex() {
     if (!gigs) return <div>Loading...</div>
     return (
         <>
-            {userService.getLoggedinUser() && <button onClick={onAddGig}>Add a Gig</button>}
+            {userService.getLoggedinUser() && <button className='btn' onClick={onAddGig}>Add Gig (DEV)</button>}
             {tagsParam && <NavigationsAndActions gigCategory={tagsParam} />}
             {!tagsParam && <NavigationsAndActions gigCategory={''} />}
             <main className="gig-index">

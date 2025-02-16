@@ -52,6 +52,12 @@
                 height: 75%;
                 background-color: $clr8;
                 color: $clr6;
+                display: inline-flex;
+                align-items: center;
+
+                svg {
+                    margin: 0;
+                }
 
             }
         }

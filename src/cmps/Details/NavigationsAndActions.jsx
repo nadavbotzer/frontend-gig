@@ -15,9 +15,14 @@ export function NavigationsAndActions({ gigCategory }) {
         return tags
             .replace(/[\[\]]/g, '')
             .split(',')
-            .map(tag => tag.charAt(0).toUpperCase() + tag.slice(1))
+            .map(tag =>
+                tag.split('-')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ')
+            )
             .join(' and ')
     }
+
     // function onClickLike(event) {
     //     setIsLiked(!isLiked)
     //     const { left, top } = event.currentTarget.getBoundingClientRect();
