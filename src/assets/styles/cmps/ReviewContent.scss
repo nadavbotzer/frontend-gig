@@ -1,0 +1,17 @@
+.text {
+    color: #404145;
+    font-family: Macan;
+    line-height: 24px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+
+    .more {
+        font-weight: 600;
+
+        &:hover {
+            text-decoration: underline;
+            text-decoration-color: #404145;
+        }
+    }
+}

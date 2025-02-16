@@ -1,0 +1,48 @@
+.top-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .rating {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: #222325;
+        font-weight: 700;
+        line-height: 21px;
+        padding: 0px 0px 0px 4px;
+        text-align: left;
+
+        .stars {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+
+            img.icon {
+                width: 18px;
+            }
+        }
+    }
+
+    .gray-circle {
+        width: 4px;
+        border-radius: 50%;
+        height: 4px;
+        background-color: lightgray;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+
+    .date {
+        color: #74767e;
+        display: inline;
+        font-family: Macan;
+        font-size: 12px;
+        line-height: 18px;
+        text-align: left;
+    }
+}
