@@ -149,7 +149,8 @@
     }
 
     .tags {
-        display: flex;
+        background-color: $clr6;
+        display: none;
         gap: 20px;
         justify-content: center;
         padding: 8px 0;

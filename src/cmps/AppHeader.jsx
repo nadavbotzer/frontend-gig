@@ -97,7 +97,7 @@ export function AppHeader() {
 					)}
 				</div>
 			</nav>
-			{/* {!isHomePage && ( */}
+
 			<section className='tags'>
 				{tags.map((tag => {
 					return (
@@ -106,7 +106,7 @@ export function AppHeader() {
 				}))}
 
 			</section>
-			{/* )} */}
+
 
 		</header>
 	)
