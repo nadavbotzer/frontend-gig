@@ -13,10 +13,10 @@ import { GigFilter } from '../cmps/GigFilter'
 import { NavigationsAndActions } from '../cmps/Details/NavigationsAndActions'
 
 export function GigIndex() {
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams()
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
     const tagsParam = searchParams.get('tags')
-    const [filterBy, setFilterBy] = useState(gigService.getDefaultFilter())
+    const [filterBy, setFilterBy] = useState(null)
 
     useEffect(() => {
         if (tagsParam) {
@@ -43,7 +43,6 @@ export function GigIndex() {
 
     async function onAddGig() {
         const gig = gigService.getEmptyGig()
-        gig.title = prompt('Title?')
         try {
             const savedGig = await addGig(gig)
             showSuccessMsg(`Gig added (id: ${savedGig._id})`)

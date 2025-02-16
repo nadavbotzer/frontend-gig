@@ -17,12 +17,10 @@ export function Category() {
     ]
 
     function goToIndex(tags) {
-        navigate(`/gig/?tags=[${arrayToString(tags)}]`)
+        navigate(`/gig/?tags=[${tags.join(',')}]`)
 
     }
-    function arrayToString(arr) {
-        return `${arr.join(',')}`;
-    }
+
     return (
         <section className='category'>
             {categorys.map((category, index) => {
