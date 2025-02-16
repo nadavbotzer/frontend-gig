@@ -4,9 +4,9 @@
     grid-template-columns: repeat(3, 1fr);
 
     margin-top: rem(22px);
-    gap: rem(12px);
+    gap: rem(85px);
 
-    item {
+    article {
         padding-inline-end: .3em;
         font-size: .875em;
         font-weight: 400;
@@ -43,11 +43,13 @@
 
     @include for-narrow-layout {
         grid-template-columns: repeat(3, 1fr);
-        gap: rem(36px);
+        gap: rem(85px);
     }
 
     @include for-normal-layout {
         grid-template-columns: repeat(4, 1fr);
+        gap: rem(109px);
+
     }
 
     @include for-wide-layout {

@@ -67,3 +67,19 @@
 .icon {
     width: 20px;
 }
+
+//btn
+.btn {
+    padding: rem(10px) rem(20px);
+    font-weight: 700;
+    font-size: rem(18px);
+    background-color: inherit;
+    transition: all .2sease;
+    border: 1px solid $clr3;
+    border-radius: rem(8px);
+    cursor: pointer;
+    color: $clr2;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+}

@@ -25,7 +25,14 @@ function getEmptyGig() {
             rate: getRandomIntInclusive(1, 5),
         },
         daysToMake: getRandomIntInclusive(1, 10),
-        description: 'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
+        description: ['A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
+        'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
+        'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
+        'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
+        'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
+        'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
+        'A professional service to ' + getRandomGigTitle().toLowerCase() + '.'
+        ],
         avgResponseTime: getRandomIntInclusive(1, 24),
         loc: getRandomLocation(),
         imgUrls: ["https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/193068192/original/a170671ee931142c619a392cd06db59b9a60eec7.jpg"

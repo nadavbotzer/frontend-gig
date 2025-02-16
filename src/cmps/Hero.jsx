@@ -1,12 +1,37 @@
 
 import SearchIcon from '@mui/icons-material/Search'
+import React, { useRef, useEffect } from 'react'
+import { useScrollContext } from './ScrollProvider'
 
 
 export function Hero() {
+    const heroRef = useRef(null)
+    const inputRef = useRef(null)
+    const { setIsInputInView, setIsInputVisible } = useScrollContext()
+
+    useEffect(() => {
+        window.addEventListener('scroll', checkInputInView)
+        return () => {
+            window.removeEventListener('scroll', checkInputInView)
+        }
+    }, [])
+
+    const checkInputInView = () => {
+        const inputElement = inputRef.current
+        if (inputElement) {
+            const rect = inputElement.getBoundingClientRect()
+            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                setIsInputInView(true)
+                setIsInputVisible(true)
+            } else {
+                setIsInputInView(false)
+            }
+        }
+    }
+
     return (
 
-
-        <div className='hero'>
+        <div ref={heroRef} className='hero'>
             <img className='verinica' src='https://tenner-w6u2.onrender.com/assets/verinica-6121f53c.png' />
             <img className='jordan' src='https://tenner-w6u2.onrender.com/assets/jordan-33dd6ded.png' />
             <img className='jenny' src='https://tenner-w6u2.onrender.com/assets/jenny-5727627d.png' />
@@ -18,7 +43,7 @@ export function Hero() {
             </div>
             <div className='box'>
                 <div className='hero-search'>
-                    <input type="search" placeholder='What service are you looking for today?'></input>
+                    <input ref={inputRef} type="search" placeholder='What service are you looking for today?'></input>
                     <button className='btn-search'>
                         <SearchIcon />
                     </button>
@@ -34,5 +59,6 @@ export function Hero() {
                 <img src='https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/payoneer.7c1170d.svg' />
             </section>
         </div>
+
     )
 }
