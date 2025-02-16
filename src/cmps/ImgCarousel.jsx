@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-
-export function ImgCarousel({ imgUrls }) {
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+export function ImgCarousel({ imgUrls, onClickImg }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
     const elCarousel = useRef(null)
     const isNavigatingByDot = useRef(false)
@@ -71,7 +72,7 @@ export function ImgCarousel({ imgUrls }) {
             <div ref={elCarousel} className='images-container' onScroll={handleScroll}>
                 {imgUrls.map((imgUrl, idx) => (
                     <div key={'i' + idx} data-idx={idx} className='carousel-item-container'>
-                        <img src={imgUrl} alt={`Image ${idx}`} />
+                        <img src={imgUrl} alt={`Image ${idx}`} onClick={onClickImg} />
                     </div>
                 ))}
             </div>
@@ -79,10 +80,10 @@ export function ImgCarousel({ imgUrls }) {
                 className={`arrow-right ${currentImageIndex === imgUrls.length - 1 ? 'hidden' : ''}`}
                 onClick={handleNext}
             >
-                {">"}
+                {<KeyboardArrowRightIcon />}
             </div>
             <div className={`arrow-left ${currentImageIndex === 0 ? 'hidden' : ''}`} onClick={handlePrev}>
-                {"<"}
+                {<KeyboardArrowLeftIcon />}
             </div>
             <div className='dots-pagination'>
                 {imgUrls.map((_, idx) => (

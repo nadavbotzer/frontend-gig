@@ -83,6 +83,19 @@ export function getRandomTags() {
         'voice-over',
         'artisitic',
         'proffesional',
-        'accessible']
+        'accessible',
+        'programming', 'tech',
+        'graphics', 'design',
+        'digital-marketing',
+        'writing',
+        'translation',
+        'video',
+        'animation',
+        'ai-services',
+        'music',
+        'audio',
+        'business',
+        'consultin'
+    ]
     return tags.sort(() => 0.5 - Math.random()).slice(0, 2);
 }

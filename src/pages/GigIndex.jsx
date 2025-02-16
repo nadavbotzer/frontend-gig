@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useSearchParams } from 'react-router-dom'
 
 import { loadGigs, addGig, updateGig, removeGig, addGigMsg } from '../store/actions/gig.actions'
 
@@ -8,15 +9,27 @@ import { gigService } from '../services/gig'
 import { userService } from '../services/user'
 
 import { GigList } from '../cmps/GigList'
-import { GigFilter } from '../cmps/GigFilter'
 import { NavigationsAndActions } from '../cmps/Details/NavigationsAndActions'
 
-export function GigIndex() {
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
-    const [filterBy, setFilterBy] = useState(gigService.getDefaultFilter())
+export function GigIndex() {
+    const [searchParams, setSearchParams] = useSearchParams()
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
+    const tagsParam = searchParams.get('tags')
+    const [filterBy, setFilterBy] = useState(null)
 
     useEffect(() => {
+        if (tagsParam) {
+            const tags = parseTags(tagsParam)
+            setFilterBy(prevFilter => ({ ...prevFilter, tags: tags }))
+        } else {
+            setFilterBy(gigService.getDefaultFilter())
+        }
+    }, [tagsParam])
+
+    useEffect(() => {
+        if (!filterBy) return
         loadGigs(filterBy)
     }, [filterBy])
 
@@ -31,7 +44,6 @@ export function GigIndex() {
 
     async function onAddGig() {
         const gig = gigService.getEmptyGig()
-        gig.title = prompt('Title?')
         try {
             const savedGig = await addGig(gig)
             showSuccessMsg(`Gig added (id: ${savedGig._id})`)
@@ -52,12 +64,42 @@ export function GigIndex() {
             showErrorMsg('Cannot update gig')
         }
     }
+    function tagsToHeading(tags) {
+        return tags
+            .replace(/[\[\]]/g, '')            // Remove brackets
+            .split(',')                        // Split by commas
+            .map(tag =>                        // Process each tag
+                tag
+                    .split('-')                // Split by hyphen
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
+                    .join(' ')                // Join words with space
+            )
+            .join(' and ');                    // Join tags with 'and'
+    }
 
+    function parseTags(str) {
+        // Remove the brackets and split by comma
+        return str.replace(/[\[\]]/g, '').split(',').map(tag => tag.trim());
+    }
+    if (!gigs) return <div>Loading...</div>
     return (
         <>
-            {/* <GigFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
             {userService.getLoggedinUser() && <button onClick={onAddGig}>Add a Gig</button>}
+            {tagsParam && <NavigationsAndActions gigCategory={tagsParam} />}
+            {!tagsParam && <NavigationsAndActions gigCategory={''} />}
             <main className="gig-index">
+                <h1>{tagsParam && tagsToHeading(tagsParam)}</h1>
+                <div className="filter-wrapper">
+                    <button className="btn">
+                        Budget <KeyboardArrowDownIcon />
+                    </button>
+                    <button className="btn">
+                        Delivery time <KeyboardArrowDownIcon />
+                    </button>
+                </div>
+                <div className="sort-wrapper">
+                    <span>{gigs.length} results</span>
+                </div>
                 <GigList
                     gigs={gigs}
                     onRemoveGig={onRemoveGig}
