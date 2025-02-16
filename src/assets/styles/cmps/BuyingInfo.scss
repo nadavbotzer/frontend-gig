@@ -1,0 +1,134 @@
+.buying-info-column {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+
+    .info-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 70%;
+        height: 500px;
+        border: thin solid lightgray;
+
+        .box-navigation {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+            background-color: lightgray;
+
+            .nav-btn {
+                width: 34%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                font-family: Macan;
+                font-weight: 700;
+                line-height: 24px;
+                padding: 16px;
+                text-align: center;
+                background-color: #fafafa;
+                color: #74767e;
+                border: none;
+                margin: 0;
+            }
+
+            .border-right {
+                border-right: solid thin lightgray;
+            }
+
+            .active {
+                background-color: #fff;
+                color: #222325;
+                border-bottom: medium black solid;
+                margin: 0;
+            }
+        }
+    }
+
+    .buying-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 2rem;
+        width: 100%;
+
+        .price-info {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            // margin-bottom: 2rem;
+
+            .price {
+                color: #404145;
+                display: inline;
+                font-size: 24px;
+                font-weight: 700;
+                line-height: 24px;
+            }
+
+            .currency-symbol {
+                font-size: 18px;
+                margin-right: 5px;
+            }
+
+            .info-icon {
+                width: 20px;
+                margin: auto;
+                margin-left: 8px;
+            }
+        }
+
+        .discount-info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            color: #404145;
+            line-height: 24px;
+
+            .discount {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                font-size: 16px;
+                line-height: 26px;
+
+                .discount-subscribe {
+                    color: #026a5d;
+                    display: inline;
+                    font-weight: 600;
+                    font-size: 16px;
+                    margin: 0px 8px 0px 0px;
+                    margin-left: 7px;
+                    line-height: 26px;
+                }
+            }
+
+            .question-icon {
+                width: 14px;
+                margin-top: 4px;
+            }
+        }
+
+        .service-desc {
+            color: #62646a;
+            font-family: Macan;
+            font-size: 16px;
+            line-height: 21px;
+            margin: 24px 0px 10px;
+
+            .font-weight {
+                font-weight: 550;
+            }
+        }
+    }
+}

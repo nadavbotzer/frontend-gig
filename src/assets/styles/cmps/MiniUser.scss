@@ -1,12 +1,16 @@
 .mini-user {
-    width: 100%;
+    color: #62646a;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 2rem;
+    gap: 16px;
+    line-height: 24px;
+    border-bottom: lightgray solid thin;
+    padding-bottom: 15px;
+    margin-bottom: 70px;
 
     .profile {
+        font-size: 28px;
+        line-height: 36px;
+
         .profile-img {
             border-radius: 50%;
             width: 4rem;
@@ -14,22 +18,25 @@
     }
 
     .about-user {
-        padding: 0.3rem;
+        color: #62646a;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
+        gap: 4px;
+        line-height: 24px;
 
         .about-user-row {
-            display: flex;
-            flex-direction: row;
             align-items: center;
-            justify-content: flex-start;
+            color: #62646a;
+            display: flex;
+            gap: 12px;
+            line-height: 24px;
 
             .user-name {
                 color: #404145;
                 font-size: 18px;
                 font-weight: 700;
+                line-height: 26px;
+                margin: 0px 8px 0px 0px;
 
                 &:hover {
                     text-decoration: underline;
@@ -38,34 +45,32 @@
             }
 
             .top-rated {
-                display: flex;
-                flex-direction: row;
                 align-items: center;
-                justify-content: flex-start;
                 background-color: #ffe0b3;
                 border-radius: 4px;
                 color: #421300;
+                display: flex;
                 font-size: 14px;
                 font-weight: 600;
                 gap: 4px;
                 line-height: 18px;
                 padding: 0px 6px;
-                margin-left: 5px;
             }
 
             .profession {
                 color: #222325;
+                font-family: Macan;
                 font-weight: 700;
                 line-height: 24px;
             }
 
             .reviews {
                 align-items: flex-start;
-                border-radius: 4px;
                 color: #74767e;
                 line-height: 24px;
                 margin: 0px 0px 0px 4px;
                 text-align: center;
+                font-weight: 500;
 
                 &:hover {
                     text-decoration: underline;

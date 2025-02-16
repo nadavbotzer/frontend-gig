@@ -7,78 +7,89 @@
     justify-content: flex-start;
 
     .gig-layout {
-        width: 80%;
+        width: 90%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-start;
-        justify-content: center;
+        justify-content: space-between;
 
         .gig-info-column {
-            width: 60%;
+            width: 50%;
 
             .header {
                 .gig-title {
                     color: #222325;
-                    font-weight: 650;
+                    font-family: Macan;
                     font-size: 28px;
+                    font-weight: 700;
+                    line-height: 36px;
+                    padding: 0px 0px 16px;
                 }
             }
 
-            .gig-images {
-                .image-picker {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: space-evenly;
-                    width: 100%;
-                    overflow-x: scroll;
+            .carousel.carousel-slider .control-arrow {
+                background-color: #222325;
+                border-radius: 50%;
+                height: 50px;
+                width: 50px;
+                box-shadow: rgba(0, 0, 0, 0.1490196078) 0px 2px 5px 0px;
+                opacity: 1;
+                top: 50%;
+            }
+
+            .carousel {
+                background-color: #fff;
+
+                .carouselle-img {
+                    object-fit: contain;
                 }
             }
-        }
+        }       
+    }
 
-        .buying-info-column {
-            width: 40%;
-        }
+    .navigations-and-actions {
+        width: 90%;
+        height: 5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
 
-        .navigations-and-actions {
+        .navigations {
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            height: 5rem;
+            color: #62646a;
+            font-family: Macan;
+            line-height: 24px;
+            padding: 4px 0px 4px 6px;
+            gap: 8px;
 
-            .navigations {
-                padding: 0.5rem;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
+            .link {
+                color: #222325;
+                display: inline;
+                font-family: Macan;
+                font-size: 14px;
+                line-height: 24px;
+                text-align: left;
 
-                .link {
-                    color: #222325;
-                    font-size: 16px;
-                    margin: 0.5rem;
-                    font-weight: 500;
-
-                    &:hover {
-                        text-decoration: underline;
-                        text-decoration-color: #222325;
-                    }
-
-                    img {
-                        width: 20px;
-                    }
+                &:hover {
+                    text-decoration: underline;
+                    text-decoration-color: #222325;
                 }
 
-
-                .path-symbol {
-                    color: #c5c6c9;
+                img {
+                    width: 20px;
                 }
             }
 
-            .actions {
-                background-color: aquamarine;
+            .path-symbol {
+                color: #c5c6c9;
             }
+        }
+
+        .actions {
+            background-color: aquamarine;
         }
     }
 }
