@@ -1,4 +1,4 @@
-import { MiniUser } from "../MiniUser";
+import { MiniUser } from "../MiniUser/MiniUser.jsx";
 
 export function GigHeader({ gig, title }) {
     return <div className="header">
