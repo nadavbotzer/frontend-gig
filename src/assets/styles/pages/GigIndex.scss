@@ -6,12 +6,14 @@
         font-size: rem(32px);
     }
 
-    h2 {
-        margin: 0;
-        font-size: 1.3em;
-    }
+    .filter-wrapper {
+        display: flex;
+        gap: rem(12px);
 
-    button {
-        margin-inline-end: 0;
+        button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
 }

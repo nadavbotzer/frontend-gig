@@ -9,8 +9,9 @@ import { gigService } from '../services/gig'
 import { userService } from '../services/user'
 
 import { GigList } from '../cmps/GigList'
-import { GigFilter } from '../cmps/GigFilter'
 import { NavigationsAndActions } from '../cmps/Details/NavigationsAndActions'
+
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export function GigIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -65,11 +66,17 @@ export function GigIndex() {
     }
     function tagsToHeading(tags) {
         return tags
-            .replace(/[\[\]]/g, '')
-            .split(',')
-            .map(tag => tag.charAt(0).toUpperCase() + tag.slice(1))
-            .join(' and ')
+            .replace(/[\[\]]/g, '')            // Remove brackets
+            .split(',')                        // Split by commas
+            .map(tag =>                        // Process each tag
+                tag
+                    .split('-')                // Split by hyphen
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
+                    .join(' ')                // Join words with space
+            )
+            .join(' and ');                    // Join tags with 'and'
     }
+
     function parseTags(str) {
         // Remove the brackets and split by comma
         return str.replace(/[\[\]]/g, '').split(',').map(tag => tag.trim());
@@ -79,13 +86,13 @@ export function GigIndex() {
         <>
             {userService.getLoggedinUser() && <button onClick={onAddGig}>Add a Gig</button>}
             <main className="gig-index">
-                <h1>{tagsToHeading(tagsParam)}</h1>
+                <h1>{tagsParam && tagsToHeading(tagsParam)}</h1>
                 <div className="filter-wrapper">
                     <button className="btn">
-                        Budget
+                        Budget <KeyboardArrowDownIcon />
                     </button>
                     <button className="btn">
-                        Delivery time
+                        Delivery time <KeyboardArrowDownIcon />
                     </button>
                 </div>
                 <div className="sort-wrapper">
