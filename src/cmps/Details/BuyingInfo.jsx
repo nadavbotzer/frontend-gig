@@ -6,6 +6,15 @@ export function BuyingInfo({ gig }) {
 
     const btns = ['Basic', 'Standard', 'Premium']
 
+    const packegeDealList = [
+        { text: '3D modeling', packages: ['Basic', 'Standard', 'Premium'] },
+        { text: 'Environment', packages: ['Standard', 'Premium'] },
+        { text: 'Furniture and people', packages: ['Standard', 'Premium'] },
+        { text: 'Texturing & lighting', packages: ['Standard', 'Premium'] },
+        { text: '4 renderings', packages: ['Basic', 'Standard', 'Premium'] },
+        { text: 'Source file', packages: ['Basic', 'Standard', 'Premium'] },
+    ]
+
     const [active, setActive] = useState('Basic')
 
     function onActive({ target }) {
@@ -50,20 +59,42 @@ export function BuyingInfo({ gig }) {
 
                 <span className='service-desc'><span className='font-weight'>{active}</span> 3d model of one space (No Renderings)</span><br />
 
-                <span className='delivery'>DELIVERY</span>
-                <span> </span>
-                <span className='revisions'>REVISION</span>
+                <div className="delivery-revisions">
+                    <span className='delivery'>
+                        <img src={'/images/clock-icon.png'} />
+                        4-day delivery
+                    </span>
+                    <span className='revisions'>
+                        <img src={'/images/recycle-icon.png'} />
+                        1 Revision
+                    </span>
+                </div>
 
                 <ul className='services-list'>
-                    <li>SERVICE INCLUDES</li>
-                    <li>SERVICE INCLUDES</li>
-                    <li>SERVICE INCLUDES</li>
-                    <li>SERVICE INCLUDES</li>
-                    <li>SERVICE INCLUDES</li>
-                    <li>SERVICE INCLUDES</li>
-                    <li>SERVICE INCLUDES</li>
+                    {
+                        packegeDealList.map((deal) => {
+                            const src = deal.packages.includes(active) ? 'dark-check-icon.png' : 'light-check-icon.png'
+                            return <li key={deal.text}>
+                                <img src={`/images/${src}`} />
+                                {deal.text}
+                            </li>
+                        })
+                    }
                 </ul>
+
+                <div className='btns'>
+                    <button className="btn continue" type="button">
+                        <span className='txt'>Continue</span>
+                        <span className='icon'>
+                            <img src={'/images/right-arrow-icon.png'} />
+                        </span>
+                    </button>
+                    <input className="btn compare" type="button" value="Compare packages" />
+                </div>
             </div>
+        </div>
+        <div className="btn-container">
+            <input className='contact' type="button" value="Contact me" />
         </div>
     </section>
 }

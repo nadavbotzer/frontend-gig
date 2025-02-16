@@ -11,7 +11,6 @@
         align-items: center;
         justify-content: flex-start;
         width: 70%;
-        height: 500px;
         border: thin solid lightgray;
 
         .box-navigation {
@@ -64,7 +63,6 @@
             display: flex;
             flex-direction: row;
             align-items: baseline;
-            // margin-bottom: 2rem;
 
             .price {
                 color: #404145;
@@ -124,11 +122,148 @@
             font-family: Macan;
             font-size: 16px;
             line-height: 21px;
-            margin: 24px 0px 10px;
+            margin: 24px 0px 0px;
 
             .font-weight {
                 font-weight: 550;
             }
+        }
+
+        .delivery-revisions {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 60%;
+
+            .delivery,
+            .revisions {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                color: #62646a;
+                font-family: Macan;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 24px;
+
+                img {
+                    width: 20px;
+                    margin-right: 3px;
+                }
+            }
+        }
+
+        .services-list {
+            li {
+                display: flex;
+                align-items: center;
+                line-height: 24px;
+                color: #95979d;
+                font-family: Macan;
+                font-size: 14px;
+                text-align: left;
+                font-weight: 500;
+
+                img {
+                    width: 20px;
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        .btns {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            margin-top: 20px;
+
+            .btn {
+                width: 100%;
+            }
+
+            .continue {
+                display: flex;
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+                border-style: solid;
+                border-width: 0.8px;
+                border-radius: 4px;
+                border-radius: 4px;
+                background-color: #000;
+                color: #fff;
+                font-family: Macan;
+                font-weight: 600;
+                line-height: 16px;
+                padding: 12px 24px;
+
+                .txt {
+                    text-align: center;
+                    width: 100%;
+                }
+
+                .icon {
+                    display: flex;
+                    text-align: end;
+                    align-items: flex-end;
+
+                    img {
+                        width: 20px;
+                    }
+                }
+            }
+
+            .compare {
+                border: none;
+                background-color: #fff;
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                text-align: center;
+                line-height: 21px;
+                color: #222325;
+                font-family: Macan;
+                font-size: 14px;
+                padding: 12px 0px 0px;
+                background-color: none;
+            }
+        }
+    }
+
+    .btn-container {
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #fafafa;
+        border-radius: 12px;
+        color: #62646a;
+        gap: 12px;
+        line-height: 24px;
+        margin: 25px 0px 16px;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        .contact {
+            width: 90%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 0.8px solid #222325;
+            border-radius: 8px;
+            color: #222325;
+            font-family: Macan;
+            font-weight: 600;
+            gap: 8px;
+            line-height: 24px;
+            padding: 8px 16px;
+            background-color: #fff;
         }
     }
 }
