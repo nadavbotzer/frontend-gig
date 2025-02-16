@@ -85,6 +85,8 @@ export function GigIndex() {
     return (
         <>
             {userService.getLoggedinUser() && <button onClick={onAddGig}>Add a Gig</button>}
+            {tagsParam && <NavigationsAndActions gigCategory={tagsParam} />}
+            {!tagsParam && <NavigationsAndActions gigCategory={''} />}
             <main className="gig-index">
                 <h1>{tagsParam && tagsToHeading(tagsParam)}</h1>
                 <div className="filter-wrapper">

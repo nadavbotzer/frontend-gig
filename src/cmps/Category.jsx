@@ -25,14 +25,14 @@ export function Category() {
         <section className='category'>
             {categorys.map((category, index) => {
                 return (
-                    <item key={index} onClick={() => goToIndex(category.tags)}>
+                    <article key={index} onClick={() => goToIndex(category.tags)}>
                         <div className='cat-content'>
                             <div className='cat-img'>
                                 <img src={category.src} alt={category.txt} />
                             </div>
                             <p>{category.txt}</p>
                         </div>
-                    </item>
+                    </article>
                 )
             })}
 
