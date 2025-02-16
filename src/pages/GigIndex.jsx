@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { useSearchParams } from 'react-router-dom'
 
 import { loadGigs, addGig, updateGig, removeGig, addGigMsg } from '../store/actions/gig.actions'
 
@@ -12,12 +13,23 @@ import { GigFilter } from '../cmps/GigFilter'
 import { NavigationsAndActions } from '../cmps/Details/NavigationsAndActions'
 
 export function GigIndex() {
-
-    const [filterBy, setFilterBy] = useState(gigService.getDefaultFilter())
+    const [searchParams, setSearchParams] = useSearchParams();
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
+    const tagsParam = searchParams.get('tags')
+    const [filterBy, setFilterBy] = useState(gigService.getDefaultFilter())
+
+    useEffect(() => {
+        if (tagsParam) {
+            const tags = parseTags(tagsParam)
+            setFilterBy(prevFilter => ({ ...prevFilter, tags: tags }))
+        } else {
+            setFilterBy(gigService.getDefaultFilter())
+        }
+    }, [tagsParam])
 
     useEffect(() => {
         loadGigs(filterBy)
+        console.log(tagsParam)
     }, [filterBy])
 
     async function onRemoveGig(gigId) {
@@ -51,6 +63,11 @@ export function GigIndex() {
         } catch (err) {
             showErrorMsg('Cannot update gig')
         }
+    }
+
+    function parseTags(str) {
+        // Remove the brackets and split by comma
+        return str.replace(/[\[\]]/g, '').split(',').map(tag => tag.trim());
     }
 
     return (
