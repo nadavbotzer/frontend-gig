@@ -17,7 +17,7 @@ export function Category() {
     ]
 
     function goToIndex(tags) {
-        navigate(`/gig/?tags=[${tags.join(',')}]`)
+        navigate(`/gig/?tags=${tags.join(',')}`)
 
     }
 

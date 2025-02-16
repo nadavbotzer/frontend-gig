@@ -5,16 +5,21 @@
     row-gap: 2.2rem;
     column-gap: 1.5rem;
 
-    li {
+    ul {
+        margin: 0;
 
-        .actions {
-            justify-self: end;
+        li {
 
-            button {
-                padding: .3em .5em;
+            .actions {
+                justify-self: end;
+
+                button {
+                    padding: .3em .5em;
+                }
             }
         }
     }
+
 
     @include for-narrow-layout {
         grid-template-columns: repeat(2, 1fr);

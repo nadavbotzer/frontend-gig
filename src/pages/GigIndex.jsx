@@ -27,6 +27,7 @@ export function GigIndex() {
             label: 'Delivery time'
         }
     ]
+
     useEffect(() => {
         if (tagsParam) {
             const tags = parseTags(tagsParam)
@@ -41,14 +42,14 @@ export function GigIndex() {
         loadGigs(filterBy)
     }, [filterBy])
 
-    async function onRemoveGig(gigId) {
-        try {
-            await removeGig(gigId)
-            showSuccessMsg('Gig removed')
-        } catch (err) {
-            showErrorMsg('Cannot remove gig')
-        }
-    }
+    // async function onRemoveGig(gigId) { //Save for referance
+    //     try {
+    //         await removeGig(gigId)
+    //         showSuccessMsg('Gig removed')
+    //     } catch (err) {
+    //         showErrorMsg('Cannot remove gig')
+    //     }
+    // }
 
     async function onAddGig() {
         const gig = gigService.getEmptyGig()
@@ -60,33 +61,32 @@ export function GigIndex() {
         }
     }
 
-    async function onUpdateGig(gig) {
-        const price = +prompt('New price?', gig.price)
-        if (price === 0 || price === gig.price) return
+    // async function onUpdateGig(gig) { //Save for Referance
+    //     const price = +prompt('New price?', gig.price)
+    //     if (price === 0 || price === gig.price) return
 
-        const gigToSave = { ...gig, price }
-        try {
-            const savedGig = await updateGig(gigToSave)
-            showSuccessMsg(`Gig updated, new price: ${savedGig.price}`)
-        } catch (err) {
-            showErrorMsg('Cannot update gig')
-        }
-    }
+    //     const gigToSave = { ...gig, price }
+    //     try {
+    //         const savedGig = await updateGig(gigToSave)
+    //         showSuccessMsg(`Gig updated, new price: ${savedGig.price}`)
+    //     } catch (err) {
+    //         showErrorMsg('Cannot update gig')
+    //     }
+    // }
     function tagsToHeading(tags) {
         return tags
-            .replace(/[\[\]]/g, '')            // Remove brackets
-            .split(',')                        // Split by commas
-            .map(tag =>                        // Process each tag
+            .replace(/[\[\]]/g, '')
+            .split(',')
+            .map(tag =>
                 tag
-                    .split('-')                // Split by hyphen
-                    .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
-                    .join(' ')                // Join words with space
+                    .split('-')
+                    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(' ')
             )
-            .join(' and ');                    // Join tags with 'and'
+            .join(' and ')
     }
 
     function parseTags(str) {
-        // Remove the brackets and split by comma
         return str.replace(/[\[\]]/g, '').split(',').map(tag => tag.trim());
     }
     if (!gigs) return <div>Loading...</div>
@@ -106,9 +106,7 @@ export function GigIndex() {
                     <span>{gigs.length} results</span>
                 </div>
                 <GigList
-                    gigs={gigs}
-                    onRemoveGig={onRemoveGig}
-                    onUpdateGig={onUpdateGig} />
+                    gigs={gigs} />
             </main>
         </>
     )
