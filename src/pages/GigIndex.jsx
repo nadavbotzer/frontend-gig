@@ -10,6 +10,7 @@ import { userService } from '../services/user'
 import { GigList } from '../cmps/GigList'
 import { GigFilter } from '../cmps/GigFilter'
 import { NavigationsAndActions } from '../cmps/Details/NavigationsAndActions'
+import { Category } from '../cmps/Category'
 
 export function GigIndex() {
 
@@ -55,6 +56,7 @@ export function GigIndex() {
 
     return (
         <>
+
             {/* <GigFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
             {userService.getLoggedinUser() && <button onClick={onAddGig}>Add a Gig</button>}
             <main className="gig-index">
