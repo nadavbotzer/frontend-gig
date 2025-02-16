@@ -47,48 +47,5 @@
                 }
             }
         }
-
-        .buying-info-column {
-            // background-color: #c5c6c9;
-            width: 40%;
-        }
-    }
-
-    .navigations-and-actions {
-        width: 90%;
-        height: 5rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-
-        .navigations {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            color: #62646a;
-            font-family: Macan;
-            line-height: 24px;
-            padding: 4px 0px 4px 6px;
-            gap: 8px;
-
-            .link {
-                color: #222325;
-                font-size: 14px;
-                margin: 0.5rem;
-
-                img {
-                    width: 20px;
-                }
-            }
-
-            .path-symbol {
-                color: #c5c6c9;
-            }
-        }
-
-        .actions {
-            background-color: aquamarine;
-        }
     }
 }

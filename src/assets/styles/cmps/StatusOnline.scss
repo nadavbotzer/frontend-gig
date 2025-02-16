@@ -1,0 +1,17 @@
+.online-status {
+    border: thin solid #1dbf73;
+    color: #1dbf73;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    width: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+
+    img {
+        width: 10px;
+    }
+}

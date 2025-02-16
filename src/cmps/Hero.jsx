@@ -14,7 +14,7 @@ export function Hero() {
             <img className='collin' src='https://tenner-w6u2.onrender.com/assets/collin-ec968bf2.png' />
             <div className='heading-wrapper'>
                 <h1>Scale your professional</h1>
-                <h1> workforce with freelancers</h1>
+                <h1> workforce with <span>freelancers</span></h1>
             </div>
             <div className='box'>
                 <div className='hero-search'>
