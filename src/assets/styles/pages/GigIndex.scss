@@ -1,10 +1,9 @@
 .gig-index {
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    display: flex;
+    flex-direction: column;
 
-        padding-block: .3em;
+    h1 {
+        font-size: rem(32px);
     }
 
     h2 {

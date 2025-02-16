@@ -28,8 +28,8 @@ export function GigIndex() {
     }, [tagsParam])
 
     useEffect(() => {
+        if (!filterBy) return
         loadGigs(filterBy)
-        console.log(tagsParam)
     }, [filterBy])
 
     async function onRemoveGig(gigId) {
@@ -63,17 +63,34 @@ export function GigIndex() {
             showErrorMsg('Cannot update gig')
         }
     }
-
+    function tagsToHeading(tags) {
+        return tags
+            .replace(/[\[\]]/g, '')
+            .split(',')
+            .map(tag => tag.charAt(0).toUpperCase() + tag.slice(1))
+            .join(' and ')
+    }
     function parseTags(str) {
         // Remove the brackets and split by comma
         return str.replace(/[\[\]]/g, '').split(',').map(tag => tag.trim());
     }
-
+    if (!gigs) return <div>Loading...</div>
     return (
         <>
-            {/* <GigFilter filterBy={filterBy} setFilterBy={setFilterBy} /> */}
             {userService.getLoggedinUser() && <button onClick={onAddGig}>Add a Gig</button>}
             <main className="gig-index">
+                <h1>{tagsToHeading(tagsParam)}</h1>
+                <div className="filter-wrapper">
+                    <button className="btn">
+                        Budget
+                    </button>
+                    <button className="btn">
+                        Delivery time
+                    </button>
+                </div>
+                <div className="sort-wrapper">
+                    <span>{gigs.length} results</span>
+                </div>
                 <GigList
                     gigs={gigs}
                     onRemoveGig={onRemoveGig}
