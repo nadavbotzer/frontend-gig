@@ -46,15 +46,54 @@ export function GigDetails() {
     likedByUsers: ['mini-user'],
     reviews: [
       {
-        id: 'madeId',
-        txt: 'Did an amazing work',
+        _id: '001',
+        text: "Working with Cole was an absolute pleasure from start to finish. He took a complex, highly detailed vision and brought it to life with incredible precision, creativity, and heart. Every moment in the animation was executed flawlessly, with perfect comedic timing, beautiful storytelling, and nuanced character expressions that made it feel truly cinematic. What sets Cole apart is not just his technical skill, but his deep understanding of pacing, humor, and emotion. He knows how to elevate a story visually, making every second count. The subtle touches and perfectly timed beats, took the animation to the next level. Beyond his talent, Cole is a true professional—easy to communicate with, receptive to feedback, and dedicated to getting every detail right. He went above and beyond, and the final product exceeded all expectations. If you’re looking for an exceptional animator who can blend humor, romance, and engaging storytelling seamlessly, Cole is your guy. I 1000% recommend him and can’t wait to work together again! 🎬✨ 10/10. Five stars. Absolute rockstar. 🌟🌟🌟🌟🌟",
         rate: 4,
         by: {
           _id: 'u102',
-          fullname: 'user2',
-          imgUrl: '/img/img2.jpg',
+          fullname: 'tamar',
+          imgUrl: '',
+          flagSrc: '',
+          location: { format: 'us', name: 'United States' },
         },
+        createdAt: new Date(),
+        duration: 4,
+        startPriceRange: 1500,
+        endPriceRange: 3500,
+        projectImg: '/images/img-1.jpg'
       },
+      {
+        _id: '002',
+        text: "Working with Cole was an absolute pleasure from start to finish. He took a complex, highly detailed vision and brought it to life with incredible precision, creativity, and heart. Every moment in the animation was executed flawlessly, with perfect comedic timing, beautiful storytelling, and nuanced character expressions that made it feel truly cinematic. What sets Cole apart is not just his technical skill, but his deep understanding of pacing, humor, and emotion. He knows how to elevate a story visually, making every second count. The subtle touches and perfectly timed beats, took the animation to the next level. Beyond his talent, Cole is a true professional—easy to communicate with, receptive to feedback, and dedicated to getting every detail right. He went above and beyond, and the final product exceeded all expectations. If you’re looking for an exceptional animator who can blend humor, romance, and engaging storytelling seamlessly, Cole is your guy. I 1000% recommend him and can’t wait to work together again! 🎬✨ 10/10. Five stars. Absolute rockstar. 🌟🌟🌟🌟🌟",
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'tamar',
+          imgUrl: '',
+          flagSrc: '',
+          location: { format: 'us', name: 'United States' },
+        },
+        createdAt: new Date(),
+        duration: 4,
+        startPriceRange: 1500,
+        endPriceRange: 3500
+      },
+      {
+        _id: '003',
+        text: "Working with Cole was an absolute pleasure from start to finish. He took a complex, highly detailed vision and brought it to life with incredible precision, creativity, and heart. Every moment in the animation was executed flawlessly, with perfect comedic timing, beautiful storytelling, and nuanced character expressions that made it feel truly cinematic. What sets Cole apart is not just his technical skill, but his deep understanding of pacing, humor, and emotion. He knows how to elevate a story visually, making every second count. The subtle touches and perfectly timed beats, took the animation to the next level. Beyond his talent, Cole is a true professional—easy to communicate with, receptive to feedback, and dedicated to getting every detail right. He went above and beyond, and the final product exceeded all expectations. If you’re looking for an exceptional animator who can blend humor, romance, and engaging storytelling seamlessly, Cole is your guy. I 1000% recommend him and can’t wait to work together again! 🎬✨ 10/10. Five stars. Absolute rockstar. 🌟🌟🌟🌟🌟",
+        rate: 4,
+        by: {
+          _id: 'u102',
+          fullname: 'tamar',
+          imgUrl: '',
+          flagSrc: '',
+          location: { format: 'us', name: 'United States' },
+        },
+        createdAt: new Date(),
+        duration: 4,
+        startPriceRange: 1500,
+        endPriceRange: 3500
+      }
     ],
   }
 

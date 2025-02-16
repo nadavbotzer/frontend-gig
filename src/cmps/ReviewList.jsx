@@ -1,26 +1,34 @@
-import { userService } from '../services/user'
+import { ReviewCard } from './Review/ReviewCard.jsx'
 
-import { ReviewPreview } from './ReviewPreview.jsx'
+import "../assets/styles/cmps/ReviewList.scss"
 
-export function ReviewList({ reviews, onRemoveReview }) {
-    
-    function shouldShowActionBtns(review) {
-        const user = userService.getLoggedinUser()
-        
-        if (!user) return false
-        if (user.isAdmin) return true
-        return review.byUser?._id === user._id
-    }
+export function ReviewList({ reviews }) {
 
-    return <section>
-        <ul className="list review-list">
-            {reviews.map(review =>
-                <li key={review._id}>
-                    <ReviewPreview review={review}/>
-                    {shouldShowActionBtns(review) && <div className="actions">
-                        <button onClick={() => onRemoveReview(review._id)}>x</button>
-                    </div>}
-                </li>)
+    return <section className='reviews'>
+        <h1>Reviews</h1>
+        <ul className="review-list">
+            {
+                reviews.map(({
+                    _id,
+                    by,
+                    createdAt, rate, text, duration, startPriceRange, endPriceRange,
+                    projectImg
+                }) => {
+                    return <ReviewCard
+                        key={_id}
+                        flagSrc={by.flagSrc}
+                        imgSrc={by.imgSrc}
+                        location={by.location}
+                        fullname={by.fullname}
+                        createdAt={createdAt}
+                        rate={rate}
+                        text={text}
+                        duration={duration}
+                        startPriceRange={startPriceRange}
+                        endPriceRange={endPriceRange}
+                        projectImg={projectImg}
+                    />
+                })
             }
         </ul>
     </section>
