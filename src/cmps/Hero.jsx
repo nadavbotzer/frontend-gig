@@ -12,7 +12,10 @@ export function Hero() {
             <img className='jenny' src='https://tenner-w6u2.onrender.com/assets/jenny-5727627d.png' />
             <img className='yuli' src='https://tenner-w6u2.onrender.com/assets/brurya-87d0bc25.png' />
             <img className='collin' src='https://tenner-w6u2.onrender.com/assets/collin-ec968bf2.png' />
-            <h1>Scale your professional workforce with freelancers</h1>
+            <div className='heading-wrapper'>
+                <h1>Scale your professional</h1>
+                <h1> workforce with freelancers</h1>
+            </div>
             <div className='box'>
                 <div className='hero-search'>
                     <input type="search" placeholder='What service are you looking for today?'></input>

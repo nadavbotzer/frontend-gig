@@ -1,5 +1,7 @@
 .make-it {
 
+
+
     .bigger {
         font-size: rem(40px);
         margin: 0;
@@ -8,14 +10,15 @@
     }
 
     .make-items {
-
+        display: flex;
+        flex-direction: column;
         color: #62646a;
-        display: grid;
-        gap: rem(32px);
-        grid-template-columns: rem(310.008px) rem(310.008px) rem(310.008px) rem(310.008px);
+        gap: rem(40px);
+        grid-template-columns: repeat(4 rem(310px));
         grid-template-rows: rem(123.996px);
         line-height: rem(24px);
         margin: 0px 0px 64px;
+
 
 
 
@@ -23,15 +26,52 @@
             align-items: flex-start;
             color: #62646a;
             display: flex;
-            flex-direction: column;
             gap: rem(12px);
             line-height: rem(24px);
 
             img {
                 width: rem(64px);
                 height: rem(64px);
-                margin-bottom: 0.5em;
             }
+
+
+            p {
+                margin: 0;
+            }
+
+            @include for-wide-layout {
+                flex-direction: column;
+            }
+
+            @include for-normal-layout {
+                flex-direction: column;
+
+            }
+
+
+        }
+
+        @include for-wide-layout {
+            flex-direction: row;
+        }
+
+        @include for-normal-layout {
+            flex-direction: row;
+
         }
     }
+
+    // @include for-narrow-layout {
+    //     display: grid;
+    //     grid-template-columns: repeat(4, 1fr);
+    // }
+
+    // @include for-normal-layout {
+    //     grid-template-columns: repeat(4, 1fr);
+    // }
+
+    // @include for-narrow-layout {
+    //     display: grid;
+    //     grid-template-columns: repeat(4, 1fr);
+    // }
 }

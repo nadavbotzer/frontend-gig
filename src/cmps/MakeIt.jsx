@@ -14,10 +14,8 @@ export function MakeIt() {
                 {makeItems.map((item, index) => {
                     return (
                         <article key={index}>
-                            <div>
-                                <img src={item.src} alt={item.txt} />
-                                <p>{item.txt}</p>
-                            </div>
+                            <img src={item.src} alt={item.txt} />
+                            <p>{item.txt}</p>
                         </article>
                     )
                 })}
