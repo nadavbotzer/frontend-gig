@@ -1,7 +1,7 @@
 .preview {
     display: flex;
     flex-direction: column;
-    gap: .5rem;
+    font-size: rem(16px);
 
     img {
         border-radius: 15px;
@@ -40,6 +40,8 @@
     .gig-user-preview {
         display: flex;
         align-items: center;
+        font-size: rem(14px);
+        padding-top: rem(12px);
 
         .gig-user-img {
             border-radius: 50%;
@@ -67,6 +69,7 @@
         display: flex;
         gap: 0.125rem;
         font-weight: 700;
+        padding-top: rem(8px);
 
         .gig-previews-count {
             font-weight: 200;
