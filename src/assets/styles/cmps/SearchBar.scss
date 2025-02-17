@@ -1,6 +1,7 @@
 .search-bar {
     display: flex;
     position: relative;
+    height: 100%;
 
     input {
 
@@ -23,7 +24,7 @@
     }
 
     .full-border {
-        border-radius: rem(4px);
+        border-radius: rem(12px);
         border: none;
     }
 
@@ -41,8 +42,9 @@
 
     .btn-inline {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        right: rem(6px);
         border-radius: 8px;
         height: 75%;
         background-color: $clr8;
@@ -51,6 +53,7 @@
         align-items: center;
         font-size: rem(14px);
         padding: 8px 16px;
+        margin: 0;
     }
 
 

@@ -37,11 +37,9 @@
         background-color: white;
         border-radius: .75em;
 
-
-
         .hero-search {
-            display: flex;
-            width: 400px;
+            height: rem(60px);
+            width: rem(560px);
         }
 
     }
@@ -89,9 +87,6 @@
     .collin {
         display: none;
     }
-
-
-
 
     @include for-normal-layout {
 
