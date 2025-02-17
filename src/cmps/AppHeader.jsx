@@ -24,16 +24,16 @@ export function AppHeader() {
 	const [isHeaderScrolled, setIsHeaderScrolled] = useState(false)
 	const inputRef = useRef(null)
 
-	const tags = [
-		{ txt: 'Programming & Tech', tags: ['programming', 'tech'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/programming-tech-thin.56382a2.svg' },
-		{ txt: 'Graphics & Design', tags: ['graphics', 'design'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/graphics-design-thin.ff38893.svg' },
-		{ txt: 'Digital Marketing', tags: ['digital-marketing'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/digital-marketing-thin.68edb44.svg' },
-		{ txt: 'Writing & Translation', tags: ['writing', 'translation'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/writing-translation-thin.fd3699b.svg' },
-		{ txt: 'Video & Animation', tags: ['video', 'animation'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/video-animation-thin.9d3f24d.svg' },
-		{ txt: 'AI Services', tags: ['ai-services'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/ai-services-thin.104f389.svg' },
-		{ txt: 'Music & Audio', tags: ['music', 'audio'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/music-audio-thin.43a9801.svg' },
-		{ txt: 'Business', tags: ['business'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/business-thin.885e68e.svg' },
-		{ txt: 'Consultin', tags: ['consultin'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/consulting-thin.d5547ff.svg' },
+	const ctgs = [
+		{ txt: 'Programming & Tech', tags: ['programming', 'tech'] },
+		{ txt: 'Graphics & Design', tags: ['graphics', 'design'] },
+		{ txt: 'Digital Marketing', tags: ['digital-marketing'] },
+		{ txt: 'Writing & Translation', tags: ['writing', 'translation'] },
+		{ txt: 'Video & Animation', tags: ['video'] },
+		{ txt: 'AI Services', tags: ['ai-services'] },
+		{ txt: 'Music & Audio', tags: ['music', 'audio'] },
+		{ txt: 'Business', tags: ['business'] },
+		{ txt: 'Consultin', tags: ['consultin'] },
 	]
 
 	useEffect(() => {
@@ -65,7 +65,7 @@ export function AppHeader() {
 		try {
 			await logout()
 			navigate('/')
-			showSuccessMsg(`Bye now`)
+			showSuccessMsg(`Logout`)
 			toggleModal()
 
 		} catch (err) {
@@ -83,9 +83,9 @@ export function AppHeader() {
 				</div>
 
 				{!isInputVisible &&
-					<div className='search-input'>
+					<form className='search-input'>
 						<SearchBar isBtnInline={false} ref={inputRef} />
-					</div>}
+					</form>}
 				<div className='nav-links'>
 					{user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
 					{!user && <NavLink to="login" className="link">Sign in</NavLink>}
@@ -102,9 +102,9 @@ export function AppHeader() {
 			</nav>
 			<div className='tags-wrapper main-container full'>
 				<div className='tags main-layout'>
-					{tags.map(((tag, idx) => {
+					{ctgs.map(((ctg, idx) => {
 						return (
-							<Link key={idx} className="tag" to={`/gig/?tags=${tag.tags}`}>{tag.txt}</Link>
+							<Link key={idx} className="tag" to={`/gig/?tags=${ctg.tags}`}>{ctg.txt}</Link>
 						)
 					}))}
 				</div>

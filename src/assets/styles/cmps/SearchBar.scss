@@ -3,6 +3,11 @@
     position: relative;
     height: 100%;
 
+    &:focus {
+        border: 2px solid $clr2;
+        outline: none;
+    }
+
     input {
 
         border-radius: 4px 0 0 4px;
@@ -14,10 +19,7 @@
         font-size: 1rem;
         width: 100%;
 
-        &:focus {
-            border: 2px solid $clr2;
-            outline: none;
-        }
+
 
         &::-webkit-search-cancel-button {
             display: none;
@@ -27,6 +29,7 @@
     .full-border {
         border-radius: rem(12px);
         border: none;
+        padding: 18px 58px 18px 16px;
     }
 
     .btn-outline {
@@ -47,13 +50,12 @@
         transform: translateY(-50%);
         right: rem(6px);
         border-radius: 8px;
-        height: 75%;
         background-color: $clr8;
         color: $clr6;
         display: inline-flex;
         align-items: center;
         font-size: rem(14px);
-        padding: 8px 16px;
+        padding: 10px 16px;
         margin: 0;
     }
 
