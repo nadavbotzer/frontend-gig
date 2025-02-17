@@ -25,15 +25,15 @@ export function AppHeader() {
 	const inputRef = useRef(null)
 
 	const tags = [
-		{ txt: 'Programming & Tech' },
-		{ txt: 'Graphics & Design' },
-		{ txt: 'Digital Marketing' },
-		{ txt: 'Writing & Translation' },
-		{ txt: 'Video & Animation' },
-		{ txt: 'AI Services' },
-		{ txt: 'Music & Audio' },
-		{ txt: 'Business' },
-		{ txt: 'Consultin' },
+		{ txt: 'Programming & Tech', tags: ['programming', 'tech'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/programming-tech-thin.56382a2.svg' },
+		{ txt: 'Graphics & Design', tags: ['graphics', 'design'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/graphics-design-thin.ff38893.svg' },
+		{ txt: 'Digital Marketing', tags: ['digital-marketing'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/digital-marketing-thin.68edb44.svg' },
+		{ txt: 'Writing & Translation', tags: ['writing', 'translation'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/writing-translation-thin.fd3699b.svg' },
+		{ txt: 'Video & Animation', tags: ['video', 'animation'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/video-animation-thin.9d3f24d.svg' },
+		{ txt: 'AI Services', tags: ['ai-services'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/ai-services-thin.104f389.svg' },
+		{ txt: 'Music & Audio', tags: ['music', 'audio'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/music-audio-thin.43a9801.svg' },
+		{ txt: 'Business', tags: ['business'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/business-thin.885e68e.svg' },
+		{ txt: 'Consultin', tags: ['consultin'], src: 'https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/consulting-thin.d5547ff.svg' },
 	]
 
 	useEffect(() => {
@@ -92,17 +92,12 @@ export function AppHeader() {
 						<SearchBar isBtnInline={false} ref={inputRef} />
 					</div>}
 				<div className='nav-links'>
-
 					{user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
-
 					{!user && <NavLink to="login" className="link">Sign in</NavLink>}
-
 					{!user && <NavLink to="login" className="link btn-join">Join</NavLink>}
-
 					{user && (
 						<div className="user-info">
 							<button ref={btnRef} className=' user-img' onClick={toggleModal}>{user.imgUrl && <img src={user.imgUrl} />}</button>
-
 							<DropDown buttonRef={btnRef} isOpen={isOpen} toggleModal={toggleModal}>
 								<button className='btn-Logout' onClick={onLogout}>Logout</button>
 							</DropDown>
@@ -110,17 +105,13 @@ export function AppHeader() {
 					)}
 				</div>
 			</nav>
-
 			<div className='tags full'>
 				{tags.map(((tag, idx) => {
 					return (
-						<div key={idx} className='tag' onClick={() => goToIndex(tag.txt)}>{tag.txt}</div>
+						<div key={idx} className='tag' onClick={() => goToIndex(tag.tags)}>{tag.txt}</div>
 					)
 				}))}
-
 			</div>
-
-
 		</header>
 	)
 }
