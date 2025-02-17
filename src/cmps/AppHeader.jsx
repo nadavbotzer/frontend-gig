@@ -111,17 +111,14 @@ export function AppHeader() {
 				</div>
 			</nav>
 
-			<section className='tags full'>
-				{tags.map((tag => {
+			<div className='tags full'>
+				{tags.map(((tag, idx) => {
 					return (
-						<section>
-							<article onClick={() => goToIndex(tag.txt)}>{tag.txt}</article>
-						</section>
-
+						<div key={idx} className='tag' onClick={() => goToIndex(tag.txt)}>{tag.txt}</div>
 					)
 				}))}
 
-			</section>
+			</div>
 
 
 		</header>

@@ -3,10 +3,6 @@
     flex-direction: column;
     font-size: rem(16px);
 
-    img {
-        border-radius: 15px;
-    }
-
     .img-wrapper,
     .gig-price {
         &:hover~.gig-title {
