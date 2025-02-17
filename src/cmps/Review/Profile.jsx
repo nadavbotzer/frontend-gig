@@ -1,5 +1,5 @@
 import '../../assets/styles/cmps/Profile.scss'
-import "/node_modules/flag-icons/css/flag-icons.min.css";
+// import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 
 export function Profile({ imgSrc, fullname, location, flagSrc }) {

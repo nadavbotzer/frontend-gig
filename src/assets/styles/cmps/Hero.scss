@@ -13,6 +13,7 @@
     min-height: 500px;
     width: 100%;
     font-weight: 400;
+    margin-top: rem(45px);
 
     .heading-wrapper {
         padding-top: 50px;
@@ -182,8 +183,6 @@
 
     @include for-narrow-layout {
         .heading-wrapper {
-            // padding: 0;
-
             h1 {
                 font-size: rem(40px);
             }

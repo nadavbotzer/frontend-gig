@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 
-export function Category() {
+export function CategoryList() {
     const navigate = useNavigate()
 
     const categorys = [
@@ -21,7 +21,7 @@ export function Category() {
     }
 
     return (
-        <section className='category'>
+        <section className='category-list'>
             {categorys.map((category, index) => {
                 return (
                     <article key={index} onClick={() => goToIndex(category.tags)}>

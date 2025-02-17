@@ -1,38 +1,38 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react'
 
 export function HomeVideo() {
 
-    const [isInView, setIsInView] = useState(false);
-    const videoRef = useRef(null);
+    const [isInView, setIsInView] = useState(false)
+    const videoRef = useRef(null)
 
     function checkIfInView() {
         const videoElement = videoRef.current
         if (videoElement) {
-            const rect = videoElement.getBoundingClientRect();
-            const inView = rect.top >= 0 && rect.bottom <= window.innerHeight;
-            setIsInView(inView);
+            const rect = videoElement.getBoundingClientRect()
+            const inView = rect.top >= 0 && rect.bottom <= window.innerHeight
+            setIsInView(inView)
         }
     }
 
     useEffect(() => {
-        window.addEventListener('scroll', checkIfInView);
+        window.addEventListener('scroll', checkIfInView)
         checkIfInView()
         return () => {
-            window.removeEventListener('scroll', checkIfInView);
-        };
-    }, []);
+            window.removeEventListener('scroll', checkIfInView)
+        }
+    }, [])
 
     useEffect(() => {
         if (isInView) {
-            videoRef.current.play();
+            videoRef.current.play()
         } else {
-            videoRef.current.pause();
+            videoRef.current.pause()
         }
-    }, [isInView]);
+    }, [isInView])
 
 
     return (
-        <section className='video'>
+        <section className='home-video'>
             <p className='bigger'>What success on Fiverr looks like</p>
             <p>Vontélle Eyewear turns to Fiverr freelancers to bring their vision to life.</p>
             <video ref={videoRef}
