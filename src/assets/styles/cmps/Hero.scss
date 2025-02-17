@@ -13,6 +13,7 @@
     min-height: 500px;
     width: 100%;
     font-weight: 400;
+    margin-top: rem(45px);
 
     .heading-wrapper {
         padding-top: 50px;
@@ -82,7 +83,7 @@
     }
 
     .hero-imgs {
-        display: flex;
+        display: none;
         gap: 1.5em;
         align-items: center
     }
@@ -180,5 +181,26 @@
     }
 
 
+    @include for-narrow-layout {
+        .heading-wrapper {
+            h1 {
+                font-size: rem(40px);
+            }
+        }
 
+        .hero-imgs {
+            display: flex;
+        }
+    }
+
+    @include for-wide-layout {
+        .heading-wrapper {
+            padding-top: 50px;
+
+            h1 {
+                font-size: rem(60px);
+            }
+
+        }
+    }
 }

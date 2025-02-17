@@ -2,7 +2,6 @@ import React, { createContext, useState, useContext } from 'react'
 
 const ScrollContext = createContext()
 
-
 export function ScrollProvider({ children }) {
 
     const [isHeroInView, setIsHeroInView] = useState(true)
@@ -17,7 +16,6 @@ export function ScrollProvider({ children }) {
             setIsInputInView,
             isInputVisible,
             setIsInputVisible
-
         }}>
             {children}
         </ScrollContext.Provider>
@@ -25,5 +23,5 @@ export function ScrollProvider({ children }) {
 }
 
 export function useScrollContext() {
-    return useContext(ScrollContext);
+    return useContext(ScrollContext)
 }

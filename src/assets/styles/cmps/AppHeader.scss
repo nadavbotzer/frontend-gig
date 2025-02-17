@@ -159,4 +159,16 @@
         cursor: pointer;
         border-bottom: 1px solid #e4e5e7;
     }
+
+
+    @include for-narrow-layout {
+        .tags {
+            display: flex;
+        }
+    }
+}
+
+.btn-Logout {
+    background-color: $clr6;
+    font-family: Macan;
 }
