@@ -1,0 +1,53 @@
+.join-fiverr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(40px);
+    border-radius: rem(12px);
+    background-color: $clr10;
+    width: 100%;
+    height: rem(248px);
+
+    h1 {
+        color: $clr6;
+        font-size: rem(30px);
+        text-align: center;
+        font-family: Macan;
+        font-weight: 200;
+        letter-spacing: -1.28px;
+        padding-top: 48px;
+        margin: 0;
+
+        span {
+            color: $clr11;
+        }
+    }
+
+    .join-btn {
+        background-color: $clr6;
+        border-radius: 8px;
+
+
+        .link {
+            font-weight: 600;
+            font-size: rem(15px);
+        }
+
+
+    }
+
+    @include for-narrow-layout {
+        h1 {
+
+            font-size: rem(45px);
+        }
+    }
+
+    @include for-wide-layout {
+        h1 {
+
+            font-size: rem(64px);
+
+        }
+    }
+}
