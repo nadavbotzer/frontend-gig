@@ -9,7 +9,7 @@ import { BuyingInfo } from '../cmps/Details/BuyingInfo'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { loadGig, addGigMsg } from '../store/actions/gig.actions'
 
-import '../assets/styles/cmps/GigDetails.scss'
+import '../assets/styles/pages/GigDetails.scss'
 
 export function GigDetails() {
 

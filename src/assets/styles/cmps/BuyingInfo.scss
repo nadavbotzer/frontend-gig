@@ -1,3 +1,5 @@
+@import "../setup/functions";
+
 .buying-info-column {
     width: 50%;
     display: flex;
@@ -29,8 +31,8 @@
                 justify-content: center;
                 font-family: Macan;
                 font-weight: 700;
-                line-height: 24px;
-                padding: 16px;
+                line-height: rem(24px);
+                padding: rem(16px);
                 text-align: center;
                 background-color: #fafafa;
                 color: #74767e;
@@ -67,20 +69,20 @@
             .price {
                 color: #404145;
                 display: inline;
-                font-size: 24px;
+                font-size: rem(24px);
                 font-weight: 700;
-                line-height: 24px;
+                line-height: rem(24px);
             }
 
             .currency-symbol {
-                font-size: 18px;
-                margin-right: 5px;
+                font-size: rem(18px);
+                margin-right: rem(5px);
             }
 
             .info-icon {
-                width: 20px;
+                width: rem(20px);
                 margin: auto;
-                margin-left: 8px;
+                margin-left: rem(8px);
             }
         }
 
@@ -90,39 +92,39 @@
             align-items: center;
             justify-content: flex-start;
             color: #404145;
-            line-height: 24px;
+            line-height: rem(24px);
 
             .discount {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
-                font-size: 16px;
-                line-height: 26px;
+                font-size: rem(16px);
+                line-height: rem(26px);
 
                 .discount-subscribe {
                     color: #026a5d;
                     display: inline;
                     font-weight: 600;
-                    font-size: 16px;
-                    margin: 0px 8px 0px 0px;
-                    margin-left: 7px;
-                    line-height: 26px;
+                    font-size: rem(16px);
+                    margin: rem(0px) rem(8px) rem(0px) rem(0px);
+                    margin-left: rem(7px);
+                    line-height: rem(26px);
                 }
             }
 
             .question-icon {
-                width: 14px;
-                margin-top: 4px;
+                width: rem(14px);
+                margin-top: rem(4px);
             }
         }
 
         .service-desc {
             color: #62646a;
             font-family: Macan;
-            font-size: 16px;
-            line-height: 21px;
-            margin: 24px 0px 0px;
+            font-size: rem(16px);
+            line-height: rem(21px);
+            margin: rem(24px) rem(0px) rem(0px);
 
             .font-weight {
                 font-weight: 550;
@@ -144,13 +146,13 @@
                 justify-content: flex-start;
                 color: #62646a;
                 font-family: Macan;
-                font-size: 14px;
+                font-size: rem(14px);
                 font-weight: 700;
-                line-height: 24px;
+                line-height: rem(24px);
 
                 img {
-                    width: 20px;
-                    margin-right: 3px;
+                    width: rem(20px);
+                    margin-right: rem(3px);
                 }
             }
         }
@@ -159,16 +161,16 @@
             li {
                 display: flex;
                 align-items: center;
-                line-height: 24px;
+                line-height: rem(24px);
                 color: #95979d;
                 font-family: Macan;
-                font-size: 14px;
+                font-size: rem(14px);
                 text-align: left;
                 font-weight: 500;
 
                 img {
-                    width: 20px;
-                    margin-right: 5px;
+                    width: rem(20px);
+                    margin-right: rem(5px);
                 }
             }
         }
@@ -179,7 +181,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-evenly;
-            margin-top: 20px;
+            margin-top: rem(20px);
 
             .btn {
                 width: 100%;
@@ -191,15 +193,15 @@
                 text-align: center;
                 justify-content: center;
                 border-style: solid;
-                border-width: 0.8px;
-                border-radius: 4px;
-                border-radius: 4px;
+                border-width: rem(0.8px);
+                border-radius: rem(4px);
+                border-radius: rem(4px);
                 background-color: #000;
                 color: #fff;
                 font-family: Macan;
                 font-weight: 600;
-                line-height: 16px;
-                padding: 12px 24px;
+                line-height: rem(16px);
+                padding: rem(12px) rem(24px);
 
                 &:hover {
                     opacity: 0.7;
@@ -216,7 +218,7 @@
                     align-items: flex-end;
 
                     img {
-                        width: 20px;
+                        width: rem(20px);
                     }
                 }
             }
@@ -228,11 +230,11 @@
                 align-items: flex-start;
                 justify-content: center;
                 text-align: center;
-                line-height: 21px;
+                line-height: rem(21px);
                 color: #222325;
                 font-family: Macan;
-                font-size: 14px;
-                padding: 12px 0px 0px;
+                font-size: rem(14px);
+                padding: rem(12px) rem(0px) rem(0px);
                 background-color: none;
             }
         }

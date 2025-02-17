@@ -1,3 +1,5 @@
+@import "../setup/functions";
+
 .review-profile {
     width: 100%;
     display: flex;
@@ -5,7 +7,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     border-bottom: thin solid lightgrey;
-    padding: 10px;
+    padding: rem(10px);
 
     img {
         width: 3rem;
@@ -18,15 +20,15 @@
         align-items: flex-start;
         color: #62646a;
         justify-content: space-between;
-        line-height: 24px;
+        line-height: rem(24px);
         text-align: left;
-        padding-left: 20px;
+        padding-left: rem(20px);
 
         .fullname {
             color: #222325;
             font-family: Macan;
             font-weight: 550;
-            font-size: 16px;
+            font-size: rem(16px);
         }
 
         .location-dtl {
@@ -37,15 +39,15 @@
             color: #62646a;
 
             .small {
-                width: 16px;
+                width: rem(16px);
             }
 
             .location {
                 color: #74767e;
                 font-family: Macan;
-                font-size: 12px;
-                line-height: 18px;
-                padding: 0px 0px 0px 8px;
+                font-size: rem(12px);
+                line-height: rem(18px);
+                padding: rem(0px) rem(0px) rem(0px) rem(8px);
                 text-align: left;
             }
         }

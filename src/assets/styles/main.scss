@@ -11,10 +11,10 @@
 @import "basics/links";
 @import "basics/forms";
 
-
-// pages
+// main
 @import "RootCmp";
 
+// pages
 @import "pages/AboutUs";
 @import "pages/HomePage";
 @import "pages/GigIndex";
@@ -22,6 +22,7 @@
 @import "pages/UserDetails";
 @import "pages/TaskDetails";
 @import "pages/LoginSignup";
+@import "pages/GigDetails";
 
 // Components
 @import "cmps/GigList";
@@ -35,6 +36,17 @@
 @import "cmps/MakeIt";
 @import "cmps/ImgCarousel";
 @import "cmps/DropDown";
+@import "cmps/AboutGig.scss";
+@import "cmps/BottomSectionReview.scss";
+@import "cmps/BuyingInfo.scss";
+@import "cmps/MiniUser.scss";
+@import "cmps/NavigationsAndActions.scss";
+@import "cmps/Profile.scss";
+@import "cmps/ReviewCard.scss";
+@import "cmps/ReviewContent.scss";
+@import "cmps/ReviewList.scss";
+@import "cmps/StatusOnline.scss";
+@import "cmps/TopSectionReview.scss";
 
 
 
