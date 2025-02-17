@@ -1,4 +1,5 @@
 import React from 'react'
+import useModal from '../customHooks/useModal'
 import { useEffect, useState, useRef } from 'react'
 
 import { NavLink } from 'react-router-dom'
@@ -6,18 +7,21 @@ import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
-import { GigSearch } from './GigSearch'
 import { useScrollContext } from './ScrollProvider'
-import { Item } from 'better-react-carousel'
+import { DropDown } from './DropDown'
+import { SearchBar } from './SearchBar'
+
 
 
 export function AppHeader() {
 
+	const [isOpen, toggleModal] = useModal()
+	const btnRef = useRef(null)
 	const user = useSelector(storeState => storeState.userModule.user)
 	const navigate = useNavigate()
 	const { isInputVisible, setIsInputVisible } = useScrollContext()
 
-	const [setIsHeaderScrolled] = useState(false)
+	const [isHeaderScrolled, setIsHeaderScrolled] = useState(false)
 	const inputRef = useRef(null)
 
 	const tags = [
@@ -81,7 +85,10 @@ export function AppHeader() {
 					</NavLink>
 				</div>
 
-				{!isInputVisible && <GigSearch ref={inputRef} />}
+				{!isInputVisible &&
+					<div className='search-input'>
+						<SearchBar isBtnInline={false} ref={inputRef} />
+					</div>}
 				<div className='nav-links'>
 
 					{user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
@@ -92,16 +99,23 @@ export function AppHeader() {
 
 					{user && (
 						<div className="user-info">
-							<button className=' user-img' onClick={onLogout}>{user.imgUrl && <img src={user.imgUrl} />}</button>
+							<button ref={btnRef} className=' user-img' onClick={toggleModal}>{user.imgUrl && <img src={user.imgUrl} />}</button>
+
+							<DropDown buttonRef={btnRef} isOpen={isOpen} toggleModal={toggleModal}>
+								<button className='btn-Logout' onClick={onLogout}>Logout</button>
+							</DropDown>
 						</div>
 					)}
 				</div>
 			</nav>
 
-			<section className='tags'>
+			<section className='tags full'>
 				{tags.map((tag => {
 					return (
-						<item onClick={() => goToIndex(tag.txt)}>{tag.txt}</item>
+						<section>
+							<article onClick={() => goToIndex(tag.txt)}>{tag.txt}</article>
+						</section>
+
 					)
 				}))}
 

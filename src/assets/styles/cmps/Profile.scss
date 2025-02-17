@@ -1,0 +1,53 @@
+.review-profile {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-bottom: thin solid lightgrey;
+    padding: 10px;
+
+    img {
+        width: 3rem;
+        border-radius: 50%;
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        color: #62646a;
+        justify-content: space-between;
+        line-height: 24px;
+        text-align: left;
+        padding-left: 20px;
+
+        .fullname {
+            color: #222325;
+            font-family: Macan;
+            font-weight: 550;
+            font-size: 16px;
+        }
+
+        .location-dtl {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            color: #62646a;
+
+            .small {
+                width: 16px;
+            }
+
+            .location {
+                color: #74767e;
+                font-family: Macan;
+                font-size: 12px;
+                line-height: 18px;
+                padding: 0px 0px 0px 8px;
+                text-align: left;
+            }
+        }
+    }
+}

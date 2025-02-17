@@ -1,0 +1,34 @@
+.bottom-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 15px;
+    width: 100%;
+
+    .price,
+    .duration {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 30%;
+
+        .txt {
+            color: #222325;
+            font-family: Macan;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 22px;
+            text-align: left;
+        }
+
+        .desc {
+            color: #74767e;
+            font-family: Macan;
+            font-size: 12px;
+            line-height: 18px;
+            text-align: left;
+        }
+    }
+}

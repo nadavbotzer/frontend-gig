@@ -1,11 +1,16 @@
-.video {
+.home-video {
     width: 100%;
-    margin-top: rem(164px);
+    margin-top: rem(40px);
 
     .bigger {
         font-size: rem(40px);
         margin: 0;
         margin-bottom: rem(16px);
+        color: $clr2;
+    }
+
+    p {
+        color: $clr9;
     }
 
     video {

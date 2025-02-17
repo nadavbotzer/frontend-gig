@@ -64,6 +64,10 @@
     @include aspect-ratio(9, 16);
 }
 
+.icon {
+    width: 20px;
+}
+
 //btn
 .btn {
     padding: rem(10px) rem(20px);

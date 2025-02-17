@@ -1,4 +1,4 @@
-.category {
+.category-list {
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -8,7 +8,7 @@
 
     article {
         padding-inline-end: .3em;
-        font-size: .875em;
+        font-size: rem(14px);
         font-weight: 400;
         cursor: pointer;
         box-shadow: 0 0 8px #00000029;
@@ -54,7 +54,7 @@
 
     @include for-wide-layout {
         grid-template-columns: repeat(9, 1fr);
-        gap: rem(12px);
+        gap: rem(19px);
 
     }
 }

@@ -1,13 +1,17 @@
 
 import SearchIcon from '@mui/icons-material/Search'
-import React, { useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useScrollContext } from './ScrollProvider'
+import { useNavigate } from 'react-router'
+import { SearchBar } from './SearchBar'
 
 
 export function Hero() {
     const heroRef = useRef(null)
     const inputRef = useRef(null)
     const { setIsInputInView, setIsInputVisible } = useScrollContext()
+    const navigate = useNavigate()
+    const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(() => {
         window.addEventListener('scroll', checkInputInView)
@@ -15,6 +19,16 @@ export function Hero() {
             window.removeEventListener('scroll', checkInputInView)
         }
     }, [])
+
+    const onSearchCtg = () => {
+        if (searchTerm.trim()) {
+            navigate(`/gig/?tags=${encodeURIComponent(searchTerm)}`)
+        }
+    }
+
+    const handleInputChange = (event) => {
+        setSearchTerm(event.target.value)
+    }
 
     const checkInputInView = () => {
         const inputElement = inputRef.current
@@ -42,11 +56,12 @@ export function Hero() {
                 <h1> workforce with <span>freelancers</span></h1>
             </div>
             <div className='box'>
-                <div className='hero-search'>
-                    <input ref={inputRef} type="search" placeholder='What service are you looking for today?'></input>
-                    <button className='btn-search'>
+                <div ref={inputRef} className='hero-search'>
+                    {/* <input onChange={handleInputChange} value={searchTerm} ref={inputRef} type="search" placeholder='Search for any service...'></input>
+                    <button onClick={onSearchCtg} className='btn-search'>
                         <SearchIcon />
-                    </button>
+                    </button> */}
+                    <SearchBar isBtnInline={true} />
                 </div>
             </div>
             <section className='hero-imgs'>

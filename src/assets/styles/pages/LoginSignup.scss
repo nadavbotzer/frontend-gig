@@ -3,25 +3,39 @@
 	display: grid;
 	width: min(80%, 300px);
 	margin: auto;
-
 	padding: 1em;
-	background-color: $clr4;
+	border: 1px solid $clr1;
+	border-radius: 15px;
+	justify-items: center;
+
 }
 
+.login-form,
 .signup-form {
-	input {
+
+	input,
+	select {
 		width: 100%;
+		border: 1px solid $clr9;
+		border-radius: 5px;
+		padding: rem(4px) rem(4px);
+
 	}
 
-    .admin-toggle {
-        display: flex;
-        align-items: center;
-        justify-self: start;
+	.login-btn {
+		width: fit-content;
+		font-size: rem(12px);
+	}
 
-        span {
-            font-size: .8em;
-        }
-    }
+	.admin-toggle {
+		display: flex;
+		align-items: center;
+		justify-self: start;
+
+		span {
+			font-size: .8em;
+		}
+	}
 }
 
 .login-page nav {
@@ -40,6 +54,7 @@
 			color: $clr1;
 		}
 	}
+
 	a.active {
 		text-decoration: underline;
 		color: $clr2;
