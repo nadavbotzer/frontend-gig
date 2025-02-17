@@ -61,17 +61,17 @@
         }
     }
 
-    // @include for-narrow-layout {
-    //     display: grid;
-    //     grid-template-columns: repeat(4, 1fr);
-    // }
+    .join-btn {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 20px;
 
-    // @include for-normal-layout {
-    //     grid-template-columns: repeat(4, 1fr);
-    // }
-
-    // @include for-narrow-layout {
-    //     display: grid;
-    //     grid-template-columns: repeat(4, 1fr);
-    // }
+        button {
+            background-color: #222325;
+            color: $clr6;
+            font-size: rem(15px);
+            font-family: Macan;
+            font-weight: 600;
+        }
+    }
 }

@@ -8,7 +8,6 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
 import { GigSearch } from './GigSearch'
 import { useScrollContext } from './ScrollProvider'
-import { Item } from 'better-react-carousel'
 
 
 export function AppHeader() {
