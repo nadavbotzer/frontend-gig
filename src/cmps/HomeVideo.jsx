@@ -33,7 +33,7 @@ export function HomeVideo() {
 
     return (
         <section className='home-video'>
-            <p className='bigger'>What success on Fiverr looks like</p>
+            <p className='bigger'>What success on TopGig looks like</p>
             <p>Vontélle Eyewear turns to Fiverr freelancers to bring their vision to life.</p>
             <video ref={videoRef}
                 width="100%" controls autoplay muted preload="auto"

@@ -21,7 +21,7 @@ export function Signup() {
         const value = ev.target.value
         setCredentials({ ...credentials, [field]: value })
     }
-    
+
     async function onSignup(ev = null) {
         if (ev) ev.preventDefault()
 
@@ -62,7 +62,7 @@ export function Signup() {
                 required
             />
             <ImgUploader onUploaded={onUploaded} />
-            <button>Signup</button>
+            <button className='btn login-btn'>Signup</button>
         </form>
     )
 }
