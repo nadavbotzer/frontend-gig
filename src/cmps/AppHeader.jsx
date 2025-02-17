@@ -84,7 +84,7 @@ export function AppHeader() {
 
 				{!isInputVisible &&
 					<form className='search-input'>
-						<SearchBar isBtnInline={false} ref={inputRef} />
+						<SearchBar isBtnInline={false} ref={inputRef.current} />
 					</form>}
 				<div className='nav-links'>
 					{user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
