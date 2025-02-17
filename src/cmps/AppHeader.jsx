@@ -112,7 +112,7 @@ export function AppHeader() {
 			<section className='tags full'>
 				{tags.map((tag => {
 					return (
-						<section>
+						<section key={tag.txt}>
 							<article onClick={() => goToIndex(tag.txt)}>{tag.txt}</article>
 						</section>
 

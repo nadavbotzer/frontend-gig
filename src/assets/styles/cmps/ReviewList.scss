@@ -1,12 +1,14 @@
+@import "../setup/functions";
+
 .reviews {
     width: 100%;
 
     h1 {
         color: #404145;
-        font-size: 20px;
+        font-size: rem(20px);
         font-weight: 700;
-        line-height: 28px;
-        margin: 0px 0px 16px;
+        line-height: rem(28px);
+        margin: rem(0px) rem(0px) rem(16px);
     }
 
     .review-list {

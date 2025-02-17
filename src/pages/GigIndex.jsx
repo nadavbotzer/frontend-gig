@@ -8,7 +8,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { gigService } from '../services/gig'
 import { userService } from '../services/user'
 import { GigList } from '../cmps/GigList'
-import { NavigationsAndActions } from '../cmps/Details/NavigationsAndActions'
+import { NavigationsAndActions } from '../cmps/NavigationsAndActions'
 import { FilterItem } from '../cmps/FilterItem'
 
 

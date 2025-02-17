@@ -1,9 +1,11 @@
+@import "../setup/functions";
+
 .bottom-section {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 15px;
+    margin-top: rem(15px);
     width: 100%;
 
     .price,
@@ -17,17 +19,17 @@
         .txt {
             color: #222325;
             font-family: Macan;
-            font-size: 14px;
+            font-size: rem(14px);
             font-weight: 600;
-            line-height: 22px;
+            line-height: rem(22px);
             text-align: left;
         }
 
         .desc {
             color: #74767e;
             font-family: Macan;
-            font-size: 12px;
-            line-height: 18px;
+            font-size: rem(12px);
+            line-height: rem(18px);
             text-align: left;
         }
     }

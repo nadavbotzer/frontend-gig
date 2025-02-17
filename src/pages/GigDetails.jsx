@@ -1,24 +1,15 @@
-import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-
-import { NavigationsAndActions } from '../cmps/Details/NavigationsAndActions'
+import { NavigationsAndActions } from '../cmps/NavigationsAndActions'
 import { GigContentLayout } from '../cmps/Details/GigContentLayout'
 import { GigInfo } from '../cmps/Details/GigInfo'
 import { BuyingInfo } from '../cmps/Details/BuyingInfo'
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { loadGig, addGigMsg } from '../store/actions/gig.actions'
 
-import '../assets/styles/cmps/GigDetails.scss'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
+
+import { addGigMsg } from '../store/actions/gig.actions'
+
+import '../assets/styles/pages/GigDetails.scss'
 
 export function GigDetails() {
-
-  // const { gigId } = useParams()
-  // const gig = useSelector(storeState => storeState.gigModule.gig)
-
-  // useEffect(() => {
-  //   loadGig(gigId)
-  // }, [gigId])
 
   const gig = {
     _id: 'g101',
@@ -108,7 +99,10 @@ export function GigDetails() {
 
   return (
     <section className="gig-page">
-      <NavigationsAndActions gigCategory={'Interior design'} />
+      <NavigationsAndActions
+        gigCategory={'Interior design'}
+        showActions={true}
+      />
       <GigContentLayout>
         <GigInfo gig={gig} />
         <BuyingInfo gig={gig} />

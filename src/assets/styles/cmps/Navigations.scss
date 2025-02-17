@@ -1,0 +1,26 @@
+@import '../setup/functions';
+
+.navigations {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #62646a;
+    line-height: rem(24px);
+    padding: rem(4px) rem(0px) rem(4px) rem(6px);
+    gap: rem(8px);
+    font-size: 1rem;
+
+    .link {
+        color: #222325;
+        font-size: rem(14px);
+        margin: 0.5rem;
+
+        img {
+            width: rem(20px);
+        }
+    }
+
+    .path-symbol {
+        color: #c5c6c9;
+    }
+}
