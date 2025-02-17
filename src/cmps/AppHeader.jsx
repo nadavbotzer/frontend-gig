@@ -2,7 +2,7 @@ import React from 'react'
 import useModal from '../customHooks/useModal'
 import { useEffect, useState, useRef } from 'react'
 
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
@@ -73,11 +73,6 @@ export function AppHeader() {
 		}
 	}
 
-	function goToIndex(tag) {
-		navigate(`/gig/?tags=${tag}`)
-
-	}
-
 	return (
 		<header className="app-header full main-container">
 			<nav>
@@ -105,13 +100,16 @@ export function AppHeader() {
 					)}
 				</div>
 			</nav>
-			<div className='tags full'>
-				{tags.map(((tag, idx) => {
-					return (
-						<div key={idx} className='tag' onClick={() => goToIndex(tag.tags)}>{tag.txt}</div>
-					)
-				}))}
+			<div className='tags-wrapper main-container full'>
+				<div className='tags main-layout'>
+					{tags.map(((tag, idx) => {
+						return (
+							<Link key={idx} className="tag" to={`/gig/?tags=${tag.tags}`}>{tag.txt}</Link>
+						)
+					}))}
+				</div>
 			</div>
+
 		</header>
 	)
 }
