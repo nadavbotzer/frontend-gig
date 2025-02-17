@@ -40,40 +40,8 @@
 
 
         .hero-search {
-            display: grid;
-            grid-template-columns: rem(528.875px) rem(54px);
-            grid-template-rows: rem(60px);
-            height: 3.75em;
-            border-radius: 75em;
-
-
-            input {
-                border: none;
-                border-radius: inherit;
-                height: inherit;
-                margin-left: 10px;
-
-
-
-                &:focus {
-                    border: none;
-                    outline: none;
-                }
-
-                &::-webkit-search-cancel-button {
-                    display: none;
-                }
-
-
-            }
-
-            .btn-search {
-                border-radius: 8px;
-                height: 75%;
-                background-color: $clr8;
-                color: $clr6;
-
-            }
+            display: flex;
+            width: 400px;
         }
 
     }
@@ -83,15 +51,22 @@
     }
 
     .hero-imgs {
+        position: relative;
         display: none;
         gap: 1.5em;
-        align-items: center
+        align-items: center;
+
+        img {
+            opacity: 0.5;
+        }
+
     }
 
     .trusted-by {
         font-size: rem(12px);
         margin: 0;
         flex: 1 0 auto;
+        opacity: 0.5;
     }
 
     .jordan {

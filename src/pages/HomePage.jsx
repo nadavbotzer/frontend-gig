@@ -2,7 +2,7 @@ import { CategoryList } from '../cmps/CategoryList'
 import { Hero } from '../cmps/Hero'
 import { HomeVideo } from '../cmps/HomeVideo'
 import { MakeIt } from '../cmps/MakeIt'
-import { JoinFiverr } from '../cmps/JoinFiverr'
+import { JoinTopGig } from '../cmps/JoinTopGig'
 
 export function HomePage() {
     return (
@@ -11,7 +11,7 @@ export function HomePage() {
             <CategoryList />
             <HomeVideo />
             <MakeIt />
-            <JoinFiverr />
+            <JoinTopGig />
         </section >
     )
 }

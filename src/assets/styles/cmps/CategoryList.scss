@@ -54,7 +54,7 @@
 
     @include for-wide-layout {
         grid-template-columns: repeat(9, 1fr);
-        gap: rem(12px);
+        gap: rem(19px);
 
     }
 }

@@ -7,9 +7,9 @@ import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { logout } from '../store/actions/user.actions'
-import { GigSearch } from './GigSearch'
 import { useScrollContext } from './ScrollProvider'
 import { DropDown } from './DropDown'
+import { SearchBar } from './SearchBar'
 
 
 
@@ -21,7 +21,7 @@ export function AppHeader() {
 	const navigate = useNavigate()
 	const { isInputVisible, setIsInputVisible } = useScrollContext()
 
-	const [setIsHeaderScrolled] = useState(false)
+	const [isHeaderScrolled, setIsHeaderScrolled] = useState(false)
 	const inputRef = useRef(null)
 
 	const tags = [
@@ -85,7 +85,10 @@ export function AppHeader() {
 					</NavLink>
 				</div>
 
-				{!isInputVisible && <GigSearch ref={inputRef} />}
+				{!isInputVisible &&
+					<div className='search-input'>
+						<SearchBar isBtnInline={false} ref={inputRef} />
+					</div>}
 				<div className='nav-links'>
 
 					{user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
@@ -106,10 +109,13 @@ export function AppHeader() {
 				</div>
 			</nav>
 
-			<section className='tags'>
+			<section className='tags full'>
 				{tags.map((tag => {
 					return (
-						<article onClick={() => goToIndex(tag.txt)}>{tag.txt}</article>
+						<section>
+							<article onClick={() => goToIndex(tag.txt)}>{tag.txt}</article>
+						</section>
+
 					)
 				}))}
 

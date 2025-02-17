@@ -1,4 +1,4 @@
-.join-fiverr {
+.join-topgig {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,6 +27,10 @@
     .join-btn {
         background-color: $clr6;
         border-radius: 8px;
+
+        &:hover {
+            background-color: #ffffff9e;
+        }
 
 
         .link {
