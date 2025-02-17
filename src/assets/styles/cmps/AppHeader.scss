@@ -40,6 +40,7 @@
         margin-inline-start: 32px;
         align-items: center;
         color: $clr2;
+        flex-shrink: 0;
 
         .btn-join {
             padding: 7px 20px;
@@ -112,7 +113,6 @@
         display: none;
         gap: 12px;
         justify-content: center;
-        padding: 8px;
         color: $clr9;
         font-weight: 100;
         border-block: 1px solid #e4e5e7;
