@@ -39,7 +39,7 @@
 
         .hero-search {
             height: rem(60px);
-            width: rem(560px);
+            width: rem(328px);
         }
 
     }
@@ -67,28 +67,17 @@
         opacity: 0.5;
     }
 
-    .jordan {
+    .display-none {
         display: none;
 
-    }
-
-    .verinica {
-        display: none;
-    }
-
-    .jenny {
-        display: none;
-    }
-
-    .yuli {
-        display: none;
-    }
-
-    .collin {
-        display: none;
     }
 
     @include for-normal-layout {
+        .box {
+            .hero-search {
+                width: rem(408px);
+            }
+        }
 
         .heading-wrapper {
 
@@ -96,6 +85,7 @@
                 font-size: rem(50px);
 
             }
+
         }
 
         .collin {
@@ -148,6 +138,12 @@
                 font-size: rem(30px);
             }
         }
+
+        .box {
+            .hero-search {
+                width: 100%;
+            }
+        }
     }
 
 
@@ -161,6 +157,13 @@
         .hero-imgs {
             display: flex;
         }
+
+        .box {
+            .hero-search {
+                width: rem(436px);
+            }
+        }
+
     }
 
     @include for-wide-layout {
@@ -172,5 +175,13 @@
             }
 
         }
+
+        .box {
+            .hero-search {
+                width: rem(560px);
+            }
+        }
+
     }
+
 }

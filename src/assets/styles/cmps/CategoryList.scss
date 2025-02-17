@@ -2,9 +2,10 @@
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
+    justify-items: center;
     margin-top: rem(22px);
-    gap: rem(85px);
+    row-gap: rem(24px);
+    width: 100%;
 
     article {
         padding-inline-end: .3em;
@@ -16,6 +17,7 @@
         height: 9.2em;
         border-radius: 1em;
         padding-inline-start: .95em;
+        width: 100%;
 
         &:hover {
             background: radial-gradient(63.44% 63.44% at 50% 50%, #c2ffe2 0, #fff 100%), #fff;
@@ -26,7 +28,6 @@
             margin-top: 1.2em;
             margin-bottom: 2em;
         }
-
 
     }
 
@@ -42,19 +43,11 @@
     }
 
     @include for-narrow-layout {
-        grid-template-columns: repeat(3, 1fr);
-        gap: rem(85px);
-    }
-
-    @include for-normal-layout {
         grid-template-columns: repeat(4, 1fr);
-        gap: rem(109px);
-
     }
 
     @include for-wide-layout {
         grid-template-columns: repeat(9, 1fr);
-        gap: rem(19px);
 
     }
 }

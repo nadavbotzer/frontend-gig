@@ -1,17 +1,12 @@
 
-import SearchIcon from '@mui/icons-material/Search'
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { useScrollContext } from './ScrollProvider'
-import { useNavigate } from 'react-router'
 import { SearchBar } from './SearchBar'
-
 
 export function Hero() {
     const heroRef = useRef(null)
     const inputRef = useRef(null)
     const { setIsInputInView, setIsInputVisible } = useScrollContext()
-    const navigate = useNavigate()
-    const [searchTerm, setSearchTerm] = useState('')
 
     useEffect(() => {
         window.addEventListener('scroll', checkInputInView)
@@ -19,16 +14,6 @@ export function Hero() {
             window.removeEventListener('scroll', checkInputInView)
         }
     }, [])
-
-    const onSearchCtg = () => {
-        if (searchTerm.trim()) {
-            navigate(`/gig/?tags=${encodeURIComponent(searchTerm)}`)
-        }
-    }
-
-    const handleInputChange = (event) => {
-        setSearchTerm(event.target.value)
-    }
 
     const checkInputInView = () => {
         const inputElement = inputRef.current
@@ -46,21 +31,17 @@ export function Hero() {
     return (
 
         <div ref={heroRef} className='hero'>
-            <img className='verinica' src='https://tenner-w6u2.onrender.com/assets/verinica-6121f53c.png' />
-            <img className='jordan' src='https://tenner-w6u2.onrender.com/assets/jordan-33dd6ded.png' />
-            <img className='jenny' src='https://tenner-w6u2.onrender.com/assets/jenny-5727627d.png' />
-            <img className='yuli' src='https://tenner-w6u2.onrender.com/assets/brurya-87d0bc25.png' />
-            <img className='collin' src='https://tenner-w6u2.onrender.com/assets/collin-ec968bf2.png' />
+            <img className='verinica display-none' src='https://tenner-w6u2.onrender.com/assets/verinica-6121f53c.png' />
+            <img className='jordan display-none' src='https://tenner-w6u2.onrender.com/assets/jordan-33dd6ded.png' />
+            <img className='jenny display-none' src='https://tenner-w6u2.onrender.com/assets/jenny-5727627d.png' />
+            <img className='yuli display-none' src='https://tenner-w6u2.onrender.com/assets/brurya-87d0bc25.png' />
+            <img className='collin display-none' src='https://tenner-w6u2.onrender.com/assets/collin-ec968bf2.png' />
             <div className='heading-wrapper'>
                 <h1>Scale your professional</h1>
                 <h1> workforce with <span>freelancers</span></h1>
             </div>
             <div className='box'>
                 <div ref={inputRef} className='hero-search'>
-                    {/* <input onChange={handleInputChange} value={searchTerm} ref={inputRef} type="search" placeholder='Search for any service...'></input>
-                    <button onClick={onSearchCtg} className='btn-search'>
-                        <SearchIcon />
-                    </button> */}
                     <SearchBar isBtnInline={true} />
                 </div>
             </div>

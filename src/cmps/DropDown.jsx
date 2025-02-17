@@ -8,7 +8,7 @@ export function DropDown({ children, isOpen, toggleModal, buttonRef }) {
     const [position, setPosition] = useState({ top: 0, left: 0, width: 0 });
 
     useEffect(() => {
-        if (!isOpen || !buttonRef.current) return;
+        if (!isOpen || !buttonRef.current) return
 
         const rect = buttonRef.current.getBoundingClientRect();
         setPosition({
@@ -16,10 +16,10 @@ export function DropDown({ children, isOpen, toggleModal, buttonRef }) {
             left: rect.left + window.scrollX,
             width: rect.width,
         });
-    }, [isOpen, buttonRef]);
+    }, [isOpen, buttonRef])
 
     useEffect(() => {
-        if (!isOpen) return;
+        if (!isOpen) return
 
         const handleClickOutside = (event) => {
             if (
@@ -28,13 +28,13 @@ export function DropDown({ children, isOpen, toggleModal, buttonRef }) {
                 buttonRef.current &&
                 !buttonRef.current.contains(event.target)
             ) {
-                toggleModal(false);
+                toggleModal(false)
             }
-        };
+        }
 
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, [isOpen, toggleModal, buttonRef]);
+    }, [isOpen, toggleModal, buttonRef])
 
     return (
         <Modal isOpen={isOpen}>
@@ -59,7 +59,7 @@ export function DropDown({ children, isOpen, toggleModal, buttonRef }) {
                 </div>
             </DropDownContext.Provider>
         </Modal>
-    );
+    )
 }
 
 // Subcomponents

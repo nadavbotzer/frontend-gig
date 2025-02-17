@@ -93,15 +93,15 @@ export function GigIndex() {
     return (
         <>
             {userService.getLoggedinUser() && <button className='btn' onClick={onAddGig}>Add Gig (DEV)</button>}
-            {tagsParam && <NavigationsAndActions gigCategory={tagsParam} />}
+            {(!!gigs.length && tagsParam) && <NavigationsAndActions gigCategory={tagsParam} />}
             {!tagsParam && <NavigationsAndActions gigCategory={''} />}
             <main className="gig-index">
-                <h1>{tagsParam && tagsToHeading(tagsParam)}</h1>
-                <div className="filter-wrapper">
+                <h1>{(!!gigs.length && tagsParam) && tagsToHeading(tagsParam)}</h1>
+                {(!!gigs.length && tagsParam) && <div className="filter-wrapper">
                     {filters.map(filter => {
                         return <FilterItem filter={filter} key={filter.key} />
                     })}
-                </div>
+                </div>}
                 <div className="sort-wrapper">
                     <span>{gigs.length} results</span>
                 </div>

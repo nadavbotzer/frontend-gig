@@ -66,13 +66,15 @@ export function AppHeader() {
 			await logout()
 			navigate('/')
 			showSuccessMsg(`Bye now`)
+			toggleModal()
+
 		} catch (err) {
 			showErrorMsg('Cannot logout')
 		}
 	}
 
 	function goToIndex(tag) {
-		navigate(`/gig/?tags=[${tag}]`)
+		navigate(`/gig/?tags=${tag}`)
 
 	}
 
