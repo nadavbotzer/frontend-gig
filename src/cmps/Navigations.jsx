@@ -27,11 +27,13 @@ export function Navigations({ gigCategory }) {
                     <Link to={to} className='link'>
                         {
                             index === 0 ?
-                                <img width={'20px'} src={'/images/home-icon.png'} /> :
+                            <span className='icon-link'>
+                                <img width={'20px'} src={'/images/home-icon.png'} /> 
+                            </span> : 
                                 name
                         }
                     </Link>
-                    <span className="path-symbol">/</span>
+                    {index < navigations.length - 1 && <span className="path-symbol">/</span>}
                 </React.Fragment>
             })
         }

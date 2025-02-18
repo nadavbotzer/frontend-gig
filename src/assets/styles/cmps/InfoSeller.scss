@@ -1,0 +1,78 @@
+@import '../setup/functions';
+
+.info-seller {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border: thin solid lightgray;
+    border-radius: rem(3px);
+    padding: rem(18px);
+
+    .border-bottom {
+        border-bottom: solid thin lightgray;
+    }
+
+    section {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        .padding-top {
+            padding-top: rem(18px);
+        }
+
+        .padding-bottom {
+            padding-bottom: rem(10px);
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: space-evenly;
+            width: 50%;
+
+            .label {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-between;
+                margin: rem(10px);
+
+                .title,
+                .text {
+                    font-size: rem(16px);
+                    font-family: Macan;
+                    line-height: rem(20.8px);
+                    text-align: left;
+                }
+
+                .title {
+                    color: #74767e;
+                }
+
+                .text {
+                    color: #62646a;
+                    font-weight: 700;
+                    padding: rem(5px) rem(0px) rem(0px);
+                }
+            }
+        }
+
+        .txt-content {
+            width: 100%;
+
+            .about {
+                color: #74767e;
+                font-size: rem(16px);
+                font-family: Macan;
+                line-height: rem(20.8px);
+                text-align: left;
+            }
+        }
+    }
+}
