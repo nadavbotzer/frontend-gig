@@ -1,24 +1,19 @@
 const { DEV, VITE_LOCAL } = import.meta.env
 
+import { userService } from '../user'
 import { getRandomTags, getRandomLocation, getRandomIntInclusive, makeId, getRandomGigTitle, getRandomName, getRandomCreatedAt, getRandomLanguages } from '../util.service'
 
 import { gigService as local } from './gig.service.local'
 import { gigService as remote } from './gig.service.remote'
 
 export function getEmptyGig() {
+    const loggedInUser = userService.getLoggedinUser()
+
     return {
         title: 'I will ' + getRandomGigTitle(),
         about: "With more than 10 years of professional experience in the field of Architecture, my approach to design is innovative, creative and technically sound. \n During these years I have gained a strong command over architectural design and a building's work ability. \n So whether you're looking for a great design for your building or want to make it workable, I'm the right guy for you!!",
         price: getRandomIntInclusive(10, 2500),
-        owner: {
-            _id: makeId(),
-            fullname: getRandomName(),
-            imgUrl: 'https://randomuser.me/api/portraits/men/' + getRandomIntInclusive(1, 99) + '.jpg',
-            level: getRandomIntInclusive(1, 3),
-            rate: getRandomIntInclusive(1, 5),
-            createdAt: getRandomCreatedAt(),
-            languages: getRandomLanguages(getRandomIntInclusive(1, 5))
-        },
+        owner: loggedInUser,
         location: getRandomLocation(),
         daysToMake: getRandomIntInclusive(1, 10),
         description: [
