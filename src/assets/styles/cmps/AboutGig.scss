@@ -1,19 +1,21 @@
+@import "../setup/functions";
+
 .about {
     h2 {
         color: #404145;
         font-family: Macan;
-        font-size: 20px;
+        font-size: rem(20px);
         font-weight: 700;
-        line-height: 28px;
-        padding: 0px 0px 25px;
+        line-height: rem(28px);
+        padding: rem(0px) rem(0px) rem(25px);
     }
 
     .content {
         p {
             color: #62646a;
             font-family: Macan;
-            line-height: 24px;
-            font-size: 16px;
+            line-height: rem(24px);
+            font-size: rem(16px);
         }
     }
 }

@@ -1,17 +1,19 @@
+@import "../setup/functions";
+
 .online-status {
     border: thin solid #1dbf73;
     color: #1dbf73;
-    border-radius: 20px;
-    font-size: 12px;
+    border-radius: rem(20px);
+    font-size: rem(12px);
     font-weight: 600;
     text-align: center;
-    width: 70px;
+    width: rem(70px);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
 
     img {
-        width: 10px;
+        width: rem(10px);
     }
 }

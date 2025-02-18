@@ -1,7 +1,9 @@
+@import "../setup/functions";
+
 .about-seller {
     h1 {
-        margin-top: 30px;
-        margin-bottom: 30px;
+        margin-top: rem(30px);
+        margin-bottom: rem(30px);
     }
 }
 
@@ -10,10 +12,10 @@
     flex-direction: column;
     width: 100%;
     color: #62646a;
-    gap: 16px;
-    line-height: 24px;
-    padding-bottom: 15px;
-    margin-bottom: 40px;
+    gap: rem(16px);
+    line-height: rem(24px);
+    padding-bottom: rem(15px);
+    margin-bottom: rem(40px);
 
     .profile-content {
         display: flex;
@@ -22,9 +24,9 @@
         justify-content: flex-start;
 
         .profile {
-            font-size: 28px;
-            line-height: 36px;
-            margin-right: 15px;
+            font-size: rem(28px);
+            line-height: rem(36px);
+            margin-right: rem(15px);
 
             .profile-img {
                 border-radius: 50%;
@@ -37,8 +39,8 @@
             flex-direction: column;
             align-items: flex-start;
             justify-content: center;
-            gap: 4px;
-            line-height: 24px;
+            gap: rem(4px);
+            line-height: rem(24px);
 
             .about-user-row {
                 display: flex;
@@ -46,24 +48,24 @@
                 align-items: center;
                 justify-content: flex-start;
                 color: #62646a;
-                gap: 12px;
-                line-height: 24px;
+                gap: rem(12px);
+                line-height: rem(24px);
 
                 .about-profession {
                     color: #62646a;
                     font-family: Macan;
-                    font-size: 16.5px;
-                    line-height: 20px;
+                    font-size: rem(16.5px);
+                    line-height: rem(20px);
                     text-align: left;
                     font-weight: 500;
                 }
 
                 .user-name {
                     color: #404145;
-                    font-size: 18px;
+                    font-size: rem(18px);
                     font-weight: 700;
-                    line-height: 26px;
-                    margin: 0px 8px 0px 0px;
+                    line-height: rem(26px);
+                    margin: rem(0px) rem(8px) rem(0px) rem(0px);
 
                     &:hover {
                         text-decoration: underline;
@@ -74,32 +76,32 @@
                 .top-rated {
                     align-items: center;
                     background-color: #ffe0b3;
-                    border-radius: 4px;
+                    border-radius: rem(4px);
                     color: #421300;
                     display: flex;
-                    font-size: 14px;
+                    font-size: rem(14px);
                     font-weight: 600;
-                    gap: 4px;
-                    line-height: 18px;
-                    padding: 0px 6px;
+                    gap: rem(4px);
+                    line-height: rem(18px);
+                    padding: rem(0px) rem(6px);
                 }
 
                 .profession {
                     color: #222325;
                     font-family: Macan;
                     font-weight: 700;
-                    line-height: 24px;
-                    font-size: 14px;
+                    line-height: rem(24px);
+                    font-size: rem(14px);
                 }
 
                 .reviews {
                     align-items: flex-start;
                     color: #74767e;
-                    line-height: 24px;
-                    margin: 0px 0px 0px 4px;
+                    line-height: rem(24px);
+                    margin: rem(0px) rem(0px) rem(0px) rem(4px);
                     text-align: center;
                     font-weight: 500;
-                    font-size: 16px;
+                    font-size: rem(16px);
 
                     &:hover {
                         text-decoration: underline;
@@ -112,8 +114,8 @@
                     flex-direction: row;
                     align-items: center;
                     justify-content: space-between;
-                    margin-right: 5px;
-                    margin-left: 5px;
+                    margin-right: rem(5px);
+                    margin-left: rem(5px);
 
                     .stars {
                         display: flex;
@@ -123,16 +125,16 @@
 
                         img {
                             fill: #222325;
-                            width: 20px;
+                            width: rem(20px);
                         }
                     }
 
                     .number {
                         color: #222325;
                         font-weight: 700;
-                        line-height: 24px;
-                        padding: 0px 0px 0px 4px;
-                        font-size: 16px;
+                        line-height: rem(24px);
+                        padding: rem(0px) rem(0px) rem(0px) rem(4px);
+                        font-size: rem(16px);
                     }
                 }
             }
@@ -143,18 +145,18 @@
         width: 20%;
         align-items: center;
         border-color: #222325;
-        border-radius: 8px;
+        border-radius: rem(8px);
         border-style: solid;
-        border-width: 0.8px;
+        border-width: rem(0.8px);
         color: #222325;
         display: flex;
         font-family: Macan;
         font-weight: 600;
-        gap: 8px;
+        gap: rem(8px);
         justify-content: center;
-        line-height: 24px;
-        margin: 20px 0px 0px;
-        padding: 8px 16px;
+        line-height: rem(24px);
+        margin: rem(20px) rem(0px) rem(0px);
+        padding: rem(8px) rem(16px);
         text-align: center;
         background-color: #fff;
 

@@ -83,9 +83,9 @@ export function AppHeader() {
 				</div>
 
 				{!isInputVisible &&
-					<form className='search-input'>
-						<SearchBar isBtnInline={false} ref={inputRef.current} />
-					</form>}
+					<div className='search-input'>
+						<SearchBar placeholder={'what service are you looking for today?'} isBtnInline={false} ref={inputRef.current} />
+					</div>}
 				<div className='nav-links'>
 					{user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
 					{!user && <NavLink to="login" className="link">Sign in</NavLink>}
