@@ -24,11 +24,12 @@
 
         .like-btn {
             position: absolute;
-            right: 5px;
-            top: 5px;
+            right: 1rem;
+            top: 1rem;
             margin: 0;
             background-color: transparent;
             color: white;
+            cursor: pointer;
         }
 
     }
