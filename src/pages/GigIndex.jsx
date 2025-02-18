@@ -16,15 +16,47 @@ export function GigIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
     const tagsParam = searchParams.get('tags')
-    const [filterBy, setFilterBy] = useState(null)
+    const [filterBy, setFilterBy] = useState(gigService.getDefaultFilter())
     const filters = [
         {
-            key: 'budget',
-            label: 'Budget'
+            key: 'price',
+            label: 'Budget',
+            options: [
+                {
+                    label: 'Value',
+                    value: '-467'
+                },
+                {
+                    label: 'Mid-range',
+                    value: '467-1495'
+                },
+                {
+                    label: 'High-end',
+                    value: '1495-'
+                }
+            ]
         },
         {
-            key: 'delivery-time',
-            label: 'Delivery time'
+            key: 'deliveryTime',
+            label: 'Delivery time',
+            options: [
+                {
+                    label: 'Express 24H',
+                    value: '1'
+                },
+                {
+                    label: 'Up to 3 days',
+                    value: '3'
+                },
+                {
+                    label: 'Up to 7 days',
+                    value: '7'
+                },
+                {
+                    label: 'Anytime',
+                    value: ''
+                },
+            ]
         }
     ]
 
@@ -32,8 +64,6 @@ export function GigIndex() {
         if (tagsParam) {
             const tags = parseTags(tagsParam)
             setFilterBy(prevFilter => ({ ...prevFilter, tags: tags }))
-        } else {
-            setFilterBy(gigService.getDefaultFilter())
         }
     }, [tagsParam])
 
@@ -73,6 +103,24 @@ export function GigIndex() {
     //         showErrorMsg('Cannot update gig')
     //     }
     // }
+    function handleApplyFilter(filter, newValue) {
+        if (filterBy[filter.key] === newValue) return;
+
+        setFilterBy(prevFilter => {
+            if (filter.key === 'price') {
+                const [min, max] = newValue.split('-')
+                return {
+                    ...prevFilter,
+                    price: { min: min ? +min : '', max: max ? +max : '' } // Create a new object to break reference
+                };
+            }
+
+            return {
+                ...prevFilter,
+                [filter.key]: newValue
+            };
+        });
+    }
     function tagsToHeading(tags) {
         return tags
             .replace(/[\[\]]/g, '')
@@ -97,9 +145,13 @@ export function GigIndex() {
                 {(!!gigs.length && tagsParam) && <NavigationsAndActions gigCategory={tagsParam} />}
                 {!tagsParam && <NavigationsAndActions gigCategory={''} />}
                 <h1>{(!!gigs.length && tagsParam) && tagsToHeading(tagsParam)}</h1>
-                {(!!gigs.length && tagsParam) && <div className="filter-wrapper">
+                {<div className="filter-wrapper">
                     {filters.map(filter => {
-                        return <FilterItem filter={filter} key={filter.key} />
+                        return <FilterItem
+                            onApplyFilter={handleApplyFilter}
+                            filter={filter}
+                            key={filter.key}
+                            initalValue={filterBy[filter.key]} />
                     })}
                 </div>}
                 <div className="sort-wrapper">

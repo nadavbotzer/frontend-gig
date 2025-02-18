@@ -3,7 +3,7 @@ import { Modal } from "./Modal";
 
 const DropDownContext = createContext();
 
-export function DropDown({ children, isOpen, toggleModal, buttonRef }) {
+export function DropDown({ children, isOpen, toggleModal, buttonRef, className }) {
     const dropdownRef = useRef(null);
     const [position, setPosition] = useState({ top: 0, left: 0, width: 0 });
 
@@ -41,18 +41,11 @@ export function DropDown({ children, isOpen, toggleModal, buttonRef }) {
             <DropDownContext.Provider value={{ toggleModal }}>
                 <div
                     ref={dropdownRef}
-                    className="dropdown"
+                    className={`dropdown ${className}`}
                     style={{
-                        position: "absolute",
-                        top: `${position.top}px`,
+                        top: `calc(${position.top}px + 0.25rem)`,
                         left: `${position.left}px`,
                         minWidth: `${position.width}px`,
-                        background: "white",
-                        border: "1px solid #ccc",
-                        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                        padding: "8px",
-                        borderRadius: "6px",
-                        zIndex: 1000
                     }}
                 >
                     {children}

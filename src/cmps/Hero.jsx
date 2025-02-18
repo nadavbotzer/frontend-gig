@@ -41,9 +41,9 @@ export function Hero() {
                 <h1> workforce with <span>freelancers</span></h1>
             </div>
             <div className='box'>
-                <div ref={inputRef} className='hero-search'>
+                <form ref={inputRef} className='hero-search'>
                     <SearchBar placeholder={'Search for any service...'} isBtnInline={true} />
-                </div>
+                </form>
             </div>
             <section className='hero-imgs'>
                 <span className='trusted-by'>Trusted by:</span>

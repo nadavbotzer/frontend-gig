@@ -16,7 +16,7 @@ import { gigService as remote } from './gig.service.remote'
 function getEmptyGig() {
     return {
         title: 'I will ' + getRandomGigTitle(),
-        price: getRandomIntInclusive(10, 300),
+        price: getRandomIntInclusive(10, 2500),
         owner: {
             _id: makeId(),
             fullname: getRandomName(),
@@ -53,10 +53,14 @@ function getEmptyGig() {
 function getDefaultFilter() {
     return {
         txt: '',
-        minPrice: '',
+        price: {
+            min: '',
+            max: '',
+        },
         sortField: '',
         sortDir: '',
         tags: [],
+        deliveryTime: ''
     }
 }
 

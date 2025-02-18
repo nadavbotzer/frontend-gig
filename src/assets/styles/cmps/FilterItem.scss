@@ -1,0 +1,45 @@
+.filter-item-dropdown {
+    max-width: rem(300px);
+    width: 100%;
+
+    .filter-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+}
+
+.radio-list {
+    .radio-item-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        padding: rem(12px);
+        border-radius: 5px;
+
+        &:hover {
+            background-color: $gray6;
+        }
+
+        input[type=radio]:checked {
+            +.radio-dot {
+                background-color: $gray2;
+                box-shadow: inset 0px 0px 0px 3px white;
+            }
+        }
+
+        .radio-dot {
+            border: 1px solid #b5b6ba;
+            border-radius: 50%;
+            width: rem(18px);
+            height: rem(18px);
+        }
+
+        .radio-label {
+            font-weight: 700;
+        }
+    }
+
+}
