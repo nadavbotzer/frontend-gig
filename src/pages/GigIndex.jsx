@@ -64,7 +64,6 @@ export function GigIndex() {
     // async function onUpdateGig(gig) { //Save for Referance
     //     const price = +prompt('New price?', gig.price)
     //     if (price === 0 || price === gig.price) return
-
     //     const gigToSave = { ...gig, price }
     //     try {
     //         const savedGig = await updateGig(gigToSave)
@@ -73,6 +72,7 @@ export function GigIndex() {
     //         showErrorMsg('Cannot update gig')
     //     }
     // }
+
     function tagsToHeading(tags) {
         return tags
             .replace(/[\[\]]/g, '')
@@ -89,7 +89,9 @@ export function GigIndex() {
     function parseTags(str) {
         return str.replace(/[\[\]]/g, '').split(',').map(tag => tag.trim());
     }
+
     if (!gigs) return <div>Loading...</div>
+
     return (
         <>
             {userService.getLoggedinUser() && <button className='btn' onClick={onAddGig}>Add Gig (DEV)</button>}

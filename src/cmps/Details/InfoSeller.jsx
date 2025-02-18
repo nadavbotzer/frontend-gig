@@ -1,32 +1,41 @@
+import { timeAgo } from '../../services/util.service';
+
 import '../../assets/styles/cmps/InfoSeller.scss'
 
-export function InfoSeller({ location, createdAt, avgResponseStr, lastDeliveryAt, languagesArray }) {
+export function InfoSeller({ location, createdAt, avgResponse, lastDeliveryAt, languagesArray, aboutSellerTxt }) {
+
+    function formatCreatedAt(timestamp) {
+        const date = new Date(timestamp);
+        const options = { month: 'short', year: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    }
+
     return <div className="info-seller">
         <section className='border-bottom'>
             <div className="column padding-bottom">
                 <div className="label">
                     <span className="title">From</span>
-                    <span className="text">United States</span>
+                    <span className="text">{location.name}</span>
                 </div>
                 <div className="label">
                     <span className="title">Avg. response time</span>
-                    <span className="text">1 hour</span>
+                    <span className="text">{`${avgResponse}  ${avgResponse > 1 ? 'hours' : 'hour'}`}</span>
                 </div>
                 <div className="label">
                     <span className="title">Languages</span>
-                    <span className="text">English, Spanish</span>
+                    <span className="text">{languagesArray.map((lang) => { return <span key={lang}>{lang}, </span> })}</span>
                 </div>
             </div>
 
             <div className="column">
                 <div className="label">
                     <span className="title">Member since</span>
-                    <span className="text">Jan 2018</span>
+                    <span className="text">{formatCreatedAt(createdAt)}</span>
                 </div>
 
                 <div className="label">
                     <span className="title">Last delivery</span>
-                    <span className="text">2 days</span>
+                    <span className="text">{timeAgo(lastDeliveryAt)}</span>
                 </div>
             </div>
         </section>
@@ -34,7 +43,7 @@ export function InfoSeller({ location, createdAt, avgResponseStr, lastDeliveryAt
         <section>
             <div className="column txt-content padding-top">
                 <p className="about">
-                    Hello esteemed Fiverr patrons, my name is Cole Rhodes-Dow! I have been animating for over 7 years, bringing to life thousands of videos for my clients as well as three original animated shows of my own! I run an animation studio made up of a team of 10 top tier animators, voice actors, and script writers, from NYC, LA, and London. We offer start to finish animated video production for business commercials, music videos, kids shows, and adult cartoons! No idea is too crazy, reach out to me and I'd love to set up a Zoom call to discuss your project details! Talk soon!
+                    {aboutSellerTxt}
                 </p>
             </div>
         </section>

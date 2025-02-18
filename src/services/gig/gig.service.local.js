@@ -61,22 +61,7 @@ async function save(gig) {
         };
         savedGig = await storageService.put(STORAGE_KEY, gigToSave);
     } else {
-        // Create a new gig
-        const gigToSave = {
-            _id: makeId(),
-            title: gig.title || 'I will ' + getRandomGigTitle(),
-            price: gig.price || getRandomIntInclusive(10, 300),
-            owner: userService.getLoggedinUser(),
-            daysToMake: gig.daysToMake || getRandomIntInclusive(1, 10),
-            description: gig.description || 'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
-            avgResponseTime: gig.avgResponseTime || getRandomIntInclusive(1, 24),
-            loc: gig.loc || getRandomLocation(),
-            imgUrls: gig.imgUrls || ['/img/img' + getRandomIntInclusive(1, 5) + '.jpg'],
-            tags: gig.tags || getRandomTags(),
-            likedByUsers: gig.likedByUsers || [],
-            reviews: gig.reviews || [],
-        }
-        savedGig = await storageService.post(STORAGE_KEY, gigToSave);
+        savedGig = await storageService.post(STORAGE_KEY, gig);
     }
 
     return savedGig
