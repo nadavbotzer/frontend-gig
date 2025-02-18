@@ -30,6 +30,18 @@
             background-color: transparent;
             color: white;
             cursor: pointer;
+
+            .heart {
+                background-image: url(https://fiverr-res.cloudinary.com/npm-assets/@fiverr/search_perseus/hearts.e6208a0.svg);
+                background-position: 0 0;
+                height: 32px;
+                width: 34px;
+
+                &.selected {
+                    background-position-x: right;
+                }
+            }
+
         }
 
     }

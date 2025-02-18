@@ -1,29 +1,31 @@
 import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 import { updateGig } from '../store/actions/gig.actions'
 import { userService } from '../services/user'
 import { ImgCarousel } from '../cmps/ImgCarousel'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
-import StarIcon from '@mui/icons-material/Star'
+import StarRateIcon from '@mui/icons-material/StarRate';
 
 export function GigPreview({ gig, goToDetails }) {
-    const dispatch = useDispatch()
+    const loggedInUser = userService.getLoggedinUser()
 
-    function onClickLike() {
-        console.log('gig liked')
+    async function onClickLike(ev) {
+        ev.stopPropagation()
 
-        const loggedInUser = userService.getLoggedinUser()
-        if (!loggedInUser) return // Ensure the user is logged in
+        if (!loggedInUser) return
 
-        // Clone the gig object and add the logged-in user to the likedByUsers array
-        const updatedGig = {
-            ...gig,
-            likedByUsers: [...gig.likedByUsers, loggedInUser]  // Add the user to likedByUsers
+        const isLiked = isGigLikedByUser()
+        const updatedLikedByUsers = isLiked
+            ? gig.likedByUsers.filter(user => user._id !== loggedInUser._id) // Remove user
+            : [...gig.likedByUsers, loggedInUser]
+
+        const updatedGig = { ...gig, likedByUsers: updatedLikedByUsers }
+
+        try {
+            const savedGig = await updateGig(updatedGig)
+        } catch (err) {
+            console.error('Error updating gig like status:', err)
         }
-
-        // Dispatch the action to update the gig in the store
-        dispatch(updateGig(updatedGig))  // Dispatching the action will update the store
     }
+
 
     function getGigReviewsAvgRate(reviews) {
         if (reviews.length === 0) return 0
@@ -32,11 +34,20 @@ export function GigPreview({ gig, goToDetails }) {
         return avgRate.toFixed(1)
     }
 
+    function isGigLikedByUser() {
+        return gig.likedByUsers.some(user => user._id === loggedInUser._id)
+    }
     return (
         <article className="preview">
             <div className="img-wrapper">
                 <ImgCarousel imgUrls={gig.imgUrls} onClickImg={goToDetails} />
-                <button className="like-btn" onClick={onClickLike}><FavoriteBorderIcon /></button>
+                <button
+                    className="like-btn"
+                    onClick={onClickLike}>
+                    <div className={`heart ${isGigLikedByUser() ? 'selected' : ''}`}>
+
+                    </div>
+                </button>
             </div>
             <div className="gig-user-preview">
                 <img className="gig-user-img" src={gig.owner.imgUrl} />
@@ -45,7 +56,7 @@ export function GigPreview({ gig, goToDetails }) {
             </div>
             <Link className="gig-title" to={`/gig/${gig._id}`}>{gig.title}</Link>
             <div className="gig-rating-preview">
-                <span><StarIcon /></span>
+                <span><StarRateIcon /></span>
                 <span>{getGigReviewsAvgRate(gig.reviews)}</span>
                 <span className="gig-previews-count">({gig.reviews.length})</span>
             </div>
