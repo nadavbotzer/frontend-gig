@@ -24,18 +24,6 @@ export function AppHeader() {
 	const [isHeaderScrolled, setIsHeaderScrolled] = useState(false)
 	const inputRef = useRef(null)
 
-	const tags = [
-		{ txt: 'Programming & Tech' },
-		{ txt: 'Graphics & Design' },
-		{ txt: 'Digital Marketing' },
-		{ txt: 'Writing & Translation' },
-		{ txt: 'Video & Animation' },
-		{ txt: 'AI Services' },
-		{ txt: 'Music & Audio' },
-		{ txt: 'Business' },
-		{ txt: 'Consultin' },
-	]
-
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll)
 
@@ -71,11 +59,6 @@ export function AppHeader() {
 		}
 	}
 
-	function goToIndex(tag) {
-		navigate(`/gig/?tags=[${tag}]`)
-
-	}
-
 	return (
 		<header className="app-header full main-container">
 			<nav>
@@ -108,20 +91,6 @@ export function AppHeader() {
 					)}
 				</div>
 			</nav>
-
-			<section className='tags full'>
-				{tags.map((tag => {
-					return (
-						<section key={tag.txt}>
-							<article onClick={() => goToIndex(tag.txt)}>{tag.txt}</article>
-						</section>
-
-					)
-				}))}
-
-			</section>
-
-
 		</header>
 	)
 }
