@@ -161,3 +161,24 @@ export function getDefaultFilter() {
         deliveryTime: ''
     }
 }
+
+export function getRandomDuration() {
+
+    const period = ['days', 'day', 'weeks', 'week', 'months', 'month', 'years', 'year']
+    const idx = getRandomIntInclusive(0, 7)
+
+    if (idx % 2 > 0) {
+        return `1 ${period[idx]}`
+    }
+
+    switch (period[idx]) {
+        case 'days': 
+            return `${getRandomIntInclusive(1, 6)} ${period[idx]}`;
+        case 'weeks': 
+            return `${getRandomIntInclusive(1, 3)} ${period[idx]}`;
+        case 'months': 
+            return `${getRandomIntInclusive(1, 11)} ${period[idx]}`;
+        case 'years': 
+            return `${getRandomIntInclusive(1, 3)} ${period[idx]}`;
+    }
+}

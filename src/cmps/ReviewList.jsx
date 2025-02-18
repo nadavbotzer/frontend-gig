@@ -10,19 +10,25 @@ export function ReviewList({ reviews }) {
             {
                 reviews.map(({
                     _id,
-                    by,
-                    createdAt, rate, text, duration, startPriceRange, endPriceRange,
+                    name,
+                    img,
+                    location,
+                    reviewedAt, 
+                    review,
+                    rate, 
+                    duration, 
+                    startPriceRange, 
+                    endPriceRange,
                     projectImg
                 }) => {
                     return <ReviewCard
                         key={_id}
-                        flagSrc={by.flagSrc}
-                        imgSrc={by.imgSrc}
-                        location={by.location}
-                        fullname={by.fullname}
-                        createdAt={createdAt}
+                        imgSrc={img}
+                        location={location}
+                        fullname={name}
+                        createdAt={reviewedAt}
+                        text={review}
                         rate={rate}
-                        text={text}
                         duration={duration}
                         startPriceRange={startPriceRange}
                         endPriceRange={endPriceRange}
