@@ -64,8 +64,22 @@ function getDefaultFilter() {
     }
 }
 
+function getFilterLabels() {
+    return {
+        txt: 'Text',
+        price: {
+            min: 'Minimum',
+            max: 'Maximum',
+        },
+        sortField: '',
+        sortDir: '',
+        tags: 'Categoties',
+        deliveryTime: 'Delivery Time'
+    }
+}
+
 const service = VITE_LOCAL === 'true' ? local : remote
-export const gigService = { getEmptyGig, getDefaultFilter, ...service }
+export const gigService = { getEmptyGig, getDefaultFilter, getFilterLabels, ...service }
 
 // Easy access to this service from the dev tools console
 // when using script - dev / dev:local

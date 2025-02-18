@@ -24,6 +24,29 @@
         }
     }
 
+    .active-filters {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+
+        .active-filter {
+            background-color: $gray1;
+            padding: 0.5rem;
+            border-radius: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            font-size: rem(14px);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            button {
+                background: transparent;
+                cursor: inherit;
+            }
+        }
+    }
+
 
 
 

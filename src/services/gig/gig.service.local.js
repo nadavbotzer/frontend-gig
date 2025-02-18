@@ -35,14 +35,10 @@ async function query(filterBy = indexGigService.getDefaulFilter()) {
         gigs = gigs.filter(gig => regex.test(gig.title) || regex.test(gig.description))
     }
     if (minPrice) {
-        console.log('min price', minPrice)
-        console.log('gigs', [...gigs])
         gigs = gigs.filter(gig => gig.price >= minPrice)
 
     }
     if (maxPrice) {
-        console.log('max price', maxPrice)
-        console.log('gigs', [...gigs])
         gigs = gigs.filter(gig => gig.price <= maxPrice)
     }
     if (sortField === 'title' || sortField === 'owner') {

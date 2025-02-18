@@ -17,6 +17,7 @@ export function GigIndex() {
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
     const tagsParam = searchParams.get('tags')
     const [filterBy, setFilterBy] = useState(gigService.getDefaultFilter())
+    const filterLabels = gigService.getFilterLabels()
     const filters = [
         {
             key: 'price',
@@ -132,6 +133,23 @@ export function GigIndex() {
             };
         });
     }
+    function formatPriceRange(min, max) {
+        if (min && max) return `Budget: $${min} - $${max}`;
+        if (min) return `Budget: $${min}`;
+        if (max) return `Budget: $${max}`;
+        return '';
+    }
+    function getDeliveryTimeLabel(value) {
+        // Find the 'deliveryTime' filter and get the corresponding label
+        const deliveryTimeOption = filters.find(filter => filter.key === 'deliveryTime')
+            ?.options.find(option => option.value === value);
+
+        // If option is found, return the label; otherwise, return the value
+        return deliveryTimeOption ? deliveryTimeOption.label : value;
+    }
+    function getFilterLabel(key) {
+        return filters.find(filter => filter.key === key)?.label || key
+    }
     function tagsToHeading(tags) {
         return tags
             .replace(/[\[\]]/g, '')
@@ -166,6 +184,31 @@ export function GigIndex() {
                             initalValue={filterBy[filter.key]} />
                     })}
                 </div>}
+                <div className="active-filters">
+                    {Object.entries(filterBy).map(([key, value]) => {
+                        if (key === 'tags') return null; // Ignore 'tags' completely
+
+                        if (!value || (typeof value === 'object' && Object.values(value).every(v => v === ''))) return null;
+
+                        let displayValue = value;
+                        if (key === 'price' && typeof value === 'object') {
+                            const { min, max } = value;
+                            displayValue = formatPriceRange(min, max);
+                        }
+                        if (key === 'deliveryTime') {
+                            // Get the label for delivery time using the function
+                            displayValue = getDeliveryTimeLabel(value);
+                        }
+
+                        return (
+                            <div key={key} className="active-filter">
+                                <div>{displayValue}</div>
+                                <button onClick={() => handleClearFilter(key)}>✕</button>
+                            </div>
+                        );
+                    })}
+                </div>
+
                 <div className="sort-wrapper">
                     <span>{gigs.length} results</span>
                 </div>
