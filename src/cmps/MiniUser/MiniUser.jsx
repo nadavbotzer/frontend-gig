@@ -4,6 +4,15 @@ import { StatusOnline } from '../StatusOnline.jsx';
 import '../../assets/styles/cmps/MiniUser.scss'
 
 export function MiniUser({ isAbout }) {
+
+    function createRatingStarString(rate) {
+        let stars = []
+        for (let i = 0; i < rate; i++) {
+            stars.push(<img className='icon' src='/images/star-dark-icon.png' key={i} />)
+        }
+        return stars;
+    }
+
     const gig = {
         _id: 'g101',
         title: 'I will design your logo',
@@ -36,6 +45,8 @@ export function MiniUser({ isAbout }) {
         ],
     }
 
+    const stars = createRatingStarString(gig.owner.rate)
+
     return <div className={`mini-user ${!isAbout ? 'border-bottom' : ''}`}>
 
         <section className='profile-content'>
@@ -57,20 +68,27 @@ export function MiniUser({ isAbout }) {
                 }
 
                 <div className={`about-user-row`}>
+
                     {!isAbout && <span className="profession">Architectural visualization artist (ArcViz)</span>}
-                    <div className="star-rating">
-                        <span className='stars'>
-                            <img width={'20px'} src={'/images/star-icon.png'} />
-                            <img width={'20px'} src={'/images/star-icon.png'} />
-                            <img width={'20px'} src={'/images/star-icon.png'} />
-                            <img width={'20px'} src={'/images/star-icon.png'} />
-                            <img width={'20px'} src={'/images/star-icon.png'} />
-                        </span>
-                        <span className='number'>4.9</span>
-                        <span className="reviews">{`(${isAbout ? '' : 'reviews '}${gig.reviews.length})`}</span>
+
+                    <div className="rating">
+                        <div className="star-rating">
+                            <span className='stars'>
+                                {
+                                    stars.map((star) => {
+                                        return star
+                                    })
+                                }
+                            </span>
+                            <span className='number'>4.9</span>
+                        </div>
+                        {!isAbout && <span className="reviews">({gig.reviews.length} reviews)</span>}
+                        {isAbout && <span className="reviews">({gig.reviews.length})</span>}
                     </div>
+
                     {isAbout && <span className='top-rated'> Top Rated: {gig.owner.rate}</span>}
                 </div>
+
             </section>
         </section>
         {isAbout && <input type="button" value="Contact me" className='contact' />}

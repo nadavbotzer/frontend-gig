@@ -87,47 +87,49 @@
                     font-size: rem(14px);
                 }
 
-                .reviews {
-                    align-items: flex-start;
-                    color: #74767e;
-                    line-height: rem(24px);
-                    margin: rem(0px) rem(0px) rem(0px) rem(4px);
-                    text-align: center;
-                    font-weight: 500;
-                    font-size: rem(16px);
-
-                    &:hover {
-                        text-decoration: underline;
-                        text-decoration-color: #74767e;
-                    }
-                }
-
-                .star-rating {
+                .rating {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
                     justify-content: space-between;
-                    margin-right: rem(5px);
-                    margin-left: rem(5px);
 
-                    .stars {
+                    .reviews {
+                        width: fit-content;
+                        text-align: end;
+                        color: #74767e;
+                        font-weight: 550;
+                        text-decoration: underline;
+                        text-decoration-color: #74767e;
+                        font-size: rem(15.5px);
+                    }
+
+                    .star-rating {
                         display: flex;
                         flex-direction: row;
                         align-items: center;
-                        justify-content: flex-start;
+                        justify-content: space-between;
+                        margin-right: rem(5px);
+                        margin-left: rem(5px);
 
-                        img {
-                            fill: #222325;
-                            width: rem(20px);
+                        .stars {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: flex-start;
+
+                            img {
+                                fill: #222325;
+                                width: rem(20px);
+                            }
                         }
-                    }
 
-                    .number {
-                        color: #222325;
-                        font-weight: 700;
-                        line-height: rem(24px);
-                        padding: rem(0px) rem(0px) rem(0px) rem(4px);
-                        font-size: rem(16px);
+                        .number {
+                            color: #222325;
+                            font-weight: 700;
+                            line-height: rem(24px);
+                            padding: rem(0px) rem(0px) rem(0px) rem(4px);
+                            font-size: rem(16px);
+                        }
                     }
                 }
             }
