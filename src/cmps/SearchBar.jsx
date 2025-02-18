@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import SearchIcon from '@mui/icons-material/Search'
 
-export function SearchBar({ isBtnInline }) {
+export function SearchBar({ isBtnInline, placeholder }) {
     const navigate = useNavigate()
 
     const [searchTerm, setSearchTerm] = useState('')
@@ -24,7 +24,7 @@ export function SearchBar({ isBtnInline }) {
                 onChange={handleInputChange}
                 value={searchTerm}
                 type="search"
-                placeholder='Search for any service...'>
+                placeholder={placeholder}>
             </input>
             <button
                 onClick={onSearchCtg}

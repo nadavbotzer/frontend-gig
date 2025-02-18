@@ -57,11 +57,7 @@ export function Hero() {
             </div>
             <div className='box'>
                 <div ref={inputRef} className='hero-search'>
-                    {/* <input onChange={handleInputChange} value={searchTerm} ref={inputRef} type="search" placeholder='Search for any service...'></input>
-                    <button onClick={onSearchCtg} className='btn-search'>
-                        <SearchIcon />
-                    </button> */}
-                    <SearchBar isBtnInline={true} />
+                    <SearchBar placeholder={'Search for any service...'} isBtnInline={true} />
                 </div>
             </div>
             <section className='hero-imgs'>
