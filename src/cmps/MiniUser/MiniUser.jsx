@@ -1,5 +1,6 @@
 import { ProfileImg } from './ProfileImg.jsx';
 import { StatusOnline } from '../StatusOnline.jsx';
+import { Level } from '../Level.jsx';
 
 import '../../assets/styles/cmps/MiniUser.scss'
 
@@ -21,7 +22,7 @@ export function MiniUser({ isAbout }) {
             _id: 'u101',
             fullname: 'Dudu Da',
             imgUrl: '',
-            level: 'basic/premium',
+            level: 2,
             rate: 4,
         },
         daysToMake: 3,
@@ -57,7 +58,10 @@ export function MiniUser({ isAbout }) {
 
                 <div className="about-user-row">
                     <span className="user-name">{gig.owner.fullname}</span>
-                    {isAbout ? <StatusOnline /> : <span className='top-rated'> Top Rated: {gig.owner.rate}</span>}
+                    {
+                        isAbout ? <StatusOnline /> :
+                            <Level level={gig.owner.level} />
+                    }
                 </div>
 
                 {
@@ -86,7 +90,7 @@ export function MiniUser({ isAbout }) {
                         {isAbout && <span className="reviews">({gig.reviews.length})</span>}
                     </div>
 
-                    {isAbout && <span className='top-rated'> Top Rated: {gig.owner.rate}</span>}
+                    {isAbout && <Level level={gig.owner.level} />}
                 </div>
 
             </section>
