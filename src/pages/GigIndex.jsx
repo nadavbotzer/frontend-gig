@@ -96,7 +96,6 @@ export function GigIndex() {
     // async function onUpdateGig(gig) { //Save for Referance
     //     const price = +prompt('New price?', gig.price)
     //     if (price === 0 || price === gig.price) return
-
     //     const gigToSave = { ...gig, price }
     //     try {
     //         const savedGig = await updateGig(gigToSave)
@@ -163,7 +162,9 @@ export function GigIndex() {
     function parseTags(str) {
         return str.replace(/[\[\]]/g, '').split(',').map(tag => tag.trim());
     }
+
     if (!gigs) return <div>Loading...</div>
+
     return (
         <>
             <main className="gig-index">

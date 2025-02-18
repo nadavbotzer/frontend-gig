@@ -1,3 +1,5 @@
+import { makeId } from '../../services/util.service';
+
 import '../../assets/styles/cmps/AboutGig.scss';
 
 export function AboutGig({ descriptionContent }) {
@@ -9,7 +11,7 @@ export function AboutGig({ descriptionContent }) {
         <div className="content">
             {
                 descriptionContent.map((par) => {
-                    return <p key={par}>{par}</p>
+                    return <p key={makeId()}>{par}</p>
                 })
             }
         </div>

@@ -2,19 +2,40 @@ import { AboutGig } from "./AboutGig";
 import { AboutSeller } from "./AboutSeller";
 import { GigHeader } from "./GigHeader";
 import { GigImages } from "./GigImages";
-import { ReviewList } from '../ReviewList';
+import { ReviewList } from "../ReviewList";
+
+import { getRandomCreatedAt } from "../../services/util.service";
 
 export function GigInfo({ gig }) {
+
+    const { title, owner, reviews, imgUrls, description, location, avgResponseTime, about } = gig
 
     function removeReview(id) {
         console.log('removing')
     }
 
     return <section className="gig-info-column">
-        <GigHeader title={'My interior design project using 3d tech'} gig={gig} />
-        <GigImages />
-        <AboutGig descriptionContent={gig.description} />
-        <AboutSeller username={gig.owner.fullname} />
+        <GigHeader
+            title={title}
+            owner={owner}
+            reviewsCount={reviews.length}
+        />
+        <GigImages
+            imgUrls={imgUrls}
+        />
+        <AboutGig
+            descriptionContent={description}
+        />
+        <AboutSeller
+            owner={owner}
+            location={location}
+            createdAt={owner.createdAt || getRandomCreatedAt()}
+            languagesArray={owner.languages}
+            lastDeliveryAt={getRandomCreatedAt()}
+            avgResponse={avgResponseTime}
+            reviewsCount={reviews.length}
+            about={about}
+        />
         <ReviewList
             reviews={gig.reviews}
             onRemoveReview={(id) => removeReview(id)}

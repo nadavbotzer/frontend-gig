@@ -1,8 +1,8 @@
-
 import { storageService } from '../async-storage.service'
 import { getRandomTags, getRandomLocation, getRandomIntInclusive, makeId, getRandomGigTitle, getRandomName, getRandomLevel } from '../util.service'
 import { userService } from '../user'
-import { gigService as indexGigService } from './index'
+import { getDefaultFilter } from '../util.service'
+
 const STORAGE_KEY = 'gig'
 
 export const gigService = {
@@ -12,10 +12,10 @@ export const gigService = {
     remove,
     addGigMsg
 }
+
 window.cs = gigService
 
-
-async function query(filterBy = indexGigService.getDefaulFilter()) {
+async function query(filterBy = getDefaultFilter()) {
 
     let gigs = await storageService.query(STORAGE_KEY)
     const { txt, price, sortField, sortDir, tags, deliveryTime } = filterBy
@@ -72,27 +72,11 @@ async function save(gig) {
         };
         savedGig = await storageService.put(STORAGE_KEY, gigToSave);
     } else {
-        // Create a new gig
-        const gigToSave = {
-            _id: makeId(),
-            title: gig.title || 'I will ' + getRandomGigTitle(),
-            price: gig.price || getRandomIntInclusive(10, 300),
-            owner: userService.getLoggedinUser(),
-            daysToMake: gig.daysToMake || getRandomIntInclusive(1, 10),
-            description: gig.description || 'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
-            avgResponseTime: gig.avgResponseTime || getRandomIntInclusive(1, 24),
-            loc: gig.loc || getRandomLocation(),
-            imgUrls: gig.imgUrls || ['/img/img' + getRandomIntInclusive(1, 5) + '.jpg'],
-            tags: gig.tags || getRandomTags(),
-            likedByUsers: gig.likedByUsers || [],
-            reviews: gig.reviews || [],
-        }
-        savedGig = await storageService.post(STORAGE_KEY, gigToSave);
+        savedGig = await storageService.post(STORAGE_KEY, gig);
     }
 
     return savedGig
 }
-
 
 async function addGigMsg(gigId, txt) {
     // Later, this is all done by the backend
