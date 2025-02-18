@@ -1,4 +1,9 @@
-export function RadioItem({ name, option, value, onChange }) {
+import { createContext } from "react"
+
+const RadioContext = createContext()
+
+
+export function RadioItem({ name, option, value, onChange, children }) {
     return (
         <label className="radio-item-wrapper">
             <input
@@ -10,7 +15,15 @@ export function RadioItem({ name, option, value, onChange }) {
                 hidden
             />
             <span className="radio-dot"></span>
-            <div className="radio-label">{option.label}</div>
+            {children ? children : (
+                <div className="radio-label">{option.label}
+                </div>
+            )}
         </label>
-    );
+    )
 }
+
+RadioItem.Label = function Label({ children }) {
+    return <div className="radio-label" >{children}</div>
+}
+

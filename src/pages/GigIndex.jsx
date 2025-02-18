@@ -103,6 +103,17 @@ export function GigIndex() {
     //         showErrorMsg('Cannot update gig')
     //     }
     // }
+
+    function handleClearFilter(filterKey) {
+        if (filterKey === 'deliveryTime') {
+            setFilterBy(prevFilter => ({ ...prevFilter, deliveryTime: '' }))
+        }
+        if (filterKey === 'price') {
+            setFilterBy(prevFilter => ({ ...prevFilter, price: { min: '', max: '' } }))
+        }
+
+    }
+
     function handleApplyFilter(filter, newValue) {
         if (filterBy[filter.key] === newValue) return;
 
@@ -149,6 +160,7 @@ export function GigIndex() {
                     {filters.map(filter => {
                         return <FilterItem
                             onApplyFilter={handleApplyFilter}
+                            onClearFilter={handleClearFilter}
                             filter={filter}
                             key={filter.key}
                             initalValue={filterBy[filter.key]} />
