@@ -10,6 +10,7 @@ import { logout } from '../store/actions/user.actions'
 import { useScrollContext } from './ScrollProvider'
 import { DropDown } from './DropDown'
 import { SearchBar } from './SearchBar'
+import { TagsHeader } from './TagsHeader'
 
 
 
@@ -24,17 +25,7 @@ export function AppHeader() {
 	const [isHeaderScrolled, setIsHeaderScrolled] = useState(false)
 	const inputRef = useRef(null)
 
-	const ctgs = [
-		{ txt: 'Programming & Tech', tags: ['programming', 'tech'] },
-		{ txt: 'Graphics & Design', tags: ['graphics', 'design'] },
-		{ txt: 'Digital Marketing', tags: ['digital-marketing'] },
-		{ txt: 'Writing & Translation', tags: ['writing', 'translation'] },
-		{ txt: 'Video & Animation', tags: ['video'] },
-		{ txt: 'AI Services', tags: ['ai-services'] },
-		{ txt: 'Music & Audio', tags: ['music', 'audio'] },
-		{ txt: 'Business', tags: ['business'] },
-		{ txt: 'Consultin', tags: ['consultin'] },
-	]
+
 
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll)
@@ -100,20 +91,9 @@ export function AppHeader() {
 					)}
 				</div>
 			</nav>
-
-			<section className='tags full'>
-				{tags.map((tag => {
-					return (
-						<section key={tag.txt}>
-							<article onClick={() => goToIndex(tag.txt)}>{tag.txt}</article>
-						</section>
-
-					)
-				}))}
-
-			</section>
-
-
+			<div className="tags-container main-container full">
+				<TagsHeader />
+			</div>
 		</header>
 	)
 }

@@ -1,37 +1,29 @@
 
 import { useNavigate } from 'react-router'
+import { Link } from 'react-router-dom'
 
 export function TagsHeader() {
     const navigate = useNavigate()
 
-    const tags = [
-        { txt: 'Programming & Tech' },
-        { txt: 'Graphics & Design' },
-        { txt: 'Digital Marketing' },
-        { txt: 'Writing & Translation' },
-        { txt: 'Video & Animation' },
-        { txt: 'AI Services' },
-        { txt: 'Music & Audio' },
-        { txt: 'Business' },
-        { txt: 'Consultin' },
+    const ctgs = [
+        { txt: 'Programming & Tech', tags: ['programming', 'tech'] },
+        { txt: 'Graphics & Design', tags: ['graphics', 'design'] },
+        { txt: 'Digital Marketing', tags: ['digital-marketing'] },
+        { txt: 'Writing & Translation', tags: ['writing', 'translation'] },
+        { txt: 'Video & Animation', tags: ['video'] },
+        { txt: 'AI Services', tags: ['ai-services'] },
+        { txt: 'Music & Audio', tags: ['music', 'audio'] },
+        { txt: 'Business', tags: ['business'] },
+        { txt: 'Consultin', tags: ['consultin'] },
     ]
 
-    function goToIndex(tag) {
-        navigate(`/gig/?tags=[${tag}]`)
-
-    }
-
     return (
-        <section className='tags-header full'>
-            {tags.map((tag => {
+        <section className='tags-header main-layout'>
+            {ctgs.map((ctg => {
                 return (
-                    <section key={tag.txt}>
-                        <article onClick={() => goToIndex(tag.txt)}>{tag.txt}</article>
-                    </section>
-
+                    <Link key={ctg.txt} to={`/gig/?tags=${ctg.tags}`}>{ctg.txt}</Link>
                 )
             }))}
-
         </section>
     )
 }

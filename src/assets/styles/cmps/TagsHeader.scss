@@ -1,28 +1,18 @@
 .tags-header {
-    background-color: $clr6;
-    display: none;
-    gap: 12px;
-    justify-content: center;
-    padding: 8px;
-    font-size: small;
-    color: $clr9;
     font-weight: 100;
-    cursor: pointer;
-    border-bottom: 1px solid #e4e5e7;
+    display: flex;
+    justify-content: space-between;
 
-    section {
+    a {
         padding: 8px 0px;
+        text-decoration: none;
+        color: $clr9;
+        cursor: pointer;
+        max-width: 100%;
 
         &:hover {
             box-shadow: inset 0 -3px #1dbf73;
 
         }
-    }
-}
-
-
-@include for-narrow-layout {
-    .tags-header {
-        display: flex;
     }
 }
