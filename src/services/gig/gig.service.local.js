@@ -1,8 +1,8 @@
-
 import { storageService } from '../async-storage.service'
 import { getRandomTags, getRandomLocation, getRandomIntInclusive, makeId, getRandomGigTitle, getRandomName, getRandomLevel } from '../util.service'
 import { userService } from '../user'
-import { gigService as indexGigService } from './index'
+import { getDefaultFilter } from '../util.service'
+
 const STORAGE_KEY = 'gig'
 
 export const gigService = {
@@ -12,10 +12,10 @@ export const gigService = {
     remove,
     addGigMsg
 }
+
 window.cs = gigService
 
-
-async function query(filterBy = indexGigService.getDefaulFilter()) {
+async function query(filterBy = getDefaultFilter()) {
 
     let gigs = await storageService.query(STORAGE_KEY)
     const { txt, price, sortField, sortDir, tags, deliveryTime } = filterBy
@@ -77,7 +77,6 @@ async function save(gig) {
 
     return savedGig
 }
-
 
 async function addGigMsg(gigId, txt) {
     // Later, this is all done by the backend

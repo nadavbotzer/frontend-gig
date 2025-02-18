@@ -147,3 +147,17 @@ export function timeAgo(timestamp) {
 
     return "Just now"
 }
+
+export function getDefaultFilter() {
+    return {
+        txt: '',
+        price: {
+            min: '',
+            max: '',
+        },
+        sortField: '',
+        sortDir: '',
+        tags: [],
+        deliveryTime: ''
+    }
+}
