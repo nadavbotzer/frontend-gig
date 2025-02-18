@@ -16,7 +16,7 @@ window.cs = gigService
 
 
 async function query(filterBy = indexGigService.getDefaulFilter()) {
-    console.log('filter', filterBy)
+
     let gigs = await storageService.query(STORAGE_KEY)
     const { txt, price, sortField, sortDir, tags, deliveryTime } = filterBy
     const minPrice = price.min
