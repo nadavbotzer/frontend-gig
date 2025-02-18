@@ -30,8 +30,9 @@
         align-items: center;
 
         .active-filter {
-            background-color: $gray1;
-            padding: 0.5rem;
+            background-color: $gray5;
+            padding: 0.3rem 0.5rem;
+            line-height: 1;
             border-radius: 1rem;
             display: flex;
             gap: 0.5rem;
@@ -39,10 +40,12 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            font-weight: 700;
 
             button {
                 background: transparent;
                 cursor: inherit;
+                font-weight: 400;
             }
         }
     }

@@ -17,8 +17,8 @@ export function GigIndex() {
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
     const tagsParam = searchParams.get('tags')
     const [filterBy, setFilterBy] = useState(gigService.getDefaultFilter())
-    const filterLabels = gigService.getFilterLabels()
-    const filters = [
+
+    const filters = [ // Will get this object from the service
         {
             key: 'price',
             label: 'Budget',
@@ -116,7 +116,7 @@ export function GigIndex() {
     }
 
     function handleApplyFilter(filter, newValue) {
-        if (filterBy[filter.key] === newValue) return;
+        if (filterBy[filter.key] === newValue) return
 
         setFilterBy(prevFilter => {
             if (filter.key === 'price') {
@@ -134,21 +134,17 @@ export function GigIndex() {
         });
     }
     function formatPriceRange(min, max) {
-        if (min && max) return `Budget: $${min} - $${max}`;
-        if (min) return `Budget: $${min}`;
-        if (max) return `Budget: $${max}`;
-        return '';
+        if (min && max) return `Budget: $${min} - $${max}`
+        if (min) return `Budget: $${min}`
+        if (max) return `Budget: $${max}`
+        return ''
     }
     function getDeliveryTimeLabel(value) {
-        // Find the 'deliveryTime' filter and get the corresponding label
-        const deliveryTimeOption = filters.find(filter => filter.key === 'deliveryTime')
-            ?.options.find(option => option.value === value);
 
-        // If option is found, return the label; otherwise, return the value
-        return deliveryTimeOption ? deliveryTimeOption.label : value;
-    }
-    function getFilterLabel(key) {
-        return filters.find(filter => filter.key === key)?.label || key
+        const deliveryTimeOption = filters.find(filter => filter.key === 'deliveryTime')
+            ?.options.find(option => option.value === value)
+
+        return deliveryTimeOption ? deliveryTimeOption.label : value
     }
     function tagsToHeading(tags) {
         return tags
