@@ -87,7 +87,7 @@ export function AppHeader() {
 
 				{!isInputVisible &&
 					<div className='search-input'>
-						<SearchBar isBtnInline={false} ref={inputRef} />
+						<SearchBar placeholder={'what service are you looking for today?'} isBtnInline={false} ref={inputRef} />
 					</div>}
 				<div className='nav-links'>
 
