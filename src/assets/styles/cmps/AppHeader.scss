@@ -116,31 +116,33 @@
         background-color: $clr6;
         display: none;
         gap: 12px;
-        justify-content: space-between;
+        justify-content: center;
+        padding: 8px;
+
         color: $clr9;
         font-weight: 100;
+        cursor: pointer;
+        border-bottom: 1px solid #e4e5e7;
 
-        .tag {
+        section {
             padding: 8px 0px;
-            cursor: pointer;
-            color: $clr9;
 
-            &:hover {
-                box-shadow: inset 0 -3px #1dbf73;
+            //         &:hover {
+            //             box-shadow: inset 0 -3px #1dbf73;
 
-            }
+            //         }
+            //     }
+            // }
+
+
+            // @include for-narrow-layout {
+            //     .tags {
+            //         display: flex;
+            //     }
+            // }
         }
-    }
 
-
-    @include for-narrow-layout {
-        .tags {
-            display: flex;
+        .btn-Logout {
+            background-color: $clr6;
+            font-family: Macan;
         }
-    }
-}
-
-.btn-Logout {
-    background-color: $clr6;
-    font-family: Macan;
-}

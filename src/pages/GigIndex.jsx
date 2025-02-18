@@ -10,6 +10,7 @@ import { userService } from '../services/user'
 import { GigList } from '../cmps/GigList'
 import { NavigationsAndActions } from '../cmps/NavigationsAndActions'
 import { FilterItem } from '../cmps/FilterItem'
+import { TagsHeader } from '../cmps/TagsHeader'
 
 
 export function GigIndex() {
@@ -165,6 +166,11 @@ export function GigIndex() {
     if (!gigs) return <div>Loading...</div>
     return (
         <>
+            <TagsHeader />
+
+            {userService.getLoggedinUser() && <button className='btn' onClick={onAddGig}>Add Gig (DEV)</button>}
+            {tagsParam && <NavigationsAndActions gigCategory={tagsParam} />}
+            {!tagsParam && <NavigationsAndActions gigCategory={''} />}
             <main className="gig-index">
                 {userService.getLoggedinUser() && <button className='btn' onClick={onAddGig}>Add Gig (DEV)</button>}
                 {(!!gigs.length && tagsParam) && <NavigationsAndActions gigCategory={tagsParam} />}

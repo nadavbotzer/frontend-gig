@@ -100,15 +100,19 @@ export function AppHeader() {
 					)}
 				</div>
 			</nav>
-			<div className='tags-wrapper main-container full'>
-				<div className='tags main-layout'>
-					{ctgs.map(((ctg, idx) => {
-						return (
-							<Link key={idx} className="tag" to={`/gig/?tags=${ctg.tags}`}>{ctg.txt}</Link>
-						)
-					}))}
-				</div>
-			</div>
+
+			<section className='tags full'>
+				{tags.map((tag => {
+					return (
+						<section key={tag.txt}>
+							<article onClick={() => goToIndex(tag.txt)}>{tag.txt}</article>
+						</section>
+
+					)
+				}))}
+
+			</section>
+
 
 		</header>
 	)
