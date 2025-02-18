@@ -69,11 +69,21 @@ export function getRandomName() {
 }
 
 export function getRandomLevel() {
-    return Math.random() > 0.5 ? 'basic' : 'premium';
+    const levels = ['basic', 'standard', 'premium']
+    const idx = getRandomIntInclusive(0, 2)
+    return levels[idx];
 }
 
 export function getRandomLocation() {
-    const locations = ['USA', 'UK', 'Canada', 'Germany', 'India', 'Ghana', 'France'];
+    const locations = [
+        { name: 'United States', format: 'us' },
+        { name: 'UK', format: 'gb' },
+        { name: 'Canada', format: 'ca' },
+        { name: 'Germany', format: 'de' },
+        { name: 'India', format: 'in' },
+        { name: 'Ghana', format: 'gh' },
+        { name: 'France', format: 'fr' }
+    ]
     return locations[getRandomIntInclusive(0, locations.length - 1)];
 }
 
@@ -98,4 +108,56 @@ export function getRandomTags() {
         'consultin'
     ]
     return tags.sort(() => 0.5 - Math.random()).slice(0, 2);
+}
+
+export function getRandomCreatedAt() {
+    const now = Date.now();
+    const fiveYearsAgo = now - 5 * 365 * 24 * 60 * 60 * 1000; // 5 years in milliseconds
+    return Math.floor(Math.random() * (now - fiveYearsAgo) + fiveYearsAgo);
+}
+
+export function getRandomLanguages(count = 1) {
+    const languages = [
+        "English", "Spanish", "French", "German", "Chinese",
+        "Japanese", "Russian", "Arabic", "Hindi", "Portuguese"
+    ]
+    const shuffled = languages.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count)
+}
+
+export function timeAgo(timestamp) {
+    const now = Date.now()
+    const diffInSeconds = Math.floor((now - timestamp) / 1000)
+
+    const intervals = [
+        { label: "year", seconds: 31536000 },
+        { label: "month", seconds: 2592000 },
+        { label: "day", seconds: 86400 },
+        { label: "hour", seconds: 3600 },
+        { label: "minute", seconds: 60 },
+        { label: "second", seconds: 1 },
+    ]
+
+    for (const interval of intervals) {
+        const count = Math.floor(diffInSeconds / interval.seconds)
+        if (count >= 1) {
+            return `${count} ${interval.label}${count !== 1 ? "s" : ""} ago`
+        }
+    }
+
+    return "Just now"
+}
+
+export function getDefaultFilter() {
+    return {
+        txt: '',
+        price: {
+            min: '',
+            max: '',
+        },
+        sortField: '',
+        sortDir: '',
+        tags: [],
+        deliveryTime: ''
+    }
 }
