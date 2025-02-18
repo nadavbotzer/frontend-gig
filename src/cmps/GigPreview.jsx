@@ -12,7 +12,7 @@ export function GigPreview({ gig, goToDetails }) {
         </div>
         <div className="gig-user-preview">
             <img className="gig-user-img" src={gig.owner.imgUrl} />
-            <span>Ad by </span>
+            {gig.promoted && <span>Ad by </span>}
             <span className="gig-user-fullname"> {gig.owner.fullname}</span>
         </div>
         <Link className="gig-title" to={`/gig/${gig._id}`}>{gig.title}</Link>
@@ -21,6 +21,6 @@ export function GigPreview({ gig, goToDetails }) {
             <span >4.9 </span>
             <span className="gig-previews-count">({gig.reviews.length})</span>
         </div>
-        <p className="gig-price">From {gig.price}$</p>
+        <p className="gig-price">From USD${gig.price}</p>
     </article>
 }

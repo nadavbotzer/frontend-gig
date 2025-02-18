@@ -4,6 +4,7 @@ import { HomeVideo } from '../cmps/HomeVideo'
 import { MakeIt } from '../cmps/MakeIt'
 import { JoinTopGig } from '../cmps/JoinTopGig'
 
+
 export function HomePage() {
     return (
         <section className='home-page'>

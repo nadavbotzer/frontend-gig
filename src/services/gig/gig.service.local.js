@@ -2,7 +2,7 @@
 import { storageService } from '../async-storage.service'
 import { getRandomTags, getRandomLocation, getRandomIntInclusive, makeId, getRandomGigTitle, getRandomName, getRandomLevel } from '../util.service'
 import { userService } from '../user'
-
+import { gigService as indexGigService } from './index'
 const STORAGE_KEY = 'gig'
 
 export const gigService = {
@@ -15,13 +15,20 @@ export const gigService = {
 window.cs = gigService
 
 
-async function query(filterBy = { txt: '', price: 0 }) {
-    var gigs = await storageService.query(STORAGE_KEY)
-    const { txt, minPrice, maxPrice, sortField, sortDir, tags } = filterBy
+async function query(filterBy = indexGigService.getDefaulFilter()) {
+
+    let gigs = await storageService.query(STORAGE_KEY)
+    const { txt, price, sortField, sortDir, tags, deliveryTime } = filterBy
+    const minPrice = price.min
+    const maxPrice = price.max
+
     if (tags && tags.length) {
         gigs = gigs.filter(gig =>
             tags.some(tag => gig.tags.some(gigTag => gigTag.toLowerCase().includes(tag.toLowerCase())))
         )
+    }
+    if (deliveryTime) {
+        gigs = gigs.filter(gig => gig.daysToMake <= deliveryTime) // Filter gigs by max delivery days
     }
     if (txt) {
         const regex = new RegExp(filterBy.txt, 'i')
@@ -29,6 +36,10 @@ async function query(filterBy = { txt: '', price: 0 }) {
     }
     if (minPrice) {
         gigs = gigs.filter(gig => gig.price >= minPrice)
+
+    }
+    if (maxPrice) {
+        gigs = gigs.filter(gig => gig.price <= maxPrice)
     }
     if (sortField === 'title' || sortField === 'owner') {
         gigs.sort((gig1, gig2) =>

@@ -1,0 +1,27 @@
+.filter-item-dropdown {
+    max-width: fit-content;
+    width: 100%;
+
+    .filter-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        .clear-btn {
+            border: 0;
+            color: $gray3;
+        }
+
+        .apply-btn {
+            color: white;
+            background-color: black;
+        }
+
+        .apply-btn:hover {
+            background-color: rgb(56, 56, 56);
+        }
+
+        .filter-btn {}
+    }
+}

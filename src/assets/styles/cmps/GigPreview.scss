@@ -3,10 +3,6 @@
     flex-direction: column;
     font-size: rem(16px);
 
-    img {
-        border-radius: 15px;
-    }
-
     .img-wrapper,
     .gig-price {
         &:hover~.gig-title {
@@ -42,10 +38,10 @@
         align-items: center;
         font-size: rem(14px);
         padding-top: rem(12px);
+        gap: 0.5rem;
 
         .gig-user-img {
             border-radius: 50%;
-            margin-right: 0.5rem;
             object-fit: cover;
             width: 1.75rem;
             height: 1.75rem;
@@ -53,7 +49,6 @@
 
         .gig-user-fullname {
             font-weight: 700;
-            padding-left: 0.25rem;
         }
     }
 

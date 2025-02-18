@@ -1,0 +1,44 @@
+.radio-list {
+    .radio-item-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        padding: rem(12px);
+        border-radius: 5px;
+
+        &:hover {
+            background-color: $gray6;
+        }
+
+        input[type=radio]:checked {
+            +.radio-dot {
+                background-color: black;
+                box-shadow: inset 0px 0px 0px 4px white;
+            }
+        }
+
+        .radio-dot {
+            border: 1px solid black;
+            border-radius: 50%;
+            width: rem(18px);
+            height: rem(18px);
+            flex: 0 0 auto;
+        }
+
+        .radio-label {
+            font-weight: 700;
+            font-size: rem(14px);
+            display: flex;
+            flex: 1 0 auto;
+
+            span {
+                color: $gray3;
+                font-weight: 400;
+                padding-left: 0.5rem;
+                flex: 1 0 auto;
+            }
+        }
+    }
+
+}

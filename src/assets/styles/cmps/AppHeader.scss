@@ -1,16 +1,13 @@
 .app-header {
     position: sticky;
     top: 0;
-    height: rem(80px);
     width: 100%;
     font-weight: 700;
     font-size: rem(16px);
     background-color: #fff;
-    border-bottom: 1px solid #e4e5e7;
     transition: background-color .5sease;
     transition: border .5sease;
     z-index: 3;
-    margin-bottom: rem(42px);
 
     .search-input {
         max-width: 600px;
@@ -22,7 +19,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: rem(80px);
+        min-height: rem(80px);
 
         .link {
             margin-inline-start: auto;
@@ -43,6 +40,7 @@
         margin-inline-start: 32px;
         align-items: center;
         color: $clr2;
+        flex-shrink: 0;
 
         .btn-join {
             padding: 7px 20px;
@@ -110,6 +108,10 @@
         }
     }
 
+    .tags-wrapper {
+        border-block: 1px solid #e4e5e7;
+    }
+
     .tags {
         background-color: $clr6;
         display: none;
@@ -125,22 +127,29 @@
         section {
             padding: 8px 0px;
 
-            &:hover {
-                box-shadow: inset 0 -3px #1dbf73;
+            //         &:hover {
+            //             box-shadow: inset 0 -3px #1dbf73;
 
-            }
+            //         }
+            //     }
+            // }
+
+
+            // @include for-narrow-layout {
+            //     .tags {
+            //         display: flex;
+            //     }
+            // }
         }
+
+        .btn-Logout {
+            background-color: $clr6;
+            font-family: Macan;
+        }
+
     }
 
-
-    @include for-narrow-layout {
-        .tags {
-            display: flex;
-        }
+    .tags-container {
+        border-block: 1px solid #e4e5e7;
     }
-}
-
-.btn-Logout {
-    background-color: $clr6;
-    font-family: Macan;
 }

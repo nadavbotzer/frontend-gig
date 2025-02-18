@@ -9,7 +9,7 @@ export function getEmptyGig() {
     return {
         title: 'I will ' + getRandomGigTitle(),
         about: "With more than 10 years of professional experience in the field of Architecture, my approach to design is innovative, creative and technically sound. \n During these years I have gained a strong command over architectural design and a building's work ability. \n So whether you're looking for a great design for your building or want to make it workable, I'm the right guy for you!!",
-        price: getRandomIntInclusive(10, 300),
+        price: getRandomIntInclusive(10, 2500),
         owner: {
             _id: makeId(),
             fullname: getRandomName(),
@@ -46,15 +46,33 @@ export function getEmptyGig() {
 function getDefaultFilter() {
     return {
         txt: '',
-        minPrice: '',
+        price: {
+            min: '',
+            max: '',
+        },
         sortField: '',
         sortDir: '',
         tags: [],
+        deliveryTime: ''
+    }
+}
+
+function getFilterLabels() {
+    return {
+        txt: 'Text',
+        price: {
+            min: 'Minimum',
+            max: 'Maximum',
+        },
+        sortField: '',
+        sortDir: '',
+        tags: 'Categoties',
+        deliveryTime: 'Delivery Time'
     }
 }
 
 const service = VITE_LOCAL === 'true' ? local : remote
-export const gigService = { getEmptyGig, getDefaultFilter, ...service }
+export const gigService = { getEmptyGig, getDefaultFilter, getFilterLabels, ...service }
 
 // Easy access to this service from the dev tools console
 // when using script - dev / dev:local

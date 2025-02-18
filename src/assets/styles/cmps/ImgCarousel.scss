@@ -53,12 +53,10 @@
 
         &:hover::before {
             background-color: #fff;
-            transform: scale(1.05) translate(-50%, -50%);
         }
 
         &:active::before {
             background-color: #fff;
-            transform: scale(0.95) translate(-50%, -50%);
         }
 
         &.disabled {

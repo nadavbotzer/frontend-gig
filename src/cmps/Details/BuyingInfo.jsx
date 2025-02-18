@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+
 
 import '../../assets/styles/cmps/BuyingInfo.scss'
 
@@ -83,12 +85,12 @@ export function BuyingInfo({ gig }) {
                 </ul>
 
                 <div className='btns'>
-                    <button className="btn continue" type="button">
+                    <Link to="checkout" className="btn continue" type="button">
                         <span className='txt'>Continue</span>
                         <span className='icon'>
                             <img src={'/images/right-arrow-icon.png'} />
                         </span>
-                    </button>
+                    </Link>
                     <input className="btn compare" type="button" value="Compare packages" />
                 </div>
             </div>

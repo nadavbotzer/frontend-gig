@@ -3,12 +3,12 @@ import { Modal } from "./Modal";
 
 const DropDownContext = createContext();
 
-export function DropDown({ children, isOpen, toggleModal, buttonRef }) {
+export function DropDown({ children, isOpen, toggleModal, buttonRef, className }) {
     const dropdownRef = useRef(null);
     const [position, setPosition] = useState({ top: 0, left: 0, width: 0 });
 
     useEffect(() => {
-        if (!isOpen || !buttonRef.current) return;
+        if (!isOpen || !buttonRef.current) return
 
         const rect = buttonRef.current.getBoundingClientRect();
         setPosition({
@@ -16,10 +16,10 @@ export function DropDown({ children, isOpen, toggleModal, buttonRef }) {
             left: rect.left + window.scrollX,
             width: rect.width,
         });
-    }, [isOpen, buttonRef]);
+    }, [isOpen, buttonRef])
 
     useEffect(() => {
-        if (!isOpen) return;
+        if (!isOpen) return
 
         const handleClickOutside = (event) => {
             if (
@@ -28,38 +28,31 @@ export function DropDown({ children, isOpen, toggleModal, buttonRef }) {
                 buttonRef.current &&
                 !buttonRef.current.contains(event.target)
             ) {
-                toggleModal(false);
+                toggleModal(false)
             }
-        };
+        }
 
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
-    }, [isOpen, toggleModal, buttonRef]);
+    }, [isOpen, toggleModal, buttonRef])
 
     return (
         <Modal isOpen={isOpen}>
             <DropDownContext.Provider value={{ toggleModal }}>
                 <div
                     ref={dropdownRef}
-                    className="dropdown"
+                    className={`dropdown ${className}`}
                     style={{
-                        position: "absolute",
-                        top: `${position.top}px`,
+                        top: `calc(${position.top}px + 0.25rem)`,
                         left: `${position.left}px`,
                         minWidth: `${position.width}px`,
-                        background: "white",
-                        border: "1px solid #ccc",
-                        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                        padding: "8px",
-                        borderRadius: "6px",
-                        zIndex: 1000
                     }}
                 >
                     {children}
                 </div>
             </DropDownContext.Provider>
         </Modal>
-    );
+    )
 }
 
 // Subcomponents
