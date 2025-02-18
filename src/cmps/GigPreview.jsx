@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router'
 import { updateGig } from '../store/actions/gig.actions'
 import { userService } from '../services/user'
 import { ImgCarousel } from '../cmps/ImgCarousel'
 import StarRateIcon from '@mui/icons-material/StarRate';
 
-export function GigPreview({ gig, goToDetails }) {
+export function GigPreview({ gig }) {
     const loggedInUser = userService.getLoggedinUser()
+    const navigate = useNavigate()
+
+    function goToDetails(gigId) {
+        navigate(`/gig/${gigId}`)
+    }
 
     async function onClickLike(ev) {
         ev.stopPropagation()
@@ -40,7 +46,7 @@ export function GigPreview({ gig, goToDetails }) {
     return (
         <article className="preview">
             <div className="img-wrapper">
-                <ImgCarousel imgUrls={gig.imgUrls} onClickImg={goToDetails} />
+                <ImgCarousel imgUrls={gig.imgUrls} onClickImg={() => goToDetails(gig._id)} />
                 <button
                     className="like-btn"
                     onClick={onClickLike}>

@@ -36,7 +36,6 @@ async function query(filterBy = getDefaultFilter()) {
     }
     if (minPrice) {
         gigs = gigs.filter(gig => gig.price >= minPrice)
-
     }
     if (maxPrice) {
         gigs = gigs.filter(gig => gig.price <= maxPrice)
