@@ -1,3 +1,6 @@
 .dropdown {
     background-color: $gray2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }

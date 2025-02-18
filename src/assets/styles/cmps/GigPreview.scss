@@ -38,10 +38,10 @@
         align-items: center;
         font-size: rem(14px);
         padding-top: rem(12px);
+        gap: 0.5rem;
 
         .gig-user-img {
             border-radius: 50%;
-            margin-right: 0.5rem;
             object-fit: cover;
             width: 1.75rem;
             height: 1.75rem;
