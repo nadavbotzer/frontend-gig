@@ -1,5 +1,10 @@
+import { useLocation } from "react-router";
 
 export function Checkout() {
+
+    const location = useLocation()
+    const packageDeal = location.state?.packageDeal
+    console.log("packageDeal: ", packageDeal)
 
     return (
         <main className='main-checkout main-container'>
@@ -36,9 +41,9 @@ export function Checkout() {
                                     <input type='text' name='securityCode' value='344' readOnly />
                                 </article>
                             </div>
-                            <article>
+                            <article className='card-holder-name'>
                                 <h2>Card holder's name</h2>
-                                <div className='input-holders-name center'>
+                                <div className='input-holders-name'>
                                     <input type='text' name='cardname' placeholder='full name' />
                                 </div>
                             </article>

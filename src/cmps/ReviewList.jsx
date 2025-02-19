@@ -1,4 +1,7 @@
+import React from 'react'
+
 import { ReviewCard } from './Review/ReviewCard.jsx'
+import { ReviewHelpful } from './Review/ReviewHelpful.jsx'
 
 import "../assets/styles/cmps/ReviewList.scss"
 
@@ -10,24 +13,32 @@ export function ReviewList({ reviews }) {
             {
                 reviews.map(({
                     _id,
-                    by,
-                    createdAt, rate, text, duration, startPriceRange, endPriceRange,
+                    name,
+                    img,
+                    location,
+                    reviewedAt,
+                    review,
+                    rate,
+                    duration,
+                    startPriceRange,
+                    endPriceRange,
                     projectImg
                 }) => {
-                    return <ReviewCard
-                        key={_id}
-                        flagSrc={by.flagSrc}
-                        imgSrc={by.imgSrc}
-                        location={by.location}
-                        fullname={by.fullname}
-                        createdAt={createdAt}
-                        rate={rate}
-                        text={text}
-                        duration={duration}
-                        startPriceRange={startPriceRange}
-                        endPriceRange={endPriceRange}
-                        projectImg={projectImg}
-                    />
+                    return <React.Fragment key={_id}>
+                        <ReviewCard
+                            imgSrc={img}
+                            location={location}
+                            fullname={name}
+                            createdAt={reviewedAt}
+                            text={review}
+                            rate={rate}
+                            duration={duration}
+                            startPriceRange={startPriceRange}
+                            endPriceRange={endPriceRange}
+                            projectImg={projectImg}
+                        />
+                        <ReviewHelpful />
+                    </React.Fragment>
                 })
             }
         </ul>

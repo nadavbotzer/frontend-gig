@@ -18,7 +18,7 @@ export function TagsHeader() {
     ]
 
     return (
-        <section className='tags-header main-layout'>
+        <section className='tags-header main-layout full'>
             {ctgs.map((ctg => {
                 return (
                     <Link key={ctg.txt} to={`/gig/?tags=${ctg.tags}`}>{ctg.txt}</Link>

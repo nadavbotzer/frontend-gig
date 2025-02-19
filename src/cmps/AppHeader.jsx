@@ -92,7 +92,6 @@ export function AppHeader() {
 				</div>
 			</nav>
 			<div className="tags-container main-container full">
-				<TagsHeader />
 			</div>
 		</header>
 	)
