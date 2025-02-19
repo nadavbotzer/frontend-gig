@@ -41,7 +41,7 @@ export function OrderPreview({ order }) {
                             <button className="btn" onClick={() => {
                                 onUpdateStatus('done')
                                 toggleModal()
-                            }}>Done</button>
+                            }}>Deliver</button>
                         </DropDown.Content>
                     </DropDown>
                 </div>

@@ -12,7 +12,12 @@ export function SellerDashboard() {
     }, [])
 
     return (
-        <OrderList orders={orders} />
+        <main className="seller-dashboard">
+            <div className="order-list-wrapper">
+                <h1 className="list-heading">Orders</h1>
+                <OrderList orders={orders} />
+            </div>
+        </main>
     )
 
 }
