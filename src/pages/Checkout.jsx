@@ -1,6 +1,6 @@
 import { useLocation } from "react-router"
 import { useNavigate } from 'react-router'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { showSuccessMsg } from '../services/event-bus.service'
 
 
 export function Checkout() {

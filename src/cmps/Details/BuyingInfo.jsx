@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { orderService } from '../../services/order'
 
 import '../../assets/styles/cmps/BuyingInfo.scss'
 
@@ -28,6 +29,10 @@ export function BuyingInfo({ gig }) {
             serviceFee: price * 0.1,
             VAT: price * 0.15
         }
+        const order = orderService.getEmptyOrder()
+        console.log(order)
+        console.log('owner', gig.owner)
+
         navigate('checkout', { state: { packageDeal } })
     }
 
