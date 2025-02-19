@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 import '../../assets/styles/cmps/BuyingInfo.scss'
@@ -7,6 +7,7 @@ import '../../assets/styles/cmps/BuyingInfo.scss'
 export function BuyingInfo({ gig }) {
 
     const btns = ['Basic', 'Standard', 'Premium']
+
 
     const packegeDealList = [
         { text: '3D modeling', packages: ['Basic', 'Standard', 'Premium'] },
@@ -17,10 +18,48 @@ export function BuyingInfo({ gig }) {
         { text: 'Source file', packages: ['Basic', 'Standard', 'Premium'] },
     ]
 
+    const newpackegeDealList = [
+        // // price: general, dats, general, revisions
+        // {type:'basic', listSerives:{included:},  desc, },
+        // {'standard', price: },
+        // {'premium', price: }
+        { text: '3D modeling', packages: ['Basic', 'Standard', 'Premium'] },
+        { text: 'Environment', packages: ['Standard', 'Premium'] },
+        { text: 'Furniture and people', packages: ['Standard', 'Premium'] },
+        { text: 'Texturing & lighting', packages: ['Standard', 'Premium'] },
+        { text: '4 renderings', packages: ['Basic', 'Standard', 'Premium'] },
+        { text: 'Source file', packages: ['Basic', 'Standard', 'Premium'] },
+    ]
+
     const [active, setActive] = useState('Basic')
+
+    const navigate = useNavigate()
 
     function onActive({ target }) {
         setActive(target.value)
+    }
+
+    function checkout() {
+        let price = gig.price
+
+        if (active === 'Standard')
+            price *= 1.1
+        if (active === 'Premium')
+            price *= 1.20
+
+        const packageDeal = {
+            imgUrl: gig.imgUrls[0],
+            title: gig.title,
+            packageType: active,
+            price: price,
+            services: packegeDealList.filter((packageDeal) => packageDeal.packages.includes(active)),
+            deliveryTime: gig.daysToMake,
+            revisions: 2,
+            serviceFee: 20,
+            VAT: 25
+        }
+
+        navigate('checkout', { state: { packageDeal } })
     }
 
     return <section className="buying-info-column">
@@ -85,12 +124,12 @@ export function BuyingInfo({ gig }) {
                 </ul>
 
                 <div className='btns'>
-                    <Link to="checkout" className="btn continue" type="button">
+                    <button to="checkout" className="btn continue" type="button" onClick={checkout}>
                         <span className='txt'>Continue</span>
                         <span className='icon'>
                             <img src={'/images/right-arrow-icon.png'} />
                         </span>
-                    </Link>
+                    </button>
                     <input className="btn compare" type="button" value="Compare packages" />
                 </div>
             </div>

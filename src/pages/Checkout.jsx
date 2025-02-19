@@ -1,5 +1,10 @@
+import { useLocation } from "react-router";
 
 export function Checkout() {
+
+    const location = useLocation()
+    const packageDeal = location.state?.packageDeal
+    console.log("packageDeal: ", packageDeal)
 
     return (
         <main className='main-checkout main-container'>

@@ -1,7 +1,7 @@
 const { DEV, VITE_LOCAL } = import.meta.env
 
 import { userService } from '../user'
-import { getRandomTags, getRandomLocation, getRandomIntInclusive, makeId, getRandomGigTitle, getRandomName, getRandomCreatedAt, getRandomLanguages } from '../util.service'
+import { getRandomTags, getRandomLocation, getRandomIntInclusive, getRandomGigTitle } from '../util.service'
 
 import { gigService as local } from './gig.service.local'
 import { gigService as remote } from './gig.service.remote'
@@ -74,8 +74,7 @@ export function getEmptyGig() {
                 reviewedAt: "Published 1 week ago",
                 rate: getRandomIntInclusive(1, 5)
             }
-        ]
-        ,
+        ],
         avgResponseTime: getRandomIntInclusive(1, 24),
     }
 }
