@@ -9,7 +9,7 @@ import { gigService as remote } from './gig.service.remote'
 export function getEmptyGig() {
     const loggedInUser = userService.getLoggedinUser()
     const servicesList = getRandomTags(5)
-    const price = getRandomIntInclusive(10, 2500)
+    const price = Math.ceil(getRandomIntInclusive(10, 2500))
     const daysToMake = getRandomIntInclusive(1, 10)
     return {
         title: 'I will ' + getRandomGigTitle(),
@@ -37,8 +37,8 @@ export function getEmptyGig() {
         avgResponseTime: getRandomIntInclusive(1, 24),
         packagesList: {
             basic: { revisions: 1, daysToMake: daysToMake, price: price, servicesList: [{ text: servicesList[0], included: false }, { text: servicesList[1], included: true }, { text: servicesList[2], included: false }, { text: servicesList[3], included: true }, { text: servicesList[4], included: false }], packageDescription: 'With the basic package deal you recieve 2/5 services' },
-            standard: { revisions: 2, daysToMake: daysToMake + 2, price: price * 1.1, servicesList: [{ text: servicesList[0], included: true }, { text: servicesList[1], included: true }, { text: servicesList[2], included: false }, { text: servicesList[3], included: true }, { text: servicesList[4], included: false }], packageDescription: 'With the basic package deal you recieve 3/5 services' },
-            premium: { revisions: 3, daysToMake: daysToMake + 3, price: price * 1.20, servicesList: [{ text: servicesList[0], included: true }, { text: servicesList[1], included: true }, { text: servicesList[2], included: true }, { text: servicesList[3], included: true }, { text: servicesList[4], included: true }], packageDescription: 'With the basic package deal you recieve 5/5 services' }
+            standard: { revisions: 2, daysToMake: daysToMake + 2, price: Math.ceil(price * 1.1), servicesList: [{ text: servicesList[0], included: true }, { text: servicesList[1], included: true }, { text: servicesList[2], included: false }, { text: servicesList[3], included: true }, { text: servicesList[4], included: false }], packageDescription: 'With the basic package deal you recieve 3/5 services' },
+            premium: { revisions: 3, daysToMake: daysToMake + 3, price: Math.ceil(price * 1.20), servicesList: [{ text: servicesList[0], included: true }, { text: servicesList[1], included: true }, { text: servicesList[2], included: true }, { text: servicesList[3], included: true }, { text: servicesList[4], included: true }], packageDescription: 'With the basic package deal you recieve 5/5 services' }
         },
         likedByUsers: [],
         reviews: [
