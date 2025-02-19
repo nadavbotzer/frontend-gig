@@ -1,0 +1,16 @@
+.order-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(auto, 1fr)) auto;
+
+    .row {
+        display: contents;
+    }
+
+    .cell {
+        padding: 1fr;
+
+        &.header {
+            background-color: $gray1;
+        }
+    }
+}
