@@ -1,11 +1,21 @@
-import { useLocation } from "react-router";
+import { useLocation } from "react-router"
+import { useNavigate } from 'react-router'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+
 
 export function Checkout() {
 
     const location = useLocation()
     const packageDeal = location.state?.packageDeal
     console.log("packageDeal: ", packageDeal)
+    const { VAT, deliveryTime, imgUrl, packageType, price, revisions, serviceFee, services, title } = packageDeal
+    const navigate = useNavigate()
 
+
+    function saveOrder() {
+        navigate('/')
+        showSuccessMsg(`Order sent successfully`)
+    }
     return (
         <main className='main-checkout main-container'>
             <section className='checkout'>
@@ -45,6 +55,7 @@ export function Checkout() {
                                 <h2>Card holder's name</h2>
                                 <div className='input-holders-name'>
                                     <input type='text' name='cardname' placeholder='full name' />
+                                    <h2>As written on card</h2>
                                 </div>
                             </article>
                             <div>
@@ -57,39 +68,41 @@ export function Checkout() {
                 <div className='side-content'>
                     <section className='order-details-container'>
                         <header className='order-details-header space-between'>
-                            <span className='gig-img'>img</span>
-                            <div>title</div>
+                            <span className='gig-img'>
+                                <img src={imgUrl} />
+                            </span>
+                            <div className='title'>{title}</div>
                         </header>
                         <div className='order-details-general-pricing space-between'>
-                            <p>Package</p>
-                            <p>price</p>
+                            <p>{packageType.toUpperCase()}</p>
+                            <p><span>₪</span>{price}</p>
                         </div>
                         <ul className='features-list'>
-                            <li>jjj</li>
-                            <li>jjjj</li>
-                            <li>jjj</li>
-                            <li>jjjj</li>
-
+                            {services.map((service => {
+                                return (
+                                    <li>{service.text}</li>
+                                )
+                            }))}
                         </ul>
                     </section>
                     <section className='summary'>
                         <div className='service space-between'>
                             <p>Service fee</p>
-                            <p>price</p>
+                            <p><span>₪</span>{serviceFee}</p>
                         </div>
                         <div className='vat space-between'>
                             <p>VAT</p>
-                            <p>price</p>
+                            <p><span>₪</span>{VAT}</p>
                         </div>
                         <div className='total space-between'>
                             <p>Total</p>
-                            <p>price</p>
+                            <p><span>₪</span>{price + serviceFee + VAT}</p>
                         </div>
                         <div className='delivery space-between'>
                             <p>Total delivery time</p>
-                            <p>3 days</p>
+                            <p>{deliveryTime} Days</p>
                         </div>
-                        <button className='confirm-btn'>Confirm & Pay</button>
+                        <button onClick={saveOrder} className='confirm-btn'>Confirm & Pay</button>
                         <div className='secure-payment'>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg">
