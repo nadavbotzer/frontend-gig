@@ -1,7 +1,6 @@
 import { OrderPreview } from "./OrderPreview";
 
 export function OrderList({ orders }) {
-    orders = orders.filter(order => order.status !== 'created')
     return (
         <ul className="order-list">
             <li className="row">

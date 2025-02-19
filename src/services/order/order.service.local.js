@@ -23,7 +23,7 @@ async function query(filterBy = getDefaultFilter()) {
         orders = orders.filter(order => order.owner._id === _id)
     }
 
-    return orders
+    return orders = orders.filter(order => order.status !== 'created')
 }
 
 

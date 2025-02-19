@@ -1,0 +1,10 @@
+.dashboard-graph {
+    display: flex;
+    gap: 1rem;
+
+    .graph {
+        max-width: rem(250px);
+    }
+
+    .doughnut-graph {}
+}
