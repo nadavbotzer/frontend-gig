@@ -1,5 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router'
+import { useLocation } from 'react-router-dom'
 
 import { HomePage } from './pages/HomePage'
 import { AboutUs, AboutTeam, AboutVision } from './pages/AboutUs'
@@ -15,17 +16,21 @@ import { GigIndex } from './pages/GigIndex.jsx'
 import { Checkout } from './pages/Checkout'
 
 import { AppHeader } from './cmps/AppHeader'
+import { TagsHeader } from './cmps/TagsHeader.jsx'
 import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
 
 import { ScrollProvider } from '../src/cmps/ScrollProvider'
 
 export function RootCmp() {
+    const { pathname } = useLocation()
+    console.log(pathname)
     return (
         <ScrollProvider>
             <div className="main-container">
 
                 <AppHeader />
+                {(pathname === "/" || pathname === "/gig/") && <TagsHeader />}
                 <UserMsg />
 
                 <main>
