@@ -18,6 +18,7 @@ export function BuyingInfo({ gig }) {
     function checkout() {
         const price = gig.packagesList[active].price;
         const packageDeal = {
+            gigId: gig._id,
             imgUrl: gig.imgUrls[0],
             title: gig.title,
             packageType: active.substring(0, 1).toLocaleUpperCase() + active.substring(1, active.length),
