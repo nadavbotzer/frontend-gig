@@ -46,11 +46,7 @@ async function signup(userCred) {
 	if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
 	userCred.score = 10000
 	const user = await httpService.post('auth/signup', userCred)
-	const createdAt = new Date()
-	const level = getRandomIntInclusive(1, 3)
-	const rate = getRandomIntInclusive(1, 5)
-	const languages = getRandomLanguages(getRandomIntInclusive(1, 5))
-	return saveLoggedinUser({ ...user, createdAt, level, rate, languages })
+	return saveLoggedinUser(user)
 }
 
 async function logout() {
@@ -68,11 +64,7 @@ function saveLoggedinUser(user) {
 		fullname: user.fullname,
 		imgUrl: user.imgUrl,
 		score: user.score,
-		isAdmin: user.isAdmin,
-		createdAt: user.createdAt,
-		level: user.level,
-		rate: user.rate,
-		languages: user.languages
+		isAdmin: user.isAdmin
 	}
 	sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
 	return user
