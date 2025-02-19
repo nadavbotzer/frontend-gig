@@ -1,16 +1,19 @@
 .order-list {
     display: grid;
     grid-template-columns: repeat(4, minmax(auto, 1fr)) auto;
+    row-gap: 1rem;
 
     .row {
         display: contents;
     }
 
     .cell {
-        padding: 1fr;
+
+        padding: 0.5rem 0.75rem;
 
         &.header {
             background-color: $gray1;
         }
     }
+
 }

@@ -1,12 +1,31 @@
 .order-list {
     .seller-actions-btn {
         font-size: rem(12px);
+        padding: 0.25rem 0.5rem;
+    }
+
+    .buyer-info {
+        display: flex;
+        gap: 0.5rem;
+        align-items: top;
+        justify-content: flex-start;
+
+        img {
+            border-radius: 50%;
+        }
     }
 }
 
 .seller-actions-dropdown {
+
+    .dropdown-content {
+        display: flex;
+        flex-direction: column;
+    }
+
     .btn {
         font-size: rem(12px);
+        padding: 0.25rem 0.5rem;
     }
 
     .close-btn {
