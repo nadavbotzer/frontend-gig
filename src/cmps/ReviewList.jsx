@@ -37,7 +37,7 @@ export function ReviewList({ reviews }) {
                             endPriceRange={endPriceRange}
                             projectImg={projectImg}
                         />
-                        <ReviewHelpful />
+                        {/* <ReviewHelpful /> */}
                     </React.Fragment>
                 })
             }
