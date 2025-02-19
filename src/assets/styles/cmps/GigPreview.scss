@@ -78,8 +78,9 @@
         gap: 0.125rem;
         font-weight: 700;
         padding-top: rem(8px);
-        align-items: center;
+        align-items: flex-start;
         justify-content: flex-start;
+
 
         .gig-previews-count {
             font-weight: 200;
