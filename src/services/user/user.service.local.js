@@ -51,6 +51,7 @@ async function login(userCred) {
 
 async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+    if (!userCred.createdAt) userCred.createdAt = new Date()
     userCred.score = 10000
 
     const user = await storageService.post('user', userCred)
@@ -73,7 +74,9 @@ function saveLoggedinUser(user) {
         rate: user.rate,
         location: user.location,
         languages: user.languages,
-        isAdmin: user.isAdmin
+        isAdmin: user.isAdmin,
+        level: user.level,
+        createdAt: user.createdAt
     }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
