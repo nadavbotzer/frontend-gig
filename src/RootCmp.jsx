@@ -25,7 +25,6 @@ import { SellerDashboard } from './pages/SellerDashboard.jsx'
 
 export function RootCmp() {
     const { pathname } = useLocation()
-    console.log(pathname)
     return (
         <ScrollProvider>
             <div className="main-container">
