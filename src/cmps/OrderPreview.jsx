@@ -43,16 +43,6 @@ export function OrderPreview({ order }) {
                                 toggleModal()
                             }}>Done</button>
                         </DropDown.Content>
-                        <DropDown.Footer>
-                            <button
-                                onClick={() => {
-                                    toggleModal();
-                                }}
-                                className="btn close-btn"
-                            >
-                                Close
-                            </button>
-                        </DropDown.Footer>
                     </DropDown>
                 </div>
             </div>
