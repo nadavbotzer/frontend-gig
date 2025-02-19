@@ -2,7 +2,6 @@ import { useRef, useState } from "react"
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"
 import useModal from "../customHooks/useModal"
 import { DropDown } from "../cmps/DropDown"
-import { RadioItem } from "./RadioItem"
 import { PriceFilter } from "./PriceFilter"
 import { DeliveryTimeFilter } from "./DeliveryTimeFilter"
 
@@ -14,19 +13,6 @@ export function FilterItem({ filter, onApplyFilter, initialValue, onClearFilter 
     function handleChange(event) {
         setValue(event.target.value)
     }
-
-    function getBudgetAfterLabel(budget) {
-        const [min, max] = budget.split('-');
-
-        if (max) {
-            return `USD$${min} - USD$${max}`;
-        } else if (min) {
-            if (min === '0') return 'Free';
-            return `USD$${min} & Above`;
-        }
-        return '';
-    }
-
 
     function renderFilterContent() {
         switch (filter.key) {

@@ -2,10 +2,18 @@ import { RadioItem } from "./RadioItem";
 
 export function PriceFilter({ filter, value, handleChange }) {
     const getBudgetAfterLabel = (budget) => {
-        if (budget === '-467') return 'Under USD$467';
-        if (budget === '467-1495') return ' USD$467-USD$1,495';
-        if (budget === '1495-') return ' USD$1,495 & Above';
+        const [min, max] = budget.split('-');
+
+        if (max) {
+            if (!min) return `Under $${max}`;
+            return `$${min} - $${max}`;
+        } else if (min) {
+            if (!min) return 'Free';
+            return `$${min} & Above`;
+        }
+        return '';
     };
+
 
     return (
         <div className="budget filter-content">

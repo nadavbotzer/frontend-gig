@@ -1,4 +1,5 @@
 .main-checkout {
+
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -18,27 +19,22 @@
             }
 
             flex: 2;
-            // border: 1px solid #e4e5e7;
             padding-left: rem(40px);
 
             .billing-info {
                 border: 1px solid #e4e5e7;
                 border-radius: 4px;
+            }
 
-                h4 {
-                    border-bottom: 1px solid #e4e5e7;
-                }
+            h4 {
+                border-bottom: 1px solid #e4e5e7;
+                background-color: $clr13;
             }
 
             .payment-option {
                 border: 1px solid #e4e5e7;
                 border-radius: 4px;
-
-                h4 {
-                    width: 100%;
-                    border-bottom: 1px solid #e4e5e7;
-                }
-
+                margin-top: rem(30px);
             }
 
             h2 {
@@ -46,7 +42,7 @@
                 font-size: rem(16px);
                 margin-top: rem(10px);
                 font-weight: 100;
-                max-width: rem(150px);
+                // max-width: rem(150px);
             }
 
             input {
@@ -57,8 +53,8 @@
                 flex: 1 1 auto;
                 padding: 10px 16px;
                 font-size: 1rem;
-                max-width: 520px;
                 opacity: 0.5;
+                letter-spacing: 0.5px;
 
 
 
@@ -75,49 +71,57 @@
             .card-pay {
                 border: 1px solid #e4e5e7;
                 border-radius: 4px;
-                padding-bottom: rem(100px);
+                padding: 24px 18px 24px 40px;
+
+
 
                 .cardnumber {
-                    display: flex;
-                    justify-content: space-around;
 
                     input {
                         padding-left: 60px;
+                        min-width: rem(520px);
                     }
 
                     .img-lock {
                         position: relative;
                         opacity: 0.5;
-                        right: rem(55px);
+                        left: rem(16px);
+                        top: rem(-27.5px);
                         max-width: 11px;
                     }
 
                     .img-card {
                         position: relative;
-                        left: 3.4375rem;
+                        left: 30.453rem;
                         max-width: 23px;
                         max-height: 22px;
-                        bottom: -9px;
+                        bottom: -30px;
                     }
+                }
 
 
+                .card-holder-name {
 
-
+                    input {
+                        min-width: 520px;
+                    }
                 }
             }
 
             .center {
                 display: flex;
-                justify-content: space-around;
+                gap: rem(28px);
 
-                input {}
+                input {
+                    min-width: rem(246px);
+                }
             }
         }
 
         .side-content {
             flex: 1;
             border: 1px solid #e4e5e7;
-            padding: rem(17px);
+            padding: rem(15px);
             border-radius: 4px;
             max-height: max-content;
 

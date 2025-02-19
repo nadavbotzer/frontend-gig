@@ -28,8 +28,10 @@ export function gigReducer(state = initialState, action) {
             newState = { ...state, gigs: [...state.gigs, action.gig] }
             break
         case UPDATE_GIG:
-            gigs = state.gigs.map(gig => (gig._id === action.gig._id) ? action.gig : gig)
-            newState = { ...state, gigs }
+            const updatedGigs = state.gigs.map(gig =>
+                gig._id === action.gig._id ? { ...gig, ...action.gig } : gig
+            )
+            newState = { ...state, gigs: updatedGigs }
             break
         case ADD_GIG_MSG:
             newState = { ...state, gig: { ...state.gig, msgs: [...state.gig.msgs || [], action.msg] } }
