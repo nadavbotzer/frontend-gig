@@ -1,4 +1,7 @@
+import React from 'react'
+
 import { ReviewCard } from './Review/ReviewCard.jsx'
+import { ReviewHelpful } from './Review/ReviewHelpful.jsx'
 
 import "../assets/styles/cmps/ReviewList.scss"
 
@@ -13,27 +16,29 @@ export function ReviewList({ reviews }) {
                     name,
                     img,
                     location,
-                    reviewedAt, 
+                    reviewedAt,
                     review,
-                    rate, 
-                    duration, 
-                    startPriceRange, 
+                    rate,
+                    duration,
+                    startPriceRange,
                     endPriceRange,
                     projectImg
                 }) => {
-                    return <ReviewCard
-                        key={_id}
-                        imgSrc={img}
-                        location={location}
-                        fullname={name}
-                        createdAt={reviewedAt}
-                        text={review}
-                        rate={rate}
-                        duration={duration}
-                        startPriceRange={startPriceRange}
-                        endPriceRange={endPriceRange}
-                        projectImg={projectImg}
-                    />
+                    return <React.Fragment key={_id}>
+                        <ReviewCard
+                            imgSrc={img}
+                            location={location}
+                            fullname={name}
+                            createdAt={reviewedAt}
+                            text={review}
+                            rate={rate}
+                            duration={duration}
+                            startPriceRange={startPriceRange}
+                            endPriceRange={endPriceRange}
+                            projectImg={projectImg}
+                        />
+                        <ReviewHelpful />
+                    </React.Fragment>
                 })
             }
         </ul>
