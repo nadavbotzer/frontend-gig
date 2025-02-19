@@ -1,64 +1,33 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
 
 import '../../assets/styles/cmps/BuyingInfo.scss'
 
 export function BuyingInfo({ gig }) {
 
-    const btns = ['Basic', 'Standard', 'Premium']
+    const btns = ['basic', 'standard', 'premium']
 
-
-    const packegeDealList = [
-        { text: '3D modeling', packages: ['Basic', 'Standard', 'Premium'] },
-        { text: 'Environment', packages: ['Standard', 'Premium'] },
-        { text: 'Furniture and people', packages: ['Standard', 'Premium'] },
-        { text: 'Texturing & lighting', packages: ['Standard', 'Premium'] },
-        { text: '4 renderings', packages: ['Basic', 'Standard', 'Premium'] },
-        { text: 'Source file', packages: ['Basic', 'Standard', 'Premium'] },
-    ]
-
-    const newpackegeDealList = [
-        // // price: general, dats, general, revisions
-        // {type:'basic', listSerives:{included:},  desc, },
-        // {'standard', price: },
-        // {'premium', price: }
-        { text: '3D modeling', packages: ['Basic', 'Standard', 'Premium'] },
-        { text: 'Environment', packages: ['Standard', 'Premium'] },
-        { text: 'Furniture and people', packages: ['Standard', 'Premium'] },
-        { text: 'Texturing & lighting', packages: ['Standard', 'Premium'] },
-        { text: '4 renderings', packages: ['Basic', 'Standard', 'Premium'] },
-        { text: 'Source file', packages: ['Basic', 'Standard', 'Premium'] },
-    ]
-
-    const [active, setActive] = useState('Basic')
+    const [active, setActive] = useState(btns[0])
 
     const navigate = useNavigate()
 
     function onActive({ target }) {
-        setActive(target.value)
+        setActive(target.name)
     }
 
     function checkout() {
-        let price = gig.price
-
-        if (active === 'Standard')
-            price *= 1.1
-        if (active === 'Premium')
-            price *= 1.20
-
+        const price = gig.packagesList[active].price;
         const packageDeal = {
             imgUrl: gig.imgUrls[0],
             title: gig.title,
-            packageType: active,
+            packageType: active.substring(0, 1).toLocaleUpperCase() + active.substring(1, active.length),
             price: price,
-            services: packegeDealList.filter((packageDeal) => packageDeal.packages.includes(active)),
-            deliveryTime: gig.daysToMake,
-            revisions: 2,
-            serviceFee: 20,
-            VAT: 25
+            services: gig.packagesList[active].servicesList.filter((service) => service.included).map((service) => service.text),
+            deliveryTime: gig.packagesList[active].daysToMake,
+            revisions: gig.packagesList[active].revisions,
+            serviceFee: price * 0.1,
+            VAT: price * 0.15
         }
-
         navigate('checkout', { state: { packageDeal } })
     }
 
@@ -74,8 +43,9 @@ export function BuyingInfo({ gig }) {
                                 ${active === btn ? 'active' : ''} 
                                 ${index !== btns.length - 1 ? 'border-right' : ''}`
                             }
+                            name={btn}
                             type="button"
-                            value={btn}
+                            value={btn.substring(0, 1).toLocaleUpperCase() + btn.substring(1, btn.length)}
                             onClick={(event) => onActive(event)}
                         />
                     })
@@ -86,7 +56,7 @@ export function BuyingInfo({ gig }) {
 
                 <div className="price-info">
                     <span className='price currency-symbol'>₪</span>
-                    <span className='price'>{gig.price}</span>
+                    <span className='price'>{gig.packagesList[active].price}</span>
                     <img className='info-icon' src={'/images/info-icon.png'} />
                 </div>
 
@@ -98,26 +68,26 @@ export function BuyingInfo({ gig }) {
                     <img className='question-icon' src={'/images/question-icon.png'} />
                 </div>
 
-                <span className='service-desc'><span className='font-weight'>{active}</span> 3d model of one space (No Renderings)</span><br />
+                <span className='service-desc'><span className='font-weight'>{active.substring(0, 1).toLocaleUpperCase() + active.substring(1, active.length)}</span> {gig.packagesList[active].packageDescription}</span><br />
 
                 <div className="delivery-revisions">
                     <span className='delivery'>
                         <img src={'/images/clock-icon.png'} />
-                        4-day delivery
+                        {gig.packagesList[active].daysToMake}-day delivery
                     </span>
                     <span className='revisions'>
                         <img src={'/images/recycle-icon.png'} />
-                        1 Revision
+                        {gig.packagesList[active].revisions} Revision
                     </span>
                 </div>
 
                 <ul className='services-list'>
                     {
-                        packegeDealList.map((deal) => {
-                            const src = deal.packages.includes(active) ? 'dark-check-icon.png' : 'light-check-icon.png'
-                            return <li key={deal.text}>
+                        gig.packagesList[active].servicesList.map((service) => {
+                            const src = service.included ? 'dark-check-icon.png' : 'light-check-icon.png'
+                            return <li key={service.text}>
                                 <img src={`/images/${src}`} />
-                                {deal.text}
+                                {service.text}
                             </li>
                         })
                     }

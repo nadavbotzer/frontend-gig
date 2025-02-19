@@ -8,14 +8,16 @@ import { gigService as remote } from './gig.service.remote'
 
 export function getEmptyGig() {
     const loggedInUser = userService.getLoggedinUser()
-
+    const servicesList = getRandomTags(5)
+    const price = getRandomIntInclusive(10, 2500)
+    const daysToMake = getRandomIntInclusive(1, 10)
     return {
         title: 'I will ' + getRandomGigTitle(),
         about: "With more than 10 years of professional experience in the field of Architecture, my approach to design is innovative, creative and technically sound. \n During these years I have gained a strong command over architectural design and a building's work ability. \n So whether you're looking for a great design for your building or want to make it workable, I'm the right guy for you!!",
-        price: getRandomIntInclusive(10, 2500),
+        price: price,
         owner: loggedInUser,
         location: getRandomLocation(),
-        daysToMake: getRandomIntInclusive(1, 10),
+        daysToMake: daysToMake,
         description: [
             'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
             'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
@@ -32,6 +34,12 @@ export function getEmptyGig() {
             "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/193068192/original/a170671ee931142c619a392cd06db59b9a60eec7.jpg"
         ],
         tags: getRandomTags(),
+        avgResponseTime: getRandomIntInclusive(1, 24),
+        packagesList: {
+            basic: { revisions: 1, daysToMake: daysToMake, price: price, servicesList: [{ text: servicesList[0], included: false }, { text: servicesList[1], included: true }, { text: servicesList[2], included: false }, { text: servicesList[3], included: true }, { text: servicesList[4], included: false }], packageDescription: 'With the basic package deal you recieve 2/5 services' },
+            standard: { revisions: 2, daysToMake: daysToMake + 2, price: price * 1.1, servicesList: [{ text: servicesList[0], included: true }, { text: servicesList[1], included: true }, { text: servicesList[2], included: false }, { text: servicesList[3], included: true }, { text: servicesList[4], included: false }], packageDescription: 'With the basic package deal you recieve 3/5 services' },
+            premium: { revisions: 3, daysToMake: daysToMake + 3, price: price * 1.20, servicesList: [{ text: servicesList[0], included: true }, { text: servicesList[1], included: true }, { text: servicesList[2], included: true }, { text: servicesList[3], included: true }, { text: servicesList[4], included: true }], packageDescription: 'With the basic package deal you recieve 5/5 services' }
+        },
         likedByUsers: [],
         reviews: [
             {
@@ -75,7 +83,6 @@ export function getEmptyGig() {
                 rate: getRandomIntInclusive(1, 5)
             }
         ],
-        avgResponseTime: getRandomIntInclusive(1, 24),
     }
 }
 

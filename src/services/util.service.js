@@ -87,7 +87,7 @@ export function getRandomLocation() {
     return locations[getRandomIntInclusive(0, locations.length - 1)];
 }
 
-export function getRandomTags() {
+export function getRandomTags(length = 2) {
     const tags = ['logo-design',
         'wordpress',
         'voice-over',
@@ -107,7 +107,7 @@ export function getRandomTags() {
         'business',
         'consultin'
     ]
-    return tags.sort(() => 0.5 - Math.random()).slice(0, 2);
+    return tags.sort(() => 0.5 - Math.random()).slice(0, length);
 }
 
 export function getRandomCreatedAt() {
