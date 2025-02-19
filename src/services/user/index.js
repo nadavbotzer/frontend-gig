@@ -1,6 +1,6 @@
 const { DEV, VITE_LOCAL } = import.meta.env
 
-import { getRandomLocation } from '../util.service'
+import { getRandomIntInclusive, getRandomLanguages, getRandomLocation } from '../util.service'
 import { userService as local } from './user.service.local'
 import { userService as remote } from './user.service.remote'
 
@@ -10,9 +10,12 @@ function getEmptyUser() {
         password: '',
         fullname: '',
         isAdmin: false,
+        createdAt: null,
+        imgUrl: '',
+        level: getRandomIntInclusive(1, 3),
         rate: 2,
-        country: getRandomLocation(),
-        languages: ['English']
+        location: getRandomLocation(),
+        languages: getRandomLanguages(getRandomIntInclusive(1, 5)),
     }
 }
 

@@ -21,6 +21,7 @@ import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
 
 import { ScrollProvider } from '../src/cmps/ScrollProvider'
+import { SellerDashboard } from './pages/SellerDashboard.jsx'
 
 export function RootCmp() {
     const { pathname } = useLocation()
@@ -45,6 +46,8 @@ export function RootCmp() {
                         <Route path="user/:id" element={<UserDetails />} />
                         <Route path="review" element={<ReviewIndex />} />
                         <Route path="gig/:gigId/checkout" element={<Checkout />} />
+                        <Route path="dashboard" element={<SellerDashboard />} />
+
 
                         <Route path="chat" element={<ChatApp />} />
                         <Route path="admin" element={<AdminIndex />} />
