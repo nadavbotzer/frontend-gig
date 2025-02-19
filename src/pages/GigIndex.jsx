@@ -8,7 +8,7 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { gigService } from '../services/gig'
 import { userService } from '../services/user'
 import { GigList } from '../cmps/GigList'
-import { NavigationsAndActions } from '../cmps/NavigationsAndActions'
+import { Navigations } from '../cmps/Navigations'
 import { FilterItem } from '../cmps/FilterItem'
 import { TagsHeader } from '../cmps/TagsHeader'
 
@@ -169,8 +169,8 @@ export function GigIndex() {
         <>
             <main className="gig-index">
                 {userService.getLoggedinUser() && <button className='btn' onClick={onAddGig}>Add Gig (DEV)</button>}
-                {(!!gigs.length && tagsParam) && <NavigationsAndActions gigCategory={tagsParam} />}
-                {!tagsParam && <NavigationsAndActions gigCategory={''} />}
+                {(!!gigs.length && tagsParam) && <Navigations gigCategory={tagsParam} />}
+                {!tagsParam && <Navigations gigCategory={''} />}
                 <h1>{(!!gigs.length && tagsParam) && tagsToHeading(tagsParam)}</h1>
                 {<div className="filter-wrapper">
                     {filters.map(filter => {
