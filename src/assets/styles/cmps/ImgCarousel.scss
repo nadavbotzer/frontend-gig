@@ -124,3 +124,19 @@
         overflow: hidden;
     }
 }
+
+.img-previews {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+
+    .img-preview {
+        flex: 1;
+        cursor: pointer;
+    }
+
+    img {
+        border-radius: 0.25rem;
+
+    }
+}
