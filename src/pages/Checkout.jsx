@@ -13,7 +13,6 @@ export function Checkout() {
     const { VAT, deliveryTime, imgUrl, packageType, price, revisions, serviceFee, services, title } = packageDeal
     const navigate = useNavigate()
     const { orderId } = useParams()
-    console.log(orderId)
     const [order, setOrder] = useState(null)
 
     useEffect(() => {
@@ -25,9 +24,6 @@ export function Checkout() {
         }
     }, [orderId])
 
-    useEffect(() => {
-        console.log(order, orderId)
-    }, [orderId, order])
 
     async function loadOrder(orderId) {
         try {
@@ -49,7 +45,6 @@ export function Checkout() {
         order.status = 'pending'
         try {
             const updatedOrder = await updateOrder(order)
-            console.log(updatedOrder)
             showSuccessMsg(`Order sent successfully`)
             navigate('/')
 
@@ -119,12 +114,12 @@ export function Checkout() {
                         </header>
                         <div className='order-details-general-pricing space-between'>
                             <p>{packageType.toUpperCase()}</p>
-                            <p><span>₪</span>{price}</p>
+                            <p><span>$</span>{price}</p>
                         </div>
                         <ul className='features-list'>
                             {services.map((service => {
                                 return (
-                                    <li>{service.text}</li>
+                                    <li>{service}</li>
                                 )
                             }))}
                         </ul>
@@ -132,15 +127,15 @@ export function Checkout() {
                     <section className='summary'>
                         <div className='service space-between'>
                             <p>Service fee</p>
-                            <p><span>₪</span>{serviceFee}</p>
+                            <p><span>$</span>{serviceFee}</p>
                         </div>
                         <div className='vat space-between'>
                             <p>VAT</p>
-                            <p><span>₪</span>{VAT}</p>
+                            <p><span>$</span>{parseInt(VAT)}</p>
                         </div>
                         <div className='total space-between'>
                             <p>Total</p>
-                            <p><span>₪</span>{price + serviceFee + VAT}</p>
+                            <p><span>$</span>{price + serviceFee + VAT}</p>
                         </div>
                         <div className='delivery space-between'>
                             <p>Total delivery time</p>

@@ -66,7 +66,7 @@ export function BuyingInfo({ gig }) {
             <div className="buying-content">
 
                 <div className="price-info">
-                    <span className='price currency-symbol'>₪</span>
+                    <span className='price currency-symbol'>$</span>
                     <span className='price'>{gig.packagesList[active].price}</span>
                     <img className='info-icon' src={'/images/info-icon.png'} />
                 </div>
