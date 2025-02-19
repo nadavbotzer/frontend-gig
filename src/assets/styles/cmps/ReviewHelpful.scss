@@ -1,0 +1,36 @@
+@import "../setup/functions";
+
+.review-helpful {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: rem(15px);
+
+    span,
+    .answer {
+        color: #404145;
+        font-size: rem(14px);
+        font-weight: 600;
+        text-align: left;
+    }
+
+    span {
+        line-height: rem(25px);
+        margin: rem(0px) rem(12px) rem(0px) rem(0px);
+    }
+
+    .answer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        line-height: rem(21px);
+
+        .icon-answer {
+            margin-right: rem(5px);
+            width: rem(15px);
+        }
+    }
+}

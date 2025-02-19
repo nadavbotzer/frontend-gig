@@ -11,7 +11,8 @@ export function ReviewContent({ text }) {
     }
 
     return <div className="text">
-        {seeMore && text.length > 250 ? text : text.slice(0, 250) + '... '}
-        {text.length > 250 && <span className='more' onClick={onSeeMore}>{`${seeMore ? 'See less' : 'See more'}`}</span>}
+        {text.length > 250 && seeMore && <><span>{text} </span><span className='more' onClick={onSeeMore}>See less</span></>}
+        {text.length > 250 && !seeMore && <><span>{text.slice(0, 250)}... </span><span className='more' onClick={onSeeMore}>See more</span></>}
+        {text.length < 250 && <span>{text}</span>}
     </div>
 }

@@ -5,13 +5,12 @@ import { TopSectionReview } from "./TopSectionReview";
 
 import '../../assets/styles/cmps/ReviewCard.scss'
 
-export function ReviewCard({ flagSrc, imgSrc, location, fullname,
+export function ReviewCard({ imgSrc, location, fullname,
     createdAt, rate, text, duration, startPriceRange, endPriceRange,
     projectImg
 }) {
     return <div className="card">
         <Profile
-            flagSrc={flagSrc}
             imgSrc={imgSrc}
             location={location}
             fullname={fullname}
