@@ -5,6 +5,7 @@ import { GigImages } from "./GigImages";
 import { ReviewList } from "../ReviewList";
 
 import { getRandomCreatedAt, getRandomDuration, getRandomIntInclusive, getRandomLocation, makeId } from "../../services/util.service";
+import { ImgCarousel } from "../ImgCarousel";
 
 export function GigInfo({ gig }) {
 
@@ -101,9 +102,7 @@ export function GigInfo({ gig }) {
             owner={owner}
             reviewsCount={reviews.length}
         />
-        <GigImages
-            imgUrls={imgUrls}
-        />
+        <ImgCarousel imgUrls={imgUrls} withImgPreview={true} />
         <AboutGig
             descriptionContent={description}
         />

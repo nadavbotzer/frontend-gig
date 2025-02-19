@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-export function ImgCarousel({ imgUrls, onClickImg }) {
+export function ImgCarousel({ imgUrls, onClickImg, withImgPreview = false }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
     const elCarousel = useRef(null)
     const isNavigatingByDot = useRef(false)
@@ -96,16 +96,17 @@ export function ImgCarousel({ imgUrls, onClickImg }) {
                     ))}
                 </div>
             </div>
-            <div className='img-previews'>
-                {
-                    imgUrls.map((imgUrl, idx) => (
-                        <div className="img-preview">
-                            <img src={imgUrl} alt={`Image ${idx}`} onClick={() => scrollToImage(idx)} />
-                        </div>
-                    )
-                    )
-                }
-            </div>
+            {withImgPreview &&
+                <div className='img-previews'>
+                    {
+                        imgUrls.map((imgUrl, idx) => (
+                            <div className="img-preview">
+                                <img src={imgUrl} alt={`Image ${idx}`} onClick={() => scrollToImage(idx)} />
+                            </div>
+                        )
+                        )
+                    }
+                </div>}
         </>
     )
 }
