@@ -33,20 +33,22 @@ export async function removeOrder(orderId) {
     }
 }
 
-export async function addOrder(order) {
+
+
+export async function updateOrder(order) {
     try {
-        const savedOrder = await orderService.save(order)
-        store.dispatch(getCmdAddOrder(savedOrder))
+        const savedOrder = await orderService.updateOrder(order)
+        store.dispatch(getCmdUpdateOrder(savedOrder))
         return savedOrder
     } catch (err) {
-        console.log('Cannot add order', err)
+        console.log('Cannot save order', err)
         throw err
     }
 }
 
-export async function updateOrder(order) {
+export async function addOrder(order) {
     try {
-        const savedOrder = await orderService.save(order)
+        const savedOrder = await orderService.saveOrder(order)
         store.dispatch(getCmdUpdateOrder(savedOrder))
         return savedOrder
     } catch (err) {

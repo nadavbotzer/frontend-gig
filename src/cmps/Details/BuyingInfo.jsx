@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { orderService } from '../../services/order'
+import { addOrder } from '../../store/actions/order.actions'
 
 import '../../assets/styles/cmps/BuyingInfo.scss'
+
 
 export function BuyingInfo({ gig }) {
 
@@ -16,7 +18,7 @@ export function BuyingInfo({ gig }) {
         setActive(target.name)
     }
 
-    function checkout() {
+    async function checkout() {
         const price = gig.packagesList[active].price;
         const packageDeal = {
             gigId: gig._id,
@@ -31,10 +33,13 @@ export function BuyingInfo({ gig }) {
             VAT: price * 0.15
         }
         const order = orderService.getEmptyOrder()
-        console.log(order)
-        console.log('owner', gig.owner)
-
-        navigate('checkout', { state: { packageDeal } })
+        order.owner = gig.owner
+        try {
+            const updatedOreder = await addOrder(order)
+            navigate(`/gig/checkout/${order._id}`, { state: { packageDeal } })
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     return <section className="buying-info-column">

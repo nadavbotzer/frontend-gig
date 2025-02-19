@@ -1,21 +1,65 @@
 import { useLocation } from "react-router"
 import { useNavigate } from 'react-router'
 import { showSuccessMsg } from '../services/event-bus.service'
+import { useParams } from 'react-router'
+import { updateOrder } from '../store/actions/order.actions'
+import { useEffect, useState } from 'react'
 
 
 export function Checkout() {
 
     const location = useLocation()
     const packageDeal = location.state?.packageDeal
-    console.log("packageDeal: ", packageDeal)
     const { VAT, deliveryTime, imgUrl, packageType, price, revisions, serviceFee, services, title } = packageDeal
     const navigate = useNavigate()
+    const { orderId } = useParams()
+    console.log(orderId)
+    const [order, setOrder] = useState(null)
 
+    useEffect(() => {
+        try {
+            loadOrder(orderId)
 
-    function saveOrder() {
-        navigate('/')
-        showSuccessMsg(`Order sent successfully`)
+        } catch (err) {
+            console.log(err)
+        }
+    }, [orderId])
+
+    useEffect(() => {
+        console.log(order, orderId)
+    }, [orderId, order])
+
+    async function loadOrder(orderId) {
+        try {
+            const order = await orderService.getById(orderId)
+            setOrder(order)
+        } catch (err) {
+            console.log("err: ", err);
+            showErrorMsg('Could not find order in server')
+        }
     }
+
+    async function onSaveOrder() {
+        const miniGig = {
+            price,
+            imgUrl,
+            title,
+        }
+        order.gig = miniGig
+        order.status = 'pending'
+        try {
+            const updatedOrder = await updateOrder(order)
+            console.log(updatedOrder)
+            showSuccessMsg(`Order sent successfully`)
+            navigate('/')
+
+        } catch (err) {
+            showSuccessMsg(`cannot send order`)
+
+        }
+
+    }
+
     return (
         <main className='main-checkout main-container'>
             <section className='checkout'>
@@ -102,7 +146,7 @@ export function Checkout() {
                             <p>Total delivery time</p>
                             <p>{deliveryTime} Days</p>
                         </div>
-                        <button onClick={saveOrder} className='confirm-btn'>Confirm & Pay</button>
+                        <button onClick={onSaveOrder} className='confirm-btn'>Confirm & Pay</button>
                         <div className='secure-payment'>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg">

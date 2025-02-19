@@ -7,7 +7,9 @@ export const orderService = {
     query,
     getById,
     save,
-    remove
+    remove,
+    updateOrder,
+    saveOrder
 }
 
 window.cs = orderService
@@ -72,4 +74,16 @@ async function save(order) {
     }
 
     return savedOrder
+}
+
+async function updateOrder(order) {
+    const orderToSave = {
+        ...order,
+        _id: order._id,
+    };
+    return await storageService.put(STORAGE_KEY, orderToSave)
+}
+
+async function saveOrder(order) {
+    return await storageService.post(STORAGE_KEY, order)
 }
