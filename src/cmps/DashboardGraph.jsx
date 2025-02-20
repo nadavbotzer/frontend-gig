@@ -1,4 +1,4 @@
-import { ArcElement, Chart as ChartJS, Legend, Tooltip, Title } from 'chart.js';
+import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
@@ -6,7 +6,7 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 
 export function DashboardGraph({ orders = [] }) {
-    console.log('orders', orders)
+
     const orderStatusesMap = countOrderStatuses(orders)
     const { rejected, approved, pending, done } = orderStatusesMap
     const data = {

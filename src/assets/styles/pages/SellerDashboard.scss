@@ -7,6 +7,10 @@
     .dashboard-header {
         h1 {
             font-size: rem(48px);
+
+            span {
+                color: $clr1;
+            }
         }
     }
 

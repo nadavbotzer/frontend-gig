@@ -100,7 +100,7 @@ export function ImgCarousel({ imgUrls, onClickImg, withImgPreview = false }) {
                 <div className='img-previews'>
                     {
                         imgUrls.map((imgUrl, idx) => (
-                            <div className="img-preview">
+                            <div key={idx} className="img-preview">
                                 <img src={imgUrl} alt={`Image ${idx}`} onClick={() => scrollToImage(idx)} />
                             </div>
                         )

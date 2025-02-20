@@ -15,7 +15,7 @@ export function SellerDashboard() {
     return (
         <main className="seller-dashboard">
             <header className="dashboard-header">
-                <h1>Order Managment</h1>
+                <h1>Order Managment<span>.</span></h1>
             </header>
             <div className="graph-wrapper">
                 <h1>Statistics</h1>

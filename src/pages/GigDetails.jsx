@@ -42,10 +42,10 @@ export function GigDetails() {
   return (
     <section className="gig-page">
       <TagsHeader />
-      <NavigationsAndActions
-        gigCategory={'Interior design'}
+      {gig && <NavigationsAndActions
+        gigCategory={gig.tags.join(',')}
         showActions={true}
-      />
+      />}
       <GigContentLayout>
         <GigInfo gig={gig} />
         <BuyingInfo gig={gig} />
