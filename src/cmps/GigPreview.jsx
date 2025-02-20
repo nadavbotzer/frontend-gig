@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useNavigate } from 'react-router'
 import { updateGig } from '../store/actions/gig.actions'
 import { userService } from '../services/user'
@@ -9,8 +9,11 @@ export function GigPreview({ gig }) {
     const loggedInUser = userService.getLoggedinUser()
     const navigate = useNavigate()
 
+    const [searchParams, setSearchParams] = useSearchParams()
+    const tagsParam = searchParams.get('tags')
+
     function goToDetails(gigId) {
-        navigate(`/gig/${gigId}`)
+        navigate(`/gig/${gigId}/?tags=${tagsParam}`)
     }
 
     async function onClickLike(ev) {
