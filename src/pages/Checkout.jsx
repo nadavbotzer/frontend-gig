@@ -63,7 +63,7 @@ export function Checkout() {
                     <section className='billing-info'>
                         <h4>Billing information</h4>
                         <p>Your invoice will be issued according to the details listed here.</p>
-                        <p>user nsme</p>
+                        <p>{order && order.buyer.fullname}</p>
                     </section>
                     <section className='payment-option'>
                         <h4>Payment Options</h4>
@@ -117,9 +117,9 @@ export function Checkout() {
                             <p><span>$</span>{price}</p>
                         </div>
                         <ul className='features-list'>
-                            {services.map((service => {
+                            {services.map(((service, idx) => {
                                 return (
-                                    <li>{service}</li>
+                                    <li key={idx}>{service}</li>
                                 )
                             }))}
                         </ul>
