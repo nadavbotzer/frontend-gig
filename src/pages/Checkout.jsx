@@ -37,9 +37,11 @@ export function Checkout() {
 
     async function onSaveOrder() {
         const miniGig = {
-            price,
+            price: price + serviceFee + VAT,
             imgUrl,
             title,
+            deliveryTime
+
         }
         order.gig = miniGig
         order.status = 'pending'

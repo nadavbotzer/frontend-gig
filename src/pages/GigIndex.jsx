@@ -73,15 +73,6 @@ export function GigIndex() {
         loadGigs(filterBy)
     }, [filterBy])
 
-    // async function onRemoveGig(gigId) { //Save for referance
-    //     try {
-    //         await removeGig(gigId)
-    //         showSuccessMsg('Gig removed')
-    //     } catch (err) {
-    //         showErrorMsg('Cannot remove gig')
-    //     }
-    // }
-
     async function onAddGig() {
         const gig = gigService.getEmptyGig()
         try {
@@ -91,18 +82,6 @@ export function GigIndex() {
             showErrorMsg('Cannot add gig')
         }
     }
-
-    // async function onUpdateGig(gig) { //Save for Referance
-    //     const price = +prompt('New price?', gig.price)
-    //     if (price === 0 || price === gig.price) return
-    //     const gigToSave = { ...gig, price }
-    //     try {
-    //         const savedGig = await updateGig(gigToSave)
-    //         showSuccessMsg(`Gig updated, new price: ${savedGig.price}`)
-    //     } catch (err) {
-    //         showErrorMsg('Cannot update gig')
-    //     }
-    // }
 
     function handleClearFilter(filterKey) {
         if (filterKey === 'deliveryTime') {
