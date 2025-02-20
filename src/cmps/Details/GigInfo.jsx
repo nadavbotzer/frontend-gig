@@ -1,8 +1,8 @@
 import { AboutGig } from "./AboutGig";
 import { AboutSeller } from "./AboutSeller";
 import { GigHeader } from "./GigHeader";
-import { GigImages } from "./GigImages";
 import { ReviewList } from "../ReviewList";
+import { ImgCarousel } from "../ImgCarousel";
 
 import { getRandomCreatedAt } from "../../services/util.service";
 
@@ -20,9 +20,7 @@ export function GigInfo({ gig }) {
             owner={owner}
             reviewsCount={reviews.length}
         />
-        <GigImages
-            imgUrls={imgUrls}
-        />
+        <ImgCarousel imgUrls={imgUrls} withImgPreview={true} />
         <AboutGig
             descriptionContent={description}
         />

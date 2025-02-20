@@ -1,16 +1,15 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 
-import { loadGigs, addGig, updateGig, removeGig, addGigMsg } from '../store/actions/gig.actions'
+import { addGig, loadGigs } from '../store/actions/gig.actions'
 
-import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
-import { gigService } from '../services/gig'
-import { userService } from '../services/user'
+import { FilterItem } from '../cmps/FilterItem'
 import { GigList } from '../cmps/GigList'
 import { Navigations } from '../cmps/Navigations'
-import { FilterItem } from '../cmps/FilterItem'
-import { TagsHeader } from '../cmps/TagsHeader'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { gigService } from '../services/gig'
+import { userService } from '../services/user'
 
 
 export function GigIndex() {

@@ -24,6 +24,7 @@
 @import "pages/LoginSignup";
 @import "pages/GigDetails";
 @import "pages/Checkout";
+@import "pages/SellerDashboard";
 
 
 
@@ -55,6 +56,9 @@
 @import "cmps/FilterItem";
 @import "cmps/RadioItem";
 @import "cmps/TagsHeader";
+@import "cmps/OrderList";
+@import "cmps/OrderPreview";
+@import "cmps/DashboardGraph";
 
 
 

@@ -1,0 +1,53 @@
+.order-list {
+    .seller-actions-btn {
+        font-size: rem(12px);
+        padding: 0.25rem 0.5rem;
+        border-color: $clr1;
+        color: $clr1;
+    }
+
+    .buyer-info {
+        display: flex;
+        gap: 0.5rem;
+        align-items: top;
+        justify-content: flex-start;
+
+        img {
+            border-radius: 50%;
+            height: rem(25px);
+            width: rem(25px);
+
+        }
+    }
+}
+
+.seller-actions-dropdown {
+    overflow: hidden;
+
+    .dropdown-content {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .btn {
+        font-size: rem(14px);
+        padding: 0.5rem 0.75rem;
+        border: 0;
+        width: 100%;
+        border-radius: 0;
+        font-weight: 400;
+
+        &:hover {
+            background-color: $gray6;
+        }
+
+        &:not(:last-child) {
+            border-bottom: 1px solid $gray1;
+        }
+    }
+
+    .close-btn {
+        border: 0;
+    }
+}

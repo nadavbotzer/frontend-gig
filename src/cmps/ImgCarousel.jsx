@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-export function ImgCarousel({ imgUrls, onClickImg }) {
+export function ImgCarousel({ imgUrls, onClickImg, withImgPreview = false }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
     const elCarousel = useRef(null)
     const isNavigatingByDot = useRef(false)
@@ -68,32 +68,45 @@ export function ImgCarousel({ imgUrls, onClickImg }) {
     }
 
     return (
-        <div className='img-carousel'>
-            <div ref={elCarousel} className='images-container' onScroll={handleScroll}>
-                {imgUrls.map((imgUrl, idx) => (
-                    <div key={'i' + idx} data-idx={idx} className='carousel-item-container'>
-                        <img src={imgUrl} alt={`Image ${idx}`} onClick={onClickImg} />
-                    </div>
-                ))}
+        <>
+            <div className='img-carousel'>
+                <div ref={elCarousel} className='images-container' onScroll={handleScroll}>
+                    {imgUrls.map((imgUrl, idx) => (
+                        <div key={'i' + idx} data-idx={idx} className='carousel-item-container'>
+                            <img src={imgUrl} alt={`Image ${idx}`} onClick={onClickImg} />
+                        </div>
+                    ))}
+                </div>
+                <div
+                    className={`arrow-right ${currentImageIndex === imgUrls.length - 1 ? 'hidden' : ''}`}
+                    onClick={handleNext}
+                >
+                    {<KeyboardArrowRightIcon />}
+                </div>
+                <div className={`arrow-left ${currentImageIndex === 0 ? 'hidden' : ''}`} onClick={handlePrev}>
+                    {<KeyboardArrowLeftIcon />}
+                </div>
+                <div className='dots-pagination'>
+                    {imgUrls.map((_, idx) => (
+                        <div
+                            onClick={() => handleDotClick(idx)}
+                            key={'p' + idx}
+                            className={`${currentImageIndex === idx ? 'active' : ''}`}
+                        ></div>
+                    ))}
+                </div>
             </div>
-            <div
-                className={`arrow-right ${currentImageIndex === imgUrls.length - 1 ? 'hidden' : ''}`}
-                onClick={handleNext}
-            >
-                {<KeyboardArrowRightIcon />}
-            </div>
-            <div className={`arrow-left ${currentImageIndex === 0 ? 'hidden' : ''}`} onClick={handlePrev}>
-                {<KeyboardArrowLeftIcon />}
-            </div>
-            <div className='dots-pagination'>
-                {imgUrls.map((_, idx) => (
-                    <div
-                        onClick={() => handleDotClick(idx)}
-                        key={'p' + idx}
-                        className={`${currentImageIndex === idx ? 'active' : ''}`}
-                    ></div>
-                ))}
-            </div>
-        </div>
+            {withImgPreview &&
+                <div className='img-previews'>
+                    {
+                        imgUrls.map((imgUrl, idx) => (
+                            <div key={idx} className="img-preview">
+                                <img src={imgUrl} alt={`Image ${idx}`} onClick={() => scrollToImage(idx)} />
+                            </div>
+                        )
+                        )
+                    }
+                </div>}
+        </>
     )
 }

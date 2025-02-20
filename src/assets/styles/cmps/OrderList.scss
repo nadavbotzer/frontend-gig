@@ -1,0 +1,21 @@
+.order-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(auto, 1fr)) auto;
+    row-gap: 0.1rem;
+
+    .row {
+        display: contents;
+    }
+
+    .cell {
+
+        padding: 0.5rem 0.75rem;
+        border-bottom: 1px solid $gray1;
+
+        &.header {
+            background-color: $gray1;
+            font-weight: 700;
+        }
+    }
+
+}
