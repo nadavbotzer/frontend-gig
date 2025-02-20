@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
+
 import { useParams } from 'react-router'
+import { useSearchParams } from 'react-router-dom'
 
 import { GigInfo } from '../cmps/Details/GigInfo'
 import { BuyingInfo } from '../cmps/Details/BuyingInfo'
@@ -14,9 +16,12 @@ import '../assets/styles/pages/GigDetails.scss'
 
 export function GigDetails() {
 
-  const { gigId } = useParams()
   const [gig, setGig] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+
+  const { gigId } = useParams()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const tagsParam = searchParams.get('tags')
 
   useEffect(() => {
     gigId && loadGig(gigId)
@@ -43,7 +48,7 @@ export function GigDetails() {
     <section className="gig-page">
       <TagsHeader />
       <NavigationsAndActions
-        gigCategory={gig.tags[0]}
+        gigCategory={tagsParam}
         showActions={true}
         gig={gig}
         setGig={setGig}

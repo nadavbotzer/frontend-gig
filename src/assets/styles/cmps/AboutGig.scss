@@ -1,14 +1,16 @@
 @import "../setup/functions";
 
 .about {
-    color: #404145;
-    font-family: Macan;
+    color: #62646a;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
     h2 {
         font-size: rem(20px);
         font-weight: 700;
         line-height: rem(28px);
-        padding: rem(0px) rem(0px) rem(25px);
+        padding-block: 1.5rem;
     }
 
     .bold {
@@ -16,7 +18,6 @@
     }
 
     .header {
-        margin-top: rem(18px);
         font-size: rem(18px);
     }
 
@@ -25,16 +26,18 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
-        font-family: Macan;
-        margin-left: rem(18px);
+        gap: 1rem;
 
         li {
             line-height: rem(24px);
-            margin-bottom: rem(15px);
 
-            span.regular {
-                margin-left: rem(15px);
-            }
+            display: flex;
+            flex-direction: row;
+            gap: 0.3rem;
+
+            // span.regular {
+            //
+            // }
 
             span.bold {
                 font-weight: 600;
@@ -42,11 +45,11 @@
         }
     }
 
-    .background {
-        background-color: #ffecd1;
-    }
+    // .background {
+    //
+    // }
 
     p.regular {
-        margin: rem(5px)
+        padding-block: 1.5rem
     }
 }
