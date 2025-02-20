@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-import '../../assets/styles/cmps/ReviewHelpful.scss'
 
 export function ReviewHelpful() {
     return <div className="review-helpful">

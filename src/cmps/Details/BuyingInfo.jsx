@@ -3,9 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { orderService } from '../../services/order'
 import { addOrder } from '../../store/actions/order.actions'
 
-import '../../assets/styles/cmps/BuyingInfo.scss'
-
-
 export function BuyingInfo({ gig }) {
 
     const btns = ['basic', 'standard', 'premium']

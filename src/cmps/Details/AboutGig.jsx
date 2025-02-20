@@ -1,4 +1,3 @@
-import '../../assets/styles/cmps/AboutGig.scss';
 
 export function AboutGig({ descriptionContent }) {
 

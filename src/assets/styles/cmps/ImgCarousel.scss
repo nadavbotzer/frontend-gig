@@ -133,6 +133,13 @@
     .img-preview {
         flex: 1;
         cursor: pointer;
+        opacity: 0.5;
+        transition: 0.3s;
+
+        &.active {
+            opacity: 1;
+
+        }
     }
 
     img {

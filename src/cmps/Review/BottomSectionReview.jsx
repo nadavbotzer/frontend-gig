@@ -1,4 +1,3 @@
-import '../../assets/styles/cmps/BottomSectionReview.scss'
 
 export function BottomSectionReview({ startPriceRange, endPriceRange, duration }) {
 

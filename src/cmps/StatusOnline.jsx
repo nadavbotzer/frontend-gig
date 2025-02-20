@@ -1,6 +1,5 @@
 import React from 'react'
 
-import '../assets/styles/cmps/StatusOnline.scss'
 
 export function StatusOnline() {
 

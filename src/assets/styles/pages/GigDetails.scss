@@ -2,24 +2,21 @@
 
 .gig-page {
     background-color: #fff;
-    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: flex-start;
+    padding: 2rem 5rem;
+    gap: 1rem;
 
     .gig-layout {
-        width: 90%;
         display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: space-between;
+        gap: 7rem;
+        flex-wrap: wrap;
 
         .gig-info-column {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
-            width: 50%;
+            flex: 2.5 1 rem(500px);
 
             .header {
                 .gig-title {
@@ -32,23 +29,7 @@
                 }
             }
 
-            .carousel.carousel-slider .control-arrow {
-                background-color: #222325;
-                border-radius: 50%;
-                height: rem(50px);
-                width: rem(50px);
-                box-shadow: rgba(0, 0, 0, 0.1490196078) rem(0px) rem(2px) rem(5px) rem(0px);
-                opacity: 1;
-                top: 50%;
-            }
 
-            .carousel {
-                background-color: #fff;
-
-                .carouselle-img {
-                    object-fit: contain;
-                }
-            }
         }
     }
 }

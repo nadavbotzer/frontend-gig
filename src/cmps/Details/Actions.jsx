@@ -2,8 +2,6 @@ import { useState } from 'react';
 
 import { updateGig } from '../../store/actions/gig.actions';
 
-import '../../assets/styles/cmps/Actions.scss';
-
 export function Actions({ gig, setGig }) {
 
     const [ripples, setRipples] = useState([])
@@ -27,9 +25,9 @@ export function Actions({ gig, setGig }) {
         if (!loggedInUser) return
 
         const updatedLikedByUsers = isGigLikedByUser()
-        ? gig.likedByUsers.filter(user => user._id !== loggedInUser._id)
-        : [...gig.likedByUsers, loggedInUser]
-        
+            ? gig.likedByUsers.filter(user => user._id !== loggedInUser._id)
+            : [...gig.likedByUsers, loggedInUser]
+
         const updatedGig = { ...gig, likedByUsers: updatedLikedByUsers }
 
         try {

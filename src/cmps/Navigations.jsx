@@ -1,9 +1,7 @@
 import React from 'react'
 
 import { Link } from "react-router-dom"
-
-import '../assets/styles/cmps/Navigations.scss'
-
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 export function Navigations({ gigCategory }) {
 
     const navigations = [{ to: '/', name: 'home' }, { to: `/gig/?tags=${gigCategory}`, name: parseTags(gigCategory) }]
@@ -27,9 +25,9 @@ export function Navigations({ gigCategory }) {
                     <Link to={to} className='link'>
                         {
                             index === 0 ?
-                            <span className='icon-link'>
-                                <img width={'20px'} src={'/images/home-icon.png'} /> 
-                            </span> : 
+                                <span className='icon-link'>
+                                    <HomeOutlinedIcon />
+                                </span> :
                                 name
                         }
                     </Link>

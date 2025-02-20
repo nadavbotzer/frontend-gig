@@ -2,8 +2,6 @@ import { Level } from '../Level.jsx';
 import { ProfileImg } from './ProfileImg.jsx';
 import { StatusOnline } from '../StatusOnline.jsx';
 
-import '../../assets/styles/cmps/MiniUser.scss'
-
 export function MiniUser({ isAbout, owner, reviewsCount }) {
 
     const { imgUrl, fullname, rate, level } = owner
@@ -41,7 +39,7 @@ export function MiniUser({ isAbout, owner, reviewsCount }) {
                     </div>
                 }
 
-                <div className={`about-user-row`}>
+                <div className={`about-user-column`}>
 
                     {!isAbout && <span className="profession">{owner.proffession}</span>}
 

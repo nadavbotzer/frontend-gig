@@ -1,7 +1,5 @@
 import { timeAgo } from '../../services/util.service';
 
-import '../../assets/styles/cmps/InfoSeller.scss'
-
 export function InfoSeller({ location, createdAt, avgResponse, lastDeliveryAt, languagesArray, aboutSellerTxt }) {
 
     function formatCreatedAt(timestamp) {

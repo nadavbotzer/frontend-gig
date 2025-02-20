@@ -36,12 +36,13 @@
             justify-content: center;
             gap: rem(4px);
             line-height: rem(24px);
+            flex: 1;
 
             .about-user-row {
+                width: 100%;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                justify-content: flex-start;
                 color: #62646a;
                 gap: rem(12px);
                 line-height: rem(24px);
@@ -76,11 +77,29 @@
                     font-size: rem(14px);
                 }
 
+
+
+
+
+                .number {
+                    color: #222325;
+                    font-weight: 700;
+                    line-height: rem(24px);
+                    padding: rem(0px) rem(0px) rem(0px) rem(4px);
+                    font-size: rem(16px);
+                }
+            }
+
+            .about-user-column {
+                display: flex;
+                flex-direction: column;
+
                 .rating {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    justify-content: space-between;
+                    justify-content: flex-start;
+                    gap: 1rem;
 
                     .reviews {
                         width: fit-content;
@@ -97,8 +116,6 @@
                         flex-direction: row;
                         align-items: center;
                         justify-content: space-between;
-                        margin-right: rem(5px);
-                        margin-left: rem(5px);
 
                         .stars {
                             display: flex;
@@ -111,15 +128,9 @@
                                 width: rem(20px);
                             }
                         }
-
-                        .number {
-                            color: #222325;
-                            font-weight: 700;
-                            line-height: rem(24px);
-                            padding: rem(0px) rem(0px) rem(0px) rem(4px);
-                            font-size: rem(16px);
-                        }
                     }
+
+
                 }
             }
         }

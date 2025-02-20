@@ -23,11 +23,13 @@ export function AppHeader() {
 
 	const [isHeaderScrolled, setIsHeaderScrolled] = useState(false)
 	const inputRef = useRef(null)
+	const headerRef = useRef(null)
 
 
 
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll)
+		document.documentElement.style.setProperty('--header-height', headerRef.current.offsetHeight + 'px')
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll)
@@ -64,7 +66,7 @@ export function AppHeader() {
 	}
 
 	return (
-		<header className="app-header full main-container">
+		<header ref={headerRef} className="app-header full main-container">
 			<nav>
 				<div className="logo">
 					<NavLink to="/" className="logo">
@@ -82,7 +84,7 @@ export function AppHeader() {
 					{!user && <NavLink to="login" className="link btn-join">Join</NavLink>}
 					{user && (
 						<div className="user-info">
-							<button ref={btnRef} className=' user-img' onClick={toggleModal}>{user.imgUrl && <img src={user.imgUrl} />}</button>
+							<button ref={btnRef} className=' user-img' onClick={toggleModal}>{user.imgUrl && <img src='/images/profile-default.png' />}</button>
 							<DropDown buttonRef={btnRef} isOpen={isOpen} toggleModal={toggleModal} className="user-option-dropdown">
 								<div className="user-actions">
 									<div className='logout-btn' onClick={onLogout}>Logout</div>
