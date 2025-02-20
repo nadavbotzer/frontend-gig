@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { ReviewCard } from './Review/ReviewCard.jsx'
-import { ReviewHelpful } from './Review/ReviewHelpful.jsx'
 
 import "../assets/styles/cmps/ReviewList.scss"
 

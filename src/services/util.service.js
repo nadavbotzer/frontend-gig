@@ -172,13 +172,50 @@ export function getRandomDuration() {
     }
 
     switch (period[idx]) {
-        case 'days': 
+        case 'days':
             return `${getRandomIntInclusive(1, 6)} ${period[idx]}`;
-        case 'weeks': 
+        case 'weeks':
             return `${getRandomIntInclusive(1, 3)} ${period[idx]}`;
-        case 'months': 
+        case 'months':
             return `${getRandomIntInclusive(1, 11)} ${period[idx]}`;
-        case 'years': 
+        case 'years':
             return `${getRandomIntInclusive(1, 3)} ${period[idx]}`;
     }
+}
+
+export function getRnadomService(count = 3) {
+    const generalServices = [
+        "Consultation Services",
+        "Project Planning & Management",
+        "Design & Concept Development",
+        "Custom Solutions",
+        "Research & Analysis",
+        "Budgeting & Cost Estimation",
+        "Branding & Identity Design",
+        "Content Creation & Copywriting",
+        "Graphic Design & Visuals",
+        "Web Development & Design",
+        "UI/UX Design",
+        "SEO & Digital Marketing",
+        "Social Media Management",
+        "Photography & Videography",
+        "Maintenance & Support",
+        "Quality Assurance & Testing",
+        "Installation & Setup",
+        "Renovation & Remodeling",
+        "Space Planning & Layout Design",
+        "Furniture & Decor Sourcing",
+        "Supplier Coordination",
+        "Customer Support & Training",
+        "Logistics & Delivery Management",
+        "Sales & Lead Generation",
+        "Event Planning & Coordination",
+        "Strategy Development",
+        "Legal & Compliance Services",
+        "Financial & Accounting Services",
+        "IT Support & Solutions",
+        "Automation & Integration"
+    ]
+    const shuffled = generalServices.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count)
 }

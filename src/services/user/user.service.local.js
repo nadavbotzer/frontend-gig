@@ -76,7 +76,8 @@ function saveLoggedinUser(user) {
         languages: user.languages,
         isAdmin: user.isAdmin,
         level: user.level,
-        createdAt: user.createdAt
+        createdAt: user.createdAt,
+        proffession: user.proffession
     }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
