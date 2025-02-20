@@ -17,12 +17,15 @@ export function TagsHeader() {
     ]
 
     return (
-        <section className='tags-header main-layout full'>
-            {ctgs.map((ctg => {
-                return (
-                    <Link key={ctg.txt} to={`/gig/?tags=${ctg.tags}`}>{ctg.txt}</Link>
-                )
-            }))}
-        </section>
+        <div className="tags-container main-container full">
+            <section className='tags tags-header'>
+                {ctgs.map((ctg => {
+                    return (
+                        <Link key={ctg.txt} to={`/gig/?tags=${ctg.tags}`}>{ctg.txt}</Link>
+                    )
+                }))}
+            </section>
+        </div>
+        // </main>
     )
 }

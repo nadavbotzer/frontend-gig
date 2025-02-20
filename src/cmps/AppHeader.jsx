@@ -10,7 +10,6 @@ import { logout } from '../store/actions/user.actions'
 import { useScrollContext } from './ScrollProvider'
 import { DropDown } from './DropDown'
 import { SearchBar } from './SearchBar'
-import { TagsHeader } from './TagsHeader'
 
 
 
@@ -94,8 +93,7 @@ export function AppHeader() {
 					)}
 				</div>
 			</nav>
-			<div className="tags-container main-container full">
-			</div>
+
 		</header>
 	)
 }
