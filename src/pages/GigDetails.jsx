@@ -27,7 +27,7 @@ export function GigDetails() {
   }, [gig])
 
   async function loadGig(gigId) {
-    setIsLoading(true);
+    setIsLoading(true)
     try {
       const gig = await gigService.getById(gigId)
       setGig(gig)
