@@ -19,7 +19,7 @@ export function OrderPreview({ order }) {
     return (
         <>
             <div className="cell buyer-info">
-                <img src={buyer.imgUrl} style={{ height: '2rem', width: '2rem' }} />
+                <img src={buyer.imgUrl} />
                 <span>{buyer.fullname}</span>
             </div>
             <div className="cell gig-title">{gig.title}</div>
