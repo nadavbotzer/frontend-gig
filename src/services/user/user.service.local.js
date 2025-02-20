@@ -74,7 +74,7 @@ function saveLoggedinUser(user) {
         rate: user.rate,
         location: user.location,
         languages: user.languages,
-        isAdmin: user.isAdmin,
+        isAdmin: user.isAdmin, //*isSeller
         level: user.level,
         createdAt: user.createdAt,
         proffession: user.proffession

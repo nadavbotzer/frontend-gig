@@ -9,7 +9,7 @@ function getEmptyUser() {
         username: '',
         password: '',
         fullname: '',
-        isAdmin: false,
+        isAdmin: false, //* isSeller
         createdAt: null,
         imgUrl: '',
         level: getRandomIntInclusive(1, 3),
