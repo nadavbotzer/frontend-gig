@@ -1,8 +1,7 @@
 import React from 'react'
 
 import { Link } from "react-router-dom"
-
-
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 export function Navigations({ gigCategory }) {
 
     const navigations = [{ to: '/', name: 'home' }, { to: `/gig/?tags=${gigCategory}`, name: parseTags(gigCategory) }]
@@ -27,7 +26,7 @@ export function Navigations({ gigCategory }) {
                         {
                             index === 0 ?
                                 <span className='icon-link'>
-                                    <img width={'20px'} src={'/images/home-icon.png'} />
+                                    <HomeOutlinedIcon />
                                 </span> :
                                 name
                         }

@@ -10,13 +10,13 @@
 
     .gig-layout {
         display: flex;
-        gap: 5rem;
+        gap: 7rem;
         flex-wrap: wrap;
 
         .gig-info-column {
             display: flex;
             flex-direction: column;
-            flex: 2.5;
+            flex: 2.5 1 rem(500px);
 
             .header {
                 .gig-title {
