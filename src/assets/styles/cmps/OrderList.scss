@@ -10,6 +10,7 @@
     .cell {
 
         padding: 0.5rem 0.75rem;
+        border-bottom: 1px solid $gray1;
 
         &.header {
             background-color: $gray1;

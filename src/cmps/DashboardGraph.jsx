@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { ArcElement, Chart as ChartJS, Legend, Tooltip, Title } from 'chart.js';
+import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 
 export function DashboardGraph({ orders = [] }) {
@@ -14,6 +14,7 @@ export function DashboardGraph({ orders = [] }) {
         datasets: [
             {
                 label: '# of Orders',
+                title: 'Orders Count by Status',
                 data: [rejected, approved, pending, done],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -33,6 +34,7 @@ export function DashboardGraph({ orders = [] }) {
             },
         ],
     }
+
 
 
     function countOrderStatuses(orders) {
