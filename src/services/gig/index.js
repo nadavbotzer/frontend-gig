@@ -1,14 +1,14 @@
 const { DEV, VITE_LOCAL } = import.meta.env
 
 import { userService } from '../user'
-import { getRandomTags, getRandomLocation, getRandomIntInclusive, getRandomGigTitle } from '../util.service'
+import { getRandomTags, getRandomLocation, getRandomIntInclusive, getRandomGigTitle, makeId, getRandomCreatedAt, getRandomDuration, getRnadomService } from '../util.service'
 
 import { gigService as local } from './gig.service.local'
 import { gigService as remote } from './gig.service.remote'
 
 export function getEmptyGig() {
     const loggedInUser = userService.getLoggedinUser()
-    const servicesList = getRandomTags(5)
+    const servicesList = getRnadomService(5)
     const price = Math.ceil(getRandomIntInclusive(10, 2500))
     const daysToMake = getRandomIntInclusive(1, 10)
     return {
@@ -19,13 +19,47 @@ export function getEmptyGig() {
         location: getRandomLocation(),
         daysToMake: daysToMake,
         description: [
-            'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
-            'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
-            'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
-            'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
-            'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
-            'A professional service to ' + getRandomGigTitle().toLowerCase() + '.',
-            'A professional service to ' + getRandomGigTitle().toLowerCase() + '.'
+            {
+                element: "p",
+                style: ["bold", "background"],
+                text: "At the pinnacle of quality and professionalism, our Excellence Level gig offers you a premium experience, ensuring outstanding results in every aspect of your project. our team of experts is dedicated to delivering beyond expectations."
+            },
+            {
+                element: "h2",
+                style: ["header"],
+                text: "What Makes This Gig Exceptional?"
+            },
+            {
+                element: "ul",
+                style: ["about-list"],
+                items: [
+                    [
+                        { text: "Tailored Solutions: ", style: ["bold", "background"] },
+                        { text: "Customized strategies to meet your unique needs.", style: ["regular"] }
+                    ],
+                    [
+                        { text: "Attention to Detail: ", style: ["bold", "background"] },
+                        { text: "Every element is crafted with precision and care.", style: ["regular"] }
+                    ],
+                    [
+                        { text: "Seamless Communication: ", style: ["bold", "background"] },
+                        { text: "Transparent and responsive, keeping you in the loop.", style: ["regular"] }
+                    ],
+                    [
+                        { text: "High-Quality Standards: ", style: ["bold", "background"] },
+                        { text: "Adherence to best practices and industry benchmarks.", style: ["regular"] }
+                    ],
+                    [
+                        { text: "Commitment to Deadlines: ", style: ["bold", "background"] },
+                        { text: "Efficient project management to meet your timelines.", style: ["regular"] }
+                    ],
+                ]
+            },
+            {
+                element: "p",
+                style: ["regular"],
+                text: "Experience the difference of true excellence—where creativity meets expertise, and your vision is transformed into reality with flawless execution."
+            }
         ],
         imgUrls: [
             "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/193068192/original/a170671ee931142c619a392cd06db59b9a60eec7.jpg",
@@ -43,45 +77,83 @@ export function getEmptyGig() {
         likedByUsers: [],
         reviews: [
             {
-                name: "rachelrbarnes1",
-                country: "United States",
-                flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
-                review: "Incredibly grateful for the amazing experience working with you . You are so talented and a kind soul! I highly recommend if you want high quality art to work with her every time",
-                reviewedAt: "Published 1 month ago",
-                rate: getRandomIntInclusive(1, 5)
+                _id: makeId(),
+                name: "tobiaspille300",
+                img: '',
+                location: getRandomLocation(),
+                reviewedAt: getRandomCreatedAt(),
+                review: "frederickkessie ist a super kind artist doing the process he was super professional and only took him 1 shot to deliver a perfect result ! Highly recommended work with this guy !",
+                rate: getRandomIntInclusive(1, 5),
+                duration: getRandomDuration(),
+                startPriceRange: getRandomIntInclusive(50, 5000),
+                endPriceRange: getRandomIntInclusive(50, 5000),
+                projectImg: ''
             },
             {
-                name: "mark001994",
-                country: "Austria",
-                flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1e6-1f1f9.png",
-                review: "The artist was very kind and polite also very fast at the communication. The delivery of the project was on time. And her work is worth the money. I'm really excited about the painting she did. I can truely recommend the Aritst and her work. Big Thanks! :)",
-                reviewedAt: "Published 1 month ago",
-                rate: getRandomIntInclusive(1, 5)
+                _id: makeId(),
+                name: "liam31",
+                review: "I requested a slightly earlier delivery on this and once again Frederick came through and provided a fantastic delivery. Thanks so much!",
+                location: getRandomLocation(),
+                reviewedAt: getRandomCreatedAt(),
+                img: '',
+                rate: getRandomIntInclusive(1, 5),
+                duration: getRandomDuration(),
+                startPriceRange: getRandomIntInclusive(50, 5000),
+                endPriceRange: getRandomIntInclusive(50, 5000),
+                projectImg: ''
             },
             {
-                name: "thurstonrobby",
-                country: "United States",
-                flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
-                review: "incredible on how precise that art is, picture perfect. 100% amazing job and I will use your services again ...",
-                reviewedAt: "Published 3 weeks ago",
-                rate: getRandomIntInclusive(1, 5)
+                _id: makeId(),
+                name: "liam31",
+                review: "Frederick is amazing and extremely talented. This is the second time working with him and he has been a pleasure yet again!",
+                location: getRandomLocation(),
+                reviewedAt: getRandomCreatedAt(),
+                img: '',
+                rate: getRandomIntInclusive(1, 5),
+                duration: getRandomDuration(),
+                startPriceRange: getRandomIntInclusive(50, 5000),
+                endPriceRange: getRandomIntInclusive(50, 5000),
+                projectImg: ''
             },
             {
-                name: "gavrielm",
-                country: "Israel",
-                flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1ee-1f1f1.png",
-                review: "amazing saller and great work",
-                reviewedAt: "Published 6 days ago",
-                rate: getRandomIntInclusive(1, 5)
+                _id: makeId(),
+                name: "larsonraz",
+                review: "Very detailed",
+                location: getRandomLocation(),
+                reviewedAt: getRandomCreatedAt(),
+                img: '',
+                rate: getRandomIntInclusive(1, 5),
+                duration: getRandomDuration(),
+                startPriceRange: getRandomIntInclusive(50, 5000),
+                endPriceRange: getRandomIntInclusive(50, 5000),
+                projectImg: ''
             },
             {
-                name: "garebear52",
-                country: "United States",
-                flag: "https://fiverr-dev-res.cloudinary.com/general_assets/flags/1f1fa-1f1f8.png",
-                review: "Beautiful drawing! Just what I wanted.",
-                reviewedAt: "Published 1 week ago",
-                rate: getRandomIntInclusive(1, 5)
-            }
+                _id: makeId(),
+                name: "stevekaszycki",
+                review: "very nice portrait, very good quality.",
+                location: getRandomLocation(),
+                reviewedAt: getRandomCreatedAt(),
+                img: '',
+                rate: getRandomIntInclusive(1, 5),
+                duration: getRandomDuration(),
+                startPriceRange: getRandomIntInclusive(50, 5000),
+                endPriceRange: getRandomIntInclusive(50, 5000),
+                projectImg: ''
+            },
+            {
+                _id: makeId(),
+                name: "tobiaspille300",
+                img: '',
+                location: getRandomLocation(),
+                reviewedAt: getRandomCreatedAt(),
+                review: "Hamza M was fantastic! We were amazed at the speed, attention to detail, communication, responsiveness, fair pricing, and his desire to get our project right. Most importantly, we appreciated his kindness. His work helped us make an informed decision about our new home. We will recommend his services to others in the future. Thank you Hamza D for being fantastic!",
+                rate: getRandomIntInclusive(1, 5),
+                duration: getRandomDuration(),
+                startPriceRange: getRandomIntInclusive(50, 5000),
+                endPriceRange: getRandomIntInclusive(50, 5000),
+                projectImg: ''
+            },
         ],
     }
 }

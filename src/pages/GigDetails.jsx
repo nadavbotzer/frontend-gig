@@ -42,10 +42,12 @@ export function GigDetails() {
   return (
     <section className="gig-page">
       <TagsHeader />
-      {gig && <NavigationsAndActions
-        gigCategory={gig.tags.join(',')}
+      <NavigationsAndActions
+        gigCategory={gig.tags[0]}
         showActions={true}
-      />}
+        gig={gig}
+        setGig={setGig}
+      />
       <GigContentLayout>
         <GigInfo gig={gig} />
         <BuyingInfo gig={gig} />

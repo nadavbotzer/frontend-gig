@@ -16,6 +16,7 @@ function getEmptyUser() {
         rate: 2,
         location: getRandomLocation(),
         languages: getRandomLanguages(getRandomIntInclusive(1, 5)),
+        proffession: 'Proffessional wiz when it comes to creativivty and ability'
     }
 }
 
