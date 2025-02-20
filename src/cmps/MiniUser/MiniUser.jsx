@@ -37,13 +37,13 @@ export function MiniUser({ isAbout, owner, reviewsCount }) {
                 {
                     isAbout &&
                     <div className="about-user-row">
-                        <span className="about-profession">Professional Architect, 3D Artist and CGI Creator</span>
+                        <span className="about-profession">{owner.proffession}</span>
                     </div>
                 }
 
                 <div className={`about-user-row`}>
 
-                    {!isAbout && <span className="profession">Architectural visualization artist (ArcViz)</span>}
+                    {!isAbout && <span className="profession">{owner.proffession}</span>}
 
                     <div className="rating">
                         <div className="star-rating">

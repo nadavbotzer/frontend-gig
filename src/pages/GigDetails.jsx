@@ -43,8 +43,10 @@ export function GigDetails() {
     <section className="gig-page">
       <TagsHeader />
       <NavigationsAndActions
-        gigCategory={'Interior design'}
+        gigCategory={gig.tags[0]}
         showActions={true}
+        gig={gig}
+        setGig={setGig}
       />
       <GigContentLayout>
         <GigInfo gig={gig} />
