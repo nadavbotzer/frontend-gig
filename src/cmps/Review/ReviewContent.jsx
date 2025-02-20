@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import '../../assets/styles/cmps/ReviewContent.scss'
 
 export function ReviewContent({ text }) {
 

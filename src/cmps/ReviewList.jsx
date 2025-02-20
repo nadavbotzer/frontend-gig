@@ -2,7 +2,6 @@ import React from 'react'
 
 import { ReviewCard } from './Review/ReviewCard.jsx'
 
-import "../assets/styles/cmps/ReviewList.scss"
 
 export function ReviewList({ reviews }) {
 

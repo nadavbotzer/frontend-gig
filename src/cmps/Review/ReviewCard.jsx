@@ -3,7 +3,6 @@ import { Profile } from "./Profile";
 import { ReviewContent } from "./ReviewContent";
 import { TopSectionReview } from "./TopSectionReview";
 
-import '../../assets/styles/cmps/ReviewCard.scss'
 
 export function ReviewCard({ imgSrc, location, fullname,
     createdAt, rate, text, duration, startPriceRange, endPriceRange,

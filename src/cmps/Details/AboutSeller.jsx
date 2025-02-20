@@ -1,7 +1,6 @@
 import { MiniUser } from "../MiniUser/MiniUser"
 import { InfoSeller } from "./InfoSeller"
 
-import '../../assets/styles/cmps/AboutSeller.scss'
 
 export function AboutSeller({ reviewsCount, owner, location, createdAt, avgResponse, lastDeliveryAt, about, languagesArray }) {
 

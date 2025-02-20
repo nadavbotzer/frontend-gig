@@ -1,4 +1,3 @@
-import '../assets/styles/cmps/Level.scss'
 
 export function Level({ level }) {
 

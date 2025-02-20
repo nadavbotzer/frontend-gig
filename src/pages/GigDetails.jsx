@@ -11,8 +11,6 @@ import { NavigationsAndActions } from '../cmps/NavigationsAndActions'
 import { showErrorMsg } from '../services/event-bus.service'
 import { gigService } from '../services/gig/gig.service.local'
 
-import '../assets/styles/pages/GigDetails.scss'
-
 export function GigDetails() {
 
   const [gig, setGig] = useState(null)

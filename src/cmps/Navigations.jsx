@@ -2,7 +2,6 @@ import React from 'react'
 
 import { Link } from "react-router-dom"
 
-import '../assets/styles/cmps/Navigations.scss'
 
 export function Navigations({ gigCategory }) {
 
@@ -27,9 +26,9 @@ export function Navigations({ gigCategory }) {
                     <Link to={to} className='link'>
                         {
                             index === 0 ?
-                            <span className='icon-link'>
-                                <img width={'20px'} src={'/images/home-icon.png'} /> 
-                            </span> : 
+                                <span className='icon-link'>
+                                    <img width={'20px'} src={'/images/home-icon.png'} />
+                                </span> :
                                 name
                         }
                     </Link>

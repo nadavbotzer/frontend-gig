@@ -1,6 +1,5 @@
 import { timeAgo } from '../../services/util.service'
 
-import '../../assets/styles/cmps/TopSectionReview.scss'
 
 export function TopSectionReview({ rate, date }) {
 
