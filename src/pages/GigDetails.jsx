@@ -7,7 +7,6 @@ import { GigInfo } from '../cmps/Details/GigInfo'
 import { BuyingInfo } from '../cmps/Details/BuyingInfo'
 import { GigContentLayout } from '../cmps/Details/GigContentLayout'
 import { NavigationsAndActions } from '../cmps/NavigationsAndActions'
-import { TagsHeader } from '../cmps/TagsHeader'
 
 import { showErrorMsg } from '../services/event-bus.service'
 import { gigService } from '../services/gig/gig.service.local'
@@ -46,7 +45,6 @@ export function GigDetails() {
 
   return (
     <section className="gig-page">
-      <TagsHeader />
       <NavigationsAndActions
         gigCategory={tagsParam}
         showActions={true}

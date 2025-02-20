@@ -30,7 +30,7 @@ export function RootCmp() {
             <div className="main-container">
 
                 <AppHeader />
-                {(pathname === "/" || pathname === "/gig/") && <TagsHeader />}
+                {(pathname !== "/dashboard" && !pathname.includes('checkout') && pathname !== '/login' && pathname !== '/login/signup') && <TagsHeader />}
                 <UserMsg />
 
                 <main>
