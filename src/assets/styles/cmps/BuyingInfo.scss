@@ -25,12 +25,11 @@
             background-color: lightgray;
 
             .nav-btn {
-                width: 34%;
+                width: 100%;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 justify-content: center;
-                font-family: Macan;
                 font-weight: 700;
                 line-height: rem(24px);
                 padding: rem(16px);
@@ -40,6 +39,7 @@
                 border: none;
                 margin: 0;
                 font-size: rem(16px);
+                cursor: pointer;
             }
 
             .border-right {

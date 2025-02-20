@@ -63,13 +63,13 @@ export function GigPreview({ gig }) {
                 {gig.promoted && <span>Ad by </span>}
                 <span className="gig-user-fullname"> {gig.owner.fullname}</span>
             </div>
-            <Link className="gig-title" to={`/gig/${gig._id}`}>{gig.title}</Link>
+            <Link className="gig-title" to={`/gig/${gig._id}/?tags=${tagsParam}`}>{gig.title}</Link>
             <div className="gig-rating-preview">
                 <span><StarRateIcon /></span>
                 <span>{getGigReviewsAvgRate(gig.reviews)}</span>
                 <span className="gig-previews-count">({gig.reviews.length})</span>
             </div>
-            <p className="gig-price">From USD${gig.price}</p>
+            <p className="gig-price">{`From US$${gig.price}`}</p>
         </article>
     )
 }

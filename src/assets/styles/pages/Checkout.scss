@@ -136,7 +136,7 @@
         .side-content {
             flex: 1;
             border: 1px solid #e4e5e7;
-            padding: rem(15px);
+            padding: 2.5rem;
             border-radius: 4px;
             max-height: max-content;
             min-width: rem(400px);
@@ -180,7 +180,7 @@
                 align-items: center;
                 margin-bottom: rem(8px);
                 min-height: rem(50px);
-                font-family: Macan;
+                cursor: pointer;
 
             }
 
@@ -206,10 +206,6 @@
                     svg {
                         max-width: rem(18px);
                         max-height: rem(18px);
-                    }
-
-                    p {
-                        margin: -2px;
                     }
 
                     .message {
