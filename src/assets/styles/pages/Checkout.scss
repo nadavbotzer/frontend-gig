@@ -61,7 +61,7 @@
                 font-size: 1rem;
                 opacity: 0.5;
                 letter-spacing: 0.5px;
-
+                margin-top: rem(19px);
 
 
                 &:focus {
@@ -93,7 +93,7 @@
                         position: absolute;
                         opacity: 0.5;
                         left: rem(16px);
-                        top: 50%;
+                        top: 65%;
                         transform: translateY(-50%);
                         max-width: 11px;
                     }
@@ -101,7 +101,7 @@
                     .img-card {
                         position: absolute;
                         right: 1rem;
-                        top: 50%;
+                        top: 65%;
                         transform: translateY(-50%);
                         max-width: 23px;
                         max-height: 22px;
@@ -113,7 +113,6 @@
 
                     input {
                         min-width: 520px;
-                        margin-top: rem(22px);
                     }
 
                     margin-bottom: rem(22px);
@@ -130,7 +129,6 @@
 
                 input {
                     min-width: rem(246px);
-                    margin-top: rem(22px);
                 }
             }
         }
