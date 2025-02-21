@@ -44,6 +44,7 @@ export function GigPreview({ gig }) {
     }
 
     function isGigLikedByUser() {
+        if(!gig.likedByUsers) return false
         return gig.likedByUsers.some(user => user._id === loggedInUser._id)
     }
     return (

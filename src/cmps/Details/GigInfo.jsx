@@ -22,7 +22,7 @@ export function GigInfo({ gig }) {
         />
         <ImgCarousel imgUrls={imgUrls} withImgPreview={true} />
         <AboutGig
-            descriptionContent={description}
+            description={description}
         />
         <AboutSeller
             owner={owner}
