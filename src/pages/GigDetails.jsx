@@ -9,7 +9,7 @@ import { GigContentLayout } from '../cmps/Details/GigContentLayout'
 import { NavigationsAndActions } from '../cmps/NavigationsAndActions'
 
 import { showErrorMsg } from '../services/event-bus.service'
-import { gigService } from '../services/gig/gig.service.local'
+import { gigService } from '../services/gig/index.js'
 
 export function GigDetails() {
 

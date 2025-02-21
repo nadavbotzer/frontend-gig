@@ -9,22 +9,23 @@ export const gigService = {
 }
 
 async function query(filterBy = { txt: '', price: 0 }) {
-    return httpService.get(`gig`, filterBy)
+    return httpService.get(`gig/get-gigs`, filterBy)
 }
 
 function getById(gigId) {
-    return httpService.get(`gig/${gigId}`)
+    return httpService.get(`gig/get-gig/${gigId}`)
 }
 
 async function remove(gigId) {
-    return httpService.delete(`gig/${gigId}`)
+    return httpService.delete(`gig/delete-gig/${gigId}`)
 }
+
 async function save(gig) {
     var savedGig
     if (gig._id) {
-        savedGig = await httpService.put(`gig/${gig._id}`, gig)
+        savedGig = await httpService.put(`gig/update-gig/${gig._id}`, gig)
     } else {
-        savedGig = await httpService.post('gig', gig)
+        savedGig = await httpService.post('gig/add-gig', gig)
     }
     return savedGig
 }
