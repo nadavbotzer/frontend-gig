@@ -1,6 +1,6 @@
 import { useLocation } from "react-router"
 import { useNavigate } from 'react-router'
-import { showSuccessMsg } from '../services/event-bus.service'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { useParams } from 'react-router'
 import { updateOrder } from '../store/actions/order.actions'
 import { useEffect, useState } from 'react'
@@ -16,12 +16,7 @@ export function Checkout() {
     const [order, setOrder] = useState(null)
 
     useEffect(() => {
-        try {
-            loadOrder(orderId)
-
-        } catch (err) {
-            console.log(err)
-        }
+        orderId && loadOrder(orderId)
     }, [orderId])
 
 
@@ -52,9 +47,7 @@ export function Checkout() {
 
         } catch (err) {
             showSuccessMsg(`cannot send order`)
-
         }
-
     }
 
     return (

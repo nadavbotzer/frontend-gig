@@ -7,7 +7,6 @@ import { login } from '../store/actions/user.actions'
 export function Login() {
     const [users, setUsers] = useState([])
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
-
     const navigate = useNavigate()
 
     useEffect(() => {

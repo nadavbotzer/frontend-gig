@@ -30,10 +30,10 @@ export function BuyingInfo({ gig }) {
             VAT: price * 0.15
         }
         const order = orderService.getEmptyOrder()
-        order.owner = gig.owner
+        order.seller = gig.owner
         try {
-            const updatedOreder = await addOrder(order)
-            navigate(`/gig/checkout/${order._id}`, { state: { packageDeal } })
+            const updatedOrder = await addOrder(order)
+            navigate(`/gig/checkout/${updatedOrder._id}`, { state: { packageDeal } })
         } catch (err) {
             console.log(err)
         }

@@ -15,20 +15,20 @@ export const userService = {
 }
 
 function getUsers() {
-	return httpService.get(`user`)
+	return httpService.get(`user/get-users`)
 }
 
 async function getById(userId) {
-	const user = await httpService.get(`user/${userId}`)
+	const user = await httpService.get(`user/get-user/${userId}`)
 	return user
 }
 
 function remove(userId) {
-	return httpService.delete(`user/${userId}`)
+	return httpService.delete(`user/delete-user/${userId}`)
 }
 
 async function update({ _id, score }) {
-	const user = await httpService.put(`user/${_id}`, { _id, score })
+	const user = await httpService.put(`user/update-user/${_id}`, { _id, score })
 
 	// When admin updates other user's details, do not update loggedinUser
 	const loggedinUser = getLoggedinUser() // Might not work because its defined in the main service???
@@ -43,8 +43,8 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
-	if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
-	userCred.score = 10000
+	if (!userCred.imgUrl || userCred.imgUrl === '') userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
+    if (!userCred.createdAt) userCred.createdAt = new Date()
 	const user = await httpService.post('auth/signup', userCred)
 	return saveLoggedinUser(user)
 }

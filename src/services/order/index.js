@@ -8,7 +8,6 @@ import { orderService as remote } from './order.service.remote'
 export function getEmptyOrder() {
     const loggedInUser = userService.getLoggedinUser()
     return {
-        _id: makeId(),
         buyer: loggedInUser,
         seller: '',
         gig: {              // mini-order

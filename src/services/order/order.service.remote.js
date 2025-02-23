@@ -5,28 +5,43 @@ export const orderService = {
     getById,
     save,
     remove,
-    addOrderMsg
+    addOrderMsg,
+    updateOrder,
+    saveOrder
 }
 
 async function query(filterBy = { txt: '', price: 0 }) {
-    return httpService.get(`order`, filterBy)
+    return httpService.get(`order/get-orders`, filterBy)
 }
 
 function getById(orderId) {
-    return httpService.get(`order/${orderId}`)
+    return httpService.get(`order/get-order/${orderId}`)
 }
 
 async function remove(orderId) {
-    return httpService.delete(`order/${orderId}`)
+    return httpService.delete(`order/delete-order/${orderId}`)
 }
+
 async function save(order) {
     var savedOrder
     if (order._id) {
-        savedOrder = await httpService.put(`order/${order._id}`, order)
+        savedOrder = await httpService.put(`order/update-order/${order._id}`, order)
     } else {
-        savedOrder = await httpService.post('order', order)
+        savedOrder = await httpService.post('order/add-order', order)
     }
     return savedOrder
+}
+
+async function updateOrder(order) {
+    const orderToSave = {
+        ...order,
+        _id: order._id,
+    };
+    return await httpService.put(`order/update-order/${order._id}`, orderToSave)
+}
+
+async function saveOrder(order) {
+    return await httpService.post('order/add-order', order)
 }
 
 async function addOrderMsg(orderId, txt) {
