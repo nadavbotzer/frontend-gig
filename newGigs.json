@@ -1,0 +1,2955 @@
+[
+    {
+        "title": "I will create a stunning digital painting",
+        "about": "Hi, I'm a skilled digital artist with over 5 years of experience. I specialize in creating vibrant digital paintings and illustrations, perfect for personal and professional use. Get in touch for a unique and high-quality artwork.",
+        "price": 180,
+        "owner": {
+            "fullname": "johndoeart",
+            "imgUrl": "https://example.com/profile1.jpg",
+            "level": 3,
+            "rate": 4.8,
+            "location": {
+                "name": "United States",
+                "format": "us"
+            },
+            "languages": [
+                "English"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-02-01T10:00:00.000Z",
+            "proffession": "Digital Artist, Illustrator"
+        },
+        "location": {
+            "name": "United States",
+            "format": "us"
+        },
+        "daysToMake": 10,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "Welcome to my gig! I offer beautiful and unique digital paintings, crafted to meet your needs and preferences. From fantasy landscapes to character portraits, I create custom pieces with attention to detail and vibrant colors."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Transform Your Ideas into Stunning Artwork"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Custom Designs: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I offer tailor-made digital paintings that bring your imagination to life.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "High-Quality Artwork: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Every artwork is created with care and high-quality digital tools for a polished result.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Fast Delivery: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Receive your artwork in no time without compromising on quality.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/art1.jpg",
+            "https://example.com/art2.jpg",
+            "https://example.com/art3.jpg"
+        ],
+        "tags": [
+            "digital painting",
+            "custom artwork",
+            "portrait",
+            "landscape",
+            "illustration"
+        ],
+        "avgResponseTime": 3,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 7,
+                "price": 120,
+                "servicesList": [
+                    {
+                        "text": "Custom Digital Artwork",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    },
+                    {
+                        "text": "Fast Delivery",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A simple digital painting with one revision. Perfect for those who need quick, quality artwork."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 10,
+                "price": 150,
+                "servicesList": [
+                    {
+                        "text": "Custom Digital Artwork",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    },
+                    {
+                        "text": "Additional Details",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A more refined digital painting with additional details and two revisions. Ideal for a personalized piece."
+            },
+            "premium": {
+                "revisions": 3,
+                "daysToMake": 14,
+                "price": 180,
+                "servicesList": [
+                    {
+                        "text": "Custom Digital Artwork",
+                        "included": true
+                    },
+                    {
+                        "text": "Three Revisions",
+                        "included": true
+                    },
+                    {
+                        "text": "Extra Fine Details",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "The premium option includes high-end digital artwork with full revisions and extra fine details."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "susanmiller",
+                "img": "https://example.com/profile2.jpg",
+                "location": {
+                    "name": "Canada",
+                    "format": "ca"
+                },
+                "review": "John is an incredible artist! His digital paintings are stunning and truly reflect my vision. Highly recommended!",
+                "reviewedAt": "2025-02-15T12:00:00Z",
+                "rate": 5,
+                "duration": "7 days",
+                "startPriceRange": "$110",
+                "endPriceRange": "$160",
+                "projectImg": "https://example.com/project1.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will design a custom logo for your brand",
+        "about": "Hi! I'm a professional graphic designer specializing in logo design. Whether you are starting a new business or refreshing your brand, I create logos that capture the essence of your company.",
+        "price": 95,
+        "owner": {
+            "fullname": "logomaster",
+            "imgUrl": "https://example.com/profile3.jpg",
+            "level": 4,
+            "rate": 4.9,
+            "location": {
+                "name": "United Kingdom",
+                "format": "gb"
+            },
+            "languages": [
+                "English",
+                "Spanish"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-01-10T14:30:00.000Z",
+            "proffession": "Graphic Designer, Logo Specialist"
+        },
+        "location": {
+            "name": "United Kingdom",
+            "format": "gb"
+        },
+        "daysToMake": 5,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "I offer professional logo design services that help bring your brand to life. Whether you need a modern, classic, or minimalist logo, I’ll work with you to create a design that fits your style and industry."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Let’s Create a Unique Brand Identity"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Tailored Designs: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Every logo is created to fit your unique brand identity.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Versatile Designs: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Logos designed to work across all platforms, from business cards to websites.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Fast Turnaround: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Get your logo ready in a short time, perfect for launching your brand.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/logo1.jpg",
+            "https://example.com/logo2.jpg"
+        ],
+        "tags": [
+            "logo design",
+            "branding",
+            "graphic design",
+            "custom logo"
+        ],
+        "avgResponseTime": 2,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 3,
+                "price": 75,
+                "servicesList": [
+                    {
+                        "text": "Custom Logo",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A custom logo with one revision. Great for startups looking for a quick and simple design."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 5,
+                "price": 95,
+                "servicesList": [
+                    {
+                        "text": "Custom Logo",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A tailored logo with two revisions, perfect for businesses needing more refined design."
+            },
+            "premium": {
+                "revisions": 3,
+                "daysToMake": 7,
+                "price": 120,
+                "servicesList": [
+                    {
+                        "text": "Custom Logo",
+                        "included": true
+                    },
+                    {
+                        "text": "Three Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A premium logo with up to three revisions, designed for businesses that want a unique and polished brand identity."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "nathansmith",
+                "img": "https://example.com/profile4.jpg",
+                "location": {
+                    "name": "Canada",
+                    "format": "ca"
+                },
+                "review": "LogoMaster did a great job on our logo. It was exactly what we were looking for! Professional and fast delivery.",
+                "reviewedAt": "2025-01-20T09:30:00Z",
+                "rate": 5,
+                "duration": "4 days",
+                "startPriceRange": "$80",
+                "endPriceRange": "$120",
+                "projectImg": "https://example.com/project2.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will create professional business card designs",
+        "about": "As a graphic designer with years of experience, I specialize in creating visually appealing business cards that reflect your brand identity. My designs are unique and professional, ensuring you make a lasting impression.",
+        "price": 50,
+        "owner": {
+            "fullname": "graphicdesigner_jane",
+            "imgUrl": "https://example.com/profile5.jpg",
+            "level": 1,
+            "rate": 4.6,
+            "location": {
+                "name": "Australia",
+                "format": "au"
+            },
+            "languages": [
+                "English"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-01-20T12:00:00.000Z",
+            "proffession": "Graphic Designer"
+        },
+        "location": {
+            "name": "Australia",
+            "format": "au"
+        },
+        "daysToMake": 4,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "Get custom, professionally designed business cards tailored to your style and brand. I offer high-quality designs that reflect your business’s values and help you stand out in your industry."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Your Brand, Your Business Card"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Custom Designs: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Your business card will be designed to match your brand’s identity.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "High Quality: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I use professional design tools to create high-quality cards for you.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Fast Delivery: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Get your business cards delivered quickly and professionally.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/businesscard1.jpg",
+            "https://example.com/businesscard2.jpg"
+        ],
+        "tags": [
+            "business card",
+            "brand identity",
+            "professional design",
+            "custom design"
+        ],
+        "avgResponseTime": 2,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 3,
+                "price": 30,
+                "servicesList": [
+                    {
+                        "text": "Business Card Design",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "Get a basic business card design with one revision."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 5,
+                "price": 50,
+                "servicesList": [
+                    {
+                        "text": "Business Card Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A more refined business card design with two revisions."
+            },
+            "premium": {
+                "revisions": 3,
+                "daysToMake": 7,
+                "price": 70,
+                "servicesList": [
+                    {
+                        "text": "Business Card Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Three Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A high-end design with up to three revisions for the perfect business card."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "sarahjohnson",
+                "img": "https://example.com/profile6.jpg",
+                "location": {
+                    "name": "United States",
+                    "format": "us"
+                },
+                "review": "The business card design was perfect! Jane understood exactly what I wanted. Great communication and fast delivery!",
+                "reviewedAt": "2025-02-14T10:00:00Z",
+                "rate": 5,
+                "duration": "3 days",
+                "startPriceRange": "$25",
+                "endPriceRange": "$50",
+                "projectImg": "https://example.com/project6.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will design a custom website for your business",
+        "about": "With years of web design experience, I create responsive, user-friendly websites tailored to your business’s needs. I’ll help you build an online presence that converts visitors into customers.",
+        "price": 250,
+        "owner": {
+            "fullname": "webdesign_expert",
+            "imgUrl": "https://example.com/profile7.jpg",
+            "level": 3,
+            "rate": 4.9,
+            "location": {
+                "name": "Germany",
+                "format": "de"
+            },
+            "languages": [
+                "German",
+                "English"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-01-25T16:00:00.000Z",
+            "proffession": "Web Designer"
+        },
+        "location": {
+            "name": "Germany",
+            "format": "de"
+        },
+        "daysToMake": 14,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "I specialize in creating custom websites that are both visually appealing and functional. Whether you need a website for your business, portfolio, or personal blog, I will help you create an online presence that suits your brand."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Create Your Online Presence"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Custom Websites: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I design websites that are tailored specifically to your business’s needs.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Responsive Design: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Your website will look great on all devices, from desktop to mobile.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Fast Development: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I deliver your website on time without compromising quality.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/website1.jpg",
+            "https://example.com/website2.jpg"
+        ],
+        "tags": [
+            "web design",
+            "responsive websites",
+            "business website",
+            "custom websites"
+        ],
+        "avgResponseTime": 5,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 7,
+                "price": 150,
+                "servicesList": [
+                    {
+                        "text": "Custom Website",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "Get a custom website with one revision. Ideal for small businesses."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 10,
+                "price": 200,
+                "servicesList": [
+                    {
+                        "text": "Custom Website",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A refined website with up to two revisions, perfect for medium-sized businesses."
+            },
+            "premium": {
+                "revisions": 3,
+                "daysToMake": 14,
+                "price": 250,
+                "servicesList": [
+                    {
+                        "text": "Custom Website",
+                        "included": true
+                    },
+                    {
+                        "text": "Three Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A high-end custom website with full functionality and up to three revisions."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "markwebb",
+                "img": "https://example.com/profile8.jpg",
+                "location": {
+                    "name": "United Kingdom",
+                    "format": "gb"
+                },
+                "review": "Fantastic website design! The team was professional and delivered exactly what I wanted. Highly recommend!",
+                "reviewedAt": "2025-02-05T08:00:00Z",
+                "rate": 5,
+                "duration": "10 days",
+                "startPriceRange": "$150",
+                "endPriceRange": "$250",
+                "projectImg": "https://example.com/project7.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will illustrate a custom children's book for you",
+        "about": "As a professional illustrator, I specialize in creating colorful, engaging illustrations for children's books. Let me bring your story to life with vibrant and captivating artwork.",
+        "price": 300,
+        "owner": {
+            "fullname": "kidsbook_artist",
+            "imgUrl": "https://example.com/profile9.jpg",
+            "level": 2,
+            "rate": 4.8,
+            "location": {
+                "name": "France",
+                "format": "fr"
+            },
+            "languages": [
+                "French",
+                "English"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-01-18T11:00:00.000Z",
+            "proffession": "Illustrator"
+        },
+        "location": {
+            "name": "France",
+            "format": "fr"
+        },
+        "daysToMake": 21,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "I offer custom illustrations for children's books, bringing your characters and stories to life with colorful, fun artwork. My illustrations will captivate young readers and help your book stand out in a crowded market."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Illustrating Magic for Kids"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Custom Illustrations: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Each illustration is tailored to fit your story and characters.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Vibrant and Engaging: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I create colorful, playful illustrations that kids will love.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Fast Turnaround: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Get your illustrations on time, ready for publication.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/book1.jpg",
+            "https://example.com/book2.jpg"
+        ],
+        "tags": [
+            "children's book",
+            "illustration",
+            "custom art",
+            "kids illustrations"
+        ],
+        "avgResponseTime": 7,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 14,
+                "price": 200,
+                "servicesList": [
+                    {
+                        "text": "Custom Illustrations",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A basic illustration for a children's book with one revision."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 21,
+                "price": 300,
+                "servicesList": [
+                    {
+                        "text": "Custom Illustrations",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "Illustrations for a full children's book with two revisions."
+            },
+            "premium": {
+                "revisions": 3,
+                "daysToMake": 28,
+                "price": 400,
+                "servicesList": [
+                    {
+                        "text": "Custom Illustrations",
+                        "included": true
+                    },
+                    {
+                        "text": "Three Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A premium package with custom illustrations for the entire book, including three revisions."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "julieblake",
+                "img": "https://example.com/profile10.jpg",
+                "location": {
+                    "name": "United States",
+                    "format": "us"
+                },
+                "review": "The illustrations were absolutely gorgeous! My children's book looks amazing thanks to the incredible artwork.",
+                "reviewedAt": "2025-02-07T12:00:00Z",
+                "rate": 5,
+                "duration": "20 days",
+                "startPriceRange": "$180",
+                "endPriceRange": "$300",
+                "projectImg": "https://example.com/project9.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will design a logo that represents your brand",
+        "about": "I specialize in creating unique and impactful logos that reflect your brand's values and vision. I can work with any industry to craft a logo that stands out and makes a statement.",
+        "price": 100,
+        "owner": {
+            "fullname": "logomaster_joe",
+            "imgUrl": "https://example.com/profile11.jpg",
+            "level": 2,
+            "rate": 4.8,
+            "location": {
+                "name": "Canada",
+                "format": "ca"
+            },
+            "languages": [
+                "English",
+                "French"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-02-15T12:00:00.000Z",
+            "proffession": "Logo Designer"
+        },
+        "location": {
+            "name": "Canada",
+            "format": "ca"
+        },
+        "daysToMake": 7,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "Let me help you create a memorable logo that communicates your brand's identity. Whether you are starting a new business or rebranding, I will deliver a design that captures the essence of your vision."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Logo Design Tailored to You"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Custom Logo: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Your logo will be designed based on your brand’s personality and vision.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Multiple Concepts: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "You’ll get several design concepts to choose from.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Unlimited Revisions: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I will work with you until you are 100% satisfied with the logo.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/logo1.jpg",
+            "https://example.com/logo2.jpg"
+        ],
+        "tags": [
+            "logo design",
+            "branding",
+            "graphic design",
+            "custom logo"
+        ],
+        "avgResponseTime": 3,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 5,
+                "price": 50,
+                "servicesList": [
+                    {
+                        "text": "Logo Design",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "Get a basic logo design with one revision."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 7,
+                "price": 100,
+                "servicesList": [
+                    {
+                        "text": "Logo Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A refined logo design with two revisions."
+            },
+            "premium": {
+                "revisions": 3,
+                "daysToMake": 10,
+                "price": 150,
+                "servicesList": [
+                    {
+                        "text": "Logo Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Three Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A premium logo design with unlimited revisions."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "susan_doe",
+                "img": "https://example.com/profile12.jpg",
+                "location": {
+                    "name": "United States",
+                    "format": "us"
+                },
+                "review": "Joe did an amazing job designing my logo! It perfectly matches my business vibe. Highly recommended!",
+                "reviewedAt": "2025-02-10T08:00:00Z",
+                "rate": 5,
+                "duration": "5 days",
+                "startPriceRange": "$40",
+                "endPriceRange": "$80",
+                "projectImg": "https://example.com/project11.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will design a modern e-commerce website",
+        "about": "With my experience in web development, I can build a fully responsive and user-friendly e-commerce website to help you grow your online store. I'll ensure your customers have a smooth shopping experience.",
+        "price": 500,
+        "owner": {
+            "fullname": "webdeveloper_anna",
+            "imgUrl": "https://example.com/profile13.jpg",
+            "level": 3,
+            "rate": 4.9,
+            "location": {
+                "name": "United Kingdom",
+                "format": "gb"
+            },
+            "languages": [
+                "English"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-01-10T16:00:00.000Z",
+            "proffession": "Web Developer"
+        },
+        "location": {
+            "name": "United Kingdom",
+            "format": "gb"
+        },
+        "daysToMake": 14,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "I offer custom e-commerce website development services. My websites are responsive, optimized for SEO, and designed with user experience in mind to help you convert visitors into paying customers."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Build Your Online Store Today"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Custom E-commerce Design: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "A unique design that fits your brand and business needs.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Mobile-Friendly: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Your site will work seamlessly across all devices.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Fast Checkout Process: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I will streamline the checkout process to boost conversions.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/website3.jpg",
+            "https://example.com/website4.jpg"
+        ],
+        "tags": [
+            "e-commerce",
+            "website design",
+            "online store",
+            "custom website"
+        ],
+        "avgResponseTime": 4,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 7,
+                "price": 300,
+                "servicesList": [
+                    {
+                        "text": "E-commerce Website Design",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A basic e-commerce website design with one revision."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 10,
+                "price": 500,
+                "servicesList": [
+                    {
+                        "text": "E-commerce Website Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A fully customized e-commerce website with two revisions."
+            },
+            "premium": {
+                "revisions": 3,
+                "daysToMake": 14,
+                "price": 700,
+                "servicesList": [
+                    {
+                        "text": "E-commerce Website Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Three Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A premium e-commerce website with advanced features and three revisions."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "robert_white",
+                "img": "https://example.com/profile14.jpg",
+                "location": {
+                    "name": "United States",
+                    "format": "us"
+                },
+                "review": "Anna built an amazing online store for my business. It looks great and is easy to navigate. Sales have been increasing since launch!",
+                "reviewedAt": "2025-02-18T09:00:00Z",
+                "rate": 5,
+                "duration": "12 days",
+                "startPriceRange": "$250",
+                "endPriceRange": "$500",
+                "projectImg": "https://example.com/project13.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will provide SEO optimization for your website",
+        "about": "I am an experienced SEO expert, and I will optimize your website for search engines to increase visibility and drive more organic traffic to your site. Let me help you rank higher in search results.",
+        "price": 150,
+        "owner": {
+            "fullname": "seo_expert_mike",
+            "imgUrl": "https://example.com/profile15.jpg",
+            "level": 2,
+            "rate": 4.7,
+            "location": {
+                "name": "India",
+                "format": "in"
+            },
+            "languages": [
+                "English"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-02-05T14:00:00.000Z",
+            "proffession": "SEO Specialist"
+        },
+        "location": {
+            "name": "India",
+            "format": "in"
+        },
+        "daysToMake": 7,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "SEO is essential to the success of any online business. I offer comprehensive SEO services, including keyword research, on-page optimization, and link building to help your website rank higher on search engines."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Boost Your Website's Visibility"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "On-page Optimization: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Improving title tags, meta descriptions, and content for better rankings.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Keyword Research: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Finding the best keywords to target for your business.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Link Building: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Building high-quality backlinks to improve your site’s authority.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/seo1.jpg",
+            "https://example.com/seo2.jpg"
+        ],
+        "tags": [
+            "SEO",
+            "search engine optimization",
+            "website optimization",
+            "SEO expert"
+        ],
+        "avgResponseTime": 3,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 5,
+                "price": 100,
+                "servicesList": [
+                    {
+                        "text": "SEO Optimization",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "Basic SEO optimization for your website with one revision."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 7,
+                "price": 150,
+                "servicesList": [
+                    {
+                        "text": "SEO Optimization",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "Comprehensive SEO optimization with keyword research and link building."
+            },
+            "premium": {
+                "revisions": 3,
+                "daysToMake": 10,
+                "price": 200,
+                "servicesList": [
+                    {
+                        "text": "SEO Optimization",
+                        "included": true
+                    },
+                    {
+                        "text": "Three Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "Premium SEO services with in-depth optimization, keyword analysis, and link building."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "harry_jones",
+                "img": "https://example.com/profile16.jpg",
+                "location": {
+                    "name": "Australia",
+                    "format": "au"
+                },
+                "review": "Mike helped my site rank higher than I ever expected. His SEO work was amazing, and traffic increased dramatically!",
+                "reviewedAt": "2025-02-19T13:00:00Z",
+                "rate": 5,
+                "duration": "7 days",
+                "startPriceRange": "$50",
+                "endPriceRange": "$150",
+                "projectImg": "https://example.com/project15.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will design a minimalist website for you",
+        "about": "I specialize in creating sleek, minimalist websites that provide a great user experience and look stunning on any device. Let's build a site that is clean, simple, and functional.",
+        "price": 250,
+        "owner": {
+            "fullname": "webdesigner_sara",
+            "imgUrl": "https://example.com/profile17.jpg",
+            "level": 3,
+            "rate": 4.8,
+            "location": {
+                "name": "United States",
+                "format": "us"
+            },
+            "languages": [
+                "English",
+                "Spanish"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-01-01T12:00:00.000Z",
+            "proffession": "Web Designer"
+        },
+        "location": {
+            "name": "United States",
+            "format": "us"
+        },
+        "daysToMake": 10,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "I will design a minimalist website for you, ensuring your content stands out and your site provides a smooth user experience. It's time to simplify and create something timeless."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Simple, Beautiful Design"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Minimalistic Approach: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Less is more. Your website will have clean design elements with plenty of white space.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Responsive: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Your website will be optimized for all devices, from mobile to desktop.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "User-Friendly: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Easy navigation for visitors to engage with your content effortlessly.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/website5.jpg",
+            "https://example.com/website6.jpg"
+        ],
+        "tags": [
+            "website design",
+            "minimalist",
+            "clean design",
+            "responsive design"
+        ],
+        "avgResponseTime": 2,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 7,
+                "price": 150,
+                "servicesList": [
+                    {
+                        "text": "Minimalist Website Design",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A basic minimalist website with one revision."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 10,
+                "price": 250,
+                "servicesList": [
+                    {
+                        "text": "Minimalist Website Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A fully responsive minimalist website with two revisions."
+            },
+            "premium": {
+                "revisions": 3,
+                "daysToMake": 14,
+                "price": 350,
+                "servicesList": [
+                    {
+                        "text": "Minimalist Website Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Three Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A premium minimalist website with additional customizations and three revisions."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "lucy_miller",
+                "img": "https://example.com/profile18.jpg",
+                "location": {
+                    "name": "United Kingdom",
+                    "format": "gb"
+                },
+                "review": "Sara designed a fantastic minimalist website for my business. It's clean, fast, and looks amazing!",
+                "reviewedAt": "2025-02-10T10:00:00Z",
+                "rate": 5,
+                "duration": "9 days",
+                "startPriceRange": "$100",
+                "endPriceRange": "$250",
+                "projectImg": "https://example.com/project17.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will create a professional business card design",
+        "about": "Need a business card that makes a great impression? I will create a custom, professional design for your business card that showcases your brand perfectly.",
+        "price": 50,
+        "owner": {
+            "fullname": "carddesigner_john",
+            "imgUrl": "https://example.com/profile19.jpg",
+            "level": 1,
+            "rate": 4.5,
+            "location": {
+                "name": "Australia",
+                "format": "au"
+            },
+            "languages": [
+                "English"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-02-05T10:00:00.000Z",
+            "proffession": "Business Card Designer"
+        },
+        "location": {
+            "name": "Australia",
+            "format": "au"
+        },
+        "daysToMake": 3,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "I will design a unique and professional business card that reflects your brand's image. Whether you're looking for something bold or minimalist, I’ll deliver the perfect design for you."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Stand Out with a Custom Business Card"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Unique Design: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Your card will be designed to capture your business’s essence.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "High Quality: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I ensure that your card design will be print-ready and high-quality.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/card1.jpg",
+            "https://example.com/card2.jpg"
+        ],
+        "tags": [
+            "business card",
+            "card design",
+            "graphic design",
+            "custom design"
+        ],
+        "avgResponseTime": 1,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 2,
+                "price": 30,
+                "servicesList": [
+                    {
+                        "text": "Business Card Design",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A simple business card design with one revision."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 3,
+                "price": 50,
+                "servicesList": [
+                    {
+                        "text": "Business Card Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A premium business card design with two revisions."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "ella_king",
+                "img": "https://example.com/profile20.jpg",
+                "location": {
+                    "name": "United States",
+                    "format": "us"
+                },
+                "review": "John’s business card design was exactly what I wanted. It’s professional and creative. Highly recommend!",
+                "reviewedAt": "2025-02-12T11:00:00Z",
+                "rate": 5,
+                "duration": "3 days",
+                "startPriceRange": "$25",
+                "endPriceRange": "$50",
+                "projectImg": "https://example.com/project19.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will write compelling copy for your website",
+        "about": "Need persuasive and engaging copy for your website? I’m here to help! I specialize in creating copy that converts visitors into customers.",
+        "price": 150,
+        "owner": {
+            "fullname": "copywriter_lena",
+            "imgUrl": "https://example.com/profile21.jpg",
+            "level": 2,
+            "rate": 4.7,
+            "location": {
+                "name": "Canada",
+                "format": "ca"
+            },
+            "languages": [
+                "English",
+                "French"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-02-01T12:00:00.000Z",
+            "proffession": "Copywriter"
+        },
+        "location": {
+            "name": "Canada",
+            "format": "ca"
+        },
+        "daysToMake": 7,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "I will write clear, engaging, and conversion-focused copy for your website. Whether it’s for your landing page, product descriptions, or about page, I’ll create content that speaks directly to your audience."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Content That Converts"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Conversion-Focused Copy: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I write with the goal of converting visitors into customers.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Clear and Concise: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Your content will be easy to read and understand.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Engaging Tone: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I will capture your brand’s voice and keep visitors interested.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/copy1.jpg",
+            "https://example.com/copy2.jpg"
+        ],
+        "tags": [
+            "copywriting",
+            "website copy",
+            "content writing",
+            "conversion copy"
+        ],
+        "avgResponseTime": 4,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 3,
+                "price": 100,
+                "servicesList": [
+                    {
+                        "text": "Website Copy",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A simple copy for one page of your website."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 7,
+                "price": 150,
+                "servicesList": [
+                    {
+                        "text": "Website Copy",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "Full website copy including home, about, and contact pages."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "jason_smith",
+                "img": "https://example.com/profile22.jpg",
+                "location": {
+                    "name": "United Kingdom",
+                    "format": "gb"
+                },
+                "review": "Lena's copy for my website was exactly what I needed. It’s engaging and really speaks to my target audience.",
+                "reviewedAt": "2025-02-10T09:00:00Z",
+                "rate": 5,
+                "duration": "7 days",
+                "startPriceRange": "$80",
+                "endPriceRange": "$150",
+                "projectImg": "https://example.com/project21.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will create an email marketing campaign",
+        "about": "I specialize in crafting high-converting email campaigns that increase engagement and sales. Let me help you grow your business through strategic email marketing.",
+        "price": 200,
+        "owner": {
+            "fullname": "emailexpert_rachel",
+            "imgUrl": "https://example.com/profile23.jpg",
+            "level": 3,
+            "rate": 4.9,
+            "location": {
+                "name": "United States",
+                "format": "us"
+            },
+            "languages": [
+                "English"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-01-15T11:00:00.000Z",
+            "proffession": "Email Marketing Specialist"
+        },
+        "location": {
+            "name": "United States",
+            "format": "us"
+        },
+        "daysToMake": 10,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "I will create compelling email marketing campaigns that drive conversions. From crafting the message to selecting the best strategies, I will help you engage your subscribers and boost sales."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Drive Sales with Email Marketing"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Targeted Campaigns: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I will segment your email list and target the right audience for your campaigns.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "High-Converting Content: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "The copy will be optimized for maximum engagement and conversions.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Performance Tracking: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I will track campaign performance and provide reports for optimization.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/email1.jpg",
+            "https://example.com/email2.jpg"
+        ],
+        "tags": [
+            "email marketing",
+            "campaigns",
+            "marketing strategy",
+            "email design"
+        ],
+        "avgResponseTime": 4,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 5,
+                "price": 100,
+                "servicesList": [
+                    {
+                        "text": "Email Marketing Campaign",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A basic email marketing campaign with one revision."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 7,
+                "price": 200,
+                "servicesList": [
+                    {
+                        "text": "Email Marketing Campaign",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "An optimized email marketing campaign with performance tracking."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "andrew_jones",
+                "img": "https://example.com/profile24.jpg",
+                "location": {
+                    "name": "Canada",
+                    "format": "ca"
+                },
+                "review": "Rachel’s email marketing campaign helped me increase my sales by 30%! She knows exactly how to craft the perfect message.",
+                "reviewedAt": "2025-02-09T08:00:00Z",
+                "rate": 5,
+                "duration": "10 days",
+                "startPriceRange": "$150",
+                "endPriceRange": "$200",
+                "projectImg": "https://example.com/project23.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will create a custom logo for your brand",
+        "about": "Looking for a unique and memorable logo? I will design a logo that captures your brand’s identity and sets you apart from the competition.",
+        "price": 120,
+        "owner": {
+            "fullname": "logodesigner_anna",
+            "imgUrl": "https://example.com/profile25.jpg",
+            "level": 2,
+            "rate": 4.8,
+            "location": {
+                "name": "Canada",
+                "format": "ca"
+            },
+            "languages": [
+                "English",
+                "French"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-01-20T12:00:00.000Z",
+            "proffession": "Logo Designer"
+        },
+        "location": {
+            "name": "Canada",
+            "format": "ca"
+        },
+        "daysToMake": 5,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "I specialize in creating unique logos that reflect your business’s core values and mission. A great logo is the first step to building a strong brand identity."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Craft a Memorable Brand Identity"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Custom Design: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Your logo will be tailored to fit your brand’s vision.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "High-Quality Design: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Print-ready and scalable for any usage.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/logo1.jpg",
+            "https://example.com/logo2.jpg"
+        ],
+        "tags": [
+            "logo design",
+            "brand identity",
+            "custom logo",
+            "graphic design"
+        ],
+        "avgResponseTime": 2,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 3,
+                "price": 80,
+                "servicesList": [
+                    {
+                        "text": "Logo Design",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A basic logo design with one revision."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 5,
+                "price": 120,
+                "servicesList": [
+                    {
+                        "text": "Logo Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A fully customized logo design with two revisions."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "chris_brown",
+                "img": "https://example.com/profile26.jpg",
+                "location": {
+                    "name": "United States",
+                    "format": "us"
+                },
+                "review": "Anna created a stunning logo for my business that truly represents my brand. She’s very talented and professional.",
+                "reviewedAt": "2025-02-10T08:00:00Z",
+                "rate": 5,
+                "duration": "5 days",
+                "startPriceRange": "$70",
+                "endPriceRange": "$120",
+                "projectImg": "https://example.com/project25.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will create a stunning social media content strategy",
+        "about": "Let me help you grow your brand’s presence online with a customized content strategy for your social media channels.",
+        "price": 150,
+        "owner": {
+            "fullname": "socialmedia_expert_olivia",
+            "imgUrl": "https://example.com/profile27.jpg",
+            "level": 3,
+            "rate": 4.9,
+            "location": {
+                "name": "United Kingdom",
+                "format": "gb"
+            },
+            "languages": [
+                "English"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-02-12T10:00:00.000Z",
+            "proffession": "Social Media Strategist"
+        },
+        "location": {
+            "name": "United Kingdom",
+            "format": "gb"
+        },
+        "daysToMake": 7,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "I will create a tailored social media strategy that will engage your target audience, increase brand awareness, and drive sales. Let’s make your social media work for you!"
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Boost Your Social Media Presence"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Custom Strategy: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "The strategy will be tailored to your brand and goals.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Content Calendar: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "A complete content calendar to guide your posts and campaigns.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Growth Focused: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "The strategy will be designed to grow your social media following and increase engagement.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/social1.jpg",
+            "https://example.com/social2.jpg"
+        ],
+        "tags": [
+            "social media",
+            "content strategy",
+            "digital marketing",
+            "social growth"
+        ],
+        "avgResponseTime": 1,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 5,
+                "price": 100,
+                "servicesList": [
+                    {
+                        "text": "Social Media Strategy",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A basic social media content strategy with one revision."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 7,
+                "price": 150,
+                "servicesList": [
+                    {
+                        "text": "Social Media Strategy",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A comprehensive social media content strategy with two revisions."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "james_hunter",
+                "img": "https://example.com/profile28.jpg",
+                "location": {
+                    "name": "Australia",
+                    "format": "au"
+                },
+                "review": "Olivia’s social media strategy helped me reach a larger audience and increase my engagement. Highly recommend!",
+                "reviewedAt": "2025-02-15T09:00:00Z",
+                "rate": 5,
+                "duration": "7 days",
+                "startPriceRange": "$80",
+                "endPriceRange": "$150",
+                "projectImg": "https://example.com/project27.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will create a professional flyer design",
+        "about": "Need a flyer that grabs attention? I will design a professional flyer to promote your event, business, or special offer.",
+        "price": 50,
+        "owner": {
+            "fullname": "flyerdesigner_mike",
+            "imgUrl": "https://example.com/profile29.jpg",
+            "level": 1,
+            "rate": 4.6,
+            "location": {
+                "name": "United States",
+                "format": "us"
+            },
+            "languages": [
+                "English"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-02-10T08:00:00.000Z",
+            "proffession": "Flyer Designer"
+        },
+        "location": {
+            "name": "United States",
+            "format": "us"
+        },
+        "daysToMake": 3,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "I will create a high-quality, attention-grabbing flyer that is perfect for your next event or marketing campaign."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Get Noticed with a Custom Flyer"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Custom Design: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Your flyer will be designed to match your brand and message.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "High-Quality Design: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "A print-ready design that stands out.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/flyer1.jpg",
+            "https://example.com/flyer2.jpg"
+        ],
+        "tags": [
+            "flyer design",
+            "marketing",
+            "graphic design",
+            "event flyer"
+        ],
+        "avgResponseTime": 2,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 2,
+                "price": 30,
+                "servicesList": [
+                    {
+                        "text": "Flyer Design",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A basic flyer design with one revision."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 3,
+                "price": 50,
+                "servicesList": [
+                    {
+                        "text": "Flyer Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A fully custom flyer design with two revisions."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "susan_wilson",
+                "img": "https://example.com/profile30.jpg",
+                "location": {
+                    "name": "United Kingdom",
+                    "format": "gb"
+                },
+                "review": "Mike did an amazing job with the flyer for my event. It was eye-catching and professional. I got so many compliments!",
+                "reviewedAt": "2025-02-12T07:00:00Z",
+                "rate": 5,
+                "duration": "3 days",
+                "startPriceRange": "$25",
+                "endPriceRange": "$50",
+                "projectImg": "https://example.com/project29.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will design a beautiful email template for your business",
+        "about": "Enhance your email marketing campaigns with a custom-designed email template that aligns with your brand's aesthetics.",
+        "price": 100,
+        "owner": {
+            "fullname": "emaildesigner_hannah",
+            "imgUrl": "https://example.com/profile31.jpg",
+            "level": 3,
+            "rate": 4.9,
+            "location": {
+                "name": "Canada",
+                "format": "ca"
+            },
+            "languages": [
+                "English",
+                "French"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-01-25T10:00:00.000Z",
+            "proffession": "Email Template Designer"
+        },
+        "location": {
+            "name": "Canada",
+            "format": "ca"
+        },
+        "daysToMake": 4,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "I will design a visually appealing and functional email template that fits your brand. A well-designed template will boost your email marketing results and improve engagement."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Enhance Your Email Campaigns"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Custom Design: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Each email template is unique and tailored to your brand's identity.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Responsive Design: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Your email will look great on any device, from desktop to mobile.",
+                            "style": [
+                                "regular"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/emailtemplate1.jpg",
+            "https://example.com/emailtemplate2.jpg"
+        ],
+        "tags": [
+            "email template",
+            "email design",
+            "marketing",
+            "digital design"
+        ],
+        "avgResponseTime": 1,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 3,
+                "price": 70,
+                "servicesList": [
+                    {
+                        "text": "Email Template Design",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A basic email template design with one revision."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 4,
+                "price": 100,
+                "servicesList": [
+                    {
+                        "text": "Email Template Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A custom email template design with two revisions."
+            }
+        },
+        "likedByUsers": [],
+        "reviews": [
+            {
+                "name": "charlotte_davis",
+                "img": "https://example.com/profile32.jpg",
+                "location": {
+                    "name": "Australia",
+                    "format": "au"
+                },
+                "review": "Hannah designed the perfect email template for my business! It's sleek, professional, and works perfectly across devices.",
+                "reviewedAt": "2025-02-17T09:00:00Z",
+                "rate": 5,
+                "duration": "4 days",
+                "startPriceRange": "$60",
+                "endPriceRange": "$100",
+                "projectImg": "https://example.com/project31.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will create an amazing logo for your brand",
+        "about": "Hello, I am a professional logo designer with years of experience. I will work closely with you to create a logo that perfectly represents your business and stands out in the market.",
+        "price": 150,
+        "owner": {
+            "fullname": "johnsmith",
+            "imgUrl": "https://example.com/profile.jpg",
+            "level": 1,
+            "rate": 4.5,
+            "location": {
+                "name": "USA",
+                "format": "us"
+            },
+            "languages": [
+                "English"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-02-15T10:00:00.000Z",
+            "proffession": "Logo Designer"
+        },
+        "location": {
+            "name": "USA",
+            "format": "us"
+        },
+        "daysToMake": 7,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "Let me design a logo that truly represents your business values and connects with your target audience. I’ll ensure that the logo reflects your brand’s uniqueness and makes a lasting impact."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Why Choose My Logo Design Services?"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Custom Designs: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I create original designs tailored to your brand."
+                        }
+                    ],
+                    [
+                        {
+                            "text": "High-Quality Results: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Each design is crafted to be clear, memorable, and versatile."
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Fast Turnaround: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I guarantee quick delivery without compromising on quality."
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Satisfaction Guarantee: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Your satisfaction is my priority. I offer revisions until you're happy with the design."
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/logo1.jpg",
+            "https://example.com/logo2.jpg"
+        ],
+        "tags": [
+            "logo design",
+            "brand identity",
+            "graphic design"
+        ],
+        "avgResponseTime": 4,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 3,
+                "price": 80,
+                "servicesList": [
+                    {
+                        "text": "Custom Logo Design",
+                        "included": true
+                    },
+                    {
+                        "text": "One Revision",
+                        "included": true
+                    },
+                    {
+                        "text": "High-Quality Image Files",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A simple yet effective custom logo with one revision. Great for startups or personal brands."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 5,
+                "price": 120,
+                "servicesList": [
+                    {
+                        "text": "Custom Logo Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Two Revisions",
+                        "included": true
+                    },
+                    {
+                        "text": "Multiple File Formats",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A more detailed custom logo design with multiple revisions and file formats."
+            },
+            "premium": {
+                "revisions": 3,
+                "daysToMake": 7,
+                "price": 150,
+                "servicesList": [
+                    {
+                        "text": "Custom Logo Design",
+                        "included": true
+                    },
+                    {
+                        "text": "Three Revisions",
+                        "included": true
+                    },
+                    {
+                        "text": "Multiple File Formats and Color Options",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "The premium logo package with full revisions and color options. Perfect for businesses looking for a versatile and high-quality logo."
+            }
+        },
+        "reviews": [
+            {
+                "name": "alexwilson",
+                "img": "https://example.com/profile1.jpg",
+                "location": {
+                    "name": "Canada",
+                    "format": "ca"
+                },
+                "review": "John did an excellent job designing my logo. It's exactly what I was looking for, and he was very responsive during the process.",
+                "reviewedAt": "2025-02-16T08:00:00Z",
+                "rate": 5,
+                "duration": "4 days",
+                "startPriceRange": "$70",
+                "endPriceRange": "$100",
+                "projectImg": "https://example.com/project1.jpg"
+            }
+        ]
+    },
+    {
+        "title": "I will build a custom WordPress website for you",
+        "about": "I specialize in creating custom WordPress websites for businesses of all sizes. Whether you need a blog, portfolio, or e-commerce site, I can design and build it according to your specifications.",
+        "price": 300,
+        "owner": {
+            "fullname": "sarahjohnson",
+            "imgUrl": "https://example.com/profile2.jpg",
+            "level": 2,
+            "rate": 4.8,
+            "location": {
+                "name": "Australia",
+                "format": "au"
+            },
+            "languages": [
+                "English",
+                "Spanish"
+            ],
+            "isSeller": true,
+            "createdAt": "2025-02-10T12:00:00Z",
+            "proffession": "WordPress Developer"
+        },
+        "location": {
+            "name": "Australia",
+            "format": "au"
+        },
+        "daysToMake": 14,
+        "description": [
+            {
+                "element": "p",
+                "style": [
+                    "regular"
+                ],
+                "text": "Let me build a fully custom WordPress website that is responsive, SEO-optimized, and easy to manage. I work with you to understand your business needs and create a site that aligns with your brand."
+            },
+            {
+                "element": "h2",
+                "style": [
+                    "header"
+                ],
+                "text": "Why Choose a Custom WordPress Website?"
+            },
+            {
+                "element": "ul",
+                "style": [
+                    "about-list"
+                ],
+                "items": [
+                    [
+                        {
+                            "text": "Responsive Design: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "Your website will look great on all devices, from desktop to mobile."
+                        }
+                    ],
+                    [
+                        {
+                            "text": "SEO-Optimized: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I will ensure your website ranks well on search engines with SEO-friendly content."
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Fast Loading Speed: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I optimize the website for fast loading speeds, ensuring great user experience."
+                        }
+                    ],
+                    [
+                        {
+                            "text": "Easy to Manage: ",
+                            "style": [
+                                "bold"
+                            ]
+                        },
+                        {
+                            "text": "I’ll create a user-friendly WordPress backend so you can easily update your site."
+                        }
+                    ]
+                ]
+            }
+        ],
+        "imgUrls": [
+            "https://example.com/website1.jpg",
+            "https://example.com/website2.jpg"
+        ],
+        "tags": [
+            "WordPress",
+            "website development",
+            "responsive design"
+        ],
+        "avgResponseTime": 3,
+        "packagesList": {
+            "basic": {
+                "revisions": 1,
+                "daysToMake": 7,
+                "price": 150,
+                "servicesList": [
+                    {
+                        "text": "Custom WordPress Website",
+                        "included": true
+                    },
+                    {
+                        "text": "Basic SEO Optimization",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A basic WordPress website with essential features and basic SEO optimization."
+            },
+            "standard": {
+                "revisions": 2,
+                "daysToMake": 10,
+                "price": 200,
+                "servicesList": [
+                    {
+                        "text": "Custom WordPress Website",
+                        "included": true
+                    },
+                    {
+                        "text": "Advanced SEO Optimization",
+                        "included": true
+                    },
+                    {
+                        "text": "Contact Form Integration",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "A more comprehensive WordPress website with advanced SEO optimization and additional features."
+            },
+            "premium": {
+                "revisions": 3,
+                "daysToMake": 14,
+                "price": 300,
+                "servicesList": [
+                    {
+                        "text": "Custom WordPress Website",
+                        "included": true
+                    },
+                    {
+                        "text": "Full SEO Optimization",
+                        "included": true
+                    },
+                    {
+                        "text": "E-commerce Integration",
+                        "included": true
+                    }
+                ],
+                "packageDescription": "The premium package includes a custom WordPress website with full SEO optimization and e-commerce functionality."
+            }
+        },
+        "reviews": [
+            {
+                "name": "victorphan",
+                "img": "https://example.com/profile3.jpg",
+                "location": {
+                    "name": "USA",
+                    "format": "us"
+                },
+                "review": "Sarah created an amazing WordPress site for my business. It's professional and easy to navigate. I couldn't be happier with the result.",
+                "reviewedAt": "2025-02-12T11:00:00Z",
+                "rate": 5,
+                "duration": "10 days",
+                "startPriceRange": "$150",
+                "endPriceRange": "$250",
+                "projectImg": "https://example.com/project2.jpg"
+            }
+        ]
+    }
+]

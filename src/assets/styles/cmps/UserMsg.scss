@@ -34,7 +34,9 @@
 }
 
 .user-msg.success {
-    background-color: rgb(41, 189, 73);
+    background-color: $clr6;
+    color: black;
+    border: 1px solid $clr1;
 }
 
 .user-msg.error {

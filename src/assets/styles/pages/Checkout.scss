@@ -167,6 +167,25 @@
                 flex-direction: column;
                 gap: rem(12px);
                 margin-bottom: rem(36px);
+
+            }
+
+            .services-list {
+                li {
+                    display: flex;
+                    align-items: center;
+                    line-height: rem(24px);
+                    color: #95979d;
+                    font-family: Macan;
+                    font-size: rem(14px);
+                    text-align: left;
+                    font-weight: 500;
+
+                    img {
+                        width: rem(20px);
+                        margin-right: rem(5px);
+                    }
+                }
             }
 
             .confirm-btn {

@@ -111,18 +111,22 @@ export function Checkout() {
                             <p>{packageType.toUpperCase()}</p>
                             <p><span>$</span>{price}</p>
                         </div>
-                        <ul className='features-list'>
-                            {services.map(((service, idx) => {
-                                return (
-                                    <li key={idx}>{service}</li>
-                                )
-                            }))}
+                        <ul className='services-list features-list'>
+                            {
+                                services.map((service) => {
+                                    // const src = service.included ? 'dark-check-icon.png' : 'light-check-icon.png'
+                                    return <li key={service}>
+                                        <img src={`/images/dark-check-icon.png`} />
+                                        {service}
+                                    </li>
+                                })
+                            }
                         </ul>
                     </section>
                     <section className='summary'>
                         <div className='service space-between'>
                             <p>Service fee</p>
-                            <p><span>$</span>{serviceFee}</p>
+                            <p><span>$</span>{parseInt(serviceFee)}</p>
                         </div>
                         <div className='vat space-between'>
                             <p>VAT</p>
