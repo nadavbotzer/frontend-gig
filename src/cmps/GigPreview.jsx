@@ -44,7 +44,7 @@ export function GigPreview({ gig }) {
     }
 
     function isGigLikedByUser() {
-        if(!gig.likedByUsers) return false
+        if (!gig.likedByUsers) return false
         return gig.likedByUsers.some(user => user._id === loggedInUser._id)
     }
     return (
@@ -70,7 +70,7 @@ export function GigPreview({ gig }) {
                 <span>{getGigReviewsAvgRate(gig.reviews)}</span>
                 <span className="gig-previews-count">({gig.reviews.length})</span>
             </div>
-            <p className="gig-price">From USD${gig.price}</p>
+            <p className="gig-price">From US${gig.price}</p>
         </article>
     )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Routes, Route } from 'react-router'
 import { useLocation } from 'react-router-dom'
 
@@ -22,8 +22,8 @@ import { UserMsg } from './cmps/UserMsg.jsx'
 
 import { ScrollProvider } from '../src/cmps/ScrollProvider'
 import { SellerDashboard } from './pages/SellerDashboard.jsx'
-
 export function RootCmp() {
+
     const { pathname } = useLocation()
     return (
         <ScrollProvider>
