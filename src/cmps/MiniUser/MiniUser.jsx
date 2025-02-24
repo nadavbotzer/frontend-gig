@@ -20,7 +20,7 @@ export function MiniUser({ isAbout, owner, reviewsCount }) {
 
         <section className='profile-content'>
 
-            <ProfileImg imgSrc={imgUrl} />
+            <ProfileImg imgUrl={imgUrl} />
 
             <section className="about-user">
 

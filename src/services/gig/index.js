@@ -1,7 +1,7 @@
 const { DEV, VITE_LOCAL } = import.meta.env
 
 import { userService } from '../user'
-import { getRandomTags, getRandomLocation, getRandomIntInclusive, getRandomGigTitle, makeId, getRandomCreatedAt, getRandomDuration, getRnadomService } from '../util.service'
+import { getRandomTags, getRandomLocation, getRandomIntInclusive, getRandomGigTitle, makeId, getRandomCreatedAt, getRandomDuration, getRnadomService, getRandomLanguages } from '../util.service'
 
 import { gigService as local } from './gig.service.local'
 import { gigService as remote } from './gig.service.remote'
@@ -12,62 +12,21 @@ export function getEmptyGig() {
     const price = Math.ceil(getRandomIntInclusive(10, 2500))
     const daysToMake = getRandomIntInclusive(1, 10)
     return {
-        title: 'I will ' + getRandomGigTitle(),
-        about: "With more than 10 years of professional experience in the field of Architecture, my approach to design is innovative, creative and technically sound. \n During these years I have gained a strong command over architectural design and a building's work ability. \n So whether you're looking for a great design for your building or want to make it workable, I'm the right guy for you!!",
+        title: "I will create a modern logo for your startup",
+        about: "Experienced and dedicated professional with a passion for delivering high-quality work. I strive to exceed expectations through creativity, attention to detail, and a client-focused approach. Let's bring your vision to life together!",
         price: price,
-        owner: loggedInUser,
+        owner: {
+            ...loggedInUser,
+            proffession: "A skilled graphic designer specializing in vibrant illustrations and creative branding",
+        },
         location: getRandomLocation(),
         daysToMake: daysToMake,
-        description: [
-            {
-                element: "p",
-                style: ["bold", "background"],
-                text: "At the pinnacle of quality and professionalism, our Excellence Level gig offers you a premium experience, ensuring outstanding results in every aspect of your project. our team of experts is dedicated to delivering beyond expectations."
-            },
-            {
-                element: "h2",
-                style: ["header"],
-                text: "What Makes This Gig Exceptional?"
-            },
-            {
-                element: "ul",
-                style: ["about-list"],
-                items: [
-                    [
-                        { text: "Tailored Solutions: ", style: ["bold", "background"] },
-                        { text: "Customized strategies to meet your unique needs.", style: ["regular"] }
-                    ],
-                    [
-                        { text: "Attention to Detail: ", style: ["bold", "background"] },
-                        { text: "Every element is crafted with precision and care.", style: ["regular"] }
-                    ],
-                    [
-                        { text: "Seamless Communication: ", style: ["bold", "background"] },
-                        { text: "Transparent and responsive, keeping you in the loop.", style: ["regular"] }
-                    ],
-                    [
-                        { text: "High-Quality Standards: ", style: ["bold", "background"] },
-                        { text: "Adherence to best practices and industry benchmarks.", style: ["regular"] }
-                    ],
-                    [
-                        { text: "Commitment to Deadlines: ", style: ["bold", "background"] },
-                        { text: "Efficient project management to meet your timelines.", style: ["regular"] }
-                    ],
-                ]
-            },
-            {
-                element: "p",
-                style: ["regular"],
-                text: "Experience the difference of true excellence—where creativity meets expertise, and your vision is transformed into reality with flawless execution."
-            }
-        ],
+        description: `Welcome, I'm ${loggedInUser.fullname} \nA visionary logo and branding expert, here to craft your logo that leaves a lasting impression. With 9 years of experience under my belt, I bring a wealth of expertise to every project I undertake with a unique blend of creativity, precision & client-centric focus. Having successfully delivered over 130,000 branding orders, I stand as a testament to my unwavering commitment to excellence and client satisfaction.\nAbout the gig and what to expect?\nExpect nothing less than excellence. With a focus on creativity, simplicity and sophistication, the gig specializes in crafting sleek and impactful minimalist logo design that resonate with your target audience. From initial concept to final revisions, my process is collaborative and transparent, ensuring that your input is valued every step of the way.\nMy motto \n In a sea of options, choose a designer who stands out for all the right reasons. Choose creativity. Choose quality. Choose results. Choose me.\nCurious to see my work?Dive into my portfolio: https://www.fiverr.com/s/rmjPDb Choose between standard or premium package for portfolio-quality results\nGot Questions?\nCheck out my FAQs or I am just a message away!`,
         imgUrls: [
-            "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/193068192/original/a170671ee931142c619a392cd06db59b9a60eec7.jpg",
-            "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/193068192/original/a170671ee931142c619a392cd06db59b9a60eec7.jpg",
-            "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/193068192/original/a170671ee931142c619a392cd06db59b9a60eec7.jpg",
-            "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/193068192/original/a170671ee931142c619a392cd06db59b9a60eec7.jpg"
+            "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/201392313/original/7ff83ecce45cb759a5a576112622a309b0e1155f.png",
+            "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/143871884/original/cdba0a3892ba81a7c1b202b10e9385825787f4b6.png",
         ],
-        tags: getRandomTags(),
+        tags: ['graphics', 'design'],
         avgResponseTime: getRandomIntInclusive(1, 24),
         packagesList: {
             basic: { revisions: 1, daysToMake: daysToMake, price: price, servicesList: [{ text: servicesList[0], included: false }, { text: servicesList[1], included: true }, { text: servicesList[2], included: false }, { text: servicesList[3], included: true }, { text: servicesList[4], included: false }], packageDescription: 'With the basic package deal you recieve 2/5 services' },

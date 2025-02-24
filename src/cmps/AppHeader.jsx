@@ -84,7 +84,7 @@ export function AppHeader() {
 					{!user && <NavLink to="login" className="link btn-join">Join</NavLink>}
 					{user && (
 						<div className="user-info">
-							<button ref={btnRef} className=' user-img' onClick={toggleModal}>{user.imgUrl && <img src='/images/profile-default.png' />}</button>
+							<button ref={btnRef} className=' user-img' onClick={toggleModal}>{user.imgUrl && <img src={user.imgUrl} />}</button>
 							<DropDown buttonRef={btnRef} isOpen={isOpen} toggleModal={toggleModal} className="user-option-dropdown">
 								<div className="user-actions">
 									<div className='logout-btn' onClick={onLogout}>Logout</div>
