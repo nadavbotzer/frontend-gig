@@ -160,7 +160,7 @@ export function getEmptyGig() {
 
 // Helpers
 
-function getDefaultFilter() {
+function getDefaultFilter(tags) {
     return {
         txt: '',
         price: {
@@ -169,7 +169,7 @@ function getDefaultFilter() {
         },
         sortField: '',
         sortDir: '',
-        tags: [],
+        tags: tags || [],
         deliveryTime: ''
     }
 }

@@ -16,7 +16,7 @@ export function GigIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
     const tagsParam = searchParams.get('tags')
-    const [filterBy, setFilterBy] = useState(gigService.getDefaultFilter())
+    const [filterBy, setFilterBy] = useState(gigService.getDefaultFilter(parseTags(tagsParam)))
 
     const filters = [ // Will get this object from the service
         {
