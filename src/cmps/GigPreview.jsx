@@ -35,14 +35,6 @@ export function GigPreview({ gig }) {
         }
     }
 
-
-    function getGigReviewsAvgRate(reviews) {
-        if (reviews.length === 0) return 0
-        const totalRate = reviews.reduce((sum, review) => sum + review.rate, 0)
-        const avgRate = totalRate / reviews.length
-        return avgRate.toFixed(1)
-    }
-
     function isGigLikedByUser() {
         if (!gig.likedByUsers) return false
         return gig.likedByUsers.some(user => user._id === loggedInUser._id)
@@ -67,7 +59,7 @@ export function GigPreview({ gig }) {
             <Link className="gig-title" to={`/gig/${gig._id}`}>{gig.title}</Link>
             <div className="gig-rating-preview">
                 <span><StarRateIcon /></span>
-                <span>{getGigReviewsAvgRate(gig.reviews)}</span>
+                <span>{gig.owner.rate}</span>
                 <span className="gig-previews-count">({gig.reviews.length})</span>
             </div>
             <p className="gig-price">From US${gig.price}</p>
