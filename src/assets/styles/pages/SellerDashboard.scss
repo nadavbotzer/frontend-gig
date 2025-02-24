@@ -5,8 +5,11 @@
     gap: 1rem;
 
     .dashboard-header {
+        text-align: center;
+
         h1 {
-            font-size: rem(48px);
+            font-size: rem(21px);
+            color: $clr9;
 
             span {
                 color: $clr1;

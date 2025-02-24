@@ -15,14 +15,12 @@ export function SellerDashboard() {
     return (
         <main className="seller-dashboard">
             <header className="dashboard-header">
-                <h1>Order Managment<span>.</span></h1>
+                <h1>Manage Orders<span>.</span></h1>
             </header>
             <div className="graph-wrapper">
-                <h1>Statistics</h1>
                 {!!orders.length && <DashboardGraph orders={orders} />}
             </div>
             <div className="order-list-wrapper">
-                <h1 className="list-heading">Orders</h1>
                 <OrderList orders={orders} />
             </div>
         </main>
