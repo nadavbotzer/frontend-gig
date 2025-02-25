@@ -11,15 +11,14 @@ export function SellerDashboard() {
     useEffect(() => {
         loadOrders({ owner: user })
     }, [])
-    console.log(orders)
     return (
         <main className="seller-dashboard">
             <header className="dashboard-header">
                 <h1>Manage Orders<span>.</span></h1>
             </header>
-            <div className="graph-wrapper">
+            {/* <div className="graph-wrapper">
                 {!!orders.length && <DashboardGraph orders={orders} />}
-            </div>
+            </div> */}
             <div className="order-list-wrapper">
                 <OrderList orders={orders} />
             </div>

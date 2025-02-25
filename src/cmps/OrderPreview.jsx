@@ -9,8 +9,7 @@ export function OrderPreview({ order }) {
     const [actionStatus, setActionStatus] = useState(order.status)
     const [isOpen, toggleModal] = useModal();
     const buttonRef = useRef()
-    const { buyer, gig, packageDeal } = order
-    console.log('packageDeal:', packageDeal)
+    const { buyer, packageDeal } = order
 
     async function onUpdateStatus(orderStatus) {
         setActionStatus(orderStatus)
