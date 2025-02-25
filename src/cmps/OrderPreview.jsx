@@ -6,18 +6,18 @@ import { DropDown } from "../cmps/DropDown"
 
 export function OrderPreview({ order }) {
     const actions = ['approve', 'reject', 'deliver']
-    const [actionStatus, setActionStatus] = useState(order.status)
+    // const [actionStatus, setActionStatus] = useState(order.status)
     const [isOpen, toggleModal] = useModal();
     const buttonRef = useRef()
-    const { buyer, packageDeal } = order
+    const { buyer, packageDeal, status } = order
 
     async function onUpdateStatus(orderStatus) {
-        setActionStatus(orderStatus)
+        // setActionStatus(orderStatus)
         const orderToSave = { ...order, status: orderStatus }
         try {
             const updatedOrder = await updateOrder(orderToSave)
-        } catch (error) {
-
+        } catch (err) {
+            console.log(err)
         }
     }
     return (
@@ -29,7 +29,7 @@ export function OrderPreview({ order }) {
             </div>
             <div className="cell gig-title">{packageDeal.title}</div>
             <div className="cell gig-price">${packageDeal.total}</div>
-            <div className="cell order-status">{order.status}</div>
+            <div className="cell order-status">{status}</div>
             <div className="cell seller-actions">
                 <div className="actions-wrapper">
                     <button ref={buttonRef} onClick={toggleModal} className={`btn seller-actions-btn ${order.status}`} >ACTIONS<KeyboardArrowDownIcon /></button>
