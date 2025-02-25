@@ -2,8 +2,23 @@
     .seller-actions-btn {
         font-size: rem(12px);
         padding: 0.25rem 0.5rem;
+
+    }
+
+
+    .approve {
         border-color: $clr1;
         color: $clr1;
+    }
+
+    .reject {
+        border-color: red;
+        color: red;
+    }
+
+    .deliver {
+        border-color: blue;
+        color: blue;
     }
 
     .buyer-info {

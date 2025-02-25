@@ -1,18 +1,15 @@
 const { DEV, VITE_LOCAL } = import.meta.env
 
 import { userService } from '../user'
-import { makeId } from '../util.service'
 import { orderService as local } from './order.service.local'
 import { orderService as remote } from './order.service.remote'
 
 export function getEmptyOrder() {
     const loggedInUser = userService.getLoggedinUser()
+    console.log(loggedInUser)
     return {
         buyer: loggedInUser,
         seller: '',
-        gig: {              // mini-order
-
-        },
         status: 'created',
     }
 }

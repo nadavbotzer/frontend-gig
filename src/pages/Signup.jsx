@@ -62,7 +62,7 @@ export function Signup() {
                 required
             />
             <ImgUploader onUploaded={onUploaded} />
-            <button className='btn login-btn'>Signup</button>
+            <button onClick={onSignup} className='btn login-btn'>Signup</button>
         </form>
     )
 }

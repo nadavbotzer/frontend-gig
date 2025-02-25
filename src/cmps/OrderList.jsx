@@ -12,6 +12,7 @@ export function OrderList({ orders }) {
             </li>
             {orders.map(order =>
                 <li className="row" key={order._id}>
+
                     <OrderPreview order={order} />
                 </li>)
             }

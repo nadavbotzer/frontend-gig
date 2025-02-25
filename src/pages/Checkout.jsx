@@ -10,7 +10,7 @@ export function Checkout() {
 
     const location = useLocation()
     const packageDeal = location.state?.packageDeal
-    const { VAT, deliveryTime, imgUrl, packageType, price, revisions, serviceFee, services, title } = packageDeal
+    const { vat, deliveryTime, imgUrl, packageType, price, revisions, serviceFee, services, title, total } = packageDeal
     const navigate = useNavigate()
     const { orderId } = useParams()
     const [order, setOrder] = useState(null)
@@ -31,16 +31,10 @@ export function Checkout() {
     }
 
     async function onSaveOrder() {
-        const miniGig = {
-            price: price + serviceFee + VAT,
-            imgUrl,
-            title,
-            deliveryTime
-
-        }
-        order.gig = miniGig
         order.status = 'pending'
         try {
+            console.log('order', order)
+
             const updatedOrder = await updateOrder(order)
             showSuccessMsg(`Order sent successfully`)
             navigate('/')
@@ -130,11 +124,11 @@ export function Checkout() {
                         </div>
                         <div className='vat space-between'>
                             <p>VAT</p>
-                            <p><span>$</span>{parseInt(VAT)}</p>
+                            <p><span>$</span>{parseInt(vat)}</p>
                         </div>
                         <div className='total space-between'>
                             <p>Total</p>
-                            <p><span>$</span>{price + serviceFee + VAT}</p>
+                            <p><span>$</span>{total}</p>
                         </div>
                         <div className='delivery space-between'>
                             <p>Total delivery time</p>

@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { orderService } from '../../services/order'
 import { addOrder } from '../../store/actions/order.actions'
+import { userService } from '../../services/user'
+
 
 export function BuyingInfo({ gig }) {
 
     const btns = ['basic', 'standard', 'premium']
-
     const [active, setActive] = useState(btns[0])
-
     const navigate = useNavigate()
 
     function onActive({ target }) {
@@ -16,7 +16,10 @@ export function BuyingInfo({ gig }) {
     }
 
     async function checkout() {
+        const order = orderService.getEmptyOrder()
         const price = gig.packagesList[active].price;
+        const vat = price * 0.15
+        const serviceFee = price * 0.1
         const packageDeal = {
             gigId: gig._id,
             imgUrl: gig.imgUrls[0],
@@ -26,10 +29,11 @@ export function BuyingInfo({ gig }) {
             services: gig.packagesList[active].servicesList.filter((service) => service.included).map((service) => service.text),
             deliveryTime: gig.packagesList[active].daysToMake,
             revisions: gig.packagesList[active].revisions,
-            serviceFee: price * 0.1,
-            VAT: price * 0.15
+            serviceFee,
+            vat,
+            total: price + vat + serviceFee
         }
-        const order = orderService.getEmptyOrder()
+        order.packageDeal = packageDeal
         order.seller = gig.owner
         try {
             const updatedOrder = await addOrder(order)

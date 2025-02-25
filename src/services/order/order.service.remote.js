@@ -10,7 +10,7 @@ export const orderService = {
     saveOrder
 }
 
-async function query(filterBy = { txt: '', price: 0 }) {
+async function query(filterBy) {
     return httpService.get(`order/get-orders`, filterBy)
 }
 

@@ -11,7 +11,7 @@ export function SellerDashboard() {
     useEffect(() => {
         loadOrders({ owner: user })
     }, [])
-
+    console.log(orders)
     return (
         <main className="seller-dashboard">
             <header className="dashboard-header">
