@@ -11,7 +11,6 @@ import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { gigService } from '../services/gig'
 import { userService } from '../services/user'
 
-
 export function GigIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
@@ -90,7 +89,6 @@ export function GigIndex() {
         if (filterKey === 'price') {
             setFilterBy(prevFilter => ({ ...prevFilter, price: { min: '', max: '' } }))
         }
-
     }
 
     function handleApplyFilter(filter, newValue) {
@@ -111,19 +109,21 @@ export function GigIndex() {
             };
         });
     }
+
     function formatPriceRange(min, max) {
         if (min && max) return `Budget: $${min} - $${max}`
         if (min) return `Budget: $${min}`
         if (max) return `Budget: $${max}`
         return ''
     }
-    function getDeliveryTimeLabel(value) {
 
+    function getDeliveryTimeLabel(value) {
         const deliveryTimeOption = filters.find(filter => filter.key === 'deliveryTime')
             ?.options.find(option => option.value === value)
 
         return deliveryTimeOption ? deliveryTimeOption.label : value
     }
+
     function tagsToHeading(tags) {
         return tags
             .replace(/[\[\]]/g, '')
@@ -147,7 +147,7 @@ export function GigIndex() {
     return (
         <>
             <main className="gig-index">
-                {userService.getLoggedinUser() && <button className='btn' onClick={onAddGig}>Add Gig (DEV)</button>}
+                {/* {userService.getLoggedinUser() && <button className='btn' onClick={onAddGig}>Add Gig (DEV)</button>} */}
                 {(!!gigs.length && tagsParam) && <Navigations gigCategory={tagsParam} />}
                 {!tagsParam && <Navigations gigCategory={''} />}
                 <h1>{(!!gigs.length && tagsParam) && tagsToHeading(tagsParam)}</h1>
