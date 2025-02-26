@@ -131,7 +131,6 @@
     padding-top: 0.5rem;
 
     .img-preview {
-        flex: 1;
         cursor: pointer;
         opacity: 0.5;
         transition: 0.3s;
@@ -140,10 +139,13 @@
             opacity: 1;
 
         }
+
+        img {
+            width: rem(125px)
+        }
     }
 
     img {
         border-radius: 0.25rem;
-
     }
 }
