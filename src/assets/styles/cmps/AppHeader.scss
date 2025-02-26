@@ -137,6 +137,13 @@
         border-block: 1px solid #e4e5e7;
     }
 
+    @include for-mobile-layout {
+        .search-input {
+            display: none;
+        }
+
+    }
+
 }
 
 .user-option-dropdown {

@@ -32,7 +32,7 @@ export function OrderPreview({ order }) {
             {/* <div className="cell order-status">{status}</div> */}
             <div className="cell seller-actions">
                 <div className="actions-wrapper">
-                    <button ref={buttonRef} onClick={toggleModal} className={`btn seller-actions-btn ${order.status}`} >ACTIONS<KeyboardArrowDownIcon /></button>
+                    <button ref={buttonRef} onClick={toggleModal} className={`btn seller-actions-btn ${order.status}`} >{order.status}<KeyboardArrowDownIcon /></button>
                     <DropDown className="seller-actions-dropdown" isOpen={isOpen} toggleModal={toggleModal} buttonRef={buttonRef}>
                         <DropDown.Content>
                             <button className="btn" onClick={() => {

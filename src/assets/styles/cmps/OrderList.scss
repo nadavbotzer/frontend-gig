@@ -11,6 +11,8 @@
 
         padding: 0.5rem 0.75rem;
         border-bottom: 1px solid $gray1;
+        display: grid;
+        justify-items: center;
 
         &.header {
             color: $clr12;

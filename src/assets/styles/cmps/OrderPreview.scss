@@ -21,11 +21,20 @@
         color: blue;
     }
 
+    .seller-actions-btn {
+        display: flex;
+        justify-content: center;
+        min-width: rem(89px);
+
+    }
+
     .buyer-info {
         display: flex;
         gap: 0.5rem;
         align-items: top;
-        justify-content: flex-start;
+        align-items: center;
+
+
 
         img {
             border-radius: 50%;
