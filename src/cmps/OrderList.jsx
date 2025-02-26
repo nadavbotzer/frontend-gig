@@ -5,9 +5,9 @@ export function OrderList({ orders }) {
         <ul className="order-list">
             <li className="row">
                 <div className="cell header">BUYER</div>
-                <div className="cell header">GIG INFO</div>
+                {/* <div className="cell header">GIG INFO</div> */}
                 <div className="cell header">TOTAL</div>
-                <div className="cell header">STATUS</div>
+                {/* <div className="cell header">STATUS</div> */}
                 <div className="cell header">ACTIONS</div>
             </li>
             {orders.map(order =>

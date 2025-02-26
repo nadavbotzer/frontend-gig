@@ -27,9 +27,9 @@ export function OrderPreview({ order }) {
                 <img src={buyer.imgUrl} />
                 <span>{buyer.fullname}</span>
             </div>
-            <div className="cell gig-title">{packageDeal.title}</div>
+            {/* <div className="cell gig-title">{packageDeal.title}</div> */}
             <div className="cell gig-price">${packageDeal.total}</div>
-            <div className="cell order-status">{status}</div>
+            {/* <div className="cell order-status">{status}</div> */}
             <div className="cell seller-actions">
                 <div className="actions-wrapper">
                     <button ref={buttonRef} onClick={toggleModal} className={`btn seller-actions-btn ${order.status}`} >ACTIONS<KeyboardArrowDownIcon /></button>
