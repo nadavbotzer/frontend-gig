@@ -4,6 +4,9 @@
         padding: 0.25rem 0.5rem;
 
     }
+    .buyer{
+        justify-content: start;
+    }
 
 
     .approve {
@@ -31,8 +34,8 @@
     .buyer-info {
         display: flex;
         gap: 0.5rem;
-        align-items: top;
         align-items: center;
+        justify-content: start;
 
 
 

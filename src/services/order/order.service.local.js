@@ -18,9 +18,8 @@ async function query(filterBy = getDefaultFilter()) {
     let orders = await storageService.query(STORAGE_KEY)
     const { owner } = filterBy
     const { _id } = owner
-
     if (_id) {
-        orders = orders.filter(order => order.owner._id === _id)
+        orders = orders.filter(order => order.seller._id === _id)
     }
 
     return orders = orders.filter(order => order.status !== 'created')

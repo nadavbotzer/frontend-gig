@@ -4,7 +4,7 @@ export function OrderList({ orders }) {
     return (
         <ul className="order-list">
             <li className="row">
-                <div className="cell header">BUYER</div>
+                <div className="cell header buyer">BUYER</div>
                 {/* <div className="cell header">GIG INFO</div> */}
                 <div className="cell header">TOTAL</div>
                 {/* <div className="cell header">STATUS</div> */}
