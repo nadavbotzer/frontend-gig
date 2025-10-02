@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Level } from '../Level.jsx';
 import { ProfileImg } from './ProfileImg.jsx';
 import { StatusOnline } from '../StatusOnline.jsx';
@@ -20,12 +21,23 @@ export function MiniUser({ isAbout, owner, reviewsCount }) {
 
         <section className='profile-content'>
 
-            <ProfileImg imgUrl={imgUrl} />
+            <Link 
+                to={`/user/${owner._id}`} 
+                onClick={(e) => e.stopPropagation()}
+            >
+                <ProfileImg imgUrl={imgUrl} />
+            </Link>
 
             <section className="about-user">
 
                 <div className="about-user-row">
-                    <span className="user-name">{fullname}</span>
+                    <Link 
+                        to={`/user/${owner._id}`} 
+                        className="user-name"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {fullname}
+                    </Link>
                     {
                         isAbout ? <StatusOnline /> :
                             <Level level={rate} />

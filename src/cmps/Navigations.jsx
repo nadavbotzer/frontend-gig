@@ -7,6 +7,8 @@ export function Navigations({ gigCategory }) {
     const navigations = [{ to: '/', name: 'home' }, { to: `/gig/?tags=${gigCategory}`, name: parseTags(gigCategory) }]
 
     function parseTags(tags) {
+        if (!tags) return 'All Categories'
+        
         return tags
             .replace(/[\[\]]/g, '')
             .split(',')

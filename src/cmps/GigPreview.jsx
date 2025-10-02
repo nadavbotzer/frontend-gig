@@ -52,9 +52,20 @@ export function GigPreview({ gig }) {
                 </button>
             </div>
             <div className="gig-user-preview">
-                <img className="gig-user-img" src={gig.owner.imgUrl} />
+                <Link 
+                    to={`/user/${gig.owner._id}`} 
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <img className="gig-user-img" src={gig.owner.imgUrl} />
+                </Link>
                 {gig.promoted && <span>Ad by </span>}
-                <span className="gig-user-fullname"> {gig.owner.fullname}</span>
+                <Link 
+                    to={`/user/${gig.owner._id}`} 
+                    className="gig-user-fullname"
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    {gig.owner.fullname}
+                </Link>
             </div>
             <Link className="gig-title" to={`/gig/${gig._id}`}>{gig.title}</Link>
             <div className="gig-rating-preview">

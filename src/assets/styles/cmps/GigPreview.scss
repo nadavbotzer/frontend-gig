@@ -58,10 +58,25 @@
             object-fit: cover;
             width: 1.75rem;
             height: 1.75rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+
+            &:hover {
+                transform: scale(1.1);
+                box-shadow: 0 2px 8px rgba($clr1, 0.3);
+            }
         }
 
         .gig-user-fullname {
             font-weight: 700;
+            color: $clr2;
+            text-decoration: none;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: $clr1;
+                text-decoration: underline;
+            }
         }
     }
 
