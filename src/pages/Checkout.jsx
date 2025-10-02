@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 import { useParams } from 'react-router'
 import { updateOrder } from '../store/actions/order.actions'
+import { orderService } from '../services/order'
 import { useEffect, useState } from 'react'
 
 
@@ -31,16 +32,25 @@ export function Checkout() {
     }
 
     async function onSaveOrder() {
-        order.status = 'pending'
-        try {
-            console.log('order', order)
+        if (!order) {
+            showErrorMsg('No order found to process')
+            return
+        }
 
-            const updatedOrder = await updateOrder(order)
-            showSuccessMsg(`Order sent successfully`)
-            navigate('/')
+        try {
+            // Update order status to pending/confirmed
+            const orderToUpdate = { ...order, status: 'pending' }
+            console.log('Processing order:', orderToUpdate)
+
+            const updatedOrder = await updateOrder(orderToUpdate)
+            showSuccessMsg(`Order created successfully!`)
+            
+            // Navigate to confirmation page with order ID
+            navigate(`/gig/confirmationpage/${updatedOrder._id || order._id}`)
 
         } catch (err) {
-            showSuccessMsg(`cannot send order`)
+            console.error('Error processing order:', err)
+            showErrorMsg('Failed to process order. Please try again.')
         }
     }
 
@@ -134,7 +144,9 @@ export function Checkout() {
                             <p>Total delivery time</p>
                             <p>{deliveryTime} Days</p>
                         </div>
-                        <button onClick={onSaveOrder} className='confirm-btn'>Confirm & Pay</button>
+                        <button onClick={onSaveOrder} className='confirm-btn'>
+                            {order ? 'Confirm & Pay' : 'Loading...'}
+                        </button>
                         <div className='secure-payment'>
                             <span>
                                 <svg xmlns="http://www.w3.org/2000/svg">

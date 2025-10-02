@@ -14,6 +14,7 @@ import { Signup } from './pages/Signup.jsx'
 import { GigDetails } from './pages/GigDetails.jsx'
 import { GigIndex } from './pages/GigIndex.jsx'
 import { Checkout } from './pages/Checkout'
+import { ConfirmationPage } from './pages/ConfirmationPage.jsx'
 
 import { AppHeader } from './cmps/AppHeader'
 import { TagsHeader } from './cmps/TagsHeader.jsx'
@@ -45,6 +46,7 @@ export function RootCmp() {
                         <Route path="user/:id" element={<UserDetails />} />
                         <Route path="review" element={<ReviewIndex />} />
                         <Route path="gig/checkout/:orderId" element={<Checkout />} />
+                        <Route path="gig/confirmationpage/:orderid" element={<ConfirmationPage />} />
                         <Route path="dashboard" element={<SellerDashboard />} />
 
 
