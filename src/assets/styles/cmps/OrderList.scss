@@ -27,6 +27,17 @@
             background-color: $gray5;
         }
 
+        &.clickable-row {
+            cursor: pointer;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: $gray5;
+                transform: translateY(-1px);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+        }
+
         &.header-row {
             background: linear-gradient(135deg, $gray5 0%, #f0f0f0 100%);
             border-bottom: 2px solid $gray1;
@@ -213,11 +224,66 @@
                         cursor: pointer;
                         display: flex;
                         align-items: center;
-                        gap: 0.25rem;
+                        gap: 1rem;
                         transition: background-color 0.2s ease;
 
                         &:hover {
                             background: lighten($clr2, 10%);
+                        }
+
+                        svg {
+                            font-size: rem(16px);
+                        }
+                    }
+
+                    .action-btn {
+                        display: flex;
+                        align-items: center;
+                        gap: 1rem;
+                        padding: 0.5rem 1rem;
+                        border: none;
+                        border-radius: rem(6px);
+                        font-size: rem(12px);
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+                        width: 100%;
+                        text-align: left;
+
+                        &.view-details {
+                            background: $clr1;
+                            color: $clr6;
+
+                            &:hover {
+                                background: darken($clr1, 10%);
+                            }
+                        }
+
+                        &.approve {
+                            background: #28a745;
+                            color: $clr6;
+
+                            &:hover {
+                                background: darken(#28a745, 10%);
+                            }
+                        }
+
+                        &.reject {
+                            background: #dc3545;
+                            color: $clr6;
+
+                            &:hover {
+                                background: darken(#dc3545, 10%);
+                            }
+                        }
+
+                        &.deliver {
+                            background: #17a2b8;
+                            color: $clr6;
+
+                            &:hover {
+                                background: darken(#17a2b8, 10%);
+                            }
                         }
 
                         svg {

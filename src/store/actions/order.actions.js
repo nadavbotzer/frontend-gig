@@ -45,7 +45,7 @@ export async function removeOrder(orderId) {
 export async function updateOrder(order) {
     try {
         const savedOrder = await orderService.updateOrder(order)
-        store.dispatch(getCmdUpdateOrder(order))
+        store.dispatch(getCmdUpdateOrder(savedOrder))
         return savedOrder
     } catch (err) {
         console.log('Cannot save order', err)

@@ -1,6 +1,17 @@
 import { OrderPreview } from "./OrderPreview";
+import { useNavigate } from 'react-router-dom';
 
 export function OrderList({ orders }) {
+    const navigate = useNavigate()
+
+    function handleRowClick(orderId, event) {
+        // Don't navigate if clicking on the actions dropdown
+        if (event.target.closest('.actions-wrapper')) {
+            return
+        }
+        navigate(`/order/${orderId}`)
+    }
+
     return (
         <div className="order-list-container">
             <div className="order-list">
@@ -14,7 +25,11 @@ export function OrderList({ orders }) {
                     <div className="cell header actions">ACTIONS</div>
                 </div>
                 {orders.map(order =>
-                    <div className="order-row" key={order._id}>
+                    <div 
+                        className="order-row clickable-row" 
+                        key={order._id}
+                        onClick={(e) => handleRowClick(order._id, e)}
+                    >
                         <OrderPreview order={order} />
                     </div>
                 )}

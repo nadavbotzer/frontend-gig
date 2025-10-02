@@ -31,7 +31,11 @@ export function orderReducer(state = initialState, action) {
             const updatedOrders = state.orders.map(order =>
                 order._id === action.order._id ? { ...order, ...action.order } : order
             )
-            newState = { ...state, orders: updatedOrders }
+            // Also update the individual order if it matches
+            const updatedOrder = state.order && state.order._id === action.order._id 
+                ? { ...state.order, ...action.order } 
+                : state.order
+            newState = { ...state, orders: updatedOrders, order: updatedOrder }
             break
         case ADD_ORDER_MSG:
             newState = { ...state, order: { ...state.order, msgs: [...state.order.msgs || [], action.msg] } }

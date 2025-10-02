@@ -283,16 +283,22 @@ export function UserOrders() {
 
                                     <div className="order-actions">
                                         <Link 
+                                            to={`/order/${order._id}`} 
+                                            className="btn btn-primary"
+                                        >
+                                            View Details
+                                        </Link>
+                                        <Link 
                                             to={`/gig/${order.gig?._id}`} 
                                             className="btn btn-outline"
                                         >
                                             View Gig
                                         </Link>
                                         <Link 
-                                            to={`/gig/confirmationpage/${order._id}`} 
-                                            className="btn btn-primary"
+                                            to={`/user/${order.seller?._id}`} 
+                                            className="btn btn-secondary"
                                         >
-                                            View Details
+                                            Contact Seller
                                         </Link>
                                     </div>
                                 </div>

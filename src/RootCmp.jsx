@@ -16,6 +16,7 @@ import { GigIndex } from './pages/GigIndex.jsx'
 import { Checkout } from './pages/Checkout'
 import { ConfirmationPage } from './pages/ConfirmationPage.jsx'
 import { UserOrders } from './pages/UserOrders.jsx'
+import { OrderDetails } from './pages/OrderDetails.jsx'
 
 import { AppHeader } from './cmps/AppHeader'
 import { TagsHeader } from './cmps/TagsHeader.jsx'
@@ -50,6 +51,7 @@ export function RootCmp() {
                         <Route path="gig/confirmationpage/:orderid" element={<ConfirmationPage />} />
                         <Route path="dashboard" element={<SellerDashboard />} />
                         <Route path="orders" element={<UserOrders />} />
+                        <Route path="order/:orderId" element={<OrderDetails />} />
 
 
                         <Route path="chat" element={<ChatApp />} />

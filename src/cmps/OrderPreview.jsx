@@ -3,16 +3,19 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"
 import useModal from "../customHooks/useModal"
 import { useState, useRef } from 'react'
 import { DropDown } from "../cmps/DropDown"
+import { useNavigate } from 'react-router-dom'
 
 // MUI Icons for actions
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import CancelIcon from '@mui/icons-material/Cancel'
 import LocalShippingIcon from '@mui/icons-material/LocalShipping'
+import VisibilityIcon from '@mui/icons-material/Visibility'
 
 export function OrderPreview({ order }) {
     const actions = ['approve', 'reject', 'deliver']
     const [isOpen, toggleModal] = useModal();
     const buttonRef = useRef()
+    const navigate = useNavigate()
     const { buyer, packageDeal, status, createdAt } = order
 
     async function onUpdateStatus(orderStatus) {
@@ -22,6 +25,10 @@ export function OrderPreview({ order }) {
         } catch (err) {
             console.log(err)
         }
+    }
+
+    function handleViewDetails() {
+        navigate(`/order/${order._id}`)
     }
 
     // Helper functions
@@ -115,6 +122,12 @@ export function OrderPreview({ order }) {
                     </button>
                     <DropDown className="seller-actions-dropdown" isOpen={isOpen} toggleModal={toggleModal} buttonRef={buttonRef}>
                         <DropDown.Content>
+                            <button className="btn action-btn view-details" onClick={() => {
+                                handleViewDetails()
+                                toggleModal()
+                            }}>
+                                <VisibilityIcon /> View Details
+                            </button>
                             <button className="btn action-btn approve" onClick={() => {
                                 onUpdateStatus(actions[0])
                                 toggleModal()
