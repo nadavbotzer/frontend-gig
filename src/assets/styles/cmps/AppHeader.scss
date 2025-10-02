@@ -154,12 +154,39 @@
     font-size: rem(14px);
 
     .user-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem 0;
 
+        a {
+            padding: 0.5rem 1rem;
+            color: $clr2;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+            border-radius: 4px;
+
+            &:hover {
+                background-color: $gray5;
+                color: $clr1;
+            }
+        }
 
         .logout-btn {
             cursor: pointer;
-        }
+            padding: 0.5rem 1rem;
+            color: $clr2;
+            transition: background-color 0.2s ease;
+            border-radius: 4px;
+            border: none;
+            background: none;
+            text-align: left;
+            font-size: inherit;
 
-        a {}
+            &:hover {
+                background-color: $gray5;
+                color: $clr1;
+            }
+        }
     }
 }
