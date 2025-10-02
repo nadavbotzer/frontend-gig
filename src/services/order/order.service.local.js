@@ -16,10 +16,16 @@ window.cs = orderService
 
 async function query(filterBy = getDefaultFilter()) {
     let orders = await storageService.query(STORAGE_KEY)
-    const { owner } = filterBy
-    const { _id } = owner
-    if (_id) {
-        orders = orders.filter(order => order.seller._id === _id)
+    const { owner, buyer } = filterBy
+    
+    // Filter by seller (owner)
+    if (owner && owner._id) {
+        orders = orders.filter(order => order.seller && order.seller._id === owner._id)
+    }
+    
+    // Filter by buyer
+    if (buyer) {
+        orders = orders.filter(order => order.buyer && order.buyer._id === buyer)
     }
 
     return orders = orders.filter(order => order.status !== 'created')

@@ -89,6 +89,7 @@ export function AppHeader() {
 								<div className="user-actions">
 									<Link className="" to={`/user/${user._id}`}>Profile</Link>
 									<Link className="" to="/dashboard">Dashboard</Link>
+									<Link className="" to="/orders">My Orders</Link>
 									<div className='logout-btn' onClick={onLogout}>Logout</div>
 								</div>
 							</DropDown>

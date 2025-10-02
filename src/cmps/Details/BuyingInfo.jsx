@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { orderService } from '../../services/order'
 import { addOrder } from '../../store/actions/order.actions'
 import { userService } from '../../services/user'
+import { showErrorMsg } from '../../services/event-bus.service'
 
 
 export function BuyingInfo({ gig }) {
@@ -16,6 +17,14 @@ export function BuyingInfo({ gig }) {
     }
 
     async function checkout() {
+        const currentUser = userService.getLoggedinUser()
+        
+        // Check if user is trying to purchase their own gig
+        if (currentUser && gig.owner && currentUser._id === gig.owner._id) {
+            showErrorMsg('You cannot purchase your own gig!')
+            return
+        }
+        
         const order = orderService.getEmptyOrder()
         const price = gig.packagesList[active].price;
         const vat = price * 0.15
@@ -35,6 +44,7 @@ export function BuyingInfo({ gig }) {
         }
         order.packageDeal = packageDeal
         order.seller = gig.owner
+        order.gig = gig // Add the full gig object for reference
         try {
             const updatedOrder = await addOrder(order)
             navigate(`/gig/checkout/${updatedOrder._id}`, { state: { packageDeal } })
