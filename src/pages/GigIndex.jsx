@@ -7,6 +7,7 @@ import { addGig, loadGigs } from '../store/actions/gig.actions'
 import { FilterItem } from '../cmps/FilterItem'
 import { GigList } from '../cmps/GigList'
 import { Navigations } from '../cmps/Navigations'
+import { LoadingSpinner } from '../cmps/LoadingSpinner'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { gigService } from '../services/gig'
 import { userService } from '../services/user'
@@ -14,6 +15,7 @@ import { userService } from '../services/user'
 export function GigIndex() {
     const [searchParams, setSearchParams] = useSearchParams()
     const gigs = useSelector(storeState => storeState.gigModule.gigs)
+    const isLoading = useSelector(storeState => storeState.systemModule.isLoading)
     const tagsParam = searchParams.get('tags')
     const [filterBy, setFilterBy] = useState(gigService.getDefaultFilter(parseTags(tagsParam || '')))
 
@@ -142,7 +144,6 @@ export function GigIndex() {
         return str.replace(/[\[\]]/g, '').split(',').map(tag => tag.trim());
     }
 
-    if (!gigs) return <div>Loading...</div>
 
     return (
         <>
@@ -189,8 +190,12 @@ export function GigIndex() {
                 <div className="sort-wrapper">
                     <span>{gigs.length} results</span>
                 </div>
-                <GigList
-                    gigs={gigs} />
+                
+                {isLoading ? (
+                    <LoadingSpinner message="Loading gigs..." size="large" />
+                ) : (
+                    <GigList gigs={gigs} />
+                )}
             </main>
         </>
     )

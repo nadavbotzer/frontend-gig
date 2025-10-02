@@ -7,6 +7,7 @@ import { GigInfo } from '../cmps/Details/GigInfo'
 import { BuyingInfo } from '../cmps/Details/BuyingInfo'
 import { GigContentLayout } from '../cmps/Details/GigContentLayout'
 import { NavigationsAndActions } from '../cmps/NavigationsAndActions'
+import { LoadingSpinner } from '../cmps/LoadingSpinner'
 
 import { showErrorMsg } from '../services/event-bus.service'
 import { gigService } from '../services/gig/index.js'
@@ -39,7 +40,7 @@ export function GigDetails() {
     }
   }
 
-  if (isLoading || !gig) return <div>Loading...</div>;
+  if (isLoading || !gig) return <LoadingSpinner message="Loading gig details..." size="large" fullPage />;
 
   return (
     <section className="gig-page">

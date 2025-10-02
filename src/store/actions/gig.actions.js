@@ -1,24 +1,31 @@
 import { gigService } from '../../services/gig'
 import { store } from '../store'
 import { ADD_GIG, REMOVE_GIG, SET_GIGS, SET_GIG, UPDATE_GIG, ADD_GIG_MSG } from '../reducers/gig.reducer'
+import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
 
 export async function loadGigs(filterBy) {
     try {
+        store.dispatch({ type: LOADING_START })
         const gigs = await gigService.query(filterBy)
         store.dispatch(getCmdSetGigs(gigs))
     } catch (err) {
         console.log('Cannot load gigs', err)
         throw err
+    } finally {
+        store.dispatch({ type: LOADING_DONE })
     }
 }
 
 export async function loadGig(gigId) {
     try {
+        store.dispatch({ type: LOADING_START })
         const gig = await gigService.getById(gigId)
         store.dispatch(getCmdSetGig(gig))
     } catch (err) {
         console.log('Cannot load gig', err)
         throw err
+    } finally {
+        store.dispatch({ type: LOADING_DONE })
     }
 }
 

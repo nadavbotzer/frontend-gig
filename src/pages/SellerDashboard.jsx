@@ -4,12 +4,16 @@ import { loadOrders, addOrder, updateOrder } from '../store/actions/order.action
 import { OrderList } from '../cmps/OrderList'
 import { userService } from '../services/user'
 import { DashboardGraph } from '../cmps/DashboardGraph'
+import { LoadingSpinner } from '../cmps/LoadingSpinner'
 
 export function SellerDashboard() {
     const orders = useSelector(storeState => storeState.orderModule.orders)
+    const isLoading = useSelector(storeState => storeState.systemModule.isLoading)
     const user = userService.getLoggedinUser()
+    const [isInitialLoad, setIsInitialLoad] = useState(true)
+    
     useEffect(() => {
-        loadOrders({ owner: user })
+        loadOrders({ owner: user }).finally(() => setIsInitialLoad(false))
     }, [])
     return (
         <main className="seller-dashboard">
@@ -20,7 +24,11 @@ export function SellerDashboard() {
                 {!!orders.length && <DashboardGraph orders={orders} />}
             </div> */}
             <div className="order-list-wrapper">
-                <OrderList orders={orders} />
+                {isLoading && isInitialLoad ? (
+                    <LoadingSpinner message="Loading orders..." size="large" />
+                ) : (
+                    <OrderList orders={orders} />
+                )}
             </div>
         </main>
     )

@@ -1,24 +1,31 @@
 import { orderService } from '../../services/order'
 import { store } from '../store'
 import { ADD_ORDER, REMOVE_ORDER, SET_ORDERS, SET_ORDER, UPDATE_ORDER, ADD_ORDER_MSG } from '../reducers/order.reducer'
+import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
 
 export async function loadOrders(filterBy = orderService.getDefaultFilter()) {
     try {
+        store.dispatch({ type: LOADING_START })
         const orders = await orderService.query(filterBy)
         store.dispatch(getCmdSetOrders(orders))
     } catch (err) {
         console.log('Cannot load orders', err)
         throw err
+    } finally {
+        store.dispatch({ type: LOADING_DONE })
     }
 }
 
 export async function loadOrder(orderId) {
     try {
+        store.dispatch({ type: LOADING_START })
         const order = await orderService.getById(orderId)
         store.dispatch(getCmdSetOrder(order))
     } catch (err) {
         console.log('Cannot load order', err)
         throw err
+    } finally {
+        store.dispatch({ type: LOADING_DONE })
     }
 }
 

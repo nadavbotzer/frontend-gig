@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { loadOrder } from '../store/actions/order.actions'
 import { loadGig } from '../store/actions/gig.actions'
 import { showErrorMsg } from '../services/event-bus.service'
+import { LoadingSpinner } from '../cmps/LoadingSpinner'
 
 export function ConfirmationPage() {
     const { orderid } = useParams()
@@ -110,14 +111,7 @@ export function ConfirmationPage() {
     }
 
     if (isLoading) {
-        return (
-            <div className="confirmation-page loading">
-                <div className="loading-spinner">
-                    <div className="spinner"></div>
-                    <p>Loading your order details...</p>
-                </div>
-            </div>
-        )
+        return <LoadingSpinner message="Loading your order details..." size="large" fullPage />
     }
 
     if (error || !order) {
