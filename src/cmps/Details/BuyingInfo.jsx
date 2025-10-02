@@ -17,14 +17,6 @@ export function BuyingInfo({ gig }) {
     }
 
     async function checkout() {
-        const currentUser = userService.getLoggedinUser()
-        
-        // Check if user is trying to purchase their own gig
-        if (currentUser && gig.owner && currentUser._id === gig.owner._id) {
-            showErrorMsg('You cannot purchase your own gig!')
-            return
-        }
-        
         const order = orderService.getEmptyOrder()
         const price = gig.packagesList[active].price;
         const vat = price * 0.15

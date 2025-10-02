@@ -366,23 +366,38 @@
                                 font-size: rem(14px);
                                 font-weight: 600;
                                 color: $clr2;
-                                margin-bottom: 0.25rem;
+                                margin-bottom: 0.5rem;
                             }
 
-                            .seller-rating {
+                            .seller-level {
                                 display: flex;
                                 align-items: center;
-                                gap: 0.25rem;
-
-                                .star-icon {
-                                    font-size: rem(14px);
-                                    color: #ffc107;
-                                }
-
-                                span {
+                                
+                                .level {
                                     font-size: rem(12px);
-                                    color: $clr5;
-                                    font-weight: 500;
+                                    
+                                    .txt {
+                                        font-size: rem(10px);
+                                        font-weight: 600;
+                                        color: $clr5;
+                                        margin-right: 0.25rem;
+                                    }
+                                    
+                                    .diamonds {
+                                        display: flex;
+                                        gap: 0.125rem;
+                                        
+                                        .icon {
+                                            width: rem(12px);
+                                            height: rem(12px);
+                                        }
+                                    }
+                                    
+                                    &.top {
+                                        .txt {
+                                            font-weight: 700;
+                                        }
+                                    }
                                 }
                             }
                         }

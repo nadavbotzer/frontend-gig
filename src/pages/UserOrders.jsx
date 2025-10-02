@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { loadOrders } from '../store/actions/order.actions'
 import { userService } from '../services/user'
 import { LoadingSpinner } from '../cmps/LoadingSpinner'
+import { Level } from '../cmps/Level'
 import { Link } from 'react-router-dom'
 
 // MUI Icons
@@ -244,9 +245,8 @@ export function UserOrders() {
                                             />
                                             <div className="seller-details">
                                                 <span className="seller-name">{order.seller?.fullname || 'Seller Name'}</span>
-                                                <div className="seller-rating">
-                                                    <StarIcon className="star-icon" />
-                                                    <span>{order.seller?.rate || '5.0'}</span>
+                                                <div className="seller-level">
+                                                    <Level level={order.seller?.level || 1} />
                                                 </div>
                                             </div>
                                         </div>

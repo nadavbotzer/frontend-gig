@@ -40,7 +40,7 @@ export function MiniUser({ isAbout, owner, reviewsCount }) {
                     </Link>
                     {
                         isAbout ? <StatusOnline /> :
-                            <Level level={rate} />
+                            <Level level={level} />
                     }
                 </div>
 
