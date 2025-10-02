@@ -4,15 +4,18 @@ import useModal from "../customHooks/useModal"
 import { useState, useRef } from 'react'
 import { DropDown } from "../cmps/DropDown"
 
+// MUI Icons for actions
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import CancelIcon from '@mui/icons-material/Cancel'
+import LocalShippingIcon from '@mui/icons-material/LocalShipping'
+
 export function OrderPreview({ order }) {
     const actions = ['approve', 'reject', 'deliver']
-    // const [actionStatus, setActionStatus] = useState(order.status)
     const [isOpen, toggleModal] = useModal();
     const buttonRef = useRef()
-    const { buyer, packageDeal, status } = order
+    const { buyer, packageDeal, status, createdAt } = order
 
     async function onUpdateStatus(orderStatus) {
-        // setActionStatus(orderStatus)
         const orderToSave = { ...order, status: orderStatus }
         try {
             const updatedOrder = await updateOrder(orderToSave)
@@ -20,33 +23,116 @@ export function OrderPreview({ order }) {
             console.log(err)
         }
     }
+
+    // Helper functions
+    const formatOrderId = (id) => {
+        return id ? `#${id.slice(-6).toUpperCase()}` : '#N/A'
+    }
+
+    const calculateDueDate = () => {
+        if (!createdAt || !packageDeal?.deliveryTime) {
+            return 'N/A'
+        }
+        
+        const orderDate = new Date(createdAt)
+        const deliveryDays = packageDeal.deliveryTime
+        const dueDate = new Date(orderDate.getTime() + (deliveryDays * 24 * 60 * 60 * 1000))
+        
+        return dueDate.toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric',
+            year: 'numeric'
+        })
+    }
+
+    const getDaysRemaining = () => {
+        if (!createdAt || !packageDeal?.deliveryTime) return null
+        
+        const orderDate = new Date(createdAt)
+        const deliveryDays = packageDeal.deliveryTime
+        const dueDate = new Date(orderDate.getTime() + (deliveryDays * 24 * 60 * 60 * 1000))
+        const today = new Date()
+        const diffTime = dueDate - today
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+        
+        return diffDays
+    }
+
+    const getStatusClass = (status) => {
+        switch(status) {
+            case 'pending': return 'status-pending'
+            case 'approve': return 'status-approved'
+            case 'deliver': return 'status-delivered'
+            case 'reject': return 'status-rejected'
+            default: return 'status-default'
+        }
+    }
+    const daysRemaining = getDaysRemaining()
+    
     return (
         packageDeal &&
         <>
-            <div className="cell buyer-info">
-                <img src={buyer.imgUrl} />
-                <span>{buyer.fullname}</span>
+            <div className="cell order-id">
+                <span className="order-id-text">{formatOrderId(order._id)}</span>
             </div>
-            {/* <div className="cell gig-title">{packageDeal.title}</div> */}
-            <div className="cell gig-price">${packageDeal.total}</div>
-            {/* <div className="cell order-status">{status}</div> */}
-            <div className="cell seller-actions">
+            <div className="cell buyer-info">
+                <img src={buyer.imgUrl} alt={buyer.fullname} />
+                <div className="buyer-details">
+                    <span className="buyer-name">{buyer.fullname}</span>
+                    <span className="buyer-username">@{buyer.username || buyer.fullname.toLowerCase().replace(' ', '')}</span>
+                </div>
+            </div>
+            <div className="cell gig-info">
+                <div className="gig-details">
+                    <span className="gig-title">{packageDeal.title}</span>
+                    <span className="package-type">{packageDeal.packageType?.toUpperCase() || 'BASIC'}</span>
+                </div>
+            </div>
+            <div className="cell total">
+                <span className="price">${packageDeal.total}</span>
+            </div>
+            <div className="cell due-date">
+                <div className="date-info">
+                    <span className="date">{calculateDueDate()}</span>
+                    {daysRemaining !== null && (
+                        <span className={`days-remaining ${daysRemaining <= 1 ? 'urgent' : daysRemaining <= 3 ? 'warning' : 'normal'}`}>
+                            {daysRemaining > 0 ? `${daysRemaining} days left` : 
+                             daysRemaining === 0 ? 'Due today' : 
+                             `${Math.abs(daysRemaining)} days overdue`}
+                        </span>
+                    )}
+                </div>
+            </div>
+            <div className="cell status">
+                <span className={`status-badge ${getStatusClass(status)}`}>
+                    {status.charAt(0).toUpperCase() + status.slice(1)}
+                </span>
+            </div>
+            <div className="cell actions">
                 <div className="actions-wrapper">
-                    <button ref={buttonRef} onClick={toggleModal} className={`btn seller-actions-btn ${order.status}`} >{order.status}<KeyboardArrowDownIcon /></button>
+                    <button ref={buttonRef} onClick={toggleModal} className={`btn seller-actions-btn ${order.status}`}>
+                        Actions<KeyboardArrowDownIcon />
+                    </button>
                     <DropDown className="seller-actions-dropdown" isOpen={isOpen} toggleModal={toggleModal} buttonRef={buttonRef}>
                         <DropDown.Content>
-                            <button className="btn" onClick={() => {
+                            <button className="btn action-btn approve" onClick={() => {
                                 onUpdateStatus(actions[0])
                                 toggleModal()
-                            }}>Approve</button>
-                            <button className="btn" onClick={() => {
+                            }}>
+                                <CheckCircleIcon /> Approve
+                            </button>
+                            <button className="btn action-btn reject" onClick={() => {
                                 onUpdateStatus(actions[1])
                                 toggleModal()
-                            }}>Reject</button>
-                            <button className="btn" onClick={() => {
+                            }}>
+                                <CancelIcon /> Reject
+                            </button>
+                            <button className="btn action-btn deliver" onClick={() => {
                                 onUpdateStatus(actions[2])
                                 toggleModal()
-                            }}>Deliver</button>
+                            }}>
+                                <LocalShippingIcon /> Deliver
+                            </button>
                         </DropDown.Content>
                     </DropDown>
                 </div>

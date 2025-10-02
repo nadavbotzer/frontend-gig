@@ -38,8 +38,12 @@ export function Checkout() {
         }
 
         try {
-            // Update order status to pending/confirmed
-            const orderToUpdate = { ...order, status: 'pending' }
+            // Update order status to pending/confirmed and add createdAt timestamp
+            const orderToUpdate = { 
+                ...order, 
+                status: 'pending',
+                createdAt: new Date().toISOString()
+            }
             console.log('Processing order:', orderToUpdate)
 
             const updatedOrder = await updateOrder(orderToUpdate)

@@ -1,22 +1,269 @@
-.order-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(auto, 1fr)) auto;
-    row-gap: 0.1rem;
+.order-list-container {
+    background: $clr6;
+    border-radius: rem(12px);
+    border: 1px solid $gray1;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
 
-    .row {
-        display: contents;
+.order-list {
+    display: flex;
+    flex-direction: column;
+
+    .order-row {
+        display: grid;
+        grid-template-columns: 100px 1fr 1fr 100px 140px 120px 120px;
+        gap: 1rem;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid $gray1;
+        transition: background-color 0.2s ease;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:not(.header-row):hover {
+            background-color: $gray5;
+        }
+
+        &.header-row {
+            background: linear-gradient(135deg, $gray5 0%, #f0f0f0 100%);
+            border-bottom: 2px solid $gray1;
+            font-weight: 600;
+
+            .cell.header {
+                color: $clr2;
+                font-size: rem(12px);
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+        }
+
+        .cell {
+            display: flex;
+            align-items: center;
+            font-size: rem(14px);
+
+            // Order ID Column
+            &.order-id {
+                .order-id-text {
+                    font-family: 'Courier New', monospace;
+                    font-weight: 600;
+                    color: $clr5;
+                    background: $gray5;
+                    padding: 0.25rem 0.5rem;
+                    border-radius: rem(4px);
+                    font-size: rem(12px);
+                }
+            }
+
+            // Buyer Info Column
+            &.buyer-info {
+                gap: 0.75rem;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 2px solid $gray1;
+                }
+
+                .buyer-details {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.25rem;
+
+                    .buyer-name {
+                        font-weight: 600;
+                        color: $clr2;
+                        font-size: rem(14px);
+                    }
+
+                    .buyer-username {
+                        color: $clr5;
+                        font-size: rem(12px);
+                    }
+                }
+            }
+
+            // Gig Info Column
+            &.gig-info {
+                .gig-details {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.25rem;
+
+                    .gig-title {
+                        font-weight: 500;
+                        color: $clr2;
+                        font-size: rem(14px);
+                        line-height: 1.3;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+
+                    .package-type {
+                        color: $clr1;
+                        font-size: rem(11px);
+                        font-weight: 600;
+                        background: rgba($clr1, 0.1);
+                        padding: 0.2rem 0.4rem;
+                        border-radius: rem(4px);
+                        align-self: flex-start;
+                    }
+                }
+            }
+
+            // Total Column
+            &.total {
+                .price {
+                    font-weight: 700;
+                    color: $clr2;
+                    font-size: rem(16px);
+                }
+            }
+
+            // Due Date Column
+            &.due-date {
+                .date-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.25rem;
+
+                    .date {
+                        font-weight: 500;
+                        color: $clr2;
+                        font-size: rem(13px);
+                    }
+
+                    .days-remaining {
+                        font-size: rem(11px);
+                        font-weight: 600;
+                        padding: 0.2rem 0.4rem;
+                        border-radius: rem(4px);
+                        text-align: center;
+
+                        &.normal {
+                            color: $clr1;
+                            background: rgba($clr1, 0.1);
+                        }
+
+                        &.warning {
+                            color: #ff7640;
+                            background: rgba(#ff7640, 0.1);
+                        }
+
+                        &.urgent {
+                            color: #dc3545;
+                            background: rgba(#dc3545, 0.1);
+                        }
+                    }
+                }
+            }
+
+            // Status Column
+            &.status {
+                .status-badge {
+                    padding: 0.4rem 0.8rem;
+                    border-radius: rem(20px);
+                    font-size: rem(12px);
+                    font-weight: 600;
+                    text-transform: capitalize;
+
+                    &.status-pending {
+                        background: rgba(#ffc107, 0.2);
+                        color: #856404;
+                    }
+
+                    &.status-approved {
+                        background: rgba($clr1, 0.2);
+                        color: $clr8;
+                    }
+
+                    &.status-delivered {
+                        background: rgba($clr1, 0.2);
+                        color: $clr8;
+                    }
+
+                    &.status-rejected {
+                        background: rgba(#dc3545, 0.2);
+                        color: #721c24;
+                    }
+                }
+            }
+
+            // Actions Column
+            &.actions {
+                .actions-wrapper {
+                    position: relative;
+
+                    .seller-actions-btn {
+                        background: $clr2;
+                        color: $clr6;
+                        border: none;
+                        padding: 0.5rem 1rem;
+                        border-radius: rem(6px);
+                        font-size: rem(12px);
+                        font-weight: 600;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.25rem;
+                        transition: background-color 0.2s ease;
+
+                        &:hover {
+                            background: lighten($clr2, 10%);
+                        }
+
+                        svg {
+                            font-size: rem(16px);
+                        }
+                    }
+                }
+            }
+        }
     }
 
-    .cell {
+    // Responsive Design
+    @include for-mobile-layout {
+        .order-row {
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+            padding: 1rem;
 
-        padding: 0.5rem 0.75rem;
-        border-bottom: 1px solid $gray1;
-        display: grid;
-        justify-items: center;
+            .cell {
+                justify-content: space-between;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid $gray1;
 
-        &.header {
-            color: $clr12;
+                &:last-child {
+                    border-bottom: none;
+                }
 
+                &::before {
+                    content: attr(data-label);
+                    font-weight: 600;
+                    color: $clr5;
+                    font-size: rem(12px);
+                    text-transform: uppercase;
+                }
+
+                &.buyer-info,
+                &.gig-info {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 0.5rem;
+                }
+            }
+
+            &.header-row {
+                display: none;
+            }
         }
     }
 }

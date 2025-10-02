@@ -50,23 +50,69 @@
 
 .seller-actions-dropdown {
     overflow: hidden;
+    border-radius: rem(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
     .dropdown-content {
         display: flex;
         flex-direction: column;
-        padding: 0;
+        padding: 0.5rem 0;
+        background: $clr6;
     }
 
-    .btn {
+    .btn.action-btn {
         font-size: rem(14px);
-        padding: 0.5rem 0.75rem;
+        padding: 0.75rem 1rem;
         border: 0;
         width: 100%;
         border-radius: 0;
-        font-weight: 400;
+        font-weight: 500;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: background-color 0.2s ease;
+        color: $clr2;
+
+        svg {
+            font-size: rem(18px);
+        }
 
         &:hover {
-            background-color: $gray6;
+            background-color: $gray5;
+        }
+
+        &.approve {
+            svg {
+                color: $clr1;
+            }
+            
+            &:hover {
+                background-color: rgba($clr1, 0.1);
+                color: $clr8;
+            }
+        }
+
+        &.reject {
+            svg {
+                color: #dc3545;
+            }
+            
+            &:hover {
+                background-color: rgba(#dc3545, 0.1);
+                color: #721c24;
+            }
+        }
+
+        &.deliver {
+            svg {
+                color: $clr1;
+            }
+            
+            &:hover {
+                background-color: rgba($clr1, 0.1);
+                color: $clr8;
+            }
         }
 
         &:not(:last-child) {

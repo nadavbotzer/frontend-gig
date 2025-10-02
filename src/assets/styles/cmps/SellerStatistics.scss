@@ -1,0 +1,92 @@
+// Statistics Section
+.stats-section {
+    padding: 0 1rem;
+
+    .stats-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+
+        .stat-card {
+            flex: 1 1 0;
+            min-width: 200px;
+            background: $clr6;
+            border-radius: rem(12px);
+            padding: 1.5rem;
+            border: 1px solid $gray1;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+            &:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            }
+
+            .stat-icon {
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: rem(10px);
+                background: $gray5;
+
+                svg {
+                    font-size: rem(28px);
+                }
+            }
+
+            .stat-content {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+
+                h3 {
+                    font-size: rem(24px);
+                    font-weight: 700;
+                    color: $clr2;
+                }
+
+                p {
+                    color: $clr5;
+                    font-size: rem(14px);
+                    font-weight: 500;
+                }
+            }
+
+            &.revenue .stat-icon {
+                background: linear-gradient(135deg, $clr1 0%, #17a85e 100%);
+                color: $clr6;
+            }
+
+            &.active .stat-icon {
+                background: linear-gradient(135deg, #ff7640 0%, #e65a2b 100%);
+                color: $clr6;
+            }
+
+            &.completed .stat-icon {
+                background: linear-gradient(135deg, $clr1 0%, #17a85e 100%);
+                color: $clr6;
+            }
+
+            &.average .stat-icon {
+                background: linear-gradient(135deg, $clr2 0%, #2c2d32 100%);
+                color: $clr6;
+            }
+        }
+    }
+
+    @include for-mobile-layout {
+        .stats-grid {
+            flex-direction: column;
+            gap: 1rem;
+
+            .stat-card {
+                min-width: unset;
+            }
+        }
+    }
+}
