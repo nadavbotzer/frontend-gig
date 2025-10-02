@@ -173,8 +173,15 @@
 
                 .info-item {
                     display: flex;
-                    gap:1rem;
+                    gap: 0.5rem;
                     align-items: center;
+
+                    .info-icon {
+                        width: 18px;
+                        height: 18px;
+                        color: $clr1;
+                        flex-shrink: 0;
+                    }
 
                     .label {
                         color: $clr5;
@@ -244,7 +251,7 @@
                     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
                 }
 
-                .step-number {
+                .step-icon {
                     width: 40px;
                     height: 40px;
                     background: $clr1;
@@ -255,6 +262,11 @@
                     justify-content: center;
                     font-weight: 700;
                     font-size: rem(18px);
+
+                    svg {
+                        width: 24px;
+                        height: 24px;
+                    }
                 }
 
                 h3 {
@@ -288,8 +300,16 @@
             border: none;
             cursor: pointer;
             font-size: rem(16px);
+            display: flex;
             justify-content: center;
             align-items: center;
+            gap: 0.5rem;
+
+            .btn-icon {
+                width: 20px;
+                height: 20px;
+                flex-shrink: 0;
+            }
 
             &.btn-primary {
                 background: $clr1;
@@ -331,6 +351,17 @@
         padding: 2rem;
         color: $clr5;
         font-size: rem(14px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+
+        .support-icon {
+            width: 18px;
+            height: 18px;
+            color: $clr1;
+            flex-shrink: 0;
+        }
 
         a {
             color: $clr1;

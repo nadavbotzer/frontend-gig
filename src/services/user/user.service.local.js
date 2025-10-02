@@ -52,6 +52,8 @@ async function login(userCred) {
 async function signup(userCred) {
     if (!userCred.imgUrl) userCred.imgUrl = 'https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png'
     if (!userCred.createdAt) userCred.createdAt = new Date()
+    if (!userCred.level) userCred.level = 1 // Default to level 1 for new users
+    if (!userCred.rate) userCred.rate = 5.0 // Default to 5.0 rating for new users
     userCred.score = 10000
 
     const user = await storageService.post('user', userCred)
@@ -71,11 +73,11 @@ function saveLoggedinUser(user) {
         _id: user._id,
         fullname: user.fullname,
         imgUrl: user.imgUrl,
-        rate: user.rate,
+        rate: user.rate || 5.0, // Ensure rating exists
         location: user.location,
         languages: user.languages,
         isAdmin: user.isAdmin, //*isSeller
-        level: user.level,
+        level: user.level || 1, // Ensure level exists, default to 1
         createdAt: user.createdAt,
         proffession: user.proffession
     }

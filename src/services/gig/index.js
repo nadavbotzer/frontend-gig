@@ -11,22 +11,39 @@ export function getEmptyGig() {
     const servicesList = getRnadomService(5)
     const price = Math.ceil(getRandomIntInclusive(10, 2500))
     const daysToMake = getRandomIntInclusive(1, 10)
+    
+    // Generate diverse gig data
+    const gigTemplates = getGigTemplates()
+    const randomTemplate = gigTemplates[getRandomIntInclusive(0, gigTemplates.length - 1)]
+    const randomTags = getRandomTags(getRandomIntInclusive(2, 4))
+    const randomImages = getRandomImages()
+    const randomProfession = getRandomProfession()
+    const userLevel = loggedInUser.level || 1 // Use actual user level, default to 1
+    
+    // Generate random reviews first
+    const reviews = generateRandomReviews(getRandomIntInclusive(0, 8))
+    
+    // Calculate average rating from reviews
+    const averageRating = reviews.length > 0 
+        ? (reviews.reduce((sum, review) => sum + review.rate, 0) / reviews.length).toFixed(1)
+        : (getRandomIntInclusive(35, 50) / 10).toFixed(1) // Random rating if no reviews
+    
     return {
-        title: "I will create a modern logo for your startup",
-        about: "Experienced and dedicated professional with a passion for delivering high-quality work. I strive to exceed expectations through creativity, attention to detail, and a client-focused approach. Let's bring your vision to life together!",
+        title: randomTemplate.title,
+        about: randomTemplate.about,
         price: price,
         owner: {
             ...loggedInUser,
-            proffession: "A skilled graphic designer specializing in vibrant illustrations and creative branding",
+            proffession: randomProfession,
+            level: userLevel, // Use consistent user level
+            rate: parseFloat(averageRating), // Use calculated average rating from reviews
+            languages: loggedInUser.languages || getRandomLanguages(getRandomIntInclusive(1, 3))
         },
         location: getRandomLocation(),
         daysToMake: daysToMake,
-        description: `Welcome, I'm ${loggedInUser.fullname} \nA visionary logo and branding expert, here to craft your logo that leaves a lasting impression. With 9 years of experience under my belt, I bring a wealth of expertise to every project I undertake with a unique blend of creativity, precision & client-centric focus. Having successfully delivered over 130,000 branding orders, I stand as a testament to my unwavering commitment to excellence and client satisfaction.\nAbout the gig and what to expect?\nExpect nothing less than excellence. With a focus on creativity, simplicity and sophistication, the gig specializes in crafting sleek and impactful minimalist logo design that resonate with your target audience. From initial concept to final revisions, my process is collaborative and transparent, ensuring that your input is valued every step of the way.\nMy motto \n In a sea of options, choose a designer who stands out for all the right reasons. Choose creativity. Choose quality. Choose results. Choose me.\nCurious to see my work?Dive into my portfolio: https://www.fiverr.com/s/rmjPDb Choose between standard or premium package for portfolio-quality results\nGot Questions?\nCheck out my FAQs or I am just a message away!`,
-        imgUrls: [
-            "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/201392313/original/7ff83ecce45cb759a5a576112622a309b0e1155f.png",
-            "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/143871884/original/cdba0a3892ba81a7c1b202b10e9385825787f4b6.png",
-        ],
-        tags: ['graphics', 'design'],
+        description: randomTemplate.description.replace('{fullname}', loggedInUser.fullname),
+        imgUrls: randomImages,
+        tags: randomTags,
         avgResponseTime: getRandomIntInclusive(1, 24),
         packagesList: {
             basic: { revisions: 1, daysToMake: daysToMake, price: price, servicesList: [{ text: servicesList[0], included: false }, { text: servicesList[1], included: true }, { text: servicesList[2], included: false }, { text: servicesList[3], included: true }, { text: servicesList[4], included: false }], packageDescription: 'With the basic package deal you recieve 2/5 services' },
@@ -34,86 +51,7 @@ export function getEmptyGig() {
             premium: { revisions: 3, daysToMake: daysToMake + 3, price: Math.ceil(price * 1.20), servicesList: [{ text: servicesList[0], included: true }, { text: servicesList[1], included: true }, { text: servicesList[2], included: true }, { text: servicesList[3], included: true }, { text: servicesList[4], included: true }], packageDescription: 'With the basic package deal you recieve 5/5 services' }
         },
         likedByUsers: [],
-        reviews: [
-            {
-                _id: makeId(),
-                name: "tobiaspille300",
-                img: '',
-                location: getRandomLocation(),
-                reviewedAt: getRandomCreatedAt(),
-                review: "frederickkessie ist a super kind artist doing the process he was super professional and only took him 1 shot to deliver a perfect result ! Highly recommended work with this guy !",
-                rate: getRandomIntInclusive(1, 5),
-                duration: getRandomDuration(),
-                startPriceRange: getRandomIntInclusive(50, 5000),
-                endPriceRange: getRandomIntInclusive(50, 5000),
-                projectImg: ''
-            },
-            {
-                _id: makeId(),
-                name: "liam31",
-                review: "I requested a slightly earlier delivery on this and once again Frederick came through and provided a fantastic delivery. Thanks so much!",
-                location: getRandomLocation(),
-                reviewedAt: getRandomCreatedAt(),
-                img: '',
-                rate: getRandomIntInclusive(1, 5),
-                duration: getRandomDuration(),
-                startPriceRange: getRandomIntInclusive(50, 5000),
-                endPriceRange: getRandomIntInclusive(50, 5000),
-                projectImg: ''
-            },
-            {
-                _id: makeId(),
-                name: "liam31",
-                review: "Frederick is amazing and extremely talented. This is the second time working with him and he has been a pleasure yet again!",
-                location: getRandomLocation(),
-                reviewedAt: getRandomCreatedAt(),
-                img: '',
-                rate: getRandomIntInclusive(1, 5),
-                duration: getRandomDuration(),
-                startPriceRange: getRandomIntInclusive(50, 5000),
-                endPriceRange: getRandomIntInclusive(50, 5000),
-                projectImg: ''
-            },
-            {
-                _id: makeId(),
-                name: "larsonraz",
-                review: "Very detailed",
-                location: getRandomLocation(),
-                reviewedAt: getRandomCreatedAt(),
-                img: '',
-                rate: getRandomIntInclusive(1, 5),
-                duration: getRandomDuration(),
-                startPriceRange: getRandomIntInclusive(50, 5000),
-                endPriceRange: getRandomIntInclusive(50, 5000),
-                projectImg: ''
-            },
-            {
-                _id: makeId(),
-                name: "stevekaszycki",
-                review: "very nice portrait, very good quality.",
-                location: getRandomLocation(),
-                reviewedAt: getRandomCreatedAt(),
-                img: '',
-                rate: getRandomIntInclusive(1, 5),
-                duration: getRandomDuration(),
-                startPriceRange: getRandomIntInclusive(50, 5000),
-                endPriceRange: getRandomIntInclusive(50, 5000),
-                projectImg: ''
-            },
-            {
-                _id: makeId(),
-                name: "tobiaspille300",
-                img: '',
-                location: getRandomLocation(),
-                reviewedAt: getRandomCreatedAt(),
-                review: "Hamza M was fantastic! We were amazed at the speed, attention to detail, communication, responsiveness, fair pricing, and his desire to get our project right. Most importantly, we appreciated his kindness. His work helped us make an informed decision about our new home. We will recommend his services to others in the future. Thank you Hamza D for being fantastic!",
-                rate: getRandomIntInclusive(1, 5),
-                duration: getRandomDuration(),
-                startPriceRange: getRandomIntInclusive(50, 5000),
-                endPriceRange: getRandomIntInclusive(50, 5000),
-                projectImg: ''
-            },
-        ],
+        reviews: reviews, // Use the generated reviews
     }
 }
 
@@ -154,3 +92,148 @@ export const gigService = { getEmptyGig, getDefaultFilter, getFilterLabels, ...s
 // when using script - dev / dev:local
 
 if (DEV) window.gigService = gigService
+
+// Helper functions for diverse gig generation
+function getGigTemplates() {
+    return [
+        {
+            title: "I will create a modern logo for your startup",
+            about: "Experienced and dedicated professional with a passion for delivering high-quality work. I strive to exceed expectations through creativity, attention to detail, and a client-focused approach. Let's bring your vision to life together!",
+            description: `Welcome, I'm {fullname} \nA visionary logo and branding expert, here to craft your logo that leaves a lasting impression. With 9 years of experience under my belt, I bring a wealth of expertise to every project I undertake with a unique blend of creativity, precision & client-centric focus. Having successfully delivered over 130,000 branding orders, I stand as a testament to my unwavering commitment to excellence and client satisfaction.\nAbout the gig and what to expect?\nExpect nothing less than excellence. With a focus on creativity, simplicity and sophistication, the gig specializes in crafting sleek and impactful minimalist logo design that resonate with your target audience. From initial concept to final revisions, my process is collaborative and transparent, ensuring that your input is valued every step of the way.\nMy motto \n In a sea of options, choose a designer who stands out for all the right reasons. Choose creativity. Choose quality. Choose results. Choose me.\nCurious to see my work?Dive into my portfolio: https://www.fiverr.com/s/rmjPDb Choose between standard or premium package for portfolio-quality results\nGot Questions?\nCheck out my FAQs or I am just a message away!`
+        },
+        {
+            title: "I will build a responsive website for your business",
+            about: "Full-stack developer with expertise in modern web technologies. I create fast, secure, and user-friendly websites that help businesses grow online. Let's turn your ideas into reality!",
+            description: `Hello, I'm {fullname} \nA passionate full-stack developer with 7+ years of experience creating stunning, responsive websites. I specialize in React, Node.js, and modern web technologies that deliver exceptional user experiences.\nWhat I offer:\n- Responsive design that works on all devices\n- Fast loading times and SEO optimization\n- Clean, modern code that's easy to maintain\n- E-commerce solutions and custom functionality\n- Ongoing support and maintenance\n\nI believe in clear communication, timely delivery, and exceeding client expectations. Let's discuss your project and bring your vision to life!`
+        },
+        {
+            title: "I will write engaging content for your blog",
+            about: "Professional content writer specializing in SEO-optimized articles, blog posts, and marketing copy. I help businesses connect with their audience through compelling storytelling and strategic content.",
+            description: `Hi there, I'm {fullname} \nA skilled content writer with 5+ years of experience creating engaging, SEO-optimized content that drives traffic and converts readers into customers.\nMy expertise includes:\n- Blog posts and articles\n- Website copy and landing pages\n- Social media content\n- Email marketing campaigns\n- Product descriptions and reviews\n\nI research thoroughly, write clearly, and always meet deadlines. Let's create content that resonates with your audience and achieves your business goals!`
+        },
+        {
+            title: "I will edit your videos professionally",
+            about: "Video editing specialist with a creative eye for storytelling. I transform raw footage into polished, engaging videos that captivate your audience and deliver your message effectively.",
+            description: `Welcome, I'm {fullname} \nA professional video editor with 6+ years of experience creating compelling visual content. I specialize in turning your raw footage into polished, professional videos that tell your story.\nServices I provide:\n- Professional video editing and color correction\n- Motion graphics and animations\n- Audio enhancement and music integration\n- Multiple format delivery (MP4, MOV, etc.)\n- Quick turnaround times\n\nI use industry-standard software like Adobe Premiere Pro, After Effects, and DaVinci Resolve. Let's create something amazing together!`
+        },
+        {
+            title: "I will design your mobile app UI/UX",
+            about: "UI/UX designer focused on creating intuitive, beautiful mobile experiences. I combine user research, design thinking, and technical knowledge to deliver apps that users love.",
+            description: `Hello, I'm {fullname} \nA dedicated UI/UX designer with 4+ years of experience creating user-centered mobile applications. I focus on making complex interactions simple and delightful.\nWhat I deliver:\n- User research and persona development\n- Wireframes and interactive prototypes\n- High-fidelity UI designs\n- Design systems and style guides\n- Usability testing and optimization\n\nI work closely with developers to ensure designs are implemented perfectly. Let's create an app that users will love!`
+        },
+        {
+            title: "I will translate your documents accurately",
+            about: "Professional translator with native-level proficiency in multiple languages. I provide accurate, culturally appropriate translations that maintain the original meaning and tone.",
+            description: `Hi, I'm {fullname} \nA certified translator with 8+ years of experience providing high-quality translations across various industries and document types.\nLanguages I work with:\n- English, Spanish, French, German\n- Business documents and contracts\n- Technical manuals and guides\n- Marketing materials and websites\n- Academic papers and research\n\nI ensure accuracy, cultural sensitivity, and timely delivery. Your message deserves to be heard clearly in any language!`
+        },
+        {
+            title: "I will optimize your website for SEO",
+            about: "SEO specialist helping businesses improve their online visibility and organic traffic. I use proven strategies and technical expertise to boost your search engine rankings.",
+            description: `Welcome, I'm {fullname} \nAn SEO expert with 6+ years of experience helping businesses dominate search results and increase organic traffic.\nMy SEO services include:\n- Comprehensive SEO audits\n- Keyword research and strategy\n- On-page and technical optimization\n- Content optimization and link building\n- Local SEO and Google My Business\n\nI provide detailed reports and clear explanations of all optimizations. Let's get your website ranking higher and driving more qualified traffic!`
+        },
+        {
+            title: "I will create stunning social media graphics",
+            about: "Social media designer creating eye-catching visuals that engage your audience and strengthen your brand. I design graphics that stop the scroll and drive action.",
+            description: `Hello, I'm {fullname} \nA creative social media designer with 5+ years of experience creating compelling visual content that drives engagement and builds brand awareness.\nWhat I create:\n- Instagram posts and stories\n- Facebook covers and ads\n- LinkedIn graphics and banners\n- Twitter headers and posts\n- Pinterest pins and boards\n\nI stay updated with design trends and platform requirements. Let's create social media content that makes your brand stand out!`
+        }
+    ]
+}
+
+function getRandomImages() {
+    const imageSets = [
+        [
+            "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/201392313/original/7ff83ecce45cb759a5a576112622a309b0e1155f.png",
+            "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/143871884/original/cdba0a3892ba81a7c1b202b10e9385825787f4b6.png"
+        ],
+        [
+            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
+            "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop"
+        ],
+        [
+            "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&h=300&fit=crop",
+            "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=500&h=300&fit=crop"
+        ],
+        [
+            "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=500&h=300&fit=crop",
+            "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=500&h=300&fit=crop"
+        ],
+        [
+            "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500&h=300&fit=crop",
+            "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop"
+        ]
+    ]
+    return imageSets[getRandomIntInclusive(0, imageSets.length - 1)]
+}
+
+function getRandomProfession() {
+    const professions = [
+        "A skilled graphic designer specializing in vibrant illustrations and creative branding",
+        "A passionate web developer creating modern, responsive websites",
+        "A creative content writer crafting engaging stories and compelling copy",
+        "A professional video editor bringing stories to life through visual media",
+        "A talented UI/UX designer focused on user-centered mobile experiences",
+        "A certified translator providing accurate multilingual communication",
+        "An SEO specialist helping businesses improve their online visibility",
+        "A social media designer creating eye-catching visual content",
+        "A digital marketing expert driving growth through strategic campaigns",
+        "A professional photographer capturing moments that tell your story",
+        "A voice-over artist bringing characters and scripts to life",
+        "A music producer creating original compositions and soundtracks",
+        "A data analyst providing insights that drive business decisions",
+        "A virtual assistant helping businesses stay organized and efficient",
+        "A business consultant providing strategic guidance for growth"
+    ]
+    return professions[getRandomIntInclusive(0, professions.length - 1)]
+}
+
+function generateRandomReviews(count) {
+    const reviewTemplates = [
+        "Excellent work! Exceeded my expectations and delivered on time.",
+        "Very professional and responsive. Highly recommended!",
+        "Great quality work, will definitely work with again.",
+        "Amazing results! The attention to detail is outstanding.",
+        "Fast delivery and great communication throughout the project.",
+        "Outstanding work! Very creative and professional approach.",
+        "Perfect! Exactly what I was looking for. Thank you!",
+        "Great experience working with this seller. Highly satisfied!",
+        "Excellent service and quality. Will order again soon.",
+        "Outstanding work! Very pleased with the final result.",
+        "Professional and reliable. Great work as always!",
+        "Fantastic work! Exceeded all my expectations.",
+        "Very happy with the results. Great communication too!",
+        "Excellent quality and fast delivery. Highly recommended!",
+        "Amazing work! Will definitely use this service again.",
+        "Perfect execution! Very professional and creative.",
+        "Great work! Delivered exactly what was promised.",
+        "Outstanding service! Very pleased with the outcome.",
+        "Excellent communication and quality work. Thank you!",
+        "Fantastic results! Highly professional and creative."
+    ]
+    
+    const reviewerNames = [
+        "alex_johnson", "sarah_wilson", "mike_chen", "emma_brown", "david_smith",
+        "lisa_garcia", "james_taylor", "anna_davis", "robert_miller", "julia_white",
+        "chris_anderson", "maria_thomas", "kevin_jackson", "sophie_martin", "daniel_lee",
+        "olivia_hall", "ryan_clark", "grace_lewis", "matt_walker", "zoe_young"
+    ]
+    
+    const reviews = []
+    for (let i = 0; i < count; i++) {
+        const randomRating = getRandomIntInclusive(3, 5) // 3-5 star ratings
+        reviews.push({
+            _id: makeId(),
+            name: reviewerNames[getRandomIntInclusive(0, reviewerNames.length - 1)],
+            img: '',
+            location: getRandomLocation(),
+            reviewedAt: getRandomCreatedAt(),
+            review: reviewTemplates[getRandomIntInclusive(0, reviewTemplates.length - 1)],
+            rate: randomRating,
+            duration: getRandomDuration(),
+            startPriceRange: getRandomIntInclusive(50, 5000),
+            endPriceRange: getRandomIntInclusive(50, 5000),
+            projectImg: ''
+        })
+    }
+    
+    return reviews
+}

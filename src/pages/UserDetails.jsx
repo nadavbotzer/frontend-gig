@@ -31,6 +31,22 @@ export function UserDetails() {
   const userGigs = gigs?.filter(gig => gig.owner?._id === user?._id) || []
   const topGigs = userGigs.slice(0, 8) // Show top 8 gigs
 
+  // Calculate average rating from all user's gigs
+  const calculateAverageRating = () => {
+    if (!userGigs.length) return 0
+    
+    const allRatings = userGigs
+      .filter(gig => gig.owner?.rate) // Only gigs with ratings
+      .map(gig => gig.owner.rate)
+    
+    if (allRatings.length === 0) return 0
+    
+    const average = allRatings.reduce((sum, rating) => sum + rating, 0) / allRatings.length
+    return parseFloat(average.toFixed(1))
+  }
+
+  const averageRating = calculateAverageRating()
+
   function onUserUpdate(user) {
     showSuccessMsg(`This user ${user.fullname} just got updated from socket, new score: ${user.score}`)
     store.dispatch({ type: 'SET_WATCHED_USER', user })
@@ -105,7 +121,7 @@ export function UserDetails() {
               <div className="stat-card">
                 <StarIcon className="stat-icon" />
                 <div className="stat-content">
-                  <h4>{user.rate || 0}</h4>
+                  <h4>{averageRating || 0}</h4>
                   <p>Rating</p>
                 </div>
               </div>

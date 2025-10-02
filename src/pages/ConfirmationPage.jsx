@@ -6,6 +6,18 @@ import { loadGig } from '../store/actions/gig.actions'
 import { showErrorMsg } from '../services/event-bus.service'
 import { LoadingSpinner } from '../cmps/LoadingSpinner'
 
+// MUI Icons
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import PersonIcon from '@mui/icons-material/Person'
+import WorkIcon from '@mui/icons-material/Work'
+import DeliveryDiningIcon from '@mui/icons-material/DeliveryDining'
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
+import SupportAgentIcon from '@mui/icons-material/SupportAgent'
+import DashboardIcon from '@mui/icons-material/Dashboard'
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+
 export function ConfirmationPage() {
     const { orderid } = useParams()
     const navigate = useNavigate()
@@ -134,9 +146,7 @@ export function ConfirmationPage() {
             <div className="confirmation-container">
                 <div className="success-header">
                     <div className="success-icon">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                        <CheckCircleIcon />
                     </div>
                     <h1>Order Confirmed!</h1>
                     <p className="success-message">
@@ -166,19 +176,23 @@ export function ConfirmationPage() {
                             
                             <div className="order-info">
                                 <div className="info-item">
+                                    <AttachMoneyIcon className="info-icon" />
                                     <span className="label">Total Price:</span>
                                     <span className="value">${getOrderPrice()}</span>
                                 </div>
                                 <div className="info-item">
+                                    <DeliveryDiningIcon className="info-icon" />
                                     <span className="label">Delivery Time:</span>
                                     <span className="value">{getDeliveryTime()}</span>
                                 </div>
                                 <div className="info-item">
+                                    <CalendarTodayIcon className="info-icon" />
                                     <span className="label">Order Date:</span>
                                     <span className="value">{formatDate(order.createdAt)}</span>
                                 </div>
                                 {order.buyer && (
                                     <div className="info-item">
+                                        <PersonIcon className="info-icon" />
                                         <span className="label">Buyer:</span>
                                         <span className="value">{order.buyer.fullname}</span>
                                     </div>
@@ -199,17 +213,23 @@ export function ConfirmationPage() {
                     <h2>What's Next?</h2>
                     <div className="steps-grid">
                         <div className="step-card">
-                            <div className="step-number">1</div>
+                            <div className="step-icon">
+                                <CheckCircleIcon />
+                            </div>
                             <h3>Seller Confirmation</h3>
                             <p>The seller will review your requirements and confirm the order details within 24 hours.</p>
                         </div>
                         <div className="step-card">
-                            <div className="step-number">2</div>
+                            <div className="step-icon">
+                                <WorkIcon />
+                            </div>
                             <h3>Work Begins</h3>
                             <p>Once confirmed, the seller will start working on your project according to your specifications.</p>
                         </div>
                         <div className="step-card">
-                            <div className="step-number">3</div>
+                            <div className="step-icon">
+                                <DeliveryDiningIcon />
+                            </div>
                             <h3>Delivery & Review</h3>
                             <p>You'll receive the completed work within the agreed timeframe and can request revisions if needed.</p>
                         </div>
@@ -219,25 +239,32 @@ export function ConfirmationPage() {
                 <div className="action-buttons">
                     {user && (
                         <Link to="/dashboard" className="btn btn-secondary">
+                            <DashboardIcon className="btn-icon" />
                             View Dashboard
                         </Link>
                     )}
                     <Link to="/gig" className="btn btn-primary">
+                        <ShoppingBagIcon className="btn-icon" />
                         Browse More Gigs
                     </Link>
                     {(gig && gig.owner) ? (
                         <Link to={`/user/${gig.owner._id}`} className="btn btn-outline">
+                            <AccountCircleIcon className="btn-icon" />
                             View Seller Profile
                         </Link>
                     ) : (order.seller && (
                         <Link to={`/user/${order.seller._id}`} className="btn btn-outline">
+                            <AccountCircleIcon className="btn-icon" />
                             View Seller Profile
                         </Link>
                     ))}
                 </div>
 
                 <div className="support-info">
-                    <p>Need help with your order? <Link to="/support">Contact Support</Link> or message the seller directly.</p>
+                    <p>
+                        <SupportAgentIcon className="support-icon" />
+                        Need help with your order? <Link to="/support">Contact Support</Link> or message the seller directly.
+                    </p>
                 </div>
             </div>
         </div>
