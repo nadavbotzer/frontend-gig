@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadOrders } from '../store/actions/order.actions'
 import { userService } from '../services/user'
+import { saveToStorage, loadFromStorage } from '../services/util.service'
 import { LoadingSpinner } from '../cmps/LoadingSpinner'
 import { Level } from '../cmps/Level'
 import { OrderList } from '../cmps/OrderList'
@@ -30,7 +31,11 @@ export function UserOrders() {
     const [isInitialLoad, setIsInitialLoad] = useState(true)
     const [filteredOrders, setFilteredOrders] = useState([])
     const [statusFilter, setStatusFilter] = useState('all')
-    const [viewMode, setViewMode] = useState('cards') // 'cards' or 'list'
+    const [viewMode, setViewMode] = useState(() => {
+        // Load saved view mode from storage service, default to 'cards'
+        const savedViewMode = loadFromStorage('userOrdersViewMode')
+        return savedViewMode || 'cards'
+    }) // 'cards' or 'list'
     const [sortBy, setSortBy] = useState(null)
     const [sortOrder, setSortOrder] = useState('asc')
     
@@ -301,7 +306,10 @@ export function UserOrders() {
                                         name="viewMode"
                                         value="cards"
                                         checked={viewMode === 'cards'}
-                                        onChange={(e) => setViewMode(e.target.value)}
+                                        onChange={(e) => {
+                                            setViewMode(e.target.value)
+                                            saveToStorage('userOrdersViewMode', e.target.value)
+                                        }}
                                     />
                                     <ViewModuleIcon className="radio-icon" />
                                     <span>Cards</span>
@@ -312,7 +320,10 @@ export function UserOrders() {
                                         name="viewMode"
                                         value="list"
                                         checked={viewMode === 'list'}
-                                        onChange={(e) => setViewMode(e.target.value)}
+                                        onChange={(e) => {
+                                            setViewMode(e.target.value)
+                                            saveToStorage('userOrdersViewMode', e.target.value)
+                                        }}
                                     />
                                     <ViewListIcon className="radio-icon" />
                                     <span>List</span>
