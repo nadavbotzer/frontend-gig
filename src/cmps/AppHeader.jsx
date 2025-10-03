@@ -28,6 +28,7 @@ export function AppHeader() {
 	const navigate = useNavigate()
 	const { isInputVisible, setIsInputVisible } = useScrollContext()
 
+
 	const [isHeaderScrolled, setIsHeaderScrolled] = useState(false)
 	const inputRef = useRef(null)
 	const headerRef = useRef(null)
@@ -111,7 +112,7 @@ export function AppHeader() {
 										</div>
 										<div className="user-details">
 											<div className="user-name">{user.fullname}</div>
-											<div className="user-username">@{user.username || user.fullname?.toLowerCase().replace(' ', '')}</div>
+											<div className="user-username">@{user.username || user.fullname?.toLowerCase().replace(/\s+/g, '')}</div>
 										</div>
 									</div>
 								</DropDown.Header>

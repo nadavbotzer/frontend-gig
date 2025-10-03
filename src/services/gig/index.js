@@ -2,11 +2,12 @@ const { DEV, VITE_LOCAL } = import.meta.env
 
 import { userService } from '../user'
 import { getRandomTags, getRandomLocation, getRandomIntInclusive, getRandomGigTitle, makeId, getRandomCreatedAt, getRandomDuration, getRnadomService, getRandomLanguages } from '../util.service'
+import { imageService } from '../image.service'
 
 import { gigService as local } from './gig.service.local'
 import { gigService as remote } from './gig.service.remote'
 
-export function getEmptyGig() {
+export async function getEmptyGig() {
     const loggedInUser = userService.getLoggedinUser()
     const servicesList = getRnadomService(5)
     const price = Math.ceil(getRandomIntInclusive(10, 2500))
@@ -16,7 +17,7 @@ export function getEmptyGig() {
     const gigTemplates = getGigTemplates()
     const randomTemplate = gigTemplates[getRandomIntInclusive(0, gigTemplates.length - 1)]
     const randomTags = getRandomTags(getRandomIntInclusive(2, 4))
-    const randomImages = getRandomImages()
+    const randomImages = await getRandomImages()
     const randomProfession = getRandomProfession()
     const userLevel = loggedInUser.level || 1 // Use actual user level, default to 1
     
@@ -139,30 +140,10 @@ function getGigTemplates() {
     ]
 }
 
-function getRandomImages() {
-    const imageSets = [
-        [
-            "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/201392313/original/7ff83ecce45cb759a5a576112622a309b0e1155f.png",
-            "https://fiverr-res.cloudinary.com/t_gig_cards_web,q_auto,f_auto/gigs/143871884/original/cdba0a3892ba81a7c1b202b10e9385825787f4b6.png"
-        ],
-        [
-            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop"
-        ],
-        [
-            "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=500&h=300&fit=crop"
-        ],
-        [
-            "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=500&h=300&fit=crop"
-        ],
-        [
-            "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=500&h=300&fit=crop",
-            "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=300&fit=crop"
-        ]
-    ]
-    return imageSets[getRandomIntInclusive(0, imageSets.length - 1)]
+async function getRandomImages() {
+    // Get 3-5 random images from the image service
+    const numImages = getRandomIntInclusive(3, 5)
+    return await imageService.getRandomImages(numImages)
 }
 
 function getRandomProfession() {

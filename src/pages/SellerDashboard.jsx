@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { loadOrders, addOrder, updateOrder } from '../store/actions/order.actions'
+import { loadOrders, addOrder, updateOrder, clearOrders } from '../store/actions/order.actions'
 import { OrderList } from '../cmps/OrderList'
 import { SellerStatistics } from '../cmps/SellerStatistics'
 import { userService } from '../services/user'
@@ -16,8 +16,12 @@ export function SellerDashboard() {
     const [sortOrder, setSortOrder] = useState('asc')
     
     useEffect(() => {
-        loadOrders({ owner: user, sortBy, sortOrder }).finally(() => setIsInitialLoad(false))
-    }, [sortBy, sortOrder])
+        if (user?._id) {
+            setIsInitialLoad(true)
+            clearOrders() // Clear previous orders immediately
+            loadOrders({ owner: user, sortBy, sortOrder }).finally(() => setIsInitialLoad(false))
+        }
+    }, [user?._id, sortBy, sortOrder])
 
     const handleSort = (field) => {
         if (sortBy === field) {
@@ -42,7 +46,7 @@ export function SellerDashboard() {
                 <p>Manage your orders and track your performance</p>
             </header>
 
-            {isLoading && isInitialLoad ? (
+            {isLoading || isInitialLoad ? (
                 <LoadingSpinner message="Loading dashboard statistics..." size="large" />
             ) : (
                 <SellerStatistics orders={orders} />
@@ -64,7 +68,7 @@ export function SellerDashboard() {
                         )}
                     </div>
                 </div>
-                {isLoading && isInitialLoad ? (
+                {isLoading || isInitialLoad ? (
                     <LoadingSpinner message="Loading orders..." size="large" />
                 ) : (
                     <OrderList 

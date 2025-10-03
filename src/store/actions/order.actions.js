@@ -1,6 +1,6 @@
 import { orderService } from '../../services/order'
 import { store } from '../store'
-import { ADD_ORDER, REMOVE_ORDER, SET_ORDERS, SET_ORDER, UPDATE_ORDER, ADD_ORDER_MSG } from '../reducers/order.reducer'
+import { ADD_ORDER, REMOVE_ORDER, SET_ORDERS, SET_ORDER, UPDATE_ORDER, ADD_ORDER_MSG, CLEAR_ORDERS } from '../reducers/order.reducer'
 import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
 
 export async function loadOrders(filterBy = orderService.getDefaultFilter()) {
@@ -73,6 +73,10 @@ export async function addOrderMsg(orderId, txt) {
         console.log('Cannot add order msg', err)
         throw err
     }
+}
+
+export function clearOrders() {
+    store.dispatch({ type: CLEAR_ORDERS })
 }
 
 // Command Creators:

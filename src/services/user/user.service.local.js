@@ -71,6 +71,7 @@ function getLoggedinUser() {
 function saveLoggedinUser(user) {
     user = {
         _id: user._id,
+        username: user.username, // Add username to saved user object
         fullname: user.fullname,
         imgUrl: user.imgUrl,
         rate: user.rate || 5.0, // Ensure rating exists

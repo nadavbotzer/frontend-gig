@@ -75,7 +75,7 @@ export function GigIndex() {
     }, [filterBy])
 
     async function onAddGig() {
-        const gig = gigService.getEmptyGig()
+        const gig = await gigService.getEmptyGig()
         try {
             const savedGig = await addGig(gig)
             showSuccessMsg(`Gig added (id: ${savedGig._id})`)

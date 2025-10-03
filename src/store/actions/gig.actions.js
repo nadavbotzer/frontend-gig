@@ -114,7 +114,7 @@ function getCmdAddGigMsg(msg) {
 // unitTestActions()
 async function unitTestActions() {
     await loadGigs()
-    await addGig(gigService.getEmptyGig())
+    await addGig(await gigService.getEmptyGig())
     await updateGig({
         _id: 'm1oC7',
         title: 'Gig-Good',

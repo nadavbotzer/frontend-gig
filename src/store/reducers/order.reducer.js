@@ -4,6 +4,7 @@ export const REMOVE_ORDER = 'REMOVE_ORDER'
 export const ADD_ORDER = 'ADD_ORDER'
 export const UPDATE_ORDER = 'UPDATE_ORDER'
 export const ADD_ORDER_MSG = 'ADD_ORDER_MSG'
+export const CLEAR_ORDERS = 'CLEAR_ORDERS'
 
 const initialState = {
     orders: [],
@@ -39,6 +40,9 @@ export function orderReducer(state = initialState, action) {
             break
         case ADD_ORDER_MSG:
             newState = { ...state, order: { ...state.order, msgs: [...state.order.msgs || [], action.msg] } }
+            break
+        case CLEAR_ORDERS:
+            newState = { ...state, orders: [] }
             break
         default:
     }
