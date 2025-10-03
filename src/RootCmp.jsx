@@ -22,6 +22,7 @@ import { AppHeader } from './cmps/AppHeader'
 import { TagsHeader } from './cmps/TagsHeader.jsx'
 import { AppFooter } from './cmps/AppFooter'
 import { UserMsg } from './cmps/UserMsg.jsx'
+import { ScrollToTop } from './cmps/ScrollToTop'
 
 import { ScrollProvider } from '../src/cmps/ScrollProvider'
 import { SellerDashboard } from './pages/SellerDashboard.jsx'
@@ -31,7 +32,7 @@ export function RootCmp() {
     return (
         <ScrollProvider>
             <div className="main-container">
-
+                <ScrollToTop />
                 <AppHeader />
                 {(pathname !== "/dashboard" && !pathname.includes('checkout') && pathname !== '/login' && pathname !== '/login/signup') && <TagsHeader />}
                 <UserMsg />
