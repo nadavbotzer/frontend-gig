@@ -11,6 +11,13 @@ import { useScrollContext } from './ScrollProvider'
 import { DropDown } from './DropDown'
 import { SearchBar } from './SearchBar'
 
+// MUI Icons
+import PersonIcon from '@mui/icons-material/Person'
+import DashboardIcon from '@mui/icons-material/Dashboard'
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
+import LogoutIcon from '@mui/icons-material/Logout'
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings'
+
 
 
 export function AppHeader() {
@@ -79,7 +86,12 @@ export function AppHeader() {
 						<SearchBar placeholder={'what service are you looking for today?'} isBtnInline={false} ref={inputRef.current} />
 					</form>}
 				<div className='nav-links'>
-					{user?.isAdmin && <NavLink to="/admin">Admin</NavLink>}
+					{user?.isAdmin && (
+						<NavLink to="/admin" className="admin-link">
+							<AdminPanelSettingsIcon className="nav-icon" />
+							Admin
+						</NavLink>
+					)}
 					{!user && <NavLink to="login" className="link">Sign in</NavLink>}
 					{!user && <NavLink to="login" className="link btn-join">Join</NavLink>}
 					{user && (
@@ -105,10 +117,22 @@ export function AppHeader() {
 								</DropDown.Header>
 								<DropDown.Content>
 									<div className="user-actions">
-										<Link className="" to={`/user/${user._id}`} onClick={toggleModal}>Profile</Link>
-										<Link className="" to="/dashboard" onClick={toggleModal}>Dashboard</Link>
-										<Link className="" to="/orders" onClick={toggleModal}>My Orders</Link>
-										<div className='logout-btn' onClick={onLogout}>Logout</div>
+										<Link className="action-item" to={`/user/${user._id}`} onClick={toggleModal}>
+											<PersonIcon className="action-icon" />
+											Profile
+										</Link>
+										<Link className="action-item" to="/dashboard" onClick={toggleModal}>
+											<DashboardIcon className="action-icon" />
+											Dashboard
+										</Link>
+										<Link className="action-item" to="/orders" onClick={toggleModal}>
+											<ShoppingBagIcon className="action-icon" />
+											My Orders
+										</Link>
+										<div className='logout-btn action-item' onClick={onLogout}>
+											<LogoutIcon className="action-icon" />
+											Logout
+										</div>
 									</div>
 								</DropDown.Content>
 							</DropDown>

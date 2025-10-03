@@ -1,6 +1,10 @@
 .filter-item-dropdown {
     max-width: fit-content;
     width: 100%;
+    >* {
+        padding: rem(16px) rem(24px);
+
+    }
 
     .filter-actions {
         display: flex;
