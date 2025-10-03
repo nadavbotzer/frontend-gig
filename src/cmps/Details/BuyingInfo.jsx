@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { orderService } from '../../services/order'
 import { addOrder } from '../../store/actions/order.actions'
 import { userService } from '../../services/user'
@@ -11,12 +12,20 @@ export function BuyingInfo({ gig }) {
     const btns = ['basic', 'standard', 'premium']
     const [active, setActive] = useState(btns[0])
     const navigate = useNavigate()
+    const user = useSelector(storeState => storeState.userModule.user)
 
     function onActive({ target }) {
         setActive(target.name)
     }
 
     async function checkout() {
+        // Check if user is logged in
+        if (!user) {
+            showErrorMsg('Hey there! Please sign in to continue with your purchase')
+            navigate('/login')
+            return
+        }
+
         const order = orderService.getEmptyOrder()
         const price = gig.packagesList[active].price;
         const vat = price * 0.15

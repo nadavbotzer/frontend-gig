@@ -28,5 +28,11 @@ export function showSuccessMsg(txt) {
 export function showErrorMsg(txt) {
     showUserMsg({txt, type: 'error'})
 }
+export function showWarningMsg(txt) {
+    showUserMsg({txt, type: 'warning'})
+}
+export function showInfoMsg(txt) {
+    showUserMsg({txt, type: 'info'})
+}
 
 window.showUserMsg = showUserMsg

@@ -1,7 +1,7 @@
 import { userService } from '../../services/user'
 import { store } from '../store'
 
-import { showErrorMsg } from '../../services/event-bus.service'
+import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
 import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
 import { REMOVE_USER, SET_USER, SET_USERS, SET_WATCHED_USER } from '../reducers/user.reducer'
 
@@ -33,6 +33,7 @@ export async function login(credentials) {
             type: SET_USER,
             user
         })
+        showSuccessMsg(`Welcome back, ${user.fullname}! Great to see you again!`)
         return user
     } catch (err) {
         console.log('Cannot login', err)
@@ -47,6 +48,7 @@ export async function signup(credentials) {
             type: SET_USER,
             user
         })
+        showSuccessMsg(`Welcome to TopGig, ${user.fullname}! Let's start creating amazing gigs together!`)
         return user
     } catch (err) {
         console.log('Cannot signup', err)
