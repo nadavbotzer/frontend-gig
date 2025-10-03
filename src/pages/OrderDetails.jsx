@@ -113,7 +113,11 @@ export function OrderDetails() {
         try {
             const updatedOrder = { ...order, status }
             await updateOrder(updatedOrder)
-            showSuccessMsg(`Order status updated to ${status}`)
+            
+            // Format status name for display
+            const statusName = status.charAt(0).toUpperCase() + status.slice(1)
+            showSuccessMsg(`Order status updated to "${statusName}"`)
+            
             setIsEditingStatus(false)
             setNewStatus('')
         } catch (err) {

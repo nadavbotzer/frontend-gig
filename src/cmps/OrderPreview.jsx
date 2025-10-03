@@ -3,7 +3,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown"
 import useModal from "../customHooks/useModal"
 import { useState, useRef } from 'react'
 import { DropDown } from "../cmps/DropDown"
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 // MUI Icons for actions
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
@@ -11,12 +11,12 @@ import CancelIcon from '@mui/icons-material/Cancel'
 import LocalShippingIcon from '@mui/icons-material/LocalShipping'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 
-export function OrderPreview({ order }) {
+export function OrderPreview({ order, viewType = 'seller' }) {
     const actions = ['approve', 'reject', 'deliver']
     const [isOpen, toggleModal] = useModal();
     const buttonRef = useRef()
     const navigate = useNavigate()
-    const { buyer, packageDeal, status, createdAt } = order
+    const { buyer, seller, packageDeal, status, createdAt } = order
 
     async function onUpdateStatus(orderStatus) {
         const orderToSave = { ...order, status: orderStatus }
@@ -34,6 +34,15 @@ export function OrderPreview({ order }) {
     // Helper functions
     const formatOrderId = (id) => {
         return id ? `#${id.slice(-6).toUpperCase()}` : '#N/A'
+    }
+
+    const formatOrderDate = (date) => {
+        if (!date) return 'N/A'
+        return new Date(date).toLocaleDateString('en-US', { 
+            month: 'short', 
+            day: 'numeric',
+            year: 'numeric'
+        })
     }
 
     const calculateDueDate = () => {
@@ -68,9 +77,13 @@ export function OrderPreview({ order }) {
     const getStatusClass = (status) => {
         switch(status) {
             case 'pending': return 'status-pending'
-            case 'approve': return 'status-approved'
-            case 'deliver': return 'status-delivered'
-            case 'reject': return 'status-rejected'
+            case 'approve': 
+            case 'approved': return 'status-approved'
+            case 'deliver': 
+            case 'delivered': return 'status-delivered'
+            case 'reject': 
+            case 'rejected': return 'status-rejected'
+            case 'created': return 'status-default'
             default: return 'status-default'
         }
     }
@@ -81,14 +94,25 @@ export function OrderPreview({ order }) {
         <>
             <div className="cell order-id">
                 <span className="order-id-text">{formatOrderId(order._id)}</span>
+                <span className="order-date-text">{formatOrderDate(order.createdAt)}</span>
             </div>
-            <div className="cell buyer-info">
-                <img src={buyer.imgUrl} alt={buyer.fullname} />
-                <div className="buyer-details">
-                    <span className="buyer-name">{buyer.fullname}</span>
-                    <span className="buyer-username">@{buyer.username || buyer.fullname.toLowerCase().replace(' ', '')}</span>
+            {viewType === 'seller' ? (
+                <div className="cell buyer-info">
+                    <img src={buyer?.imgUrl} alt={buyer?.fullname} />
+                    <div className="buyer-details">
+                        <span className="buyer-name">{buyer?.fullname}</span>
+                        <span className="buyer-username">@{buyer?.username || buyer?.fullname?.toLowerCase().replace(' ', '')}</span>
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className="cell seller-info">
+                    <img src={seller?.imgUrl} alt={seller?.fullname} />
+                    <div className="seller-details">
+                        <span className="seller-name">{seller?.fullname}</span>
+                        <span className="seller-username">@{seller?.username || seller?.fullname?.toLowerCase().replace(' ', '')}</span>
+                    </div>
+                </div>
+            )}
             <div className="cell gig-info">
                 <div className="gig-details">
                     <span className="gig-title">{packageDeal.title}</span>
@@ -116,39 +140,51 @@ export function OrderPreview({ order }) {
                 </span>
             </div>
             <div className="cell actions">
-                <div className="actions-wrapper">
-                    <button ref={buttonRef} onClick={toggleModal} className={`btn seller-actions-btn ${order.status}`}>
-                        Actions<KeyboardArrowDownIcon />
-                    </button>
-                    <DropDown className="seller-actions-dropdown" isOpen={isOpen} toggleModal={toggleModal} buttonRef={buttonRef}>
-                        <DropDown.Content>
-                            <button className="btn action-btn view-details" onClick={() => {
-                                handleViewDetails()
-                                toggleModal()
-                            }}>
-                                <VisibilityIcon /> View Details
-                            </button>
-                            <button className="btn action-btn approve" onClick={() => {
-                                onUpdateStatus(actions[0])
-                                toggleModal()
-                            }}>
-                                <CheckCircleIcon /> Approve
-                            </button>
-                            <button className="btn action-btn reject" onClick={() => {
-                                onUpdateStatus(actions[1])
-                                toggleModal()
-                            }}>
-                                <CancelIcon /> Reject
-                            </button>
-                            <button className="btn action-btn deliver" onClick={() => {
-                                onUpdateStatus(actions[2])
-                                toggleModal()
-                            }}>
-                                <LocalShippingIcon /> Deliver
-                            </button>
-                        </DropDown.Content>
-                    </DropDown>
-                </div>
+                {viewType === 'seller' ? (
+                    <div className="actions-wrapper">
+                        <button ref={buttonRef} onClick={toggleModal} className={`btn seller-actions-btn ${order.status}`}>
+                            Actions<KeyboardArrowDownIcon />
+                        </button>
+                        <DropDown className="seller-actions-dropdown" isOpen={isOpen} toggleModal={toggleModal} buttonRef={buttonRef}>
+                            <DropDown.Content>
+                                <button className="btn action-btn view-details" onClick={() => {
+                                    handleViewDetails()
+                                    toggleModal()
+                                }}>
+                                    <VisibilityIcon /> View Details
+                                </button>
+                                <button className="btn action-btn approve" onClick={() => {
+                                    onUpdateStatus(actions[0])
+                                    toggleModal()
+                                }}>
+                                    <CheckCircleIcon /> Approve
+                                </button>
+                                <button className="btn action-btn reject" onClick={() => {
+                                    onUpdateStatus(actions[1])
+                                    toggleModal()
+                                }}>
+                                    <CancelIcon /> Reject
+                                </button>
+                                <button className="btn action-btn deliver" onClick={() => {
+                                    onUpdateStatus(actions[2])
+                                    toggleModal()
+                                }}>
+                                    <LocalShippingIcon /> Deliver
+                                </button>
+                            </DropDown.Content>
+                        </DropDown>
+                    </div>
+                ) : (
+                    <div className="order-actions">
+                        <Link 
+                            to={`/user/${seller?._id}`} 
+                            className="btn btn-secondary contact-seller-btn"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            Contact
+                        </Link>
+                    </div>
+                )}
             </div>
         </>
     )

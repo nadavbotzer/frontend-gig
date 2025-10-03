@@ -87,9 +87,9 @@ export function AppHeader() {
 							<button ref={btnRef} className=' user-img' onClick={toggleModal}>{user.imgUrl && <img src={user.imgUrl} />}</button>
 							<DropDown buttonRef={btnRef} isOpen={isOpen} toggleModal={toggleModal} className="user-option-dropdown">
 								<div className="user-actions">
-									<Link className="" to={`/user/${user._id}`}>Profile</Link>
-									<Link className="" to="/dashboard">Dashboard</Link>
-									<Link className="" to="/orders">My Orders</Link>
+									<Link className="" to={`/user/${user._id}`} onClick={toggleModal}>Profile</Link>
+									<Link className="" to="/dashboard" onClick={toggleModal}>Dashboard</Link>
+									<Link className="" to="/orders" onClick={toggleModal}>My Orders</Link>
 									<div className='logout-btn' onClick={onLogout}>Logout</div>
 								</div>
 							</DropDown>

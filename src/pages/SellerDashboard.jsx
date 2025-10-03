@@ -12,10 +12,28 @@ export function SellerDashboard() {
     const isLoading = useSelector(storeState => storeState.systemModule.isLoading)
     const user = userService.getLoggedinUser()
     const [isInitialLoad, setIsInitialLoad] = useState(true)
+    const [sortBy, setSortBy] = useState(null)
+    const [sortOrder, setSortOrder] = useState('asc')
     
     useEffect(() => {
-        loadOrders({ owner: user }).finally(() => setIsInitialLoad(false))
-    }, [])
+        loadOrders({ owner: user, sortBy, sortOrder }).finally(() => setIsInitialLoad(false))
+    }, [sortBy, sortOrder])
+
+    const handleSort = (field) => {
+        if (sortBy === field) {
+            // Toggle sort order if same field
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
+        } else {
+            // Set new field and default to ascending
+            setSortBy(field)
+            setSortOrder('asc')
+        }
+    }
+
+    const handleRemoveSort = () => {
+        setSortBy(null)
+        setSortOrder('asc')
+    }
 
     return (
         <main className="seller-dashboard">
@@ -31,12 +49,28 @@ export function SellerDashboard() {
             <div className="order-list-wrapper">
                 <div className="section-header">
                     <h2>Recent Orders</h2>
-                    <span className="order-count">{orders.length} total orders</span>
+                    <div className="header-actions">
+                        <span className="order-count">{orders.length} total orders</span>
+                        {sortBy && (
+                            <button 
+                                className="remove-sort-btn"
+                                onClick={handleRemoveSort}
+                                title="Remove sorting"
+                            >
+                                Clear Sort
+                            </button>
+                        )}
+                    </div>
                 </div>
                 {isLoading && isInitialLoad ? (
                     <LoadingSpinner message="Loading orders..." size="large" />
                 ) : (
-                    <OrderList orders={orders} />
+                    <OrderList 
+                        orders={orders} 
+                        onSort={handleSort}
+                        sortBy={sortBy}
+                        sortOrder={sortOrder}
+                    />
                 )}
             </div>
         </main>

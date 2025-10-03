@@ -45,13 +45,44 @@
                 color: $clr2;
             }
 
-            .order-count {
-                color: $clr5;
-                font-size: rem(14px);
-                background: $gray5;
-                padding: 0.5rem 1rem;
-                border-radius: rem(20px);
-                font-weight: 500;
+            .header-actions {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                .order-count {
+                    color: $clr5;
+                    font-size: rem(14px);
+                    background: $gray5;
+                    padding: 0.5rem 1rem;
+                    border-radius: rem(20px);
+                    font-weight: 500;
+                }
+
+                .remove-sort-btn {
+                    background: $clr1;
+                    color: $clr6;
+                    border: none;
+                    padding: 0.5rem 1rem;
+                    border-radius: rem(20px);
+                    font-size: rem(12px);
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+
+                    &:hover {
+                        background: darken($clr1, 10%);
+                        transform: translateY(-1px);
+                        box-shadow: 0 2px 8px rgba($clr1, 0.3);
+                    }
+
+                    &:active {
+                        transform: translateY(0);
+                    }
+                }
             }
         }
     }

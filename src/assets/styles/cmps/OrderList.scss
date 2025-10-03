@@ -12,12 +12,13 @@
 
     .order-row {
         display: grid;
-        grid-template-columns: 100px 1fr 1fr 100px 140px 120px 120px;
+        grid-template-columns: 100px 1fr 1fr 100px 140px 120px 140px;
         gap: 1rem;
         align-items: center;
         padding: 1rem 1.5rem;
         border-bottom: 1px solid $gray1;
         transition: background-color 0.2s ease;
+
 
         &:last-child {
             border-bottom: none;
@@ -49,6 +50,35 @@
                 font-weight: 700;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
+
+                &.sortable {
+                    cursor: pointer;
+                    user-select: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        color: $clr1;
+                        background: rgba($clr1, 0.1);
+                        border-radius: rem(4px);
+                        padding: 0.25rem 0.5rem;
+                        margin: -0.25rem -0.5rem;
+                    }
+
+                    span {
+                        display: inline-flex;
+                        align-items: center;
+                        flex: 1;
+                    }
+
+                    svg {
+                        font-size: rem(16px);
+                        color: $clr1;
+                        transition: transform 0.2s ease;
+                    }
+                }
             }
         }
 
@@ -59,14 +89,21 @@
 
             // Order ID Column
             &.order-id {
+                display: flex;
+                flex-direction: column;
+                gap: 0.25rem;
+
                 .order-id-text {
                     font-family: 'Courier New', monospace;
                     font-weight: 600;
+                    color: $clr2;
+                    font-size: rem(13px);
+                }
+
+                .order-date-text {
+                    font-size: rem(11px);
                     color: $clr5;
-                    background: $gray5;
-                    padding: 0.25rem 0.5rem;
-                    border-radius: rem(4px);
-                    font-size: rem(12px);
+                    font-weight: 500;
                 }
             }
 
@@ -100,6 +137,36 @@
                 }
             }
 
+            // Seller Info Column
+            &.seller-info {
+                gap: 0.75rem;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    border: 2px solid $gray1;
+                }
+
+                .seller-details {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.25rem;
+
+                    .seller-name {
+                        font-weight: 600;
+                        color: $clr2;
+                        font-size: rem(14px);
+                    }
+
+                    .seller-username {
+                        color: $clr5;
+                        font-size: rem(12px);
+                    }
+                }
+            }
+
             // Gig Info Column
             &.gig-info {
                 .gig-details {
@@ -114,6 +181,7 @@
                         line-height: 1.3;
                         display: -webkit-box;
                         -webkit-line-clamp: 2;
+                        line-clamp: 2;
                         -webkit-box-orient: vertical;
                         overflow: hidden;
                     }
@@ -185,6 +253,13 @@
                     font-size: rem(12px);
                     font-weight: 600;
                     text-transform: capitalize;
+                    display: inline-block;
+                    min-width: 80px;
+                    text-align: center;
+
+                    // Default status styling
+                    background: rgba($clr5, 0.2);
+                    color: $clr2;
 
                     &.status-pending {
                         background: rgba(#ffc107, 0.2);
@@ -204,6 +279,26 @@
                     &.status-rejected {
                         background: rgba(#dc3545, 0.2);
                         color: #721c24;
+                    }
+
+                    &.status-created {
+                        background: rgba($clr5, 0.2);
+                        color: $clr2;
+                    }
+
+                    &.status-completed {
+                        background: rgba(#28a745, 0.2);
+                        color: #155724;
+                    }
+
+                    &.status-cancelled {
+                        background: rgba(#6c757d, 0.2);
+                        color: #495057;
+                    }
+
+                    &.status-default {
+                        background: rgba($clr5, 0.2);
+                        color: $clr2;
                     }
                 }
             }
@@ -288,12 +383,42 @@
 
                         svg {
                             font-size: rem(16px);
+                    }
+                }
+
+                .order-actions {
+                    .contact-seller-btn {
+                        padding: 0.2rem 0.4rem !important;
+                        font-size: rem(9px) !important;
+                        font-weight: 600;
+                        border-radius: rem(3px);
+                        text-decoration: none;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 0.2rem;
+                        transition: all 0.2s ease;
+                        background: $gray5 !important;
+                        color: $clr2 !important;
+                        border: 1px solid $gray1 !important;
+                        min-width: auto !important;
+                        width: auto !important;
+                        max-width: 100%;
+                        line-height: 1.2;
+                        white-space: nowrap;
+                        justify-content: center;
+                        flex-shrink: 0;
+
+                        &:hover {
+                            background: $gray4 !important;
+                            border-color: $gray2 !important;
+                            color: $clr2 !important;
                         }
                     }
                 }
             }
         }
     }
+}
 
     // Responsive Design
     @include for-mobile-layout {
@@ -320,6 +445,7 @@
                 }
 
                 &.buyer-info,
+                &.seller-info,
                 &.gig-info {
                     flex-direction: column;
                     align-items: flex-start;

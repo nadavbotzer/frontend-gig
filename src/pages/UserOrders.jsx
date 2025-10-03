@@ -4,6 +4,7 @@ import { loadOrders } from '../store/actions/order.actions'
 import { userService } from '../services/user'
 import { LoadingSpinner } from '../cmps/LoadingSpinner'
 import { Level } from '../cmps/Level'
+import { OrderList } from '../cmps/OrderList'
 import { Link } from 'react-router-dom'
 
 // MUI Icons
@@ -13,6 +14,12 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import PendingIcon from '@mui/icons-material/Pending'
 import CancelIcon from '@mui/icons-material/Cancel'
 import StarIcon from '@mui/icons-material/Star'
+import TaskAltIcon from '@mui/icons-material/TaskAlt'
+import HourglassEmptyIcon from '@mui/icons-material/HourglassEmpty'
+import BlockIcon from '@mui/icons-material/Block'
+import CreateIcon from '@mui/icons-material/Create'
+import ViewModuleIcon from '@mui/icons-material/ViewModule'
+import ViewListIcon from '@mui/icons-material/ViewList'
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
 
@@ -23,6 +30,9 @@ export function UserOrders() {
     const [isInitialLoad, setIsInitialLoad] = useState(true)
     const [filteredOrders, setFilteredOrders] = useState([])
     const [statusFilter, setStatusFilter] = useState('all')
+    const [viewMode, setViewMode] = useState('cards') // 'cards' or 'list'
+    const [sortBy, setSortBy] = useState(null)
+    const [sortOrder, setSortOrder] = useState('asc')
     
     useEffect(() => {
         if (user) {
@@ -31,19 +41,33 @@ export function UserOrders() {
     }, [user])
 
     useEffect(() => {
-        if (statusFilter === 'all') {
-            setFilteredOrders(orders)
-        } else {
-            setFilteredOrders(orders.filter(order => order.status === statusFilter))
+        let filtered = orders
+
+        // Apply status filter
+        if (statusFilter !== 'all') {
+            filtered = filtered.filter(order => order.status === statusFilter)
         }
-    }, [orders, statusFilter])
+
+        // Apply sorting
+        if (sortBy) {
+            filtered = sortOrdersClientSide(filtered, sortBy, sortOrder)
+        }
+
+        setFilteredOrders(filtered)
+    }, [orders, statusFilter, sortBy, sortOrder])
 
     const getStatusIcon = (status) => {
         switch(status) {
-            case 'pending': return <PendingIcon className="status-icon pending" />
-            case 'approve': return <CheckCircleIcon className="status-icon approved" />
-            case 'deliver': return <LocalShippingIcon className="status-icon delivered" />
-            case 'reject': return <CancelIcon className="status-icon rejected" />
+            case 'pending': return <HourglassEmptyIcon className="status-icon pending" />
+            case 'approve': 
+            case 'approved': return <CheckCircleIcon className="status-icon approved" />
+            case 'deliver': 
+            case 'delivered': return <LocalShippingIcon className="status-icon delivered" />
+            case 'reject': 
+            case 'rejected': return <BlockIcon className="status-icon rejected" />
+            case 'completed': return <TaskAltIcon className="status-icon completed" />
+            case 'cancelled': return <CancelIcon className="status-icon cancelled" />
+            case 'created': return <CreateIcon className="status-icon created" />
             default: return <PendingIcon className="status-icon default" />
         }
     }
@@ -51,9 +75,15 @@ export function UserOrders() {
     const getStatusClass = (status) => {
         switch(status) {
             case 'pending': return 'status-pending'
-            case 'approve': return 'status-approved'
-            case 'deliver': return 'status-delivered'
-            case 'reject': return 'status-rejected'
+            case 'approve': 
+            case 'approved': return 'status-approved'
+            case 'deliver': 
+            case 'delivered': return 'status-delivered'
+            case 'reject': 
+            case 'rejected': return 'status-rejected'
+            case 'completed': return 'status-completed'
+            case 'cancelled': return 'status-cancelled'
+            case 'created': return 'status-created'
             default: return 'status-default'
         }
     }
@@ -91,6 +121,7 @@ export function UserOrders() {
         return diffDays
     }
 
+
     const getOrderStats = () => {
         const totalOrders = orders.length
         const pendingOrders = orders.filter(order => order.status === 'pending').length
@@ -104,6 +135,71 @@ export function UserOrders() {
         if (user) {
             loadOrders({ buyer: user._id }).finally(() => setIsInitialLoad(false))
         }
+    }
+
+    const sortOrdersClientSide = (orders, sortBy, sortOrder) => {
+        return [...orders].sort((a, b) => {
+            let aValue, bValue
+
+            switch (sortBy) {
+                case 'price':
+                    aValue = a.packageDeal?.total || 0
+                    bValue = b.packageDeal?.total || 0
+                    break
+                case 'dueDate':
+                    aValue = getDueDate(a.createdAt, a.packageDeal?.deliveryTime)
+                    bValue = getDueDate(b.createdAt, b.packageDeal?.deliveryTime)
+                    break
+                case 'status':
+                    aValue = getStatusOrder(a.status)
+                    bValue = getStatusOrder(b.status)
+                    break
+                default:
+                    return 0
+            }
+
+            if (aValue < bValue) return sortOrder === 'asc' ? -1 : 1
+            if (aValue > bValue) return sortOrder === 'asc' ? 1 : -1
+            return 0
+        })
+    }
+
+    const getDueDate = (createdAt, deliveryTime) => {
+        if (!createdAt || !deliveryTime) return new Date(0)
+        const orderDate = new Date(createdAt)
+        return new Date(orderDate.getTime() + (deliveryTime * 24 * 60 * 60 * 1000))
+    }
+
+    const getStatusOrder = (status) => {
+        const statusOrder = {
+            'pending': 1,
+            'approve': 2,
+            'approved': 2,
+            'deliver': 3,
+            'delivered': 3,
+            'completed': 4,
+            'reject': 5,
+            'rejected': 5,
+            'cancelled': 6,
+            'created': 7
+        }
+        return statusOrder[status] || 999
+    }
+
+    const handleSort = (field) => {
+        if (sortBy === field) {
+            // Toggle sort order if same field
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
+        } else {
+            // Set new field and default to ascending
+            setSortBy(field)
+            setSortOrder('asc')
+        }
+    }
+
+    const handleRemoveSort = () => {
+        setSortBy(null)
+        setSortOrder('asc')
     }
 
     const stats = getOrderStats()
@@ -174,25 +270,65 @@ export function UserOrders() {
             <section className="orders-filter">
                 <div className="filter-header">
                     <h2>Your Orders</h2>
-                    <div className="filter-tabs">
-                        <button 
-                            className={`filter-tab ${statusFilter === 'all' ? 'active' : ''}`}
-                            onClick={() => setStatusFilter('all')}
-                        >
-                            All ({orders.length})
-                        </button>
-                        <button 
-                            className={`filter-tab ${statusFilter === 'pending' ? 'active' : ''}`}
-                            onClick={() => setStatusFilter('pending')}
-                        >
-                            Pending ({stats.pendingOrders})
-                        </button>
-                        <button 
-                            className={`filter-tab ${statusFilter === 'deliver' ? 'active' : ''}`}
-                            onClick={() => setStatusFilter('deliver')}
-                        >
-                            Completed ({stats.completedOrders})
-                        </button>
+                    <div className="filter-controls">
+                        <div className="filter-tabs">
+                            <button 
+                                className={`filter-tab ${statusFilter === 'all' ? 'active' : ''}`}
+                                onClick={() => setStatusFilter('all')}
+                            >
+                                All ({orders.length})
+                            </button>
+                            <button 
+                                className={`filter-tab ${statusFilter === 'pending' ? 'active' : ''}`}
+                                onClick={() => setStatusFilter('pending')}
+                            >
+                                Pending ({stats.pendingOrders})
+                            </button>
+                            <button 
+                                className={`filter-tab ${statusFilter === 'deliver' ? 'active' : ''}`}
+                                onClick={() => setStatusFilter('deliver')}
+                            >
+                                Completed ({stats.completedOrders})
+                            </button>
+                        </div>
+                        
+                        <div className="view-toggle">
+                            <span className="view-label">View:</span>
+                            <div className="radio-group">
+                                <label className={`radio-option ${viewMode === 'cards' ? 'active' : ''}`}>
+                                    <input
+                                        type="radio"
+                                        name="viewMode"
+                                        value="cards"
+                                        checked={viewMode === 'cards'}
+                                        onChange={(e) => setViewMode(e.target.value)}
+                                    />
+                                    <ViewModuleIcon className="radio-icon" />
+                                    <span>Cards</span>
+                                </label>
+                                <label className={`radio-option ${viewMode === 'list' ? 'active' : ''}`}>
+                                    <input
+                                        type="radio"
+                                        name="viewMode"
+                                        value="list"
+                                        checked={viewMode === 'list'}
+                                        onChange={(e) => setViewMode(e.target.value)}
+                                    />
+                                    <ViewListIcon className="radio-icon" />
+                                    <span>List</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        {sortBy && (
+                            <button 
+                                className="remove-sort-btn"
+                                onClick={handleRemoveSort}
+                                title="Remove sorting"
+                            >
+                                Clear Sort
+                            </button>
+                        )}
                     </div>
                 </div>
             </section>
@@ -214,96 +350,108 @@ export function UserOrders() {
                         </Link>
                     </div>
                 ) : (
-                    <div className="orders-grid">
-                        {filteredOrders.map(order => {
-                            const daysRemaining = getDaysRemaining(order.createdAt, order.packageDeal?.deliveryTime)
-                            
-                            return (
-                                <div key={order._id} className="order-card">
-                                    <div className="order-header">
-                                        <div className="order-id">
-                                            <span className="order-number">#{order._id.slice(-6).toUpperCase()}</span>
-                                            <span className="order-date">{formatDate(order.createdAt)}</span>
-                                        </div>
-                                        <div className={`order-status ${getStatusClass(order.status)}`}>
-                                            {getStatusIcon(order.status)}
-                                            <span>{order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="order-content">
-                                        <div className="gig-info">
-                                            <h3 className="gig-title">{order.packageDeal?.title || 'Gig Title'}</h3>
-                                            <p className="package-type">{order.packageDeal?.packageType?.toUpperCase() || 'BASIC'} Package</p>
-                                        </div>
-
-                                        <div className="seller-info">
-                                            <img 
-                                                src={order.seller?.imgUrl || '/images/profile-default.png'} 
-                                                alt={order.seller?.fullname || 'Seller'} 
-                                                className="seller-avatar"
-                                            />
-                                            <div className="seller-details">
-                                                <span className="seller-name">{order.seller?.fullname || 'Seller Name'}</span>
-                                                <div className="seller-level">
-                                                    <Level level={order.seller?.level || 1} />
-                                                </div>
+                    <div className={viewMode === 'cards' ? 'orders-grid' : 'orders-list'}>
+                        {viewMode === 'cards' ? (
+                            // Card View
+                            filteredOrders.map(order => {
+                                const daysRemaining = getDaysRemaining(order.createdAt, order.packageDeal?.deliveryTime)
+                                
+                                return (
+                                    <div key={order._id} className="order-card">
+                                        <div className="order-header">
+                                            <div className="order-id">
+                                                <span className="order-number">#{order._id.slice(-6).toUpperCase()}</span>
+                                                <span className="order-date">{formatDate(order.createdAt)}</span>
+                                            </div>
+                                            <div className={`order-status ${getStatusClass(order.status)}`}>
+                                                {getStatusIcon(order.status)}
+                                                <span>{order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>
                                             </div>
                                         </div>
 
-                                        <div className="order-details">
-                                            <div className="detail-item">
-                                                <CalendarTodayIcon className="detail-icon" />
-                                                <div className="detail-content">
-                                                    <span className="detail-label">Due Date</span>
-                                                    <span className="detail-value">
-                                                        {calculateDueDate(order.createdAt, order.packageDeal?.deliveryTime)}
-                                                    </span>
+                                        <div className="order-content">
+                                            <div className="gig-info">
+                                                <h3 className="gig-title">{order.packageDeal?.title || 'Gig Title'}</h3>
+                                                <p className="package-type">{order.packageDeal?.packageType?.toUpperCase() || 'BASIC'} Package</p>
+                                            </div>
+
+                                            <div className="seller-info">
+                                                <img 
+                                                    src={order.seller?.imgUrl || '/images/profile-default.png'} 
+                                                    alt={order.seller?.fullname || 'Seller'} 
+                                                    className="seller-avatar"
+                                                />
+                                                <div className="seller-details">
+                                                    <span className="seller-name">{order.seller?.fullname || 'Seller Name'}</span>
+                                                    <div className="seller-level">
+                                                        <Level level={order.seller?.level || 1} />
+                                                    </div>
                                                 </div>
                                             </div>
-                                            
-                                            {daysRemaining !== null && (
+
+                                            <div className="order-details">
                                                 <div className="detail-item">
+                                                    <CalendarTodayIcon className="detail-icon" />
                                                     <div className="detail-content">
-                                                        <span className={`days-remaining ${daysRemaining <= 1 ? 'urgent' : daysRemaining <= 3 ? 'warning' : 'normal'}`}>
-                                                            {daysRemaining > 0 ? `${daysRemaining} days left` : 
-                                                             daysRemaining === 0 ? 'Due today' : 
-                                                             `${Math.abs(daysRemaining)} days overdue`}
+                                                        <span className="detail-label">Due Date</span>
+                                                        <span className="detail-value">
+                                                            {calculateDueDate(order.createdAt, order.packageDeal?.deliveryTime)}
                                                         </span>
                                                     </div>
                                                 </div>
-                                            )}
+                                                
+                                                {daysRemaining !== null && (
+                                                    <div className="detail-item">
+                                                        <div className="detail-content">
+                                                            <span className={`days-remaining ${daysRemaining <= 1 ? 'urgent' : daysRemaining <= 3 ? 'warning' : 'normal'}`}>
+                                                                {daysRemaining > 0 ? `${daysRemaining} days left` : 
+                                                                 daysRemaining === 0 ? 'Due today' : 
+                                                                 `${Math.abs(daysRemaining)} days overdue`}
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                )}
+                                            </div>
+
+                                            <div className="order-price">
+                                                <span className="price-label">Total</span>
+                                                <span className="price-value">${order.packageDeal?.total || 0}</span>
+                                            </div>
                                         </div>
 
-                                        <div className="order-price">
-                                            <span className="price-label">Total</span>
-                                            <span className="price-value">${order.packageDeal?.total || 0}</span>
+                                        <div className="order-actions">
+                                            <Link 
+                                                to={`/order/${order._id}`} 
+                                                className="btn btn-primary"
+                                            >
+                                                View Details
+                                            </Link>
+                                            <Link 
+                                                to={`/gig/${order.gig?._id}`} 
+                                                className="btn btn-outline"
+                                            >
+                                                View Gig
+                                            </Link>
+                                            <Link 
+                                                to={`/user/${order.seller?._id}`} 
+                                                className="btn btn-secondary"
+                                            >
+                                                Contact Seller
+                                            </Link>
                                         </div>
                                     </div>
-
-                                    <div className="order-actions">
-                                        <Link 
-                                            to={`/order/${order._id}`} 
-                                            className="btn btn-primary"
-                                        >
-                                            View Details
-                                        </Link>
-                                        <Link 
-                                            to={`/gig/${order.gig?._id}`} 
-                                            className="btn btn-outline"
-                                        >
-                                            View Gig
-                                        </Link>
-                                        <Link 
-                                            to={`/user/${order.seller?._id}`} 
-                                            className="btn btn-secondary"
-                                        >
-                                            Contact Seller
-                                        </Link>
-                                    </div>
-                                </div>
-                            )
-                        })}
+                                )
+                            })
+                        ) : (
+                            // List View using OrderList component
+                            <OrderList 
+                                orders={filteredOrders} 
+                                viewType="buyer"
+                                onSort={handleSort}
+                                sortBy={sortBy}
+                                sortOrder={sortOrder}
+                            />
+                        )}
                     </div>
                 )}
             </section>
