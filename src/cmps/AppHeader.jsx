@@ -129,12 +129,14 @@ export function AppHeader() {
 											<ShoppingBagIcon className="action-icon" />
 											My Orders
 										</Link>
-										<div className='logout-btn action-item' onClick={onLogout}>
-											<LogoutIcon className="action-icon" />
-											Logout
-										</div>
 									</div>
 								</DropDown.Content>
+								<DropDown.Footer>
+									<div className='logout-btn action-item' onClick={onLogout}>
+										<LogoutIcon className="action-icon" />
+										Logout
+									</div>
+								</DropDown.Footer>
 							</DropDown>
 						</div>
 					)}
