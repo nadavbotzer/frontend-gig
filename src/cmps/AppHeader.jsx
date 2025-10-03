@@ -86,12 +86,31 @@ export function AppHeader() {
 						<div className="user-info">
 							<button ref={btnRef} className=' user-img' onClick={toggleModal}>{user.imgUrl && <img src={user.imgUrl} />}</button>
 							<DropDown buttonRef={btnRef} isOpen={isOpen} toggleModal={toggleModal} className="user-option-dropdown">
-								<div className="user-actions">
-									<Link className="" to={`/user/${user._id}`} onClick={toggleModal}>Profile</Link>
-									<Link className="" to="/dashboard" onClick={toggleModal}>Dashboard</Link>
-									<Link className="" to="/orders" onClick={toggleModal}>My Orders</Link>
-									<div className='logout-btn' onClick={onLogout}>Logout</div>
-								</div>
+								<DropDown.Header>
+									<div className="user-header-info">
+										<div className="user-avatar">
+											{user.imgUrl ? (
+												<img src={user.imgUrl} alt={user.fullname} />
+											) : (
+												<div className="avatar-placeholder">
+													{user.fullname?.charAt(0)?.toUpperCase()}
+												</div>
+											)}
+										</div>
+										<div className="user-details">
+											<div className="user-name">{user.fullname}</div>
+											<div className="user-username">@{user.username || user.fullname?.toLowerCase().replace(' ', '')}</div>
+										</div>
+									</div>
+								</DropDown.Header>
+								<DropDown.Content>
+									<div className="user-actions">
+										<Link className="" to={`/user/${user._id}`} onClick={toggleModal}>Profile</Link>
+										<Link className="" to="/dashboard" onClick={toggleModal}>Dashboard</Link>
+										<Link className="" to="/orders" onClick={toggleModal}>My Orders</Link>
+										<div className='logout-btn' onClick={onLogout}>Logout</div>
+									</div>
+								</DropDown.Content>
 							</DropDown>
 						</div>
 					)}

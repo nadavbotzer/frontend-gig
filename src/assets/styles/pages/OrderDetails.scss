@@ -401,6 +401,7 @@
                         font-size: rem(14px);
                         position: relative;
                         padding-left: 2rem;
+                        width: fit-content;
 
                         &::before {
                             content: "✓";

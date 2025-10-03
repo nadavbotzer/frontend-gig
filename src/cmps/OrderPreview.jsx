@@ -142,30 +142,37 @@ export function OrderPreview({ order, viewType = 'seller' }) {
             <div className="cell actions">
                 {viewType === 'seller' ? (
                     <div className="actions-wrapper">
-                        <button ref={buttonRef} onClick={toggleModal} className={`btn seller-actions-btn ${order.status}`}>
+                        <button ref={buttonRef} onClick={(e) => {
+                            e.stopPropagation()
+                            toggleModal()
+                        }} className={`btn seller-actions-btn ${order.status}`}>
                             Actions<KeyboardArrowDownIcon />
                         </button>
                         <DropDown className="seller-actions-dropdown" isOpen={isOpen} toggleModal={toggleModal} buttonRef={buttonRef}>
                             <DropDown.Content>
-                                <button className="btn action-btn view-details" onClick={() => {
+                                <button className="btn action-btn view-details" onClick={(e) => {
+                                    e.stopPropagation()
                                     handleViewDetails()
                                     toggleModal()
                                 }}>
                                     <VisibilityIcon /> View Details
                                 </button>
-                                <button className="btn action-btn approve" onClick={() => {
+                                <button className="btn action-btn approve" onClick={(e) => {
+                                    e.stopPropagation()
                                     onUpdateStatus(actions[0])
                                     toggleModal()
                                 }}>
                                     <CheckCircleIcon /> Approve
                                 </button>
-                                <button className="btn action-btn reject" onClick={() => {
+                                <button className="btn action-btn reject" onClick={(e) => {
+                                    e.stopPropagation()
                                     onUpdateStatus(actions[1])
                                     toggleModal()
                                 }}>
                                     <CancelIcon /> Reject
                                 </button>
-                                <button className="btn action-btn deliver" onClick={() => {
+                                <button className="btn action-btn deliver" onClick={(e) => {
+                                    e.stopPropagation()
                                     onUpdateStatus(actions[2])
                                     toggleModal()
                                 }}>

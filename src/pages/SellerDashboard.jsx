@@ -42,7 +42,9 @@ export function SellerDashboard() {
                 <p>Manage your orders and track your performance</p>
             </header>
 
-            {!isLoading && !isInitialLoad && (
+            {isLoading && isInitialLoad ? (
+                <LoadingSpinner message="Loading dashboard statistics..." size="large" />
+            ) : (
                 <SellerStatistics orders={orders} />
             )}
 

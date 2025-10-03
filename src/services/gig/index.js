@@ -20,8 +20,8 @@ export function getEmptyGig() {
     const randomProfession = getRandomProfession()
     const userLevel = loggedInUser.level || 1 // Use actual user level, default to 1
     
-    // Generate random reviews first
-    const reviews = generateRandomReviews(getRandomIntInclusive(0, 8))
+    // Generate random reviews first - more reviews for better demo data
+    const reviews = generateRandomReviews(getRandomIntInclusive(5, 25))
     
     // Calculate average rating from reviews
     const averageRating = reviews.length > 0 
@@ -188,45 +188,96 @@ function getRandomProfession() {
 
 function generateRandomReviews(count) {
     const reviewTemplates = [
-        "Excellent work! Exceeded my expectations and delivered on time.",
-        "Very professional and responsive. Highly recommended!",
-        "Great quality work, will definitely work with again.",
-        "Amazing results! The attention to detail is outstanding.",
-        "Fast delivery and great communication throughout the project.",
-        "Outstanding work! Very creative and professional approach.",
-        "Perfect! Exactly what I was looking for. Thank you!",
-        "Great experience working with this seller. Highly satisfied!",
-        "Excellent service and quality. Will order again soon.",
-        "Outstanding work! Very pleased with the final result.",
-        "Professional and reliable. Great work as always!",
-        "Fantastic work! Exceeded all my expectations.",
-        "Very happy with the results. Great communication too!",
-        "Excellent quality and fast delivery. Highly recommended!",
-        "Amazing work! Will definitely use this service again.",
-        "Perfect execution! Very professional and creative.",
-        "Great work! Delivered exactly what was promised.",
-        "Outstanding service! Very pleased with the outcome.",
-        "Excellent communication and quality work. Thank you!",
-        "Fantastic results! Highly professional and creative."
+        // 5-star reviews (60% of reviews)
+        "Absolutely amazing work! Exceeded all my expectations and delivered ahead of schedule.",
+        "Outstanding quality and professionalism. This seller is truly exceptional!",
+        "Perfect! Exactly what I envisioned and more. Highly recommend this seller.",
+        "Fantastic work! The attention to detail is incredible. Will definitely order again.",
+        "Excellent communication and delivery. The final result exceeded my wildest dreams.",
+        "Outstanding service! Very creative and professional approach. Love it!",
+        "Amazing results! This seller knows their craft inside and out. Highly satisfied!",
+        "Perfect execution! Very professional and delivered exactly what was promised.",
+        "Exceptional work! The quality is top-notch and communication was excellent.",
+        "Outstanding! This seller delivered beyond my expectations. Highly recommended!",
+        "Fantastic experience! Great work, fast delivery, and excellent communication.",
+        "Amazing work! Very professional and creative. Will definitely use again.",
+        "Outstanding quality! This seller is a true professional. Highly satisfied!",
+        "Perfect! Great work, fast delivery, and excellent communication throughout.",
+        "Exceptional service! The final result is exactly what I was looking for.",
+        
+        // 4-star reviews (25% of reviews)
+        "Very good work! Professional and delivered on time. Minor revisions needed but overall satisfied.",
+        "Great quality work! Good communication and delivered as promised. Would recommend.",
+        "Good experience overall. The work was solid and delivered within the timeframe.",
+        "Nice work! Professional approach and good communication. Happy with the result.",
+        "Solid work! Delivered what was promised with good communication throughout.",
+        "Good quality! The seller was responsive and delivered on time. Satisfied overall.",
+        "Decent work! Met expectations and delivered within the agreed timeframe.",
+        "Good experience! Professional communication and delivered as requested.",
+        
+        // 3-star reviews (10% of reviews)
+        "Average work. Met basic requirements but could have been better. Communication was okay.",
+        "Decent work overall. Some issues but seller was willing to make adjustments.",
+        "Okay work. Not exceptional but got the job done. Communication could be better.",
+        "Average experience. Work was acceptable but took longer than expected.",
+        
+        // 2-star reviews (3% of reviews)
+        "Below expectations. Had to request multiple revisions. Communication was poor.",
+        "Not satisfied. The work didn't meet the requirements and needed major changes.",
+        
+        // 1-star reviews (2% of reviews)
+        "Very disappointed. Poor quality work and unresponsive seller. Would not recommend."
     ]
     
     const reviewerNames = [
         "alex_johnson", "sarah_wilson", "mike_chen", "emma_brown", "david_smith",
         "lisa_garcia", "james_taylor", "anna_davis", "robert_miller", "julia_white",
         "chris_anderson", "maria_thomas", "kevin_jackson", "sophie_martin", "daniel_lee",
-        "olivia_hall", "ryan_clark", "grace_lewis", "matt_walker", "zoe_young"
+        "olivia_hall", "ryan_clark", "grace_lewis", "matt_walker", "zoe_young",
+        "jake_moore", "sophia_adams", "ethan_wright", "isabella_green", "noah_king",
+        "ava_scott", "liam_turner", "mia_phillips", "lucas_campbell", "charlotte_parker",
+        "benjamin_evans", "amelia_edwards", "henry_collins", "harper_stewart", "sebastian_sanchez",
+        "ella_morris", "jackson_rogers", "grace_reed", "aiden_cook", "lily_morgan"
     ]
     
     const reviews = []
     for (let i = 0; i < count; i++) {
-        const randomRating = getRandomIntInclusive(3, 5) // 3-5 star ratings
+        // Weighted rating distribution for more realistic reviews
+        let randomRating
+        const ratingChance = getRandomIntInclusive(1, 100)
+        if (ratingChance <= 60) {
+            randomRating = 5 // 60% chance for 5 stars
+        } else if (ratingChance <= 85) {
+            randomRating = 4 // 25% chance for 4 stars
+        } else if (ratingChance <= 95) {
+            randomRating = 3 // 10% chance for 3 stars
+        } else if (ratingChance <= 98) {
+            randomRating = 2 // 3% chance for 2 stars
+        } else {
+            randomRating = 1 // 2% chance for 1 star
+        }
+        
+        // Select review text based on rating
+        let reviewText
+        if (randomRating === 5) {
+            reviewText = reviewTemplates[getRandomIntInclusive(0, 14)]
+        } else if (randomRating === 4) {
+            reviewText = reviewTemplates[getRandomIntInclusive(15, 22)]
+        } else if (randomRating === 3) {
+            reviewText = reviewTemplates[getRandomIntInclusive(23, 26)]
+        } else if (randomRating === 2) {
+            reviewText = reviewTemplates[getRandomIntInclusive(27, 28)]
+        } else {
+            reviewText = reviewTemplates[29]
+        }
+        
         reviews.push({
             _id: makeId(),
             name: reviewerNames[getRandomIntInclusive(0, reviewerNames.length - 1)],
             img: '',
             location: getRandomLocation(),
             reviewedAt: getRandomCreatedAt(),
-            review: reviewTemplates[getRandomIntInclusive(0, reviewTemplates.length - 1)],
+            review: reviewText,
             rate: randomRating,
             duration: getRandomDuration(),
             startPriceRange: getRandomIntInclusive(50, 5000),

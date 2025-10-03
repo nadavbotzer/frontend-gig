@@ -69,7 +69,7 @@ export function Login() {
                 disabled={isLoading}
             >
                 {isLoading ? (
-                    <LoadingSpinner message="" size="small" />
+                    <LoadingSpinner message="" size="small" color="white" />
                 ) : (
                     'Sign In'
                 )}

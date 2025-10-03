@@ -87,7 +87,7 @@ export function Signup() {
                 disabled={isLoading}
             >
                 {isLoading ? (
-                    <LoadingSpinner message="" size="small" />
+                    <LoadingSpinner message="" size="small" color="white" />
                 ) : (
                     'Join TopGig'
                 )}
