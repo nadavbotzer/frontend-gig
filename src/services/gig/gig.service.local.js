@@ -10,7 +10,9 @@ export const gigService = {
     getById,
     save,
     remove,
-    addGigMsg
+    addGigMsg,
+    likeGig,
+    unlikeGig
 }
 
 window.cs = gigService
@@ -102,4 +104,42 @@ async function addGigMsg(gigId, txt) {
     await storageService.put(STORAGE_KEY, gig)
 
     return msg
+}
+
+async function likeGig(gigId) {
+    const gig = await getById(gigId)
+    const loggedInUser = userService.getLoggedinUser()
+    
+    if (!loggedInUser || !gig) return gig
+    
+    // Initialize likedByUsers if it doesn't exist
+    if (!gig.likedByUsers) {
+        gig.likedByUsers = []
+    }
+    
+    // Add user to likedByUsers if not already there
+    if (!gig.likedByUsers.some(user => user._id === loggedInUser._id)) {
+        gig.likedByUsers.push(loggedInUser)
+        await storageService.put(STORAGE_KEY, gig)
+    }
+    
+    return gig
+}
+
+async function unlikeGig(gigId) {
+    const gig = await getById(gigId)
+    const loggedInUser = userService.getLoggedinUser()
+    
+    if (!loggedInUser || !gig) return gig
+    
+    // Initialize likedByUsers if it doesn't exist
+    if (!gig.likedByUsers) {
+        gig.likedByUsers = []
+    }
+    
+    // Remove user from likedByUsers
+    gig.likedByUsers = gig.likedByUsers.filter(user => user._id !== loggedInUser._id)
+    await storageService.put(STORAGE_KEY, gig)
+    
+    return gig
 }

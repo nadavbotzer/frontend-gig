@@ -20,6 +20,7 @@ export function OrderPreview({ order, viewType = 'seller' }) {
     // Handle both packageDeal (frontend) and gig (backend) structures
     const orderPackage = packageDeal || gig
     
+    
 
     async function onUpdateStatus(orderStatus) {
         const orderToSave = { ...order, status: orderStatus }

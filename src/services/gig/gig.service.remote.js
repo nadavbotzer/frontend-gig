@@ -5,7 +5,9 @@ export const gigService = {
     getById,
     save,
     remove,
-    addGigMsg
+    addGigMsg,
+    likeGig,
+    unlikeGig
 }
 
 async function query(filterBy = { txt: '' }) {
@@ -33,4 +35,12 @@ async function save(gig) {
 async function addGigMsg(gigId, txt) {
     const savedMsg = await httpService.post(`gig/${gigId}/msg`, { txt })
     return savedMsg
+}
+
+async function likeGig(gigId) {
+    return httpService.post(`gig/${gigId}/like`)
+}
+
+async function unlikeGig(gigId) {
+    return httpService.delete(`gig/${gigId}/like`)
 }

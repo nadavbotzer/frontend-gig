@@ -28,10 +28,12 @@ export function gigReducer(state = initialState, action) {
             newState = { ...state, gigs: [...state.gigs, action.gig] }
             break
         case UPDATE_GIG:
+            console.log('🔍 Redux UPDATE_GIG reducer called with:', action.gig._id, action.gig.likedByUsers?.length)
             const updatedGigs = state.gigs.map(gig =>
                 gig._id === action.gig._id ? { ...gig, ...action.gig } : gig
             )
             newState = { ...state, gigs: updatedGigs }
+            console.log('🔍 Redux state updated, new gigs count:', newState.gigs.length)
             break
         case ADD_GIG_MSG:
             newState = { ...state, gig: { ...state.gig, msgs: [...state.gig.msgs || [], action.msg] } }

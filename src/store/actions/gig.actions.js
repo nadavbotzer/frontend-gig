@@ -62,6 +62,12 @@ export async function updateGig(gig) {
     }
 }
 
+export function updateGigInStore(gig) {
+    console.log('🔍 updateGigInStore called with gig:', gig._id, gig.likedByUsers?.length)
+    store.dispatch(getCmdUpdateGig(gig))
+    console.log('🔍 Redux action dispatched')
+}
+
 export async function addGigMsg(gigId, txt) {
     try {
         const msg = await gigService.addGigMsg(gigId, txt)

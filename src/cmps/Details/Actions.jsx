@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { updateGig } from '../../store/actions/gig.actions';
+import { gigService } from '../../services/gig';
 import { userService } from '../../services/user';
 
 export function Actions({ gig, setGig }) {
@@ -25,15 +25,11 @@ export function Actions({ gig, setGig }) {
 
         if (!loggedInUser) return
 
-        const currentLikedByUsers = gig.likedByUsers || []
-        const updatedLikedByUsers = isGigLikedByUser()
-            ? currentLikedByUsers.filter(user => user._id !== loggedInUser._id)
-            : [...currentLikedByUsers, loggedInUser]
-
-        const updatedGig = { ...gig, likedByUsers: updatedLikedByUsers }
-
         try {
-            const savedGig = await updateGig(updatedGig)
+            const isCurrentlyLiked = isGigLikedByUser()
+            const savedGig = isCurrentlyLiked 
+                ? await gigService.unlikeGig(gig._id)
+                : await gigService.likeGig(gig._id)
             setGig(savedGig)
         } catch (err) {
             console.error('Error updating gig like status:', err)
