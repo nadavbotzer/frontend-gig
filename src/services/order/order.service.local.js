@@ -14,22 +14,114 @@ export const orderService = {
 
 window.cs = orderService
 
+// Add sample orders for testing when running locally
+if (typeof window !== 'undefined' && window.localStorage) {
+    // Check if we need to seed sample orders
+    const existingOrders = localStorage.getItem('order')
+        if (!existingOrders || JSON.parse(existingOrders).length === 0) {
+            _createSampleOrders()
+        }
+}
+
+async function _createSampleOrders() {
+    const sampleOrders = [
+        {
+            _id: 'o1',
+            buyer: 'u1', // String ID to match your data structure
+            seller: { _id: 'u2', fullname: 'Jane Seller', imgUrl: '/images/profile-default.png', level: 2 },
+            gig: { _id: 'g1', title: 'Sample Gig 1' },
+            packageDeal: {
+                title: 'Basic Logo Design',
+                packageType: 'basic',
+                total: 50,
+                deliveryTime: 3
+            },
+            status: 'pending',
+            createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), // 2 days ago
+            msgs: []
+        },
+        {
+            _id: 'o2',
+            buyer: 'u1', // String ID to match your data structure
+            seller: { _id: 'u3', fullname: 'Mike Designer', imgUrl: '/images/profile-default.png', level: 3 },
+            gig: { _id: 'g2', title: 'Sample Gig 2' },
+            packageDeal: {
+                title: 'Premium Website Design',
+                packageType: 'premium',
+                total: 200,
+                deliveryTime: 7
+            },
+            status: 'deliver',
+            createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(), // 5 days ago
+            msgs: []
+        },
+        {
+            _id: 'o3',
+            buyer: 'u2', // String ID to match your data structure
+            seller: { _id: 'u1', fullname: 'John Buyer', imgUrl: '/images/profile-default.png', level: 1 },
+            gig: { _id: 'g3', title: 'Sample Gig 3' },
+            packageDeal: {
+                title: 'Standard Writing Service',
+                packageType: 'standard',
+                total: 75,
+                deliveryTime: 2
+            },
+            status: 'completed',
+            createdAt: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000).toISOString(), // 10 days ago
+            msgs: []
+        }
+    ]
+    
+            try {
+                await storageService.post('order', sampleOrders[0])
+                await storageService.post('order', sampleOrders[1])
+                await storageService.post('order', sampleOrders[2])
+            } catch (error) {
+                console.error('❌ Failed to create sample orders:', error)
+            }
+}
+
 async function query(filterBy = getDefaultFilter()) {
     let orders = await storageService.query(STORAGE_KEY)
-    const { owner, buyer, sortBy, sortOrder } = filterBy
+    const { owner, seller, buyer, sortBy, sortOrder, excludeCreated } = filterBy
     
-    // Filter by seller (owner)
+    // Filter by seller (owner or seller field)
     if (owner && owner._id) {
-        orders = orders.filter(order => order.seller && order.seller._id === owner._id)
+        orders = orders.filter(order => {
+            if (typeof order.seller === 'string') {
+                return order.seller === owner._id
+            } else if (order.seller && order.seller._id) {
+                return order.seller._id === owner._id
+            }
+            return false
+        })
+    } else if (seller) {
+        orders = orders.filter(order => {
+            if (typeof order.seller === 'string') {
+                return order.seller === seller
+            } else if (order.seller && order.seller._id) {
+                return order.seller._id === seller
+            }
+            return false
+        })
     }
     
     // Filter by buyer
     if (buyer) {
-        orders = orders.filter(order => order.buyer && order.buyer._id === buyer)
+        orders = orders.filter(order => {
+            if (typeof order.buyer === 'string') {
+                return order.buyer === buyer
+            } else if (order.buyer && order.buyer._id) {
+                return order.buyer._id === buyer
+            }
+            return false
+        })
     }
 
-    // Filter out created orders
-    orders = orders.filter(order => order.status !== 'created')
+    // Filter out created orders only if excludeCreated is true
+    if (excludeCreated) {
+        orders = orders.filter(order => order.status !== 'created')
+    }
 
     // Apply sorting
     if (sortBy) {

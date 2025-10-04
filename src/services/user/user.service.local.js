@@ -91,6 +91,69 @@ function saveLoggedinUser(user) {
 
 // To quickly create an admin user, uncomment the next line
 // _createAdmin()
+
+// Create sample users for testing when running locally
+if (typeof window !== 'undefined' && window.localStorage) {
+    const existingUsers = localStorage.getItem('user')
+        if (!existingUsers || JSON.parse(existingUsers).length === 0) {
+            _createSampleUsers()
+        }
+}
+
+async function _createSampleUsers() {
+    const sampleUsers = [
+        {
+            _id: 'u1',
+            username: 'johnbuyer',
+            password: '123456',
+            fullname: 'John Buyer',
+            imgUrl: '/images/profile-default.png',
+            level: 1,
+            rate: 4.5,
+            languages: ['English', 'Spanish'],
+            location: { name: 'United States', format: 'us' },
+            proffession: 'Marketing Professional',
+            isAdmin: false,
+            createdAt: new Date().toISOString()
+        },
+        {
+            _id: 'u2',
+            username: 'janeseller',
+            password: '123456',
+            fullname: 'Jane Seller',
+            imgUrl: '/images/profile-default.png',
+            level: 2,
+            rate: 4.8,
+            languages: ['English', 'French'],
+            location: { name: 'Canada', format: 'ca' },
+            proffession: 'Graphic Designer',
+            isAdmin: false,
+            createdAt: new Date().toISOString()
+        },
+        {
+            _id: 'u3',
+            username: 'mikedesigner',
+            password: '123456',
+            fullname: 'Mike Designer',
+            imgUrl: '/images/profile-default.png',
+            level: 3,
+            rate: 5.0,
+            languages: ['English', 'German', 'Italian'],
+            location: { name: 'Germany', format: 'de' },
+            proffession: 'Web Developer & Designer',
+            isAdmin: false,
+            createdAt: new Date().toISOString()
+        }
+    ]
+    
+            try {
+                await storageService.post('user', sampleUsers[0])
+                await storageService.post('user', sampleUsers[1])
+                await storageService.post('user', sampleUsers[2])
+            } catch (error) {
+                console.error('❌ Failed to create sample users:', error)
+            }
+}
 async function _createAdmin() {
     const user = {
         username: 'admin',

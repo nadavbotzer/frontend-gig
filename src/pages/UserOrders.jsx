@@ -41,7 +41,6 @@ export function UserOrders() {
     
     useEffect(() => {
         if (user?._id) {
-            console.log('🔍 UserOrders - Loading orders for buyer:', user._id)
             loadOrders({ buyer: user._id }).finally(() => setIsInitialLoad(false))
         }
     }, [user?._id])
@@ -271,6 +270,7 @@ export function UserOrders() {
                     </div>
                 </div>
             </section>
+
 
             {/* Filter Section */}
             <section className="orders-filter">

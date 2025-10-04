@@ -63,8 +63,7 @@ export function BuyingInfo({ gig }) {
             return
         }
 
-        const order = orderService.getEmptyOrder()
-        console.log('🔍 BuyingInfo - Initial order:', order)
+        // Calculate package deal details
         const price = packagesList[active].price;
         const vat = price * 0.15
         const serviceFee = price * 0.1
@@ -81,16 +80,23 @@ export function BuyingInfo({ gig }) {
             vat,
             total: price + vat + serviceFee
         }
+
+        // Create order with "created" status (draft order)
+        const order = orderService.getEmptyOrder()
         order.packageDeal = packageDeal
         order.seller = gig.owner
-        order.gig = gig // Add the full gig object for reference
-        console.log('🔍 BuyingInfo - Final order before addOrder:', order)
+        order.gig = gig
+        order.status = 'created' // Draft status until payment is confirmed
+        order.createdAt = new Date().toISOString()
+
         try {
-            const updatedOrder = await addOrder(order)
-            console.log('🔍 BuyingInfo - Order created successfully:', updatedOrder)
-            navigate(`/gig/checkout/${updatedOrder._id}`, { state: { packageDeal } })
+            const createdOrder = await addOrder(order)
+            
+            // Navigate to checkout with order ID
+            navigate(`/gig/checkout/${createdOrder._id}`)
         } catch (err) {
-            console.log('🔍 BuyingInfo - Error creating order:', err)
+            console.error('Error creating draft order:', err)
+            showErrorMsg('Failed to start checkout. Please try again.')
         }
     }
 

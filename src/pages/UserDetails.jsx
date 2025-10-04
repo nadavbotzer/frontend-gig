@@ -1,13 +1,15 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { loadUser } from '../store/actions/user.actions'
 import { loadGigs } from '../store/actions/gig.actions'
+import { loadOrders } from '../store/actions/order.actions'
 import { store } from '../store/store'
 import { showSuccessMsg } from '../services/event-bus.service'
 import { Level } from '../cmps/Level'
 import { LoadingSpinner } from '../cmps/LoadingSpinner'
 import { GigList } from '../cmps/GigList'
+import { OrderList } from '../cmps/OrderList'
 import StarIcon from '@mui/icons-material/Star'
 import DiamondIcon from '@mui/icons-material/Diamond'
 import LanguageIcon from '@mui/icons-material/Language'
@@ -20,12 +22,21 @@ export function UserDetails() {
   const params = useParams()
   const user = useSelector(storeState => storeState.userModule.watchedUser)
   const gigs = useSelector(storeState => storeState.gigModule.gigs)
+  const orders = useSelector(storeState => storeState.orderModule.orders)
   const isLoading = useSelector(storeState => storeState.systemModule.isLoading)
+  const [showOrders, setShowOrders] = useState(false)
 
   useEffect(() => {
     loadUser(params.id)
     loadGigs()
   }, [params.id])
+
+  // Load orders when user is loaded and showOrders is true
+  useEffect(() => {
+    if (user?._id && showOrders) {
+      loadOrders({ seller: user._id })
+    }
+  }, [user?._id, showOrders])
 
   // Filter gigs to show only this user's gigs
   const userGigs = gigs?.filter(gig => gig.owner?._id === user?._id) || []
@@ -199,6 +210,7 @@ export function UserDetails() {
                 <p>This user hasn't created any gigs yet.</p>
               </div>
             )}
+
           </main>
         </div>
       </div>

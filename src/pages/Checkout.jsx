@@ -20,52 +20,86 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping'
 
 export function Checkout() {
 
-    const location = useLocation()
-    const packageDeal = location.state?.packageDeal
-    const { vat, deliveryTime, imgUrl, packageType, price, revisions, serviceFee, services, title, total } = packageDeal
     const navigate = useNavigate()
     const { orderId } = useParams()
     const [order, setOrder] = useState(null)
+    const [isProcessing, setIsProcessing] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        orderId && loadOrder(orderId)
+        if (orderId) {
+            loadOrder(orderId)
+        } else {
+            setIsLoading(false)
+        }
     }, [orderId])
-
 
     async function loadOrder(orderId) {
         try {
             const order = await orderService.getById(orderId)
             setOrder(order)
         } catch (err) {
-            console.log("err: ", err);
-            showErrorMsg('Could not find order in server')
+            console.error("Error loading order:", err)
+            showErrorMsg('Could not find order. Please try again.')
+        } finally {
+            setIsLoading(false)
         }
     }
 
+    // Show loading state
+    if (isLoading) {
+        return (
+            <main className='main-checkout main-container'>
+                <div className='checkout-header'>
+                    <h1>Loading Checkout...</h1>
+                    <p>Please wait while we load your order details.</p>
+                </div>
+            </main>
+        )
+    }
+
+    // Check if we have the order
+    if (!order) {
+        return (
+            <main className='main-checkout main-container'>
+                <div className='checkout-header'>
+                    <h1>Order Not Found</h1>
+                    <p>We couldn't find your order. Please try again.</p>
+                    <button onClick={() => navigate('/gig')} className='btn btn-primary'>
+                        Back to Gigs
+                    </button>
+                </div>
+            </main>
+        )
+    }
+
+    const { packageDeal, buyer } = order
+    const { vat, deliveryTime, imgUrl, packageType, price, revisions, serviceFee, services, title, total } = packageDeal || {}
+
     async function onSaveOrder() {
-        if (!order) {
-            showErrorMsg('No order found to process')
-            return
-        }
+        if (isProcessing) return
+
+        setIsProcessing(true)
 
         try {
-            // Update order status to pending/confirmed and add createdAt timestamp
+            // Update the existing order status to pending (payment confirmed)
             const orderToUpdate = { 
                 ...order, 
-                status: 'pending',
-                createdAt: new Date().toISOString()
+                status: 'pending' // Change from 'created' to 'pending' after payment
             }
-            console.log('Processing order:', orderToUpdate)
+            console.log('Confirming payment for order:', orderToUpdate)
 
             const updatedOrder = await updateOrder(orderToUpdate)
-            showSuccessMsg(`Order created successfully!`)
+            showSuccessMsg(`Payment confirmed! Order is now pending.`)
             
             // Navigate to confirmation page with order ID
-            navigate(`/gig/confirmationpage/${updatedOrder._id || order._id}`)
+            navigate(`/gig/confirmationpage/${updatedOrder._id}`)
 
         } catch (err) {
-            console.error('Error processing order:', err)
-            showErrorMsg('Failed to process order. Please try again.')
+            console.error('Error confirming payment:', err)
+            showErrorMsg('Failed to confirm payment. Please try again.')
+        } finally {
+            setIsProcessing(false)
         }
     }
 
@@ -87,7 +121,7 @@ export function Checkout() {
                             <p>Your invoice will be issued according to the details listed here.</p>
                             <div className='buyer-info'>
                                 <span className='label'>Buyer:</span>
-                                <span className='value'>{order && order.buyer.fullname}</span>
+                                <span className='value'>{buyer?.fullname || 'Loading...'}</span>
                             </div>
                         </div>
                     </section>
@@ -193,9 +227,9 @@ export function Checkout() {
                             </div>
                         </section>
 
-                        <button onClick={onSaveOrder} className='confirm-btn'>
+                        <button onClick={onSaveOrder} className='confirm-btn' disabled={isProcessing}>
                             <PaymentIcon className='btn-icon' />
-                            {order ? 'Confirm & Pay' : 'Loading...'}
+                            {isProcessing ? 'Processing...' : 'Confirm & Pay'}
                         </button>
 
                         <div className='security-info'>

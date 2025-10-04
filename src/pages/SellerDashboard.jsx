@@ -31,7 +31,8 @@ export function SellerDashboard() {
         if (user?._id) {
             setIsInitialLoad(true)
             clearOrders() // Clear previous orders immediately
-            loadOrders({ owner: { _id: user._id }, sortBy, sortOrder }).finally(() => setIsInitialLoad(false))
+            // Fix: Use seller filter instead of owner for local service compatibility
+            loadOrders({ seller: user._id, sortBy, sortOrder }).finally(() => setIsInitialLoad(false))
         }
     }, [user?._id])
 

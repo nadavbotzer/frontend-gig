@@ -164,18 +164,60 @@ export function OrderPreview({ order, viewType = 'seller' }) {
             </div>
             {viewType === 'seller' ? (
                 <div className="cell buyer-info">
-                    <img src={buyer?.imgUrl} alt={buyer?.fullname} />
+                    <img 
+                        src={
+                            typeof buyer === 'string' 
+                                ? '/images/profile-default.png' 
+                                : buyer?.imgUrl || '/images/profile-default.png'
+                        } 
+                        alt={
+                            typeof buyer === 'string' 
+                                ? 'Buyer' 
+                                : buyer?.fullname || 'Buyer'
+                        } 
+                    />
                     <div className="buyer-details">
-                        <span className="buyer-name">{buyer?.fullname}</span>
-                        <span className="buyer-username">@{buyer?.username || buyer?.fullname?.toLowerCase().replace(' ', '')}</span>
+                        <span className="buyer-name">
+                            {typeof buyer === 'string' 
+                                ? 'Buyer' 
+                                : buyer?.fullname || 'Buyer'
+                            }
+                        </span>
+                        <span className="buyer-username">
+                            @{typeof buyer === 'string' 
+                                ? 'buyer' 
+                                : buyer?.username || buyer?.fullname?.toLowerCase().replace(' ', '') || 'buyer'
+                            }
+                        </span>
                     </div>
                 </div>
             ) : (
                 <div className="cell seller-info">
-                    <img src={seller?.imgUrl} alt={seller?.fullname} />
+                    <img 
+                        src={
+                            typeof seller === 'string' 
+                                ? '/images/profile-default.png' 
+                                : seller?.imgUrl || '/images/profile-default.png'
+                        } 
+                        alt={
+                            typeof seller === 'string' 
+                                ? 'Seller' 
+                                : seller?.fullname || 'Seller'
+                        } 
+                    />
                     <div className="seller-details">
-                        <span className="seller-name">{seller?.fullname}</span>
-                        <span className="seller-username">@{seller?.username || seller?.fullname?.toLowerCase().replace(' ', '')}</span>
+                        <span className="seller-name">
+                            {typeof seller === 'string' 
+                                ? 'Seller' 
+                                : seller?.fullname || 'Seller'
+                            }
+                        </span>
+                        <span className="seller-username">
+                            @{typeof seller === 'string' 
+                                ? 'seller' 
+                                : seller?.username || seller?.fullname?.toLowerCase().replace(' ', '') || 'seller'
+                            }
+                        </span>
                     </div>
                 </div>
             )}
