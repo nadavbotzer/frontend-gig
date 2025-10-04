@@ -22,9 +22,10 @@ export function GigPreview({ gig }) {
         if (!loggedInUser) return
 
         const isLiked = isGigLikedByUser()
+        const currentLikedByUsers = gig.likedByUsers || []
         const updatedLikedByUsers = isLiked
-            ? gig.likedByUsers.filter(user => user._id !== loggedInUser._id) // Remove user
-            : [...gig.likedByUsers, loggedInUser]
+            ? currentLikedByUsers.filter(user => user._id !== loggedInUser._id) // Remove user
+            : [...currentLikedByUsers, loggedInUser]
 
         const updatedGig = { ...gig, likedByUsers: updatedLikedByUsers }
 
@@ -36,7 +37,7 @@ export function GigPreview({ gig }) {
     }
 
     function isGigLikedByUser() {
-        if (!gig.likedByUsers) return false
+        if (!loggedInUser || !gig.likedByUsers) return false
         return gig.likedByUsers.some(user => user._id === loggedInUser._id)
     }
     return (
@@ -71,7 +72,7 @@ export function GigPreview({ gig }) {
             <div className="gig-rating-preview">
                 <span><StarRateIcon /></span>
                 <span>{gig.owner.rate}</span>
-                <span className="gig-previews-count">({gig.reviews.length})</span>
+                <span className="gig-previews-count">({gig.reviews?.length || 0})</span>
             </div>
             <p className="gig-price">From US${gig.price}</p>
         </article>

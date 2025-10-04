@@ -15,13 +15,25 @@ export function SellerDashboard() {
     const [sortBy, setSortBy] = useState(null)
     const [sortOrder, setSortOrder] = useState('asc')
     
+    // Check if user is logged in
+    if (!user) {
+        return (
+            <main className="seller-dashboard">
+                <div className="access-denied">
+                    <h1>Access Denied</h1>
+                    <p>Please log in to access the seller dashboard.</p>
+                </div>
+            </main>
+        )
+    }
+    
     useEffect(() => {
         if (user?._id) {
             setIsInitialLoad(true)
             clearOrders() // Clear previous orders immediately
-            loadOrders({ owner: user, sortBy, sortOrder }).finally(() => setIsInitialLoad(false))
+            loadOrders({ owner: { _id: user._id }, sortBy, sortOrder }).finally(() => setIsInitialLoad(false))
         }
-    }, [user?._id, sortBy, sortOrder])
+    }, [user?._id])
 
     const handleSort = (field) => {
         if (sortBy === field) {
@@ -70,6 +82,19 @@ export function SellerDashboard() {
                 </div>
                 {isLoading || isInitialLoad ? (
                     <LoadingSpinner message="Loading orders..." size="large" />
+                ) : orders.length === 0 ? (
+                    <div className="empty-state">
+                        <div className="empty-state-content">
+                            <h2>Start Your Seller Journey</h2>
+                            <p>You haven't started selling yet. Create your first gig to begin receiving orders!</p>
+                            <button 
+                                className="btn btn-primary"
+                                onClick={() => window.location.href = '/gig'}
+                            >
+                                Become a Seller
+                            </button>
+                        </div>
+                    </div>
                 ) : (
                     <OrderList 
                         orders={orders} 

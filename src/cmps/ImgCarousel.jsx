@@ -5,10 +5,13 @@ export function ImgCarousel({ imgUrls, onClickImg, withImgPreview = false }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
     const elCarousel = useRef(null)
     const isNavigatingByDot = useRef(false)
+    
+    // Ensure imgUrls is always an array
+    const safeImgUrls = imgUrls || []
 
     useEffect(() => {
         setCurrentImageIndex(0)
-    }, [imgUrls])
+    }, [safeImgUrls])
 
     useEffect(() => {
         const options = {
@@ -34,7 +37,7 @@ export function ImgCarousel({ imgUrls, onClickImg, withImgPreview = false }) {
     }, [])
 
     function handleNext() {
-        const isLastIndex = currentImageIndex === imgUrls.length - 1
+        const isLastIndex = currentImageIndex === safeImgUrls.length - 1
         if (!isLastIndex) {
             scrollToImage(currentImageIndex + 1)
         }
@@ -67,18 +70,31 @@ export function ImgCarousel({ imgUrls, onClickImg, withImgPreview = false }) {
         }
     }
 
+    // Don't render carousel if no images
+    if (safeImgUrls.length === 0) {
+        return (
+            <div className='img-carousel'>
+                <div className='images-container'>
+                    <div className='carousel-item-container'>
+                        <img src="/images/default-image.jpg" alt="No images available" onClick={onClickImg} />
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <>
             <div className='img-carousel'>
                 <div ref={elCarousel} className='images-container' onScroll={handleScroll}>
-                    {imgUrls.map((imgUrl, idx) => (
+                    {safeImgUrls.map((imgUrl, idx) => (
                         <div key={'i' + idx} data-idx={idx} className='carousel-item-container'>
                             <img src={imgUrl} alt={`Image ${idx}`} onClick={onClickImg} />
                         </div>
                     ))}
                 </div>
                 <div
-                    className={`arrow-right ${currentImageIndex === imgUrls.length - 1 ? 'hidden' : ''}`}
+                    className={`arrow-right ${currentImageIndex === safeImgUrls.length - 1 ? 'hidden' : ''}`}
                     onClick={handleNext}
                 >
                     {<KeyboardArrowRightIcon />}
@@ -87,7 +103,7 @@ export function ImgCarousel({ imgUrls, onClickImg, withImgPreview = false }) {
                     {<KeyboardArrowLeftIcon />}
                 </div>
                 <div className='dots-pagination'>
-                    {imgUrls.map((_, idx) => (
+                    {safeImgUrls.map((_, idx) => (
                         <div
                             onClick={() => handleDotClick(idx)}
                             key={'p' + idx}
@@ -99,7 +115,7 @@ export function ImgCarousel({ imgUrls, onClickImg, withImgPreview = false }) {
             {withImgPreview &&
                 <div className='img-previews'>
                     {
-                        imgUrls.map((imgUrl, idx) => (
+                        safeImgUrls.map((imgUrl, idx) => (
                             <div key={idx} className={`img-preview ${currentImageIndex === idx ? 'active' : ''}`}>
                                 <img src={imgUrl} alt={`Image ${idx}`} onClick={() => scrollToImage(idx)} />
                             </div>

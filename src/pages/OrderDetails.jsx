@@ -109,9 +109,18 @@ export function OrderDetails() {
     const handleStatusChange = async (status) => {
         if (!order || isUpdating) return
         
+        console.log('🎯 handleStatusChange called with status:', status)
+        console.log('🎯 Current order data:', order)
+        console.log('🎯 Current user data:', user)
+        console.log('🎯 User is admin?', user?.isAdmin)
+        console.log('🎯 User ID:', user?._id)
+        console.log('🎯 Order seller ID:', order?.seller?._id)
+        console.log('🎯 Order buyer ID:', order?.buyer?._id)
+        
         setIsUpdating(true)
         try {
             const updatedOrder = { ...order, status }
+            console.log('🎯 Updated order data to send:', updatedOrder)
             await updateOrder(updatedOrder)
             
             // Format status name for display

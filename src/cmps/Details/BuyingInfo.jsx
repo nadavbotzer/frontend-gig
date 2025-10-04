@@ -13,6 +13,43 @@ export function BuyingInfo({ gig }) {
     const [active, setActive] = useState(btns[0])
     const navigate = useNavigate()
     const user = useSelector(storeState => storeState.userModule.user)
+    
+    // Ensure packagesList exists with fallback
+    const packagesList = gig.packagesList || {
+        basic: { 
+            price: gig.price || 100, 
+            daysToMake: gig.daysToMake || 7, 
+            revisions: 1, 
+            packageDescription: 'Basic package with essential services',
+            servicesList: [
+                { text: 'Basic service included', included: true },
+                { text: 'Standard service', included: false },
+                { text: 'Premium service', included: false }
+            ]
+        },
+        standard: { 
+            price: Math.ceil((gig.price || 100) * 1.1), 
+            daysToMake: (gig.daysToMake || 7) + 2, 
+            revisions: 2, 
+            packageDescription: 'Standard package with more services',
+            servicesList: [
+                { text: 'Basic service included', included: true },
+                { text: 'Standard service', included: true },
+                { text: 'Premium service', included: false }
+            ]
+        },
+        premium: { 
+            price: Math.ceil((gig.price || 100) * 1.2), 
+            daysToMake: (gig.daysToMake || 7) + 3, 
+            revisions: 3, 
+            packageDescription: 'Premium package with all services',
+            servicesList: [
+                { text: 'Basic service included', included: true },
+                { text: 'Standard service', included: true },
+                { text: 'Premium service', included: true }
+            ]
+        }
+    }
 
     function onActive({ target }) {
         setActive(target.name)
@@ -27,18 +64,19 @@ export function BuyingInfo({ gig }) {
         }
 
         const order = orderService.getEmptyOrder()
-        const price = gig.packagesList[active].price;
+        console.log('🔍 BuyingInfo - Initial order:', order)
+        const price = packagesList[active].price;
         const vat = price * 0.15
         const serviceFee = price * 0.1
         const packageDeal = {
             gigId: gig._id,
-            imgUrl: gig.imgUrls[0],
+            imgUrl: (gig.imgUrls && gig.imgUrls[0]) || '/images/default-image.jpg',
             title: gig.title,
             packageType: active.substring(0, 1).toLocaleUpperCase() + active.substring(1, active.length),
             price: price,
-            services: gig.packagesList[active].servicesList.filter((service) => service.included).map((service) => service.text),
-            deliveryTime: gig.packagesList[active].daysToMake,
-            revisions: gig.packagesList[active].revisions,
+            services: packagesList[active].servicesList.filter((service) => service.included).map((service) => service.text),
+            deliveryTime: packagesList[active].daysToMake,
+            revisions: packagesList[active].revisions,
             serviceFee,
             vat,
             total: price + vat + serviceFee
@@ -46,11 +84,13 @@ export function BuyingInfo({ gig }) {
         order.packageDeal = packageDeal
         order.seller = gig.owner
         order.gig = gig // Add the full gig object for reference
+        console.log('🔍 BuyingInfo - Final order before addOrder:', order)
         try {
             const updatedOrder = await addOrder(order)
+            console.log('🔍 BuyingInfo - Order created successfully:', updatedOrder)
             navigate(`/gig/checkout/${updatedOrder._id}`, { state: { packageDeal } })
         } catch (err) {
-            console.log(err)
+            console.log('🔍 BuyingInfo - Error creating order:', err)
         }
     }
 
@@ -79,7 +119,7 @@ export function BuyingInfo({ gig }) {
 
                 <div className="price-info">
                     <span className='price currency-symbol'>$</span>
-                    <span className='price'>{gig.packagesList[active].price}</span>
+                    <span className='price'>{packagesList[active].price}</span>
                     <img className='info-icon' src={'/images/info-icon.png'} />
                 </div>
 
@@ -91,22 +131,22 @@ export function BuyingInfo({ gig }) {
                     <img className='question-icon' src={'/images/question-icon.png'} />
                 </div>
 
-                <span className='service-desc'><span className='font-weight'>{active.substring(0, 1).toLocaleUpperCase() + active.substring(1, active.length)}</span> {gig.packagesList[active].packageDescription}</span><br />
+                <span className='service-desc'><span className='font-weight'>{active.substring(0, 1).toLocaleUpperCase() + active.substring(1, active.length)}</span> {packagesList[active].packageDescription}</span><br />
 
                 <div className="delivery-revisions">
                     <span className='delivery'>
                         <img src={'/images/clock-icon.png'} />
-                        {gig.packagesList[active].daysToMake}-day delivery
+                        {packagesList[active].daysToMake}-day delivery
                     </span>
                     <span className='revisions'>
                         <img src={'/images/recycle-icon.png'} />
-                        {gig.packagesList[active].revisions} Revision
+                        {packagesList[active].revisions} Revision
                     </span>
                 </div>
 
                 <ul className='services-list'>
                     {
-                        gig.packagesList[active].servicesList.map((service) => {
+                        packagesList[active].servicesList.map((service) => {
                             const src = service.included ? 'dark-check-icon.png' : 'light-check-icon.png'
                             return <li key={service.text}>
                                 <img src={`/images/${src}`} />

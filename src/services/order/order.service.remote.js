@@ -11,7 +11,11 @@ export const orderService = {
 }
 
 async function query(filterBy) {
-    return httpService.get(`order/get-orders`, filterBy)
+    console.log('🔍 Remote query called with filter:', filterBy)
+    const result = await httpService.get(`order/get-orders`, filterBy)
+    console.log('🔍 Remote query result:', result)
+    console.log('🔍 Remote query result length:', result.length)
+    return result
 }
 
 function getById(orderId) {
@@ -41,7 +45,10 @@ async function updateOrder(order) {
 }
 
 async function saveOrder(order) {
-    return await httpService.post('order/add-order', order)
+    console.log('🔍 Remote saveOrder called with:', order)
+    const result = await httpService.post('order/add-order', order)
+    console.log('🔍 Remote saveOrder response:', result)
+    return result
 }
 
 async function addOrderMsg(orderId, txt) {

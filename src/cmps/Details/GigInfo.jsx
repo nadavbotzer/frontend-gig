@@ -18,7 +18,7 @@ export function GigInfo({ gig }) {
         <GigHeader
             title={title}
             owner={owner}
-            reviewsCount={reviews.length}
+            reviewsCount={reviews?.length || 0}
         />
         <ImgCarousel imgUrls={imgUrls} withImgPreview={true} />
         <AboutGig
@@ -31,7 +31,7 @@ export function GigInfo({ gig }) {
             languagesArray={owner.languages}
             lastDeliveryAt={getRandomCreatedAt()}
             avgResponse={avgResponseTime}
-            reviewsCount={reviews.length}
+            reviewsCount={reviews?.length || 0}
             about={about}
         />
         {

@@ -9,6 +9,19 @@ import { gigService as remote } from './gig.service.remote'
 
 export async function getEmptyGig() {
     const loggedInUser = userService.getLoggedinUser()
+    
+    // Create a default user if none is logged in
+    const defaultUser = {
+        fullname: 'Anonymous User',
+        username: 'anonymous',
+        imgUrl: '/images/profile-default.png',
+        level: 1,
+        rate: 4.5,
+        languages: getRandomLanguages(getRandomIntInclusive(1, 3)),
+        createdAt: new Date().toISOString()
+    }
+    
+    const currentUser = loggedInUser || defaultUser
     const servicesList = getRnadomService(5)
     const price = Math.ceil(getRandomIntInclusive(10, 2500))
     const daysToMake = getRandomIntInclusive(1, 10)
@@ -17,9 +30,12 @@ export async function getEmptyGig() {
     const gigTemplates = getGigTemplates()
     const randomTemplate = gigTemplates[getRandomIntInclusive(0, gigTemplates.length - 1)]
     const randomTags = getRandomTags(getRandomIntInclusive(2, 4))
-    const randomImages = await getRandomImages()
+    const randomImages = await getRandomImages().catch(err => {
+        console.error('Error getting random images:', err)
+        return ['/images/default-image.jpg'] // Fallback to default image
+    })
     const randomProfession = getRandomProfession()
-    const userLevel = loggedInUser.level || 1 // Use actual user level, default to 1
+    const userLevel = currentUser.level || 1 // Use actual user level, default to 1
     
     // Generate random reviews first - more reviews for better demo data
     const reviews = generateRandomReviews(getRandomIntInclusive(5, 25))
@@ -34,15 +50,15 @@ export async function getEmptyGig() {
         about: randomTemplate.about,
         price: price,
         owner: {
-            ...loggedInUser,
+            ...currentUser,
             proffession: randomProfession,
             level: userLevel, // Use consistent user level
             rate: parseFloat(averageRating), // Use calculated average rating from reviews
-            languages: loggedInUser.languages || getRandomLanguages(getRandomIntInclusive(1, 3))
+            languages: currentUser.languages || getRandomLanguages(getRandomIntInclusive(1, 3))
         },
         location: getRandomLocation(),
         daysToMake: daysToMake,
-        description: randomTemplate.description.replace('{fullname}', loggedInUser.fullname),
+        description: randomTemplate.description.replace('{fullname}', currentUser.fullname),
         imgUrls: randomImages,
         tags: randomTags,
         avgResponseTime: getRandomIntInclusive(1, 24),

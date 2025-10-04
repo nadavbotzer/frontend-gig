@@ -40,10 +40,11 @@ export function UserOrders() {
     const [sortOrder, setSortOrder] = useState('asc')
     
     useEffect(() => {
-        if (user) {
+        if (user?._id) {
+            console.log('🔍 UserOrders - Loading orders for buyer:', user._id)
             loadOrders({ buyer: user._id }).finally(() => setIsInitialLoad(false))
         }
-    }, [user])
+    }, [user?._id])
 
     useEffect(() => {
         let filtered = orders
@@ -210,7 +211,7 @@ export function UserOrders() {
     const stats = getOrderStats()
 
     if (isLoading && isInitialLoad) {
-        return <LoadingSpinner message="Loading your orders..." size="large" />
+        return <LoadingSpinner message="Loading your orders..." size="large" fullPage />
     }
 
     return (
@@ -346,7 +347,7 @@ export function UserOrders() {
 
             {/* Orders List */}
             <section className="orders-list-section">
-                {filteredOrders.length === 0 ? (
+                {filteredOrders.length === 0 && !isLoading ? (
                     <div className="no-orders">
                         <ShoppingBagIcon className="no-orders-icon" />
                         <h3>No orders found</h3>
@@ -360,6 +361,8 @@ export function UserOrders() {
                             Browse Services
                         </Link>
                     </div>
+                ) : filteredOrders.length === 0 && isLoading ? (
+                    <LoadingSpinner message="Loading orders..." size="medium" />
                 ) : (
                     <div className={viewMode === 'cards' ? 'orders-grid' : 'orders-list'}>
                         {viewMode === 'cards' ? (

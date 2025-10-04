@@ -21,7 +21,17 @@ export function InfoSeller({ location, createdAt, avgResponse, lastDeliveryAt, l
                 </div>
                 <div className="label">
                     <span className="title">Languages</span>
-                    <span className="text">{languagesArray.map((lang) => { return <span key={lang}>{lang}, </span> })}</span>
+                    <span className="text">
+                        {languagesArray && languagesArray.length > 0 
+                            ? languagesArray.map((lang, index) => (
+                                <span key={lang}>
+                                    {lang}
+                                    {index < languagesArray.length - 1 ? ', ' : ''}
+                                </span>
+                            ))
+                            : 'English'
+                        }
+                    </span>
                 </div>
             </div>
 

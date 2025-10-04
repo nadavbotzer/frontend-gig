@@ -32,7 +32,19 @@ async function query(filterBy = getDefaultFilter()) {
     }
     if (txt) {
         const regex = new RegExp(filterBy.txt, 'i')
-        gigs = gigs.filter(gig => regex.test(gig.title) || regex.test(gig.description))
+        gigs = gigs.filter(gig => {
+            // Check title
+            if (regex.test(gig.title)) return true
+            
+            // Check description - handle both string and array formats
+            if (typeof gig.description === 'string') {
+                return regex.test(gig.description)
+            } else if (Array.isArray(gig.description)) {
+                return gig.description.some(item => regex.test(item.text || ''))
+            }
+            
+            return false
+        })
     }
     if (minPrice) {
         gigs = gigs.filter(gig => gig.price >= minPrice)

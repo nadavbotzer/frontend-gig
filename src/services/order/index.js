@@ -6,9 +6,11 @@ import { orderService as remote } from './order.service.remote'
 
 export function getEmptyOrder() {
     const loggedInUser = userService.getLoggedinUser()
-    console.log(loggedInUser)
+    console.log('🔍 getEmptyOrder - loggedInUser:', loggedInUser)
+    const buyerId = loggedInUser?._id || loggedInUser
+    console.log('🔍 getEmptyOrder - buyerId:', buyerId)
     return {
-        buyer: loggedInUser,
+        buyer: buyerId,
         seller: '',
         status: 'created',
     }

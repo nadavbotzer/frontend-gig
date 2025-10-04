@@ -54,6 +54,9 @@ async function signup(userCred) {
     if (!userCred.createdAt) userCred.createdAt = new Date()
     if (!userCred.level) userCred.level = 1 // Default to level 1 for new users
     if (!userCred.rate) userCred.rate = 5.0 // Default to 5.0 rating for new users
+    if (!userCred.languages) userCred.languages = ['English'] // Default languages array
+    if (!userCred.location) userCred.location = { name: 'United States', format: 'us' } // Default location
+    if (!userCred.proffession) userCred.proffession = 'Professional freelancer'
     userCred.score = 10000
 
     const user = await storageService.post('user', userCred)

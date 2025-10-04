@@ -16,7 +16,10 @@ export function OrderPreview({ order, viewType = 'seller' }) {
     const [isOpen, toggleModal] = useModal();
     const buttonRef = useRef()
     const navigate = useNavigate()
-    const { buyer, seller, packageDeal, status, createdAt } = order
+    const { buyer, seller, packageDeal, gig, status, createdAt } = order
+    // Handle both packageDeal (frontend) and gig (backend) structures
+    const orderPackage = packageDeal || gig
+    
 
     async function onUpdateStatus(orderStatus) {
         const orderToSave = { ...order, status: orderStatus }
@@ -46,13 +49,33 @@ export function OrderPreview({ order, viewType = 'seller' }) {
     }
 
     const calculateDueDate = () => {
-        if (!createdAt || !packageDeal?.deliveryTime) {
+        if (!createdAt) {
+            return 'N/A'
+        }
+        
+        if (!orderPackage) {
+            return 'N/A'
+        }
+        
+        // Check for deliveryTime or daysToMake field
+        const deliveryTime = orderPackage.deliveryTime || orderPackage.daysToMake
+        
+        if (!deliveryTime) {
             return 'N/A'
         }
         
         const orderDate = new Date(createdAt)
-        const deliveryDays = packageDeal.deliveryTime
-        const dueDate = new Date(orderDate.getTime() + (deliveryDays * 24 * 60 * 60 * 1000))
+        const deliveryDays = deliveryTime
+        
+        // Handle different deliveryTime formats
+        let daysToAdd = deliveryDays
+        if (typeof deliveryDays === 'object' && deliveryDays.value) {
+            daysToAdd = deliveryDays.value
+        } else if (typeof deliveryDays === 'string') {
+            daysToAdd = parseInt(deliveryDays) || 0
+        }
+        
+        const dueDate = new Date(orderDate.getTime() + (daysToAdd * 24 * 60 * 60 * 1000))
         
         return dueDate.toLocaleDateString('en-US', { 
             month: 'short', 
@@ -62,11 +85,24 @@ export function OrderPreview({ order, viewType = 'seller' }) {
     }
 
     const getDaysRemaining = () => {
-        if (!createdAt || !packageDeal?.deliveryTime) return null
+        if (!createdAt || !orderPackage) return null
+        
+        // Check for deliveryTime or daysToMake field
+        const deliveryTime = orderPackage.deliveryTime || orderPackage.daysToMake
+        if (!deliveryTime) return null
         
         const orderDate = new Date(createdAt)
-        const deliveryDays = packageDeal.deliveryTime
-        const dueDate = new Date(orderDate.getTime() + (deliveryDays * 24 * 60 * 60 * 1000))
+        const deliveryDays = deliveryTime
+        
+        // Handle different deliveryTime formats (same as calculateDueDate)
+        let daysToAdd = deliveryDays
+        if (typeof deliveryDays === 'object' && deliveryDays.value) {
+            daysToAdd = deliveryDays.value
+        } else if (typeof deliveryDays === 'string') {
+            daysToAdd = parseInt(deliveryDays) || 0
+        }
+        
+        const dueDate = new Date(orderDate.getTime() + (daysToAdd * 24 * 60 * 60 * 1000))
         const today = new Date()
         const diffTime = dueDate - today
         const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
@@ -89,8 +125,37 @@ export function OrderPreview({ order, viewType = 'seller' }) {
     }
     const daysRemaining = getDaysRemaining()
     
+    // Handle missing orderPackage gracefully
+    if (!orderPackage) {
+        return (
+            <>
+                <div className="cell order-id">
+                    <span className="order-id-text">Missing Data</span>
+                    <span className="order-date-text">N/A</span>
+                </div>
+                <div className="cell buyer-info">
+                    <span>No Data</span>
+                </div>
+                <div className="cell gig-info">
+                    <span>No Data</span>
+                </div>
+                <div className="cell total">
+                    <span>$0</span>
+                </div>
+                <div className="cell due-date">
+                    <span>N/A</span>
+                </div>
+                <div className="cell status">
+                    <span className="status-badge status-default">{status}</span>
+                </div>
+                <div className="cell actions">
+                    <span>No Actions</span>
+                </div>
+            </>
+        )
+    }
+
     return (
-        packageDeal &&
         <>
             <div className="cell order-id">
                 <span className="order-id-text">{formatOrderId(order._id)}</span>
@@ -115,12 +180,12 @@ export function OrderPreview({ order, viewType = 'seller' }) {
             )}
             <div className="cell gig-info">
                 <div className="gig-details">
-                    <span className="gig-title">{packageDeal.title}</span>
-                    <span className="package-type">{packageDeal.packageType?.toUpperCase() || 'BASIC'}</span>
+                    <span className="gig-title">{orderPackage.title}</span>
+                    <span className="package-type">{orderPackage.packageType?.toUpperCase() || 'BASIC'}</span>
                 </div>
             </div>
             <div className="cell total">
-                <span className="price">${packageDeal.total}</span>
+                <span className="price">${orderPackage.total || orderPackage.price || 0}</span>
             </div>
             <div className="cell due-date">
                 <div className="date-info">

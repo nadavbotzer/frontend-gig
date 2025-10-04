@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { updateGig } from '../../store/actions/gig.actions';
+import { userService } from '../../services/user';
 
 export function Actions({ gig, setGig }) {
 
@@ -24,9 +25,10 @@ export function Actions({ gig, setGig }) {
 
         if (!loggedInUser) return
 
+        const currentLikedByUsers = gig.likedByUsers || []
         const updatedLikedByUsers = isGigLikedByUser()
-            ? gig.likedByUsers.filter(user => user._id !== loggedInUser._id)
-            : [...gig.likedByUsers, loggedInUser]
+            ? currentLikedByUsers.filter(user => user._id !== loggedInUser._id)
+            : [...currentLikedByUsers, loggedInUser]
 
         const updatedGig = { ...gig, likedByUsers: updatedLikedByUsers }
 
@@ -39,6 +41,7 @@ export function Actions({ gig, setGig }) {
     }
 
     function isGigLikedByUser() {
+        if (!loggedInUser || !gig.likedByUsers) return false
         return gig.likedByUsers.some(user => user._id === loggedInUser._id)
     }
 
@@ -59,7 +62,7 @@ export function Actions({ gig, setGig }) {
                     })
                 }
             </div>
-            <span className='amount-likes'>{gig.likedByUsers.length}</span>
+            <span className='amount-likes'>{gig.likedByUsers?.length || 0}</span>
         </div>
     </section>
 }
