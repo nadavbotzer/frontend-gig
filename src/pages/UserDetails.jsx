@@ -92,6 +92,7 @@ export function UserDetails() {
     )
   }
 
+
   return (
     <section className="user-profile">
       <div className="profile-container">
@@ -110,7 +111,7 @@ export function UserDetails() {
           
           <div className="profile-info">
             <h1 className="profile-name">{user.fullname}</h1>
-            <p className="profile-profession">{user.proffession}</p>
+            <p className="profile-profession">{user.profession}</p>
             <div className="profile-location">
               <LocationOnIcon className="location-icon" />
               <span>{user.location?.name || 'Location not specified'}</span>
@@ -191,7 +192,7 @@ export function UserDetails() {
             <div className="about-section">
               <h2>About {user.fullname}</h2>
               <p className="about-text">
-                {user.proffession || 'No description available'}
+                {user.profession || 'No description available'}
               </p>
             </div>
 
