@@ -40,6 +40,7 @@
                 border: none;
                 margin: 0;
                 font-size: rem(16px);
+                cursor: pointer;
             }
 
             .border-right {
@@ -84,9 +85,10 @@
             }
 
             .info-icon {
-                width: rem(20px);
+                font-size: rem(20px);
                 margin: auto;
                 margin-left: rem(8px);
+                color: #62646a;
             }
         }
 
@@ -118,8 +120,9 @@
             }
 
             .question-icon {
-                width: rem(14px);
+                font-size: rem(14px);
                 margin-top: rem(4px);
+                color: #62646a;
             }
         }
 
@@ -153,10 +156,11 @@
                 font-size: rem(14px);
                 font-weight: 700;
                 line-height: rem(24px);
+                gap: rem(6px);
 
-                img {
-                    width: rem(20px);
-                    margin-right: rem(3px);
+                svg {
+                    font-size: rem(20px);
+                    color: #62646a;
                 }
             }
         }
@@ -165,6 +169,7 @@
             li {
                 display: flex;
                 align-items: center;
+                gap: rem(8px);
                 line-height: rem(24px);
                 color: #95979d;
                 font-family: Macan;
@@ -172,9 +177,13 @@
                 text-align: left;
                 font-weight: 500;
 
-                img {
-                    width: rem(20px);
-                    margin-right: rem(5px);
+                .check-icon {
+                    font-size: rem(20px);
+                    color: #c5c6c9;
+
+                    &.included {
+                        color: #1dbf73;
+                    }
                 }
             }
         }
@@ -204,6 +213,7 @@
                 color: #fff;
                 font-family: Macan;
                 font-weight: 600;
+                font-size: 1.1rem;
                 line-height: rem(16px);
                 padding: rem(12px) rem(24px);
 
@@ -221,8 +231,8 @@
                     text-align: end;
                     align-items: flex-end;
 
-                    img {
-                        width: rem(20px);
+                    svg {
+                        font-size: rem(20px);
                     }
                 }
             }

@@ -6,7 +6,8 @@ export async function loadReviews(filterBy = {}) {
 	try {
 		const response = await reviewService.query(filterBy)
 		const reviews = response.reviews || response
-		store.dispatch({ type: SET_REVIEWS, reviews })
+		const pagination = response.pagination || null
+		store.dispatch({ type: SET_REVIEWS, reviews, pagination })
 		return response
 	} catch (err) {
 		console.error('ReviewActions: err in loadReviews', err)

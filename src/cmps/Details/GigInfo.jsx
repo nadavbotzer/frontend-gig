@@ -8,7 +8,7 @@ import { ImgCarousel } from "../ImgCarousel";
 import { getRandomCreatedAt } from "../../services/util.service";
 import { userService } from "../../services/user";
 
-export function GigInfo({ gig, reviews, onReviewAdded }) {
+export function GigInfo({ gig, reviews, pagination, onReviewAdded, onPageChange }) {
 
     const { title, owner, imgUrls, description, location, avgResponseTime, about } = gig
     const loggedInUser = userService.getLoggedinUser()
@@ -20,7 +20,7 @@ export function GigInfo({ gig, reviews, onReviewAdded }) {
         <GigHeader
             title={title}
             owner={owner}
-            reviewsCount={reviews?.length || 0}
+            reviewsCount={pagination?.total || reviews?.length || 0}
         />
         <ImgCarousel imgUrls={imgUrls} withImgPreview={true} />
         <AboutGig
@@ -33,11 +33,15 @@ export function GigInfo({ gig, reviews, onReviewAdded }) {
             languagesArray={owner.languages}
             lastDeliveryAt={getRandomCreatedAt()}
             avgResponse={avgResponseTime}
-            reviewsCount={reviews?.length || 0}
+            reviewsCount={pagination?.total || reviews?.length || 0}
             about={about}
         />
         {reviews && reviews.length > 0 && (
-            <ReviewList reviews={reviews} />
+            <ReviewList 
+                reviews={reviews} 
+                pagination={pagination}
+                onPageChange={onPageChange}
+            />
         )}
         {canAddReview && onReviewAdded && (
             <AddReview 

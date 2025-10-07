@@ -5,12 +5,17 @@ export const UPDATE_REVIEW = 'UPDATE_REVIEW'
 
 const initialState = {
   reviews: [],
+  pagination: null,
 }
 
 export function reviewReducer(state = initialState, action = {}) {
   switch (action.type) {
     case SET_REVIEWS:
-      return { ...state, reviews: action.reviews }
+      return { 
+        ...state, 
+        reviews: action.reviews,
+        pagination: action.pagination || state.pagination
+      }
     case ADD_REVIEW:
       return { ...state, reviews: [...state.reviews, action.review] }
     case REMOVE_REVIEW:

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ReviewCard } from './Review/ReviewCard.jsx'
 import { userService } from '../services/user'
+import { Pagination } from './Pagination.jsx'
 
 function ReviewItemWithUser({ reviewData }) {
     const [userData, setUserData] = useState(null)
@@ -42,9 +43,9 @@ function ReviewItemWithUser({ reviewData }) {
     )
 }
 
-export function ReviewList({ reviews }) {
+export function ReviewList({ reviews, pagination, onPageChange }) {
     return <section className='reviews'>
-        <h1>Reviews</h1>
+        <h1>Reviews {pagination && `(${pagination.total})`}</h1>
         <ul className="review-list">
             {
                 reviews.map((reviewData) => {
@@ -55,5 +56,13 @@ export function ReviewList({ reviews }) {
                 })
             }
         </ul>
+        
+        {pagination && (
+            <Pagination
+                currentPage={pagination.page}
+                totalPages={pagination.pages}
+                onPageChange={onPageChange}
+            />
+        )}
     </section>
 }

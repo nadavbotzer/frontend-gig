@@ -5,6 +5,13 @@ import { orderService } from '../../services/order'
 import { addOrder } from '../../store/actions/order.actions'
 import { userService } from '../../services/user'
 import { showErrorMsg } from '../../services/event-bus.service'
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
+import AutorenewIcon from '@mui/icons-material/Autorenew'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
 
 export function BuyingInfo({ gig }) {
@@ -126,7 +133,7 @@ export function BuyingInfo({ gig }) {
                 <div className="price-info">
                     <span className='price currency-symbol'>$</span>
                     <span className='price'>{packagesList[active].price}</span>
-                    <img className='info-icon' src={'/images/info-icon.png'} />
+                    <InfoOutlinedIcon className='info-icon' />
                 </div>
 
                 <div className="discount-info">
@@ -134,18 +141,18 @@ export function BuyingInfo({ gig }) {
                         Save up to 10% with
                         <span className='discount-subscribe'> Subscribe to save</span>
                     </span>
-                    <img className='question-icon' src={'/images/question-icon.png'} />
+                    <HelpOutlineIcon className='question-icon' />
                 </div>
 
                 <span className='service-desc'><span className='font-weight'>{active.substring(0, 1).toLocaleUpperCase() + active.substring(1, active.length)}</span> {packagesList[active].packageDescription}</span><br />
 
                 <div className="delivery-revisions">
                     <span className='delivery'>
-                        <img src={'/images/clock-icon.png'} />
+                        <AccessTimeIcon />
                         {packagesList[active].daysToMake}-day delivery
                     </span>
                     <span className='revisions'>
-                        <img src={'/images/recycle-icon.png'} />
+                        <AutorenewIcon />
                         {packagesList[active].revisions} Revision
                     </span>
                 </div>
@@ -153,9 +160,12 @@ export function BuyingInfo({ gig }) {
                 <ul className='services-list'>
                     {
                         packagesList[active].servicesList.map((service) => {
-                            const src = service.included ? 'dark-check-icon.png' : 'light-check-icon.png'
                             return <li key={service.text}>
-                                <img src={`/images/${src}`} />
+                                {service.included ? (
+                                    <CheckCircleIcon className='check-icon included' />
+                                ) : (
+                                    <RadioButtonUncheckedIcon className='check-icon' />
+                                )}
                                 {service.text}
                             </li>
                         })
@@ -166,7 +176,7 @@ export function BuyingInfo({ gig }) {
                     <button to="checkout" className="btn continue" type="button" onClick={checkout}>
                         <span className='txt'>Continue</span>
                         <span className='icon'>
-                            <img src={'/images/right-arrow-icon.png'} />
+                            <ArrowForwardIcon />
                         </span>
                     </button>
                     <input className="btn compare" type="button" value="Compare packages" />

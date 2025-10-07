@@ -16,14 +16,18 @@
         color: #222325;
         font-weight: 700;
         line-height: rem(21px);
-        padding: rem(0px) rem(0px) rem(0px) rem(4px);
         text-align: left;
+        gap:0.2rem;
 
         .stars {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: flex-start;
+
+            .icon {
+                font-size: 1.1rem;
+            }
 
             img.icon {
                 width: rem(18px);
@@ -36,8 +40,8 @@
         border-radius: 50%;
         height: rem(4px);
         background-color: lightgray;
-        margin-right: rem(15px);
-        margin-left: rem(15px);
+        margin-right: rem(12px);
+        margin-left: rem(12px);
     }
 
     .date {

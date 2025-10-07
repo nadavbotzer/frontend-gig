@@ -5,10 +5,16 @@
     
 	.star-input {
 		cursor: pointer;
-		transition: transform 0.2s;
+		transition: transform 0.2s, color 0.2s;
+		color: #dadbdd;
+		font-size: 1.1rem;
 
 		&:hover {
 			transform: scale(1.1);
+		}
+
+		&.filled {
+			color: #ffb33e;
 		}
 	}
 
@@ -45,7 +51,7 @@
 			gap: rem(8px);
 
 			input {
-				width: rem(60px);
+				width: 5rem;
 				padding: rem(6px);
 				border: 1px solid #c5c6c9;
 				border-radius: rem(4px);
@@ -64,6 +70,7 @@
 		}
 
 		.duration {
+            padding-left: 1rem;
 			input {
 				padding: rem(6px) rem(12px);
 				border: 1px solid #c5c6c9;

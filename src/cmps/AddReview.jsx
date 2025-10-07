@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { userService } from '../services/user'
 import { ProfileImg } from './MiniUser/ProfileImg'
+import StarRateIcon from '@mui/icons-material/StarRate'
+import StarBorderIcon from '@mui/icons-material/StarBorder'
+import "/node_modules/flag-icons/css/flag-icons.min.css"
 
 export function AddReview({ gigId, onReviewAdded }) {
 	const loggedInUser = userService.getLoggedinUser()
@@ -68,15 +71,25 @@ export function AddReview({ gigId, onReviewAdded }) {
 
 	const stars = []
 	for (let i = 1; i <= 5; i++) {
+		const isFilled = i <= (hoveredStar || reviewData.rate)
 		stars.push(
-			<img
-				key={i}
-				className={`icon star-input ${i <= (hoveredStar || reviewData.rate) ? 'filled' : ''}`}
-				src={i <= (hoveredStar || reviewData.rate) ? '/images/star-dark-icon.png' : '/images/star-icon.png'}
-				onClick={() => handleRateClick(i)}
-				onMouseEnter={() => setHoveredStar(i)}
-				onMouseLeave={() => setHoveredStar(0)}
-			/>
+			isFilled ? (
+				<StarRateIcon
+					key={i}
+					className="star-input filled"
+					onClick={() => handleRateClick(i)}
+					onMouseEnter={() => setHoveredStar(i)}
+					onMouseLeave={() => setHoveredStar(0)}
+				/>
+			) : (
+				<StarBorderIcon
+					key={i}
+					className="star-input"
+					onClick={() => handleRateClick(i)}
+					onMouseEnter={() => setHoveredStar(i)}
+					onMouseLeave={() => setHoveredStar(0)}
+				/>
+			)
 		)
 	}
 
@@ -86,6 +99,12 @@ export function AddReview({ gigId, onReviewAdded }) {
 				<ProfileImg imgUrl={loggedInUser.imgUrl} />
 				<div className="user-info">
 					<span className="fullname">{loggedInUser.fullname || loggedInUser.username}</span>
+					{loggedInUser.location && (
+						<span className="location-dtl">
+							<span className={`fi fi-${loggedInUser.location.format} small`}></span>
+							<span className="location">{loggedInUser.location.name}</span>
+						</span>
+					)}
 				</div>
 			</div>
 

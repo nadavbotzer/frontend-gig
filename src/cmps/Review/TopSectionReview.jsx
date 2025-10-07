@@ -1,4 +1,5 @@
 import { timeAgo } from '../../services/util.service'
+import StarRateIcon from '@mui/icons-material/StarRate'
 
 
 export function TopSectionReview({ rate, date }) {
@@ -6,7 +7,7 @@ export function TopSectionReview({ rate, date }) {
     const stars = []
     function createRatingStarString(rate) {
         for (let i = 0; i < rate; i++) {
-            stars.push(<img className='icon' src='/images/star-dark-icon.png' key={i + date} />)
+            stars.push(<StarRateIcon className='icon' key={i + date} />)
         }
     }
 
