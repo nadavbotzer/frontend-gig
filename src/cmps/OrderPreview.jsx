@@ -112,7 +112,8 @@ export function OrderPreview({ order, viewType = 'seller' }) {
     }
 
     const getStatusClass = (status) => {
-        switch(status) {
+        const statusLower = status?.toLowerCase() || ''
+        switch(statusLower) {
             case 'pending': return 'status-pending'
             case 'approve': 
             case 'approved': return 'status-approved'
@@ -121,6 +122,8 @@ export function OrderPreview({ order, viewType = 'seller' }) {
             case 'reject': 
             case 'rejected': return 'status-rejected'
             case 'created': return 'status-default'
+            case 'completed': return 'status-approved'
+            case 'cancelled': return 'status-rejected'
             default: return 'status-default'
         }
     }

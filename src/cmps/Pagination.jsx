@@ -5,34 +5,31 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
         const pages = []
         const maxPagesToShow = 5
         
-        if (totalPages <= 7) {
-            // Show all pages if total is small (7 or less)
+        if (totalPages <= maxPagesToShow) {
+            // Show all pages if total is small
             for (let i = 1; i <= totalPages; i++) {
                 pages.push(i)
             }
         } else {
-            // Always show first page
-            pages.push(1)
-            
-            // Calculate range around current page
+            // Calculate range around current page (5 pages total)
             let start, end
             
-            if (currentPage <= 3) {
+            if (currentPage <= 2) {
                 // Near the beginning
-                start = 2
-                end = Math.min(5, totalPages - 1)
-            } else if (currentPage >= totalPages - 2) {
+                start = 1
+                end = maxPagesToShow
+            } else if (currentPage >= totalPages - 1) {
                 // Near the end
-                start = Math.max(totalPages - 4, 2)
-                end = totalPages - 1
+                start = totalPages - maxPagesToShow + 1
+                end = totalPages
             } else {
-                // In the middle
-                start = currentPage - 1
-                end = currentPage + 1
+                // In the middle - show current page centered
+                start = currentPage - 2
+                end = currentPage + 2
             }
             
-            // Add ellipsis after first page if needed
-            if (start > 2) {
+            // Add ellipsis before if not showing from page 1
+            if (start > 1) {
                 pages.push('...')
             }
             
@@ -41,13 +38,10 @@ export function Pagination({ currentPage, totalPages, onPageChange }) {
                 pages.push(i)
             }
             
-            // Add ellipsis before last page if needed
-            if (end < totalPages - 1) {
+            // Add ellipsis after if not showing last page
+            if (end < totalPages) {
                 pages.push('...')
             }
-            
-            // Always show last page
-            pages.push(totalPages)
         }
         
         return pages

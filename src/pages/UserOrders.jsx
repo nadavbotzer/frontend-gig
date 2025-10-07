@@ -7,6 +7,7 @@ import { sortOrdersClientSide, handleSortField } from '../services/util/orderSor
 import { LoadingSpinner } from '../cmps/LoadingSpinner'
 import { Level } from '../cmps/Level'
 import { OrderList } from '../cmps/OrderList'
+import { Pagination } from '../cmps/Pagination'
 import { Link } from 'react-router-dom'
 
 // MUI Icons
@@ -27,9 +28,11 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney'
 
 export function UserOrders() {
     const orders = useSelector(storeState => storeState.orderModule.orders)
+    const pagination = useSelector(storeState => storeState.orderModule.pagination)
     const isLoading = useSelector(storeState => storeState.systemModule.isLoading)
     const user = userService.getLoggedinUser()
     const [isInitialLoad, setIsInitialLoad] = useState(true)
+    const [currentPage, setCurrentPage] = useState(1)
     const [filteredOrders, setFilteredOrders] = useState([])
     const [statusFilter, setStatusFilter] = useState('all')
     const [viewMode, setViewMode] = useState(() => {
@@ -42,9 +45,19 @@ export function UserOrders() {
     
     useEffect(() => {
         if (user?._id) {
-            loadOrders({ buyer: user._id }).finally(() => setIsInitialLoad(false))
+            loadOrdersForPage(1)
         }
     }, [user?._id])
+
+    function loadOrdersForPage(page) {
+        setCurrentPage(page)
+        loadOrders({ 
+            buyer: user._id, 
+            page, 
+            limit: 10,
+            excludeCreated: true
+        }).finally(() => setIsInitialLoad(false))
+    }
 
     useEffect(() => {
         let filtered = orders
@@ -79,7 +92,8 @@ export function UserOrders() {
     }
 
     const getStatusClass = (status) => {
-        switch(status) {
+        const statusLower = status?.toLowerCase() || ''
+        switch(statusLower) {
             case 'pending': return 'status-pending'
             case 'approve': 
             case 'approved': return 'status-approved'
@@ -87,9 +101,9 @@ export function UserOrders() {
             case 'delivered': return 'status-delivered'
             case 'reject': 
             case 'rejected': return 'status-rejected'
-            case 'completed': return 'status-completed'
-            case 'cancelled': return 'status-cancelled'
-            case 'created': return 'status-created'
+            case 'created': return 'status-default'
+            case 'completed': return 'status-approved'
+            case 'cancelled': return 'status-rejected'
             default: return 'status-default'
         }
     }
@@ -129,7 +143,8 @@ export function UserOrders() {
 
 
     const getOrderStats = () => {
-        const totalOrders = orders.length
+        // Use pagination total if available, otherwise use filtered count
+        const totalOrders = pagination?.total || orders.length
         const pendingOrders = orders.filter(order => order.status === 'pending').length
         const completedOrders = orders.filter(order => order.status === 'deliver').length
         const totalSpent = orders.reduce((sum, order) => sum + (order.packageDeal?.total || 0), 0)
@@ -139,8 +154,12 @@ export function UserOrders() {
 
     const handleRefreshOrders = () => {
         if (user) {
-            loadOrders({ buyer: user._id }).finally(() => setIsInitialLoad(false))
+            loadOrdersForPage(currentPage)
         }
+    }
+
+    function handlePageChange(newPage) {
+        loadOrdersForPage(newPage)
     }
 
 
@@ -231,7 +250,7 @@ export function UserOrders() {
                                 className={`filter-tab ${statusFilter === 'all' ? 'active' : ''}`}
                                 onClick={() => setStatusFilter('all')}
                             >
-                                All ({orders.length})
+                                All ({pagination?.total || orders.length})
                             </button>
                             <button 
                                 className={`filter-tab ${statusFilter === 'pending' ? 'active' : ''}`}
@@ -313,11 +332,18 @@ export function UserOrders() {
                 ) : filteredOrders.length === 0 && isLoading ? (
                     <LoadingSpinner message="Loading orders..." size="medium" />
                 ) : (
-                    <div className={viewMode === 'cards' ? 'orders-grid' : 'orders-list'}>
-                        {viewMode === 'cards' ? (
-                            // Card View
-                            filteredOrders.map(order => {
-                                const daysRemaining = getDaysRemaining(order.createdAt, order.packageDeal?.deliveryTime)
+                    <>
+                        <div className={viewMode === 'cards' ? 'orders-grid' : 'orders-list'}>
+                            {viewMode === 'cards' ? (
+                                // Card View
+                                filteredOrders.map(order => {
+                                // Get the correct data - packageDeal or gig
+                                const orderData = order.packageDeal || order.gig
+                                const gigTitle = order.gig?.title || orderData?.title || 'Gig Title'
+                                const packageType = orderData?.packageType || 'Basic'
+                                const deliveryTime = orderData?.deliveryTime || orderData?.daysToMake
+                                const totalPrice = orderData?.total || orderData?.price || order.price || 0
+                                const daysRemaining = getDaysRemaining(order.createdAt, deliveryTime)
                                 
                                 return (
                                     <div key={order._id} className="order-card">
@@ -334,8 +360,8 @@ export function UserOrders() {
 
                                         <div className="order-content">
                                             <div className="gig-info">
-                                                <h3 className="gig-title">{order.packageDeal?.title || 'Gig Title'}</h3>
-                                                <p className="package-type">{order.packageDeal?.packageType?.toUpperCase() || 'BASIC'} Package</p>
+                                                <h3 className="gig-title">{gigTitle}</h3>
+                                                <p className="package-type">{packageType.toUpperCase()} Package</p>
                                             </div>
 
                                             <div className="seller-info">
@@ -358,7 +384,7 @@ export function UserOrders() {
                                                     <div className="detail-content">
                                                         <span className="detail-label">Due Date</span>
                                                         <span className="detail-value">
-                                                            {calculateDueDate(order.createdAt, order.packageDeal?.deliveryTime)}
+                                                            {calculateDueDate(order.createdAt, deliveryTime)}
                                                         </span>
                                                     </div>
                                                 </div>
@@ -378,7 +404,7 @@ export function UserOrders() {
 
                                             <div className="order-price">
                                                 <span className="price-label">Total</span>
-                                                <span className="price-value">${order.packageDeal?.total || 0}</span>
+                                                <span className="price-value">${totalPrice}</span>
                                             </div>
                                         </div>
 
@@ -413,9 +439,20 @@ export function UserOrders() {
                                 onSort={handleSort}
                                 sortBy={sortBy}
                                 sortOrder={sortOrder}
+                                pagination={pagination}
+                                onPageChange={handlePageChange}
                             />
                         )}
                     </div>
+                    
+                    {pagination && pagination.pages > 1 && viewMode === 'cards' && (
+                        <Pagination
+                            currentPage={pagination.page}
+                            totalPages={pagination.pages}
+                            onPageChange={handlePageChange}
+                        />
+                    )}
+                </>
                 )}
             </section>
         </main>

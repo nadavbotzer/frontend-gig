@@ -562,8 +562,8 @@
                     }
 
                     // Default status styling
-                    background: rgba($clr5, 0.2);
-                    color: $clr2;
+                    background: rgba(#dadbdd, 0.2);
+                    color: #62646a;
 
                     &.status-pending {
                         background: rgba(255, 193, 7, 0.2);
@@ -596,13 +596,13 @@
                     }
 
                     &.status-created {
-                        background: rgba($clr5, 0.2);
-                        color: $clr2;
+                        background: rgba(#dadbdd, 0.2);
+                        color: #62646a;
                     }
 
                     &.status-default {
-                        background: rgba($clr5, 0.2);
-                        color: $clr2;
+                        background: rgba(#dadbdd, 0.2);
+                        color: #62646a;
                     }
                 }
 
@@ -709,8 +709,8 @@
                         }
 
                         // Default status styling
-                        background: rgba($clr5, 0.2);
-                        color: $clr2;
+                        background: rgba(#dadbdd, 0.2);
+                        color: #62646a;
 
                         &.status-pending {
                             background: rgba(255, 193, 7, 0.2);

@@ -8,6 +8,7 @@ export const CLEAR_ORDERS = 'CLEAR_ORDERS'
 
 const initialState = {
     orders: [],
+    pagination: null,
 }
 
 export function orderReducer(state = initialState, action) {
@@ -15,7 +16,11 @@ export function orderReducer(state = initialState, action) {
     var orders
     switch (action.type) {
         case SET_ORDERS:
-            newState = { ...state, orders: action.orders }
+            newState = { 
+                ...state, 
+                orders: action.orders,
+                pagination: action.pagination || state.pagination
+            }
             break
         case SET_ORDER:
             newState = { ...state, order: action.order }

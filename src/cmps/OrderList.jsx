@@ -1,9 +1,10 @@
 import { OrderPreview } from "./OrderPreview";
+import { Pagination } from "./Pagination";
 import { useNavigate } from 'react-router-dom';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
-export function OrderList({ orders, onSort, sortBy, sortOrder, viewType = 'seller' }) {
+export function OrderList({ orders, onSort, sortBy, sortOrder, viewType = 'seller', pagination, onPageChange }) {
     const navigate = useNavigate()
 
     function handleRowClick(orderId, event) {
@@ -65,6 +66,14 @@ export function OrderList({ orders, onSort, sortBy, sortOrder, viewType = 'selle
                     </div>
                 )}
             </div>
+            
+            {pagination && pagination.pages > 1 && (
+                <Pagination
+                    currentPage={pagination.page}
+                    totalPages={pagination.pages}
+                    onPageChange={onPageChange}
+                />
+            )}
         </div>
     )
 }

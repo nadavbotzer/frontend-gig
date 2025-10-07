@@ -6,8 +6,15 @@ import { LOADING_DONE, LOADING_START } from '../reducers/system.reducer'
 export async function loadOrders(filterBy = orderService.getDefaultFilter()) {
     try {
         store.dispatch({ type: LOADING_START })
-        const orders = await orderService.query(filterBy)
-        store.dispatch(getCmdSetOrders(orders))
+        const result = await orderService.query(filterBy)
+        
+        // Handle paginated response
+        if (result.orders && result.pagination) {
+            store.dispatch(getCmdSetOrders(result.orders, result.pagination))
+        } else {
+            // Backward compatibility - array response
+            store.dispatch(getCmdSetOrders(result, null))
+        }
     } catch (err) {
         console.log('Cannot load orders', err)
         throw err
@@ -80,10 +87,11 @@ export function clearOrders() {
 }
 
 // Command Creators:
-function getCmdSetOrders(orders) {
+function getCmdSetOrders(orders, pagination = null) {
     return {
         type: SET_ORDERS,
-        orders
+        orders,
+        pagination
     }
 }
 function getCmdSetOrder(order) {

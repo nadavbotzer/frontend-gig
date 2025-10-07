@@ -10,9 +10,11 @@ import { sortOrdersClientSide, handleSortField } from '../services/util/orderSor
 
 export function SellerDashboard() {
     const orders = useSelector(storeState => storeState.orderModule.orders)
+    const pagination = useSelector(storeState => storeState.orderModule.pagination)
     const isLoading = useSelector(storeState => storeState.systemModule.isLoading)
     const user = userService.getLoggedinUser()
     const [isInitialLoad, setIsInitialLoad] = useState(true)
+    const [currentPage, setCurrentPage] = useState(1)
     const [sortBy, setSortBy] = useState(null)
     const [sortOrder, setSortOrder] = useState('asc')
     const [sortedOrders, setSortedOrders] = useState([])
@@ -33,10 +35,19 @@ export function SellerDashboard() {
         if (user?._id) {
             setIsInitialLoad(true)
             clearOrders() // Clear previous orders immediately
-            // Load orders without backend sorting - we'll sort client-side
-            loadOrders({ seller: user._id }).finally(() => setIsInitialLoad(false))
+            loadOrdersForPage(1)
         }
     }, [user?._id])
+
+    function loadOrdersForPage(page) {
+        setCurrentPage(page)
+        loadOrders({ 
+            seller: user._id, 
+            page, 
+            limit: 10,
+            excludeCreated: true 
+        }).finally(() => setIsInitialLoad(false))
+    }
 
     // Handle client-side sorting
     useEffect(() => {
@@ -78,7 +89,7 @@ export function SellerDashboard() {
                 <div className="section-header">
                     <h2>Recent Orders</h2>
                     <div className="header-actions">
-                        <span className="order-count">{sortedOrders.length} total orders</span>
+                        <span className="order-count">{pagination?.total || sortedOrders.length} total orders</span>
                         {sortBy && (
                             <button 
                                 className="remove-sort-btn"
@@ -112,6 +123,8 @@ export function SellerDashboard() {
                         sortBy={sortBy}
                         sortOrder={sortOrder}
                         viewType="seller"
+                        pagination={pagination}
+                        onPageChange={loadOrdersForPage}
                     />
                 )}
             </div>

@@ -258,8 +258,8 @@
                     text-align: center;
 
                     // Default status styling
-                    background: rgba($clr5, 0.2);
-                    color: $clr2;
+                    background: rgba(#dadbdd, 0.2);
+                    color: #62646a;
 
                     &.status-pending {
                         background: rgba(#ffc107, 0.2);
@@ -267,13 +267,13 @@
                     }
 
                     &.status-approved {
-                        background: rgba($clr1, 0.2);
-                        color: $clr8;
+                        background: rgba(#1dbf73, 0.2);
+                        color: #0d6938;
                     }
 
                     &.status-delivered {
-                        background: rgba($clr1, 0.2);
-                        color: $clr8;
+                        background: rgba(#1dbf73, 0.2);
+                        color: #0d6938;
                     }
 
                     &.status-rejected {
@@ -297,8 +297,8 @@
                     }
 
                     &.status-default {
-                        background: rgba($clr5, 0.2);
-                        color: $clr2;
+                        background: rgba(#dadbdd, 0.2);
+                        color: #62646a;
                     }
                 }
             }
