@@ -6,6 +6,7 @@ import { SellerStatistics } from '../cmps/SellerStatistics'
 import { userService } from '../services/user'
 import { DashboardGraph } from '../cmps/DashboardGraph'
 import { LoadingSpinner } from '../cmps/LoadingSpinner'
+import { sortOrdersClientSide, handleSortField } from '../services/util/orderSort.service'
 
 export function SellerDashboard() {
     const orders = useSelector(storeState => storeState.orderModule.orders)
@@ -14,6 +15,7 @@ export function SellerDashboard() {
     const [isInitialLoad, setIsInitialLoad] = useState(true)
     const [sortBy, setSortBy] = useState(null)
     const [sortOrder, setSortOrder] = useState('asc')
+    const [sortedOrders, setSortedOrders] = useState([])
     
     // Check if user is logged in
     if (!user) {
@@ -31,20 +33,27 @@ export function SellerDashboard() {
         if (user?._id) {
             setIsInitialLoad(true)
             clearOrders() // Clear previous orders immediately
-            // Fix: Use seller filter instead of owner for local service compatibility
-            loadOrders({ seller: user._id, sortBy, sortOrder }).finally(() => setIsInitialLoad(false))
+            // Load orders without backend sorting - we'll sort client-side
+            loadOrders({ seller: user._id }).finally(() => setIsInitialLoad(false))
         }
     }, [user?._id])
 
-    const handleSort = (field) => {
-        if (sortBy === field) {
-            // Toggle sort order if same field
-            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
-        } else {
-            // Set new field and default to ascending
-            setSortBy(field)
-            setSortOrder('asc')
+    // Handle client-side sorting
+    useEffect(() => {
+        let sorted = [...orders]
+        
+        if (sortBy) {
+            sorted = sortOrdersClientSide(sorted, sortBy, sortOrder)
         }
+        
+        setSortedOrders(sorted)
+    }, [orders, sortBy, sortOrder])
+
+
+    const handleSort = (field) => {
+        const newSortState = handleSortField(field, sortBy, sortOrder)
+        setSortBy(newSortState.sortBy)
+        setSortOrder(newSortState.sortOrder)
     }
 
     const handleRemoveSort = () => {
@@ -69,7 +78,7 @@ export function SellerDashboard() {
                 <div className="section-header">
                     <h2>Recent Orders</h2>
                     <div className="header-actions">
-                        <span className="order-count">{orders.length} total orders</span>
+                        <span className="order-count">{sortedOrders.length} total orders</span>
                         {sortBy && (
                             <button 
                                 className="remove-sort-btn"
@@ -98,10 +107,11 @@ export function SellerDashboard() {
                     </div>
                 ) : (
                     <OrderList 
-                        orders={orders} 
+                        orders={sortedOrders} 
                         onSort={handleSort}
                         sortBy={sortBy}
                         sortOrder={sortOrder}
+                        viewType="seller"
                     />
                 )}
             </div>

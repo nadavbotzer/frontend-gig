@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { loadOrders } from '../store/actions/order.actions'
 import { userService } from '../services/user'
 import { saveToStorage, loadFromStorage } from '../services/util.service'
+import { sortOrdersClientSide, handleSortField } from '../services/util/orderSort.service'
 import { LoadingSpinner } from '../cmps/LoadingSpinner'
 import { Level } from '../cmps/Level'
 import { OrderList } from '../cmps/OrderList'
@@ -142,64 +143,12 @@ export function UserOrders() {
         }
     }
 
-    const sortOrdersClientSide = (orders, sortBy, sortOrder) => {
-        return [...orders].sort((a, b) => {
-            let aValue, bValue
 
-            switch (sortBy) {
-                case 'price':
-                    aValue = a.packageDeal?.total || 0
-                    bValue = b.packageDeal?.total || 0
-                    break
-                case 'dueDate':
-                    aValue = getDueDate(a.createdAt, a.packageDeal?.deliveryTime)
-                    bValue = getDueDate(b.createdAt, b.packageDeal?.deliveryTime)
-                    break
-                case 'status':
-                    aValue = getStatusOrder(a.status)
-                    bValue = getStatusOrder(b.status)
-                    break
-                default:
-                    return 0
-            }
-
-            if (aValue < bValue) return sortOrder === 'asc' ? -1 : 1
-            if (aValue > bValue) return sortOrder === 'asc' ? 1 : -1
-            return 0
-        })
-    }
-
-    const getDueDate = (createdAt, deliveryTime) => {
-        if (!createdAt || !deliveryTime) return new Date(0)
-        const orderDate = new Date(createdAt)
-        return new Date(orderDate.getTime() + (deliveryTime * 24 * 60 * 60 * 1000))
-    }
-
-    const getStatusOrder = (status) => {
-        const statusOrder = {
-            'pending': 1,
-            'approve': 2,
-            'approved': 2,
-            'deliver': 3,
-            'delivered': 3,
-            'completed': 4,
-            'reject': 5,
-            'rejected': 5,
-            'cancelled': 6,
-            'created': 7
-        }
-        return statusOrder[status] || 999
-    }
 
     const handleSort = (field) => {
-        if (sortBy === field) {
-            // Toggle sort order if same field
-            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
-        } else {
-            // Set new field and default to ascending
-            setSortBy(field)
-            setSortOrder('asc')
-        }
+        const newSortState = handleSortField(field, sortBy, sortOrder)
+        setSortBy(newSortState.sortBy)
+        setSortOrder(newSortState.sortOrder)
     }
 
     const handleRemoveSort = () => {
