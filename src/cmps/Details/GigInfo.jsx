@@ -2,17 +2,19 @@ import { AboutGig } from "./AboutGig";
 import { AboutSeller } from "./AboutSeller";
 import { GigHeader } from "./GigHeader";
 import { ReviewList } from "../ReviewList";
+import { AddReview } from "../AddReview";
 import { ImgCarousel } from "../ImgCarousel";
 
 import { getRandomCreatedAt } from "../../services/util.service";
+import { userService } from "../../services/user";
 
-export function GigInfo({ gig }) {
+export function GigInfo({ gig, reviews, onReviewAdded }) {
 
-    const { title, owner, imgUrls, description, location, avgResponseTime, about, reviews } = gig
-
-    function removeReview(id) {
-        console.log('removing')
-    }
+    const { title, owner, imgUrls, description, location, avgResponseTime, about } = gig
+    const loggedInUser = userService.getLoggedinUser()
+    
+    const canAddReview = loggedInUser && loggedInUser.id !== owner._id && 
+        !reviews?.some(review => review.userId === loggedInUser?.id || review.name === loggedInUser?.username)
 
     return <section className="gig-info-column">
         <GigHeader
@@ -34,11 +36,14 @@ export function GigInfo({ gig }) {
             reviewsCount={reviews?.length || 0}
             about={about}
         />
-        {
-            reviews && <ReviewList
-                reviews={reviews}
-                onRemoveReview={(id) => removeReview(id)}
-            />  
-        }
+        {reviews && reviews.length > 0 && (
+            <ReviewList reviews={reviews} />
+        )}
+        {canAddReview && onReviewAdded && (
+            <AddReview 
+                gigId={gig.id || gig._id} 
+                onReviewAdded={onReviewAdded} 
+            />
+        )}
     </section>
 }

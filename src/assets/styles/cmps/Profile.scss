@@ -9,6 +9,15 @@
     border-bottom: thin solid lightgrey;
     padding: rem(10px);
 
+    .profile-link {
+        cursor: pointer;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
     img {
         width: 3rem;
         border-radius: 50%;
@@ -24,11 +33,21 @@
         text-align: left;
         padding-left: rem(20px);
 
+        .fullname-link {
+            text-decoration: none;
+            cursor: pointer;
+
+            &:hover .fullname {
+                color: #1dbf73;
+            }
+        }
+
         .fullname {
             color: #222325;
             font-family: Macan;
             font-weight: 550;
             font-size: rem(16px);
+            transition: color 0.2s;
         }
 
         .location-dtl {

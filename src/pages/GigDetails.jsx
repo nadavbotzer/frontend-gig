@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import { useParams } from 'react-router'
 import { useSearchParams } from 'react-router-dom'
@@ -11,18 +12,23 @@ import { LoadingSpinner } from '../cmps/LoadingSpinner'
 
 import { showErrorMsg } from '../services/event-bus.service'
 import { gigService } from '../services/gig/index.js'
+import { loadReviews, addReview } from '../store/actions/review.actions'
 
 export function GigDetails() {
 
   const [gig, setGig] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+  const reviews = useSelector(storeState => storeState.reviewModule.reviews)
 
   const { gigId } = useParams()
   const [searchParams, setSearchParams] = useSearchParams()
   const tagsParam = searchParams.get('tags')
 
   useEffect(() => {
-    gigId && loadGig(gigId)
+    if (gigId) {
+      loadGig(gigId)
+      loadReviews({ gigId })
+    }
   }, [gigId])
 
   useEffect(() => {
@@ -40,6 +46,13 @@ export function GigDetails() {
     }
   }
 
+  async function handleReviewAdded(reviewData) {
+    const addedReview = await addReview(reviewData)
+    await loadReviews({ gigId })
+    await loadGig(gigId)
+    return addedReview
+  }
+
   if (isLoading || !gig) return <LoadingSpinner message="Loading gig details..." size="large" fullPage />;
 
   return (
@@ -51,7 +64,7 @@ export function GigDetails() {
         setGig={setGig}
       />
       <GigContentLayout>
-        <GigInfo gig={gig} />
+        <GigInfo gig={gig} reviews={reviews} onReviewAdded={handleReviewAdded} />
         <BuyingInfo gig={gig} />
       </GigContentLayout>
     </section>

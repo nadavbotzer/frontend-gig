@@ -4,12 +4,13 @@ import { ReviewContent } from "./ReviewContent";
 import { TopSectionReview } from "./TopSectionReview";
 
 
-export function ReviewCard({ imgSrc, location, fullname,
+export function ReviewCard({ userId, imgSrc, location, fullname,
     createdAt, rate, text, duration, startPriceRange, endPriceRange,
     projectImg
 }) {
     return <div className="card">
         <Profile
+            userId={userId}
             imgSrc={imgSrc}
             location={location}
             fullname={fullname}

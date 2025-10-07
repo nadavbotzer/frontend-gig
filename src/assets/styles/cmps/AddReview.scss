@@ -1,0 +1,120 @@
+@import "../setup/functions";
+
+.add-review-card {
+    margin-top: 1rem;
+    
+	.star-input {
+		cursor: pointer;
+		transition: transform 0.2s;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+
+	.text {
+		width: 100%;
+	}
+
+	textarea {
+		width: 100%;
+		padding: rem(12px);
+		border: 1px solid #c5c6c9;
+		border-radius: rem(8px);
+		font-size: rem(14px);
+		font-family: inherit;
+		color: #404145;
+		resize: both;
+		min-height: rem(150px);
+		box-sizing: border-box;
+
+		&:focus {
+			outline: none;
+			border-color: #1dbf73;
+		}
+
+		&::placeholder {
+			color: #b5b6ba;
+		}
+	}
+
+	.bottom-section {
+		.price-inputs {
+			display: flex;
+			align-items: center;
+			gap: rem(8px);
+
+			input {
+				width: rem(60px);
+				padding: rem(6px);
+				border: 1px solid #c5c6c9;
+				border-radius: rem(4px);
+				font-size: rem(14px);
+				text-align: center;
+
+				&:focus {
+					outline: none;
+					border-color: #1dbf73;
+				}
+			}
+
+			span {
+				color: #62646a;
+			}
+		}
+
+		.duration {
+			input {
+				padding: rem(6px) rem(12px);
+				border: 1px solid #c5c6c9;
+				border-radius: rem(4px);
+				font-size: rem(14px);
+
+				&:focus {
+					outline: none;
+					border-color: #1dbf73;
+				}
+
+				&::placeholder {
+					color: #b5b6ba;
+				}
+			}
+		}
+	}
+
+	.error-message {
+		padding: rem(12px);
+		background: #fff4f4;
+		border: 1px solid #ff4d4f;
+		border-radius: rem(4px);
+		color: #ff4d4f;
+		font-size: rem(14px);
+		margin-top: rem(12px);
+	}
+
+	.submit-section {
+		margin-top: rem(16px);
+
+		.btn-submit {
+			padding: rem(12px) rem(24px);
+			background: #1dbf73;
+			color: #fff;
+			border: none;
+			border-radius: rem(4px);
+			font-size: rem(16px);
+			font-weight: 600;
+			cursor: pointer;
+			transition: background 0.2s;
+
+			&:hover:not(:disabled) {
+				background: #19a463;
+			}
+
+			&:disabled {
+				background: #c5c6c9;
+				cursor: not-allowed;
+			}
+		}
+	}
+}
+

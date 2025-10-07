@@ -91,7 +91,7 @@ export function GigPreview({ gig }) {
             <div className="gig-rating-preview">
                 <span><StarRateIcon /></span>
                 <span>{gig.owner?.rate || 0}</span>
-                <span className="gig-previews-count">({gig.reviews?.length || 0})</span>
+                <span className="gig-previews-count">({gig.reviewCount || 0})</span>
             </div>
             <p className="gig-price">From US${gig.price}</p>
         </article>

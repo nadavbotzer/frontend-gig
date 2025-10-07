@@ -18,18 +18,13 @@
         justify-content: flex-start;
 
         .content {
-            width: 90%;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             justify-content: flex-start;
         }
 
-        .project-img {
-            width: 10%;
-            display: inline;
-            object-fit: contain;
-            margin-top: rem(15px);
-        }
+
     }
 }

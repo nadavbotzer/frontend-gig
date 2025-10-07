@@ -4,17 +4,21 @@ export const reviewService = {
 	add,
 	query,
 	remove,
+	update
 }
 
-function query(filterBy) {
-	var queryStr = !filterBy ? '' : `?name=${filterBy.name}&sort=anaAref`
-	return httpService.get(`review${queryStr}`)
+function query(filterBy = {}) {
+	return httpService.get('review', filterBy)
+}
+
+async function add(review) {
+	return await httpService.post('review', review)
+}
+
+async function update(reviewId, reviewData) {
+	return await httpService.put(`review/${reviewId}`, reviewData)
 }
 
 async function remove(reviewId) {
-	await httpService.delete(`review/${reviewId}`)
-}
-
-async function add({ txt, aboutUserId }) {
-	return await httpService.post(`review`, { txt, aboutUserId })
+	return await httpService.delete(`review/${reviewId}`)
 }

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { loadReviews, removeReview, getActionAddReview, getActionRemoveReview } from '../store/actions/review.actions'
+import { loadReviews, removeReview } from '../store/actions/review.actions'
 import { loadUsers } from '../store/actions/user.actions'
 
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'

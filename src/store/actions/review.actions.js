@@ -1,15 +1,15 @@
 import { reviewService } from '../../services/review'
-
 import { store } from '../store'
-import { ADD_REVIEW, REMOVE_REVIEW, SET_REVIEWS } from '../reducers/review.reducer'
-import { SET_SCORE } from '../reducers/user.reducer'
+import { ADD_REVIEW, REMOVE_REVIEW, SET_REVIEWS, UPDATE_REVIEW } from '../reducers/review.reducer'
 
-export async function loadReviews() {
+export async function loadReviews(filterBy = {}) {
 	try {
-		const reviews = await reviewService.query()
+		const response = await reviewService.query(filterBy)
+		const reviews = response.reviews || response
 		store.dispatch({ type: SET_REVIEWS, reviews })
+		return response
 	} catch (err) {
-		console.log('ReviewActions: err in loadReviews', err)
+		console.error('ReviewActions: err in loadReviews', err)
 		throw err
 	}
 }
@@ -17,11 +17,21 @@ export async function loadReviews() {
 export async function addReview(review) {
 	try {
 		const addedReview = await reviewService.add(review)
-		store.dispatch(getActionAddReview(addedReview))
-		const { score } = addedReview.byUser
-		store.dispatch({ type: SET_SCORE, score })
+		store.dispatch({ type: ADD_REVIEW, review: addedReview })
+		return addedReview
 	} catch (err) {
-		console.log('ReviewActions: err in addReview', err)
+		console.error('ReviewActions: err in addReview', err)
+		throw err
+	}
+}
+
+export async function updateReview(reviewId, reviewData) {
+	try {
+		const updatedReview = await reviewService.update(reviewId, reviewData)
+		store.dispatch({ type: UPDATE_REVIEW, review: updatedReview })
+		return updatedReview
+	} catch (err) {
+		console.error('ReviewActions: err in updateReview', err)
 		throw err
 	}
 }
@@ -29,16 +39,9 @@ export async function addReview(review) {
 export async function removeReview(reviewId) {
 	try {
 		await reviewService.remove(reviewId)
-		store.dispatch(getActionRemoveReview(reviewId))
+		store.dispatch({ type: REMOVE_REVIEW, reviewId })
 	} catch (err) {
-		console.log('ReviewActions: err in removeReview', err)
+		console.error('ReviewActions: err in removeReview', err)
 		throw err
 	}
-}
-// Command Creators
-export function getActionRemoveReview(reviewId) {
-	return { type: REMOVE_REVIEW, reviewId }
-}
-export function getActionAddReview(review) {
-	return { type: ADD_REVIEW, review }
 }
