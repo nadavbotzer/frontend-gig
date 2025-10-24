@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadOrders } from '../store/actions/order.actions'
+import { orderService } from '../services/order'
 import { userService } from '../services/user'
 import { saveToStorage, loadFromStorage } from '../services/util.service'
 import { sortOrdersClientSide, handleSortField } from '../services/util/orderSort.service'
@@ -33,6 +34,7 @@ export function UserOrders() {
     const user = userService.getLoggedinUser()
     const [isInitialLoad, setIsInitialLoad] = useState(true)
     const [currentPage, setCurrentPage] = useState(1)
+    const [allOrders, setAllOrders] = useState([]) // For statistics - all orders
     const [filteredOrders, setFilteredOrders] = useState([])
     const [statusFilter, setStatusFilter] = useState('all')
     const [viewMode, setViewMode] = useState(() => {
@@ -46,8 +48,29 @@ export function UserOrders() {
     useEffect(() => {
         if (user?._id) {
             loadOrdersForPage(1)
+            loadAllOrdersForStats()
         }
     }, [user?._id])
+
+    async function loadAllOrdersForStats() {
+        // Fetch ALL orders for statistics (without pagination)
+        try {
+            const result = await orderService.query({ 
+                buyer: user._id,
+                excludeCreated: true
+                // No page/limit = returns all orders
+            })
+            
+            // Store all orders for statistics
+            if (Array.isArray(result)) {
+                setAllOrders(result)
+            } else if (result?.orders) {
+                setAllOrders(result.orders)
+            }
+        } catch (err) {
+            console.error('Failed to load statistics:', err)
+        }
+    }
 
     function loadOrdersForPage(page) {
         setCurrentPage(page)
@@ -143,11 +166,16 @@ export function UserOrders() {
 
 
     const getOrderStats = () => {
-        // Use pagination total if available, otherwise use filtered count
-        const totalOrders = pagination?.total || orders.length
-        const pendingOrders = orders.filter(order => order.status === 'pending').length
-        const completedOrders = orders.filter(order => order.status === 'deliver').length
-        const totalSpent = orders.reduce((sum, order) => sum + (order.packageDeal?.total || 0), 0)
+        // Use allOrders for accurate statistics
+        const ordersForStats = allOrders.length > 0 ? allOrders : orders
+        
+        const totalOrders = pagination?.total || ordersForStats.length
+        const pendingOrders = ordersForStats.filter(order => order.status?.toLowerCase() === 'pending').length
+        const completedOrders = ordersForStats.filter(order => ['deliver', 'delivered'].includes(order.status?.toLowerCase())).length
+        const totalSpent = ordersForStats.reduce((sum, order) => {
+            const orderTotal = order.packageDeal?.total || order.packageDeal?.price || order.price || 0
+            return sum + orderTotal
+        }, 0)
         
         return { totalOrders, pendingOrders, completedOrders, totalSpent }
     }

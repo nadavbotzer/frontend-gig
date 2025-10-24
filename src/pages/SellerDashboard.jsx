@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { loadOrders, addOrder, updateOrder, clearOrders } from '../store/actions/order.actions'
+import { orderService } from '../services/order'
 import { OrderList } from '../cmps/OrderList'
 import { SellerStatistics } from '../cmps/SellerStatistics'
 import { userService } from '../services/user'
@@ -15,6 +16,7 @@ export function SellerDashboard() {
     const user = userService.getLoggedinUser()
     const [isInitialLoad, setIsInitialLoad] = useState(true)
     const [currentPage, setCurrentPage] = useState(1)
+    const [allOrders, setAllOrders] = useState([]) // For statistics - all orders
     const [sortBy, setSortBy] = useState(null)
     const [sortOrder, setSortOrder] = useState('asc')
     const [sortedOrders, setSortedOrders] = useState([])
@@ -36,8 +38,29 @@ export function SellerDashboard() {
             setIsInitialLoad(true)
             clearOrders() // Clear previous orders immediately
             loadOrdersForPage(1)
+            loadAllOrdersForStats()
         }
     }, [user?._id])
+
+    async function loadAllOrdersForStats() {
+        // Fetch ALL orders for statistics (without pagination)
+        try {
+            const result = await orderService.query({ 
+                seller: user._id,
+                excludeCreated: true
+                // No page/limit = returns all orders
+            })
+            
+            // Store all orders for statistics
+            if (Array.isArray(result)) {
+                setAllOrders(result)
+            } else if (result?.orders) {
+                setAllOrders(result.orders)
+            }
+        } catch (err) {
+            console.error('Failed to load statistics:', err)
+        }
+    }
 
     function loadOrdersForPage(page) {
         setCurrentPage(page)
@@ -82,7 +105,7 @@ export function SellerDashboard() {
             {isLoading || isInitialLoad ? (
                 <LoadingSpinner message="Loading dashboard statistics..." size="large" />
             ) : (
-                <SellerStatistics orders={orders} />
+                <SellerStatistics orders={allOrders.length > 0 ? allOrders : orders} />
             )}
 
             <div className="order-list-wrapper">

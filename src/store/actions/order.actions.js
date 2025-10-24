@@ -15,6 +15,8 @@ export async function loadOrders(filterBy = orderService.getDefaultFilter()) {
             // Backward compatibility - array response
             store.dispatch(getCmdSetOrders(result, null))
         }
+        
+        return result
     } catch (err) {
         console.log('Cannot load orders', err)
         throw err

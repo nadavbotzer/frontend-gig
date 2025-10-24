@@ -7,11 +7,25 @@ import BarChartIcon from '@mui/icons-material/BarChart'
 export function SellerStatistics({ orders }) {
     // Calculate statistics
     const getStatistics = () => {
-        if (!orders.length) return { totalRevenue: 0, activeOrders: 0, completedOrders: 0, avgOrderValue: 0 }
+        if (!orders || !orders.length) {
+            return { totalRevenue: 0, activeOrders: 0, completedOrders: 0, avgOrderValue: 0 }
+        }
         
-        const totalRevenue = orders.reduce((sum, order) => sum + (order.packageDeal?.total || 0), 0)
-        const activeOrders = orders.filter(order => ['pending', 'approve'].includes(order.status)).length
-        const completedOrders = orders.filter(order => order.status === 'deliver').length
+        const totalRevenue = orders.reduce((sum, order) => {
+            const orderTotal = order.packageDeal?.total || order.packageDeal?.price || order.price || 0
+            return sum + orderTotal
+        }, 0)
+        
+        const activeOrders = orders.filter(order => {
+            const statusLower = order.status?.toLowerCase()
+            return ['pending', 'approve', 'approved'].includes(statusLower)
+        }).length
+        
+        const completedOrders = orders.filter(order => {
+            const statusLower = order.status?.toLowerCase()
+            return ['deliver', 'delivered'].includes(statusLower)
+        }).length
+        
         const avgOrderValue = orders.length > 0 ? totalRevenue / orders.length : 0
         
         return { totalRevenue, activeOrders, completedOrders, avgOrderValue }
